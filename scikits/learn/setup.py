@@ -1,5 +1,6 @@
-from os.path import join
+from os.path import join, dirname
 import numpy
+from Cython.Distutils import build_ext
 
 def configuration(parent_package='',top_path=None):
     from numpy.distutils.misc_util import Configuration
@@ -10,15 +11,22 @@ def configuration(parent_package='',top_path=None):
     config.add_subpackage('glm')
     config.add_subpackage('manifold')
     config.add_subpackage('utils')
+
+    include_dirs = []
+    if top_path != '':
+         # so that top-level setup.py could build
+        include_dirs += [join(dirname(__file__), 'src')]
+
     config.add_extension('libsvm',
                          define_macros=[('LIBSVM_EXPORTS', None),
                                         ('LIBSVM_DLL',     None)],
-                         sources=[join('src', 'svm.cpp'), 
-                                  join('src', 'libsvm.c'),
+                         sources=[join('src', 'libsvm.pyx'),
                                   ],
-                         include_dirs=[numpy.get_include()],
-                         depends=[join('src', 'svm.h'),
-                                 join('src', 'libsvm_helper.c'),
+                         include_dirs=['/usr/include/libsvm-2.0/libsvm']
+                                      + include_dirs,
+                                      # [numpy.get_include()] +
+                         libraries=['svm'],
+                         depends=[join('src', 'libsvm_helper.c'),
                                   ])
 
     config.add_extension('BallTree',
@@ -34,4 +42,5 @@ def configuration(parent_package='',top_path=None):
 
 if __name__ == '__main__':
     from numpy.distutils.core import setup
-    setup(**configuration(top_path='').todict())
+    setup(cmdclass={'build_ext': build_ext},
+          **configuration(top_path='').todict())
