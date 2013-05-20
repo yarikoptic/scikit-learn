@@ -1,3 +1,10 @@
+scikit-learn (0.13-3) unstable; urgency=low
+
+  * debian/control
+    - move joblib to Depends from Recommends (Closes: #709056)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 20 May 2013 11:01:00 -0400
+
 scikit-learn (0.11.0-2) unstable; urgency=low
 
   * Patches to resolve FTBFS'es (Closes: #680246)
