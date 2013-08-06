@@ -1,6 +1,9 @@
 #!/usr/bin/make -f
 # -*- mode: makefile; coding: utf-8 -*-
 
+# prevent unsanctioned downloads where possible
+export  http_proxy=http://127.0.0.1:9/
+
 PACKAGE_NAME = python-sklearn
 PACKAGE_ROOT_DIR = debian/${PACKAGE_NAME}
 
