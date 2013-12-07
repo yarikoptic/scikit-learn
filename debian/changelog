@@ -1,9 +1,14 @@
-scikit-learn (0.13-3) unstable; urgency=low
+scikit-learn (0.11.0-2+deb7u1) wheezy; urgency=low
 
+  [ Andreas Beckmann ]
+  * Non-maintainer upload.
+  * Backport fix for #709056 to wheezy.
+
+  [ Yaroslav Halchenko ]
   * debian/control
     - move joblib to Depends from Recommends (Closes: #709056)
 
- -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 20 May 2013 11:01:00 -0400
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 07 Dec 2013 21:08:56 +0100
 
 scikit-learn (0.11.0-2) unstable; urgency=low
 
