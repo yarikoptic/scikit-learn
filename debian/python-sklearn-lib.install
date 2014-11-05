@@ -1,0 +1,5 @@
+# two deep seems to be enough for now
+# sure would be nice if dh_install supported /**/
+usr/lib/python2*/dist-packages/sklearn/*.so
+usr/lib/python2*/dist-packages/sklearn/*/*.so
+usr/lib/python2*/dist-packages/sklearn/*/*/*.so

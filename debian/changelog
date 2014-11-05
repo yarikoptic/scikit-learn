@@ -1,3 +1,17 @@
+scikit-learn (0.15.2-4) UNRELEASED; urgency=low
+
+  [ Zack Weinberg ]
+  * Clarify that python-scikits-learn is a pure transition package,
+    and has not provided compatibility aliases in some time.  Upstream
+    changed the top-level package name from scikits.learn to sklearn in
+    version 0.9, and dropped the scikits.learn compatibility alias in
+    version 0.12.  Version 0.4 is still in oldstable (squeeze), so we
+    will drop the transition package after jessie.
+  * Build Python 3 packages (closes: #730532).  Because of the above,
+    there is no python3-scikits-learn.
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 05 Nov 2014 19:34:58 +0000
+
 scikit-learn (0.15.2-3) unstable; urgency=medium
 
   * debian/patches
