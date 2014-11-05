@@ -3,20 +3,24 @@ Section: python
 Priority: optional
 Maintainer: NeuroDebian Team <team@neuro.debian.net>
 Uploaders: Yaroslav Halchenko <debian@onerussian.com>, Michael Hanke <michael.hanke@gmail.com>
-Build-Depends: debhelper (>= 7.0.50), dh-autoreconf,
-               python-all-dev (>= 2.5),
+Build-Depends: debhelper (>= 8), dh-python,
+               python-all-dev (>= 2.6.6-3~),
+               python3-all-dev (>= 3.4),
                cython (>= 0.12~),
+               cython3 (>= 0.12~),
                python-setuptools,
+               python3-setuptools,
                python-numpy, python-scipy,
+               python3-numpy, python3-scipy,
                libsvm-dev (>= 2.84.0),
-               python-nose,
-               python-matplotlib,
-               python-joblib (>= 0.4.5), python-support,
-               libatlas3-base,
+               python-nose, python-matplotlib, python-joblib (>= 0.4.5),
+               python3-nose, python3-matplotlib, python3-joblib (>= 0.4.5),
+               gfortran, libatlas3-base, libatlas-dev, libblas-dev, liblapack-dev,
 Build-Depends-Indep:
                python-sphinx (>= 1.0), python-imaging, graphviz,
 Standards-Version: 3.9.4
-XS-Python-Version: >= 2.6
+X-Python-Version: >= 2.6
+X-Python3-Version: >= 3.4
 Homepage: http://scikit-learn.sourceforge.net
 Vcs-Browser: http://github.com/yarikoptic/scikit-learn
 Vcs-Git: git://github.com/yarikoptic/scikit-learn.git
@@ -25,8 +29,8 @@ Package: python-sklearn
 Replaces: python-scikits-learn (<< 0.9~)
 Breaks: python-scikits-learn (<< 0.9~)
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}, python-numpy, python-scipy, python-sklearn-lib(>= ${source:Version}),
-         python-joblib (>= 0.4.5),
+Depends: ${misc:Depends}, ${python:Depends}, python-sklearn-lib (>= ${source:Version}),
+         python-numpy, python-scipy, python-joblib (>= 0.4.5),
 Provides: ${python:Provides}
 Recommends: python-nose, python-matplotlib
 Suggests: python-dap, python-scikits-optimization, python-sklearn-doc, ipython
@@ -39,7 +43,27 @@ Description: Python modules for machine learning and data mining
   - Manifold learning
   - kNN
   - SVM (via LIBSVM)
+ .
+ This is the Python 2 version.
 
+Package: python3-sklearn
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}, python3-sklearn-lib (>= ${source:Version}),
+         python3-numpy, python3-scipy, python3-joblib (>= 0.4.5),
+Provides: ${python3:Provides}
+Recommends: python3-nose, python3-matplotlib
+Suggests: python3-dap, python3-scikits-optimization, python-sklearn-doc, ipython3
+Enhances: python3-mvpa2, python3-mdp
+Description: Python modules for machine learning and data mining
+ scikit-learn is a collection of Python modules relevant to
+ machine/statistical learning and data mining.  Non-exhaustive list of
+ included functionality:
+  - Gaussian Mixture Models
+  - Manifold learning
+  - kNN
+  - SVM (via LIBSVM)
+ .
+ This is the Python 3 version.
 
 Package: python-sklearn-doc
 Conflicts: python-scikits-learn-doc
@@ -47,7 +71,7 @@ Replaces: python-scikits-learn-doc
 Architecture: all
 Section: doc
 Depends: ${misc:Depends}, libjs-jquery
-Suggests: python-sklearn
+Suggests: python-sklearn, python3-sklearn
 Description: documentation and examples for scikit-learn
  This package contains documentation and example scripts for
  python-sklearn.
@@ -59,15 +83,24 @@ Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, ${python:Depends}, python-numpy
 Provides: ${python:Provides}
 Description: low-level implementations and bindings for scikit-learn
- This is an add-on package for python-sklearn. It provides
- low-level implementations and custom Python bindings for the LIBSVM
- library.
+ scikit-learn is a collection of Python modules relevant to
+ machine/statistical learning and data mining.  This package contains
+ low-level compiled-code modules for the Python 2 version.
 
+Package: python3-sklearn-lib
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends}, python3-numpy
+Provides: ${python3:Provides}
+Description: low-level implementations and bindings for scikit-learn
+ scikit-learn is a collection of Python modules relevant to
+ machine/statistical learning and data mining.  This package contains
+ low-level compiled-code modules for the Python 3 version.
 
 Package: python-scikits-learn
-Depends: python-sklearn, ${misc:Depends}, ${python:Depends}
+Depends: python-sklearn
 Architecture: all
 Section: oldlibs
-Description: transitional compatibility package for scikits.learn -> sklearn migration
- Provides old namespace (scikits.learn) and could be removed if
- dependent code migrated to use sklearn for clarity of the namespace.
+Description: transitional dummy package (scikits.learn -> sklearn)
+ This is a transitional dummy package due to upstream's renaming of
+ scikits.learn to sklearn in version 0.9.  It can safely be removed
+ once nothing depends on it.
