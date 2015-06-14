@@ -10,6 +10,7 @@ import warnings
 import numpy as np
 from ..utils import check_X_y, safe_sqr
 from ..utils.metaestimators import if_delegate_has_method
+from ..utils.due import due, Doi
 from ..base import BaseEstimator
 from ..base import MetaEstimatorMixin
 from ..base import clone
@@ -116,6 +117,7 @@ class RFE(BaseEstimator, MetaEstimatorMixin, SelectorMixin):
     def _estimator_type(self):
         return self.estimator._estimator_type
 
+    @due.dcite(Doi('10.1023/A:1012487302797'), use="Recursive feature elimination")
     def fit(self, X, y):
         """Fit the RFE model and then the underlying estimator on the selected
            features.

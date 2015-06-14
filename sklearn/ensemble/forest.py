@@ -60,6 +60,7 @@ from ..tree import (DecisionTreeClassifier, DecisionTreeRegressor,
 from ..tree._tree import DTYPE, DOUBLE
 from ..utils import check_random_state, check_array, compute_sample_weight
 from ..utils.validation import DataConversionWarning, NotFittedError
+from ..utils.due import due, BibTeX
 from .base import BaseEnsemble, _partition_estimators
 from ..utils.fixes import bincount
 
@@ -71,6 +72,15 @@ __all__ = ["RandomForestClassifier",
 
 MAX_INT = np.iinfo(np.int32).max
 
+due.add(BibTeX("""
+@INPROCEEDINGS{breiman2001,
+    author = {Leo Breiman},
+    title = {Random Forests},
+    booktitle = {Machine Learning},
+    year = {2001},
+    pages = {5--32}
+}
+"""))
 
 def _parallel_build_trees(tree, forest, X, y, sample_weight, tree_idx, n_trees,
                           verbose=0, class_weight=None):
@@ -169,6 +179,7 @@ class BaseForest(six.with_metaclass(ABCMeta, BaseEnsemble,
 
         return np.array(results).T
 
+    @due.dcite("breiman2001")
     def fit(self, X, y, sample_weight=None):
         """Build a forest of trees from the training set (X, y).
 
