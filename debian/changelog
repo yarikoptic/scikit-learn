@@ -1,3 +1,10 @@
+scikit-learn (0.16.1-2~bpo70+1) wheezy-backports; urgency=low
+
+  * Rebuild for wheezy-backports.
+  * tighten deps on python-joblib to >= 0.8.0
+
+ -- Sandro Tosi <morph@debian.org>  Wed, 15 Jul 2015 05:07:47 -0400
+
 scikit-learn (0.16.1-2) unstable; urgency=medium
 
   * Upload to unstable (Closes: #792074)

@@ -11,7 +11,7 @@ Build-Depends: debhelper (>= 7.0.50), dh-autoreconf,
                libsvm-dev (>= 2.84.0),
                python-nose,
                python-matplotlib,
-               python-joblib (>= 0.4.5),
+               python-joblib (>= 0.8.0),
                libatlas3-base,
 Build-Depends-Indep:
                python-sphinx (>= 1.0), python-imaging, graphviz,
@@ -26,7 +26,7 @@ Replaces: python-scikits-learn (<< 0.9~)
 Breaks: python-scikits-learn (<< 0.9~)
 Architecture: all
 Depends: ${misc:Depends}, ${python:Depends}, python-numpy, python-scipy, python-sklearn-lib(>= ${source:Version}),
-         python-joblib (>= 0.4.5),
+         python-joblib (>= 0.8.0),
 Provides: ${python:Provides}
 Recommends: python-nose, python-matplotlib
 Suggests: python-dap, python-scikits-optimization, python-sklearn-doc, ipython
