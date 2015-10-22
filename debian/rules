@@ -42,13 +42,14 @@ override_dh_clean:
 override_dh_auto_install: ${PYVERS:%=python-install%} ${PY3VERS:%=python-install%} ${PYVERS:%=python-test%} ${PY3VERS:%=python-test%}
 # Per Python version logic -- install, test, move .so into -lib
 python-install%:
+	echo "I: installing"
 	python$* setup.py install --install-layout=deb --root=$(PACKAGE$*_ROOT_DIR)
 
 python-test%: python-install%
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	: # Run unittests here against installed scikits.learn
 	echo "$*" | grep -q '^3' && PY=3 || PY=$*; \
-	export PYTHONPATH=`/bin/ls -d $$PWD/$(PACKAGE$*_ROOT_DIR)/usr/lib/python$$PY/*/`; \
+	export PYTHONPATH=`/bin/ls -d $$PWD/build/lib.*-*-$*/`; \
 	export MPLCONFIGDIR=$(CURDIR)/build HOME=$(CURDIR)/build; \
 	export JOBLIB_MULTIPROCESSING=0; \
 	cd build/; python$* /usr/bin/nosetests -s -v $(NOSEARGS) sklearn && \
@@ -64,7 +65,7 @@ ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS)))
 ifneq (,$(findstring -a,$(DH_INTERNAL_OPTIONS)))
 	: # not building documentation in -a
 else
-	export PYTHONPATH=`/bin/ls -d $$PWD/$(PACKAGE2_ROOT_DIR)/usr/lib/python$(PYVER)/*`; \
+	export PYTHONPATH=`/bin/ls -d $$PWD/build/lib.*-$(PYVER)`; \
 	export MPLCONFIGDIR=$(CURDIR)/build HOME=$(CURDIR)/build; \
 	 cd doc; $(MAKE) html
 endif
