@@ -1,0 +1,17 @@
+Tests: nosetests
+Depends: python-all,
+         python-sklearn,
+         python-nose,
+         # required by some of the tests
+         python-pil,
+         python-pandas,
+         python-matplotlib,
+
+Tests: nosetests3
+Depends: python3-all,
+         python3-sklearn,
+         python3-nose,
+         # required by some of the tests
+         python3-pil,
+         python3-pandas,
+         python3-matplotlib,

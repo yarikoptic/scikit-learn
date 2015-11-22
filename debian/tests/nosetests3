@@ -1,0 +1,17 @@
+#!/bin/sh
+set -efu
+
+pys="$(py3versions -r 2>/dev/null)"
+
+cd "$ADTTMP"
+
+# An attempt will be made to create a directory in this directory
+#
+# The default value is the users home directory, which does not work in the
+# test enrivonment
+export SCIKIT_LEARN_DATA="$ADTTMP"
+
+for py in $pys; do
+	echo "=== $py ==="
+	$py /usr/bin/nosetests3 -a '!network' --verbosity=2 sklearn 2>&1
+done
