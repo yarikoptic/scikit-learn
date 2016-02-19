@@ -1,6 +1,9 @@
 scikit-learn (0.17.1-1) unstable; urgency=medium
 
   * Fresh upstream bugfix release
+    - few patches were picked up from upstream branch to stay compatible with
+      recent scipy/numpy in debian sid.
+      See https://github.com/scikit-learn/scikit-learn/pull/6401
 
  -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 18 Feb 2016 20:22:31 -0500
 
