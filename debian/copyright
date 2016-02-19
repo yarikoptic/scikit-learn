@@ -4,7 +4,7 @@ Upstream-Contact: Fabian Pedregosa <fabian.pedregosa@inria.fr>
 Source: http://github.com/scikit-learn/scikit-learn
 
 Files: *
-Copyright: 2007-2015, Scikit-Learn Developers
+Copyright: 2007-2016, Scikit-Learn Developers
 License: BSD-3-clause
 
 Files: doc/sphinxext/*
@@ -50,7 +50,7 @@ Copyright: 2007-2010, Sphinx team
 License: BSD-3-clause
 
 Files: debian/*
-Copyright: 2010-2015, Yaroslav Halchenko <debian@onerussian.com>
+Copyright: 2010-2016, Yaroslav Halchenko <debian@onerussian.com>
 License: BSD-3-clause
 
 License: BSD-3-clause

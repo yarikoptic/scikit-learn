@@ -1,3 +1,9 @@
+scikit-learn (0.17.1-1) unstable; urgency=medium
+
+  * Fresh upstream bugfix release
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 18 Feb 2016 20:22:31 -0500
+
 scikit-learn (0.17.0-4) unstable; urgency=medium
 
   * debian/tests/deb_tests_lower_precision
