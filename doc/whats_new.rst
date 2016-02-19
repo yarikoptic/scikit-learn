@@ -1,10 +1,50 @@
 .. currentmodule:: sklearn
 
-.. _changes_0_17:
+.. _changes_0_17_1:
 
 ===============
 Release history
 ===============
+
+Version 0.17.1
+==============
+
+Changelog
+---------
+
+Bug fixes
+.........
+
+
+    - Upgrade vendored joblib to version 0.9.4 that fixes an important bug in
+      ``joblib.Parallel`` that can silently yield to wrong results when working
+      on datasets larger than 1MB:
+      https://github.com/joblib/joblib/blob/0.9.4/CHANGES.rst
+
+    - Fixed reading of Bunch pickles generated with scikit-learn
+      version <= 0.16. This can affect users who have already
+      downloaded a dataset with scikit-learn 0.16 and are loading it
+      with scikit-learn 0.17. See `#6196
+      <https://github.com/scikit-learn/scikit-learn/issues/6196>`_ for
+      how this affected :func:`datasets.fetch_20newsgroups`. By `Loic
+      Esteve`_.
+
+    - Fixed a bug that prevented using ROC AUC score to perform grid search on
+      several CPU / cores on large arrays. See `#6147
+      <https://github.com/scikit-learn/scikit-learn/issues/6147>`_
+      By `Olivier Grisel`_.
+
+    - Fixed a bug that prevented to properly set the ``presort`` parameter
+      in :class:`ensemble.GradientBoostingRegressor`. See `#5857
+      <https://github.com/scikit-learn/scikit-learn/issues/5857>`_
+      By Andrew McCulloh.
+
+    - Fixed a joblib error when evaluating the perplexity of a
+      :class:`decomposition.LatentDirichletAllocation` model. See `#6258
+      <https://github.com/scikit-learn/scikit-learn/issues/6258>`_
+      By Chyi-Kwei Yau.
+
+.. _changes_0_17:
 
 Version 0.17
 ============
