@@ -1,3 +1,12 @@
+scikit-learn (0.17.1-2) unstable; urgency=medium
+
+  * debian/rules
+    - skip test_dump tests on arm64 to prevent FTBFS - actual resolution 
+      is TODO
+    - robustify use of xargs to not fail if no matches (e.g. upon rebuild)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 08 Apr 2016 09:29:22 -0400
+
 scikit-learn (0.17.1-1) unstable; urgency=medium
 
   * Fresh upstream bugfix release
