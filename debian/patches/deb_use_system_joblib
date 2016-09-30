@@ -20,7 +20,7 @@ Subject: use system-wide joblib and do not attempt to install joblib/test
  
  from .pairwise_fast import _chi2_kernel_fast, _sparse_manhattan
  
-@@ -950,7 +950,7 @@ def _parallel_pairwise(X, Y, func, n_job
+@@ -1068,7 +1068,7 @@ def _parallel_pairwise(X, Y, func, n_job
      """Break the pairwise matrix in n_jobs even slices
      and compute them in parallel"""
      if n_jobs < 0:

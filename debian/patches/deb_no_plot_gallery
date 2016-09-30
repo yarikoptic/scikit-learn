@@ -1,8 +1,6 @@
-Index: scikit-learn-0.16.0~b1+git1-gab4d07d/doc/conf.py
-===================================================================
---- scikit-learn-0.16.0~b1+git1-gab4d07d.orig/doc/conf.py
-+++ scikit-learn-0.16.0~b1+git1-gab4d07d/doc/conf.py
-@@ -58,7 +58,10 @@ source_suffix = '.rst'
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -61,7 +61,10 @@ source_suffix = '.rst'
  #source_encoding = 'utf-8'
  
  # Generate the plots for the gallery

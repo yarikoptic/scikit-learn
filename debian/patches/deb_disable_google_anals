@@ -1,6 +1,6 @@
 --- a/doc/themes/scikit-learn/layout.html
 +++ b/doc/themes/scikit-learn/layout.html
-@@ -335,14 +335,8 @@
+@@ -351,14 +351,8 @@
      </script>
      {% endif %}
  

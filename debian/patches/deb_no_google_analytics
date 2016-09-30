@@ -14,7 +14,7 @@ Last-Update: 2013-11-24
 
 --- a/doc/conf.py
 +++ b/doc/conf.py
-@@ -126,7 +126,7 @@ html_theme = 'scikit-learn'
+@@ -129,7 +129,7 @@ html_theme = 'scikit-learn'
  # further.  For a list of options available for each theme, see the
  # documentation.
  html_theme_options = {'oldversion': False, 'collapsiblesidebar': True,
