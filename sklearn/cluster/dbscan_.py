@@ -9,13 +9,10 @@ DBSCAN: Density-Based Spatial Clustering of Applications with Noise
 #
 # License: BSD 3 clause
 
-import warnings
-
 import numpy as np
 from scipy import sparse
 
 from ..base import BaseEstimator, ClusterMixin
-from ..metrics import pairwise_distances
 from ..utils import check_array, check_consistent_length
 from ..utils.fixes import astype
 from ..neighbors import NearestNeighbors
@@ -24,8 +21,7 @@ from ._dbscan_inner import dbscan_inner
 
 
 def dbscan(X, eps=0.5, min_samples=5, metric='minkowski',
-           algorithm='auto', leaf_size=30, p=2, sample_weight=None,
-           random_state=None):
+           algorithm='auto', leaf_size=30, p=2, sample_weight=None, n_jobs=1):
     """Perform DBSCAN clustering from vector array or distance matrix.
 
     Read more in the :ref:`User Guide <dbscan>`.
@@ -75,9 +71,9 @@ def dbscan(X, eps=0.5, min_samples=5, metric='minkowski',
         weight may inhibit its eps-neighbor from being core.
         Note that weights are absolute, and default to 1.
 
-    random_state: numpy.RandomState, optional
-        Deprecated and ignored as of version 0.16, will be removed in version
-        0.18. DBSCAN does not use random initialization.
+    n_jobs : int, optional (default = 1)
+        The number of parallel jobs to run for neighbors search.
+        If ``-1``, then the number of jobs is set to the number of CPU cores.
 
     Returns
     -------
@@ -109,11 +105,6 @@ def dbscan(X, eps=0.5, min_samples=5, metric='minkowski',
     """
     if not eps > 0.0:
         raise ValueError("eps must be positive.")
-    if random_state is not None:
-        warnings.warn("The parameter random_state is deprecated in 0.16 "
-                      "and will be removed in version 0.18. "
-                      "DBSCAN is deterministic except for rare border cases.",
-                      category=DeprecationWarning)
 
     X = check_array(X, accept_sparse='csr')
     if sample_weight is not None:
@@ -139,7 +130,8 @@ def dbscan(X, eps=0.5, min_samples=5, metric='minkowski',
     else:
         neighbors_model = NearestNeighbors(radius=eps, algorithm=algorithm,
                                            leaf_size=leaf_size,
-                                           metric=metric, p=p)
+                                           metric=metric, p=p,
+                                           n_jobs=n_jobs)
         neighbors_model.fit(X)
         # This has worst case O(n^2) memory complexity
         neighborhoods = neighbors_model.radius_neighbors(X, eps,
@@ -175,9 +167,11 @@ class DBSCAN(BaseEstimator, ClusterMixin):
     eps : float, optional
         The maximum distance between two samples for them to be considered
         as in the same neighborhood.
+
     min_samples : int, optional
         The number of samples (or total weight) in a neighborhood for a point
         to be considered as a core point. This includes the point itself.
+
     metric : string, or callable
         The metric to use when calculating distance between instances in a
         feature array. If metric is a string or callable, it must be one of
@@ -194,14 +188,20 @@ class DBSCAN(BaseEstimator, ClusterMixin):
         The algorithm to be used by the NearestNeighbors module
         to compute pointwise distances and find nearest neighbors.
         See NearestNeighbors module documentation for details.
+
     leaf_size : int, optional (default = 30)
         Leaf size passed to BallTree or cKDTree. This can affect the speed
         of the construction and query, as well as the memory required
         to store the tree. The optimal value depends
         on the nature of the problem.
-    random_state: numpy.RandomState, optional
-        Deprecated and ignored as of version 0.16, will be removed in version
-        0.18. DBSCAN does not use random initialization.
+
+    p : float, optional
+        The power of the Minkowski metric to be used to calculate distance
+        between points.
+
+    n_jobs : int, optional (default = 1)
+        The number of parallel jobs to run.
+        If ``-1``, then the number of jobs is set to the number of CPU cores.
 
     Attributes
     ----------
@@ -237,14 +237,14 @@ class DBSCAN(BaseEstimator, ClusterMixin):
     """
 
     def __init__(self, eps=0.5, min_samples=5, metric='euclidean',
-                 algorithm='auto', leaf_size=30, p=None, random_state=None):
+                 algorithm='auto', leaf_size=30, p=None, n_jobs=1):
         self.eps = eps
         self.min_samples = min_samples
         self.metric = metric
         self.algorithm = algorithm
         self.leaf_size = leaf_size
         self.p = p
-        self.random_state = random_state
+        self.n_jobs = n_jobs
 
     def fit(self, X, y=None, sample_weight=None):
         """Perform DBSCAN clustering from features or distance matrix.
@@ -262,7 +262,8 @@ class DBSCAN(BaseEstimator, ClusterMixin):
             Note that weights are absolute, and default to 1.
         """
         X = check_array(X, accept_sparse='csr')
-        clust = dbscan(X, sample_weight=sample_weight, **self.get_params())
+        clust = dbscan(X, sample_weight=sample_weight,
+                       **self.get_params())
         self.core_sample_indices_, self.labels_ = clust
         if len(self.core_sample_indices_):
             # fix for scipy sparse indexing issue

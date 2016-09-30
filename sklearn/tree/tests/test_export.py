@@ -18,20 +18,19 @@ X = [[-2, -1], [-1, -1], [-1, -2], [1, 1], [1, 2], [2, 1]]
 y = [-1, -1, -1, 1, 1, 1]
 y2 = [[-1, 1], [-1, 1], [-1, 1], [1, 2], [1, 2], [1, 3]]
 w = [1, 1, 1, .5, .5, .5]
+y_degraded = [1, 1, 1, 1, 1, 1]
 
 
 def test_graphviz_toy():
     # Check correctness of export_graphviz
     clf = DecisionTreeClassifier(max_depth=3,
-                                 min_samples_split=1,
+                                 min_samples_split=2,
                                  criterion="gini",
                                  random_state=2)
     clf.fit(X, y)
 
     # Test export code
-    out = StringIO()
-    export_graphviz(clf, out_file=out)
-    contents1 = out.getvalue()
+    contents1 = export_graphviz(clf, out_file=None)
     contents2 = 'digraph Tree {\n' \
                 'node [shape=box] ;\n' \
                 '0 [label="X[0] <= 0.0\\ngini = 0.5\\nsamples = 6\\n' \
@@ -47,9 +46,8 @@ def test_graphviz_toy():
     assert_equal(contents1, contents2)
 
     # Test with feature_names
-    out = StringIO()
-    export_graphviz(clf, out_file=out, feature_names=["feature0", "feature1"])
-    contents1 = out.getvalue()
+    contents1 = export_graphviz(clf, feature_names=["feature0", "feature1"],
+                                out_file=None)
     contents2 = 'digraph Tree {\n' \
                 'node [shape=box] ;\n' \
                 '0 [label="feature0 <= 0.0\\ngini = 0.5\\nsamples = 6\\n' \
@@ -65,9 +63,7 @@ def test_graphviz_toy():
     assert_equal(contents1, contents2)
 
     # Test with class_names
-    out = StringIO()
-    export_graphviz(clf, out_file=out, class_names=["yes", "no"])
-    contents1 = out.getvalue()
+    contents1 = export_graphviz(clf, class_names=["yes", "no"], out_file=None)
     contents2 = 'digraph Tree {\n' \
                 'node [shape=box] ;\n' \
                 '0 [label="X[0] <= 0.0\\ngini = 0.5\\nsamples = 6\\n' \
@@ -85,10 +81,9 @@ def test_graphviz_toy():
     assert_equal(contents1, contents2)
 
     # Test plot_options
-    out = StringIO()
-    export_graphviz(clf, out_file=out, filled=True, impurity=False,
-                    proportion=True, special_characters=True, rounded=True)
-    contents1 = out.getvalue()
+    contents1 = export_graphviz(clf, filled=True, impurity=False,
+                                proportion=True, special_characters=True,
+                                rounded=True, out_file=None)
     contents2 = 'digraph Tree {\n' \
                 'node [shape=box, style="filled, rounded", color="black", ' \
                 'fontname=helvetica] ;\n' \
@@ -108,9 +103,8 @@ def test_graphviz_toy():
     assert_equal(contents1, contents2)
 
     # Test max_depth
-    out = StringIO()
-    export_graphviz(clf, out_file=out, max_depth=0, class_names=True)
-    contents1 = out.getvalue()
+    contents1 = export_graphviz(clf, max_depth=0,
+                                class_names=True, out_file=None)
     contents2 = 'digraph Tree {\n' \
                 'node [shape=box] ;\n' \
                 '0 [label="X[0] <= 0.0\\ngini = 0.5\\nsamples = 6\\n' \
@@ -124,10 +118,8 @@ def test_graphviz_toy():
     assert_equal(contents1, contents2)
 
     # Test max_depth with plot_options
-    out = StringIO()
-    export_graphviz(clf, out_file=out, max_depth=0, filled=True,
-                    node_ids=True)
-    contents1 = out.getvalue()
+    contents1 = export_graphviz(clf, max_depth=0, filled=True,
+                                out_file=None, node_ids=True)
     contents2 = 'digraph Tree {\n' \
                 'node [shape=box, style="filled", color="black"] ;\n' \
                 '0 [label="node #0\\nX[0] <= 0.0\\ngini = 0.5\\n' \
@@ -142,14 +134,13 @@ def test_graphviz_toy():
 
     # Test multi-output with weighted samples
     clf = DecisionTreeClassifier(max_depth=2,
-                                 min_samples_split=1,
+                                 min_samples_split=2,
                                  criterion="gini",
                                  random_state=2)
     clf = clf.fit(X, y2, sample_weight=w)
 
-    out = StringIO()
-    export_graphviz(clf, out_file=out, filled=True, impurity=False)
-    contents1 = out.getvalue()
+    contents1 = export_graphviz(clf, filled=True,
+                                impurity=False, out_file=None)
     contents2 = 'digraph Tree {\n' \
                 'node [shape=box, style="filled", color="black"] ;\n' \
                 '0 [label="X[0] <= 0.0\\nsamples = 6\\n' \
@@ -176,15 +167,13 @@ def test_graphviz_toy():
 
     # Test regression output with plot_options
     clf = DecisionTreeRegressor(max_depth=3,
-                                min_samples_split=1,
+                                min_samples_split=2,
                                 criterion="mse",
                                 random_state=2)
     clf.fit(X, y)
 
-    out = StringIO()
-    export_graphviz(clf, out_file=out, filled=True, leaves_parallel=True,
-                    rotate=True, rounded=True)
-    contents1 = out.getvalue()
+    contents1 = export_graphviz(clf, filled=True, leaves_parallel=True,
+                                out_file=None, rotate=True, rounded=True)
     contents2 = 'digraph Tree {\n' \
                 'node [shape=box, style="filled, rounded", color="black", ' \
                 'fontname=helvetica] ;\n' \
@@ -207,10 +196,23 @@ def test_graphviz_toy():
 
     assert_equal(contents1, contents2)
 
+    # Test classifier with degraded learning set
+    clf = DecisionTreeClassifier(max_depth=3)
+    clf.fit(X, y_degraded)
+
+    contents1 = export_graphviz(clf, filled=True, out_file=None)
+    contents2 = 'digraph Tree {\n' \
+                'node [shape=box, style="filled", color="black"] ;\n' \
+                '0 [label="gini = 0.0\\nsamples = 6\\nvalue = 6.0", ' \
+                'fillcolor="#e5813900"] ;\n' \
+                '}'
+
+    assert_equal(contents1, contents2)
+
 
 def test_graphviz_errors():
     # Check for errors of export_graphviz
-    clf = DecisionTreeClassifier(max_depth=3, min_samples_split=1)
+    clf = DecisionTreeClassifier(max_depth=3, min_samples_split=2)
     clf.fit(X, y)
 
     # Check feature_names error

@@ -4,12 +4,12 @@
 import numpy as np
 
 from .base import SelectorMixin
-from ..base import (TransformerMixin, BaseEstimator, clone,
-                    MetaEstimatorMixin)
+from ..base import TransformerMixin, BaseEstimator, clone
 from ..externals import six
 
 from ..utils import safe_mask, check_array, deprecated
-from ..utils.validation import NotFittedError, check_is_fitted
+from ..utils.validation import check_is_fitted
+from ..exceptions import NotFittedError
 
 
 def _get_feature_importances(estimator):
@@ -162,7 +162,7 @@ class SelectFromModel(BaseEstimator, SelectorMixin):
         the median (resp. the mean) of the feature importances. A scaling
         factor (e.g., "1.25*mean") may also be used. If None and if the
         estimator has a parameter penalty set to l1, either explicitly
-        or implicity (e.g, Lasso), the threshold is used is 1e-5.
+        or implicitly (e.g, Lasso), the threshold used is 1e-5.
         Otherwise, "mean" is used by default.
 
     prefit : bool, default False

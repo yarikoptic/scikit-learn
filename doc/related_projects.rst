@@ -12,20 +12,37 @@ Interoperability and framework enhancements
 These tools adapt scikit-learn for use with other technologies or otherwise
 enhance the functionality of scikit-learn's estimators.
 
+- `ML Frontend <https://github.com/jeff1evesque/machine-learning>`_ provides
+  dataset management and SVM fitting/prediction through
+  `web-based <https://github.com/jeff1evesque/machine-learning#web-interface>`_
+  and `programmatic <https://github.com/jeff1evesque/machine-learning#programmatic-interface>`_
+  interfaces.
+
 - `sklearn_pandas <https://github.com/paulgb/sklearn-pandas/>`_ bridge for
   scikit-learn pipelines and pandas data frame with dedicated transformers.
 
 - `Scikit-Learn Laboratory
-  <https://skll.readthedocs.org/en/latest/index.html>`_  A command-line
+  <https://skll.readthedocs.io/en/latest/index.html>`_  A command-line
   wrapper around scikit-learn that makes it easy to run machine learning
   experiments with multiple learners and large feature sets.
 
-- `auto-sklearn <https://github.com/automl/auto-sklearn/blob/master/source/index.rst>`_
+- `auto-sklearn <https://github.com/automl/auto-sklearn/>`_
   An automated machine learning toolkit and a drop-in replacement for a
   scikit-learn estimator
 
+- `TPOT <https://github.com/rhiever/tpot>`_
+  An automated machine learning toolkit that optimizes a series of scikit-learn
+  operators to design a machine learning pipeline, including data and feature
+  preprocessors as well as the estimators. Works as a drop-in replacement for a
+  scikit-learn estimator.
+
 - `sklearn-pmml <https://github.com/alex-pirozhenko/sklearn-pmml>`_
   Serialization of (some) scikit-learn estimators into PMML.
+
+- `sklearn2pmml <https://github.com/jpmml/sklearn2pmml>`_
+  Serialization of a wide variety of scikit-learn estimators and transformers
+  into PMML with the help of `JPMML-SkLearn <https://github.com/jpmml/jpmml-sklearn>`_
+  library.
 
 Other estimators and tasks
 --------------------------
@@ -41,7 +58,7 @@ and tasks.
 - `sklearn_theano <http://sklearn-theano.github.io/>`_ scikit-learn compatible
   estimators, transformers, and datasets which use Theano internally
 
-- `lightning <http://www.mblondel.org/lightning/>`_ Fast state-of-the-art
+- `lightning <https://github.com/scikit-learn-contrib/lightning>`_ Fast state-of-the-art
   linear model solvers (SDCA, AdaGrad, SVRG, SAG, etc...).
 
 - `Seqlearn <https://github.com/larsmans/seqlearn>`_  Sequence classification
@@ -53,7 +70,10 @@ and tasks.
 - `PyStruct <https://pystruct.github.io>`_ General conditional random fields
   and structured prediction.
 
-- `py-earth <https://github.com/jcrudy/py-earth>`_ Multivariate adaptive
+- `pomegranate <https://github.com/jmschrei/pomegranate>`_ Probabilistic modelling
+  for Python, with an emphasis on hidden Markov models.
+
+- `py-earth <https://github.com/scikit-learn-contrib/py-earth>`_ Multivariate adaptive
   regression splines
 
 - `sklearn-compiledtrees <https://github.com/ajtulloch/sklearn-compiledtrees/>`_
@@ -84,6 +104,18 @@ and tasks.
 - `mlxtend <https://github.com/rasbt/mlxtend>`_ Includes a number of additional
   estimators as well as model visualization utilities.
 
+- `kmodes <https://github.com/nicodv/kmodes>`_ k-modes clustering algorithm for categorical data, and
+  several of its variations.
+  
+- `hdbscan <https://github.com/lmcinnes/hdbscan>`_ HDBSCAN and Robust Single Linkage clustering algorithms 
+  for robust variable density clustering. 
+
+- `lasagne <https://github.com/Lasagne/Lasagne>`_ A lightweight library to build and train neural networks in Theano.
+
+- `multiisotonic <https://github.com/alexfields/multiisotonic>`_ Isotonic regression on multidimensional features.
+
+- `spherecluster <https://github.com/clara-labs/spherecluster>`_ Spherical K-means and mixture of von Mises Fisher clustering routines for data on the unit hypersphere.
+
 Statistical learning with Python
 --------------------------------
 Other packages useful for data analysis and machine learning.
@@ -94,7 +126,7 @@ Other packages useful for data analysis and machine learning.
 - `theano <http://deeplearning.net/software/theano/>`_ A CPU/GPU array
   processing framework geared towards deep learning research.
 
-- `Statsmodel <http://statsmodels.sourceforge.net/>`_ Estimating and analysing
+- `statsmodels <http://statsmodels.sourceforge.net/>`_ Estimating and analysing
   statistical models. More focused on statistical tests and less on prediction
   than scikit-learn.
 
@@ -129,7 +161,7 @@ Domain specific packages
 
 - `AstroML <http://www.astroml.org/>`_  Machine learning for astronomy.
 
-- `MSMBuilder <http://www.msmbuilder.org/>`_  Machine learning for protein
+- `MSMBuilder <http://msmbuilder.org/>`_  Machine learning for protein
   conformational dynamics time series.
 
 Snippets and tidbits

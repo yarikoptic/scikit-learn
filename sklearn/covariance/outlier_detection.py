@@ -12,7 +12,6 @@ covariance estimator (the Minimum Covariance Determinant).
 #
 # License: BSD 3 clause
 
-import warnings
 import numpy as np
 import scipy as sp
 from . import MinCovDet
@@ -100,13 +99,6 @@ class OutlierDetectionMixin(object):
             raise NotImplementedError("You must provide a contamination rate.")
 
         return is_inlier
-
-    @property
-    def threshold(self):
-        warnings.warn(("The threshold attribute is renamed to threshold_ from "
-                       "0.16 onwards and will be removed in 0.18"),
-                      DeprecationWarning, stacklevel=1)
-        return getattr(self, 'threshold_', None)
 
 
 class EllipticEnvelope(ClassifierMixin, OutlierDetectionMixin, MinCovDet):
