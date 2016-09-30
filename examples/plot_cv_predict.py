@@ -8,7 +8,7 @@ errors.
 
 """
 from sklearn import datasets
-from sklearn.cross_validation import cross_val_predict
+from sklearn.model_selection import cross_val_predict
 from sklearn import linear_model
 import matplotlib.pyplot as plt
 
@@ -17,7 +17,7 @@ boston = datasets.load_boston()
 y = boston.target
 
 # cross_val_predict returns an array of the same size as `y` where each entry
-# is a prediction obtained by cross validated:
+# is a prediction obtained by cross validation:
 predicted = cross_val_predict(lr, boston.data, y, cv=10)
 
 fig, ax = plt.subplots()

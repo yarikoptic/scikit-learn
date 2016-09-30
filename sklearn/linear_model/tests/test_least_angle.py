@@ -3,7 +3,7 @@ from nose.tools import assert_equal
 import numpy as np
 from scipy import linalg
 
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.utils.testing import assert_array_almost_equal
 from sklearn.utils.testing import assert_true
 from sklearn.utils.testing import assert_less
@@ -12,7 +12,7 @@ from sklearn.utils.testing import assert_raises
 from sklearn.utils.testing import ignore_warnings
 from sklearn.utils.testing import assert_no_warnings, assert_warns
 from sklearn.utils.testing import TempMemmap
-from sklearn.utils import ConvergenceWarning
+from sklearn.exceptions import ConvergenceWarning
 from sklearn import linear_model, datasets
 from sklearn.linear_model.least_angle import _lars_path_residues
 
@@ -387,7 +387,7 @@ def test_multitarget():
 def test_lars_cv():
     # Test the LassoLarsCV object by checking that the optimal alpha
     # increases as the number of samples increases.
-    # This property is not actually garantied in general and is just a
+    # This property is not actually guaranteed in general and is just a
     # property of the given dataset, with the given steps chosen.
     old_alpha = 0
     lars_cv = linear_model.LassoLarsCV()

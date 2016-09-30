@@ -4,8 +4,9 @@
 #          Joel Nothman <joel.nothman@gmail.com>
 #          Arnaud Joly <arnaud.v.joly@gmail.com>
 #          Jacob Schreiber <jmschreiber91@gmail.com>
+#          Nelson Liu <nelson@nelsonliu.me>
 #
-# Licence: BSD 3 clause
+# License: BSD 3 clause
 
 # See _tree.pyx for details.
 
@@ -65,9 +66,14 @@ cdef class Tree:
     cdef np.ndarray _get_node_ndarray(self)
 
     cpdef np.ndarray predict(self, object X)
+
     cpdef np.ndarray apply(self, object X)
     cdef np.ndarray _apply_dense(self, object X)
     cdef np.ndarray _apply_sparse_csr(self, object X)
+
+    cpdef object decision_path(self, object X)
+    cdef object _decision_path_dense(self, object X)
+    cdef object _decision_path_sparse_csr(self, object X)
 
     cpdef compute_feature_importances(self, normalize=*)
 
@@ -90,8 +96,9 @@ cdef class TreeBuilder:
     cdef SIZE_t min_samples_leaf    # Minimum number of samples in a leaf
     cdef double min_weight_leaf     # Minimum weight in a leaf
     cdef SIZE_t max_depth           # Maximal tree depth
+    cdef double min_impurity_split  # Impurity threshold for early stopping
 
     cpdef build(self, Tree tree, object X, np.ndarray y,
-                np.ndarray sample_weight=*, 
+                np.ndarray sample_weight=*,
                 np.ndarray X_idx_sorted=*)
     cdef _check_input(self, object X, np.ndarray y, np.ndarray sample_weight)

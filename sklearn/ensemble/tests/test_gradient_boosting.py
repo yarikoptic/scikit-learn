@@ -27,8 +27,8 @@ from sklearn.utils.testing import assert_raises
 from sklearn.utils.testing import assert_true
 from sklearn.utils.testing import assert_warns
 from sklearn.utils.testing import skip_if_32bit
-from sklearn.utils.validation import DataConversionWarning
-from sklearn.utils.validation import NotFittedError
+from sklearn.exceptions import DataConversionWarning
+from sklearn.exceptions import NotFittedError
 
 # toy sample
 X = [[-2, -1], [-1, -1], [-1, -2], [1, 1], [1, 2], [2, 1]]
@@ -71,7 +71,8 @@ def check_classification_toy(presort, loss):
 
 
 def test_classification_toy():
-    for presort, loss in product(('auto', True, False), ('deviance', 'exponential')):
+    for presort, loss in product(('auto', True, False),
+                                 ('deviance', 'exponential')):
         yield check_classification_toy, presort, loss
 
 
@@ -95,11 +96,13 @@ def test_parameter_checks():
                   GradientBoostingClassifier(min_samples_split=0.0).fit, X, y)
     assert_raises(ValueError,
                   GradientBoostingClassifier(min_samples_split=-1.0).fit, X, y)
+    assert_raises(ValueError,
+                  GradientBoostingClassifier(min_samples_split=1.1).fit, X, y)
 
     assert_raises(ValueError,
                   GradientBoostingClassifier(min_samples_leaf=0).fit, X, y)
     assert_raises(ValueError,
-                  GradientBoostingClassifier(min_samples_leaf=-1.).fit, X, y)
+                  GradientBoostingClassifier(min_samples_leaf=-1.0).fit, X, y)
 
     assert_raises(ValueError,
                   GradientBoostingClassifier(min_weight_fraction_leaf=-1.).fit,
@@ -157,16 +160,15 @@ def check_classification_synthetic(presort, loss):
     X_train, X_test = X[:2000], X[2000:]
     y_train, y_test = y[:2000], y[2000:]
 
-    gbrt = GradientBoostingClassifier(n_estimators=100, min_samples_split=1,
+    gbrt = GradientBoostingClassifier(n_estimators=100, min_samples_split=2,
                                       max_depth=1, loss=loss,
-                                      learning_rate=1.0, random_state=0,
-                                      presort=presort)
+                                      learning_rate=1.0, random_state=0)
     gbrt.fit(X_train, y_train)
     error_rate = (1.0 - gbrt.score(X_test, y_test))
     assert_less(error_rate, 0.09)
 
-    gbrt = GradientBoostingClassifier(n_estimators=200, min_samples_split=1,
-                                      max_depth=1,
+    gbrt = GradientBoostingClassifier(n_estimators=200, min_samples_split=2,
+                                      max_depth=1, loss=loss,
                                       learning_rate=1.0, subsample=0.5,
                                       random_state=0,
                                       presort=presort)
@@ -185,12 +187,12 @@ def check_boston(presort, loss, subsample):
     # and least absolute deviation.
     ones = np.ones(len(boston.target))
     last_y_pred = None
-    for sample_weight in None, ones, 2*ones:
+    for sample_weight in None, ones, 2 * ones:
         clf = GradientBoostingRegressor(n_estimators=100,
                                         loss=loss,
                                         max_depth=4,
                                         subsample=subsample,
-                                        min_samples_split=1,
+                                        min_samples_split=2,
                                         random_state=1,
                                         presort=presort)
 
@@ -245,7 +247,7 @@ def test_regression_synthetic():
     # `Bagging Predictors?. Machine Learning 24(2): 123-140 (1996).
     random_state = check_random_state(1)
     regression_params = {'n_estimators': 100, 'max_depth': 4,
-                         'min_samples_split': 1, 'learning_rate': 0.1,
+                         'min_samples_split': 2, 'learning_rate': 0.1,
                          'loss': 'ls'}
 
     # Friedman1
@@ -292,7 +294,7 @@ def test_feature_importances():
 
     for presort in True, False:
         clf = GradientBoostingRegressor(n_estimators=100, max_depth=5,
-                                        min_samples_split=1, random_state=1,
+                                        min_samples_split=2, random_state=1,
                                         presort=presort)
         clf.fit(X, y)
         assert_true(hasattr(clf, 'feature_importances_'))
@@ -952,7 +954,7 @@ def test_zero_estimator_clf():
 
 
 def test_max_leaf_nodes_max_depth():
-    # Test preceedence of max_leaf_nodes over max_depth.
+    # Test precedence of max_leaf_nodes over max_depth.
     X, y = datasets.make_hastie_10_2(n_samples=100, random_state=1)
     all_estimators = [GradientBoostingRegressor,
                       GradientBoostingClassifier]
@@ -1010,7 +1012,8 @@ def test_non_uniform_weights_toy_edge_case_reg():
     # ignore the first 2 training samples by setting their weight to 0
     sample_weight = [0, 0, 1, 1]
     for loss in ('huber', 'ls', 'lad', 'quantile'):
-        gb = GradientBoostingRegressor(learning_rate=1.0, n_estimators=2, loss=loss)
+        gb = GradientBoostingRegressor(learning_rate=1.0, n_estimators=2,
+                                       loss=loss)
         gb.fit(X, y, sample_weight=sample_weight)
         assert_greater(gb.predict([[1, 0]])[0], 0.5)
 
@@ -1030,7 +1033,8 @@ def test_non_uniform_weights_toy_edge_case_clf():
 
 
 def check_sparse_input(EstimatorClass, X, X_sparse, y):
-    dense = EstimatorClass(n_estimators=10, random_state=0, max_depth=2).fit(X, y)
+    dense = EstimatorClass(n_estimators=10, random_state=0,
+                           max_depth=2).fit(X, y)
     sparse = EstimatorClass(n_estimators=10, random_state=0, max_depth=2,
                             presort=False).fit(X_sparse, y)
     auto = EstimatorClass(n_estimators=10, random_state=0, max_depth=2,

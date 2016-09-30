@@ -12,7 +12,7 @@ the lower the better
 #          Olivier Grisel <olivier.grisel@ensta.org>
 #          Arnaud Joly <a.joly@ulg.ac.be>
 #          Jochen Wersdorfer <jochen@wersdoerfer.de>
-#          Lars Buitinck <L.J.Buitinck@uva.nl>
+#          Lars Buitinck
 #          Joel Nothman <joel.nothman@gmail.com>
 #          Noel Dawe <noel@dawe.me>
 #          Manoj Kumar <manojkumarsivaraj334@gmail.com>
@@ -395,7 +395,7 @@ def r2_score(y_true, y_pred,
 
         Defines aggregating of multiple output scores.
         Array-like value defines weights used to average scores.
-        Default value correponds to 'variance_weighted', this behaviour is
+        Default value corresponds to 'variance_weighted', this behaviour is
         deprecated since version 0.17 and will be changed to 'uniform_average'
         starting from 0.19.
 
@@ -425,7 +425,7 @@ def r2_score(y_true, y_pred,
     References
     ----------
     .. [1] `Wikipedia entry on the Coefficient of determination
-            <http://en.wikipedia.org/wiki/Coefficient_of_determination>`_
+            <https://en.wikipedia.org/wiki/Coefficient_of_determination>`_
 
     Examples
     --------
@@ -464,10 +464,10 @@ def r2_score(y_true, y_pred,
     # y_true is not interesting for scoring a regression anyway
     output_scores[nonzero_numerator & ~nonzero_denominator] = 0.
     if multioutput is None and y_true.shape[1] != 1:
-        # @FIXME change in 0.18
         warnings.warn("Default 'multioutput' behavior now corresponds to "
-                      "'variance_weighted' value, it will be changed "
-                      "to 'uniform_average' in 0.18.",
+                      "'variance_weighted' value which is deprecated since "
+                      "0.17, it will be changed to 'uniform_average' "
+                      "starting from 0.19.",
                       DeprecationWarning)
         multioutput = 'variance_weighted'
     if isinstance(multioutput, string_types):

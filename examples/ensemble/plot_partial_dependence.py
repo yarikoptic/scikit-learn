@@ -44,6 +44,7 @@ on age.
 .. [2] For classification you can think of it as the regression score before
        the link function.
 """
+from __future__ import print_function
 print(__doc__)
 
 import numpy as np
@@ -51,7 +52,7 @@ import matplotlib.pyplot as plt
 
 from mpl_toolkits.mplot3d import Axes3D
 
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.ensemble.partial_dependence import plot_partial_dependence
 from sklearn.ensemble.partial_dependence import partial_dependence
@@ -68,17 +69,14 @@ def main():
                                                         random_state=1)
     names = cal_housing.feature_names
 
-    print('_' * 80)
     print("Training GBRT...")
     clf = GradientBoostingRegressor(n_estimators=100, max_depth=4,
                                     learning_rate=0.1, loss='huber',
                                     random_state=1)
     clf.fit(X_train, y_train)
-    print("done.")
+    print(" done.")
 
-    print('_' * 80)
     print('Convenience plot with ``partial_dependence_plots``')
-    print
 
     features = [0, 5, 1, 2, (5, 1)]
     fig, axs = plot_partial_dependence(clf, X_train, features,
@@ -88,16 +86,14 @@ def main():
                  'for the California housing dataset')
     plt.subplots_adjust(top=0.9)  # tight_layout causes overlap with suptitle
 
-    print('_' * 80)
     print('Custom 3d plot via ``partial_dependence``')
-    print
     fig = plt.figure()
 
     target_feature = (1, 5)
-    pdp, (x_axis, y_axis) = partial_dependence(clf, target_feature,
-                                               X=X_train, grid_resolution=50)
-    XX, YY = np.meshgrid(x_axis, y_axis)
-    Z = pdp.T.reshape(XX.shape).T
+    pdp, axes = partial_dependence(clf, target_feature,
+                                   X=X_train, grid_resolution=50)
+    XX, YY = np.meshgrid(axes[0], axes[1])
+    Z = pdp[0].reshape(list(map(np.size, axes))).T
     ax = Axes3D(fig)
     surf = ax.plot_surface(XX, YY, Z, rstride=1, cstride=1, cmap=plt.cm.BuPu)
     ax.set_xlabel(names[target_feature[0]])
