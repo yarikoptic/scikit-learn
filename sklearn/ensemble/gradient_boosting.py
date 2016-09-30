@@ -50,7 +50,7 @@ from ..tree.tree import DecisionTreeRegressor
 from ..tree._tree import DTYPE
 from ..tree._tree import TREE_LEAF
 
-from ..utils import check_random_state 
+from ..utils import check_random_state
 from ..utils import check_array
 from ..utils import check_X_y
 from ..utils import column_or_1d
@@ -61,8 +61,8 @@ from ..utils.fixes import expit
 from ..utils.fixes import bincount
 from ..utils.stats import _weighted_percentile
 from ..utils.validation import check_is_fitted
-from ..utils.validation import  NotFittedError
 from ..utils.multiclass import check_classification_targets
+from ..exceptions import NotFittedError
 
 
 class QuantileEstimator(BaseEstimator):
@@ -76,7 +76,8 @@ class QuantileEstimator(BaseEstimator):
         if sample_weight is None:
             self.quantile = stats.scoreatpercentile(y, self.alpha * 100.0)
         else:
-            self.quantile = _weighted_percentile(y, sample_weight, self.alpha * 100.0)
+            self.quantile = _weighted_percentile(y, sample_weight,
+                                                 self.alpha * 100.0)
 
     def predict(self, X):
         check_is_fitted(self, 'quantile')
@@ -719,21 +720,23 @@ class BaseGradientBoosting(six.with_metaclass(ABCMeta, BaseEnsemble,
     """Abstract base class for Gradient Boosting. """
 
     @abstractmethod
-    def __init__(self, loss, learning_rate, n_estimators, min_samples_split,
-                 min_samples_leaf, min_weight_fraction_leaf,
-                 max_depth, init, subsample, max_features,
+    def __init__(self, loss, learning_rate, n_estimators, criterion,
+                 min_samples_split, min_samples_leaf, min_weight_fraction_leaf,
+                 max_depth, min_impurity_split, init, subsample, max_features,
                  random_state, alpha=0.9, verbose=0, max_leaf_nodes=None,
                  warm_start=False, presort='auto'):
 
         self.n_estimators = n_estimators
         self.learning_rate = learning_rate
         self.loss = loss
+        self.criterion = criterion
         self.min_samples_split = min_samples_split
         self.min_samples_leaf = min_samples_leaf
         self.min_weight_fraction_leaf = min_weight_fraction_leaf
         self.subsample = subsample
         self.max_features = max_features
         self.max_depth = max_depth
+        self.min_impurity_split = min_impurity_split
         self.init = init
         self.random_state = random_state
         self.alpha = alpha
@@ -761,7 +764,7 @@ class BaseGradientBoosting(six.with_metaclass(ABCMeta, BaseEnsemble,
 
             # induce regression tree on residuals
             tree = DecisionTreeRegressor(
-                criterion='friedman_mse',
+                criterion=self.criterion,
                 splitter='best',
                 max_depth=self.max_depth,
                 min_samples_split=self.min_samples_split,
@@ -1012,8 +1015,8 @@ class BaseGradientBoosting(six.with_metaclass(ABCMeta, BaseEnsemble,
             presort = False
         elif presort == 'auto':
             presort = True
-        
-        if presort:
+
+        if presort == True:
             if issparse(X):
                 raise ValueError("Presorting is not supported for sparse matrices.")
             else:
@@ -1231,15 +1234,15 @@ class BaseGradientBoosting(six.with_metaclass(ABCMeta, BaseEnsemble,
         Parameters
         ----------
         X : array-like or sparse matrix, shape = [n_samples, n_features]
-            The input samples. Internally, it will be converted to
-            ``dtype=np.float32`` and if a sparse matrix is provided
-            to a sparse ``csr_matrix``.
+            The input samples. Internally, its dtype will be converted to
+            ``dtype=np.float32``. If a sparse matrix is provided, it will
+            be converted to a sparse ``csr_matrix``.
 
         Returns
         -------
         X_leaves : array_like, shape = [n_samples, n_estimators, n_classes]
             For each datapoint x in X and for each tree in the ensemble,
-            return the index of the leaf x ends up in in each estimator.
+            return the index of the leaf x ends up in each estimator.
             In the case of binary classification n_classes is 1.
         """
 
@@ -1293,13 +1296,38 @@ class GradientBoostingClassifier(BaseGradientBoosting, ClassifierMixin):
         depth limits the number of nodes in the tree. Tune this parameter
         for best performance; the best value depends on the interaction
         of the input variables.
-        Ignored if ``max_leaf_nodes`` is not None.
 
-    min_samples_split : integer, optional (default=2)
-        The minimum number of samples required to split an internal node.
+    criterion : string, optional (default="friedman_mse")
+        The function to measure the quality of a split. Supported criteria
+        are "friedman_mse" for the mean squared error with improvement
+        score by Friedman, "mse" for mean squared error, and "mae" for
+        the mean absolute error. The default value of "friedman_mse" is
+        generally the best as it can provide a better approximation in
+        some cases.
 
-    min_samples_leaf : integer, optional (default=1)
-        The minimum number of samples required to be at a leaf node.
+        .. versionadded:: 0.18
+
+    min_samples_split : int, float, optional (default=2)
+        The minimum number of samples required to split an internal node:
+
+        - If int, then consider `min_samples_split` as the minimum number.
+        - If float, then `min_samples_split` is a percentage and
+          `ceil(min_samples_split * n_samples)` are the minimum
+          number of samples for each split.
+
+        .. versionchanged:: 0.18
+           Added float values for percentages.
+
+    min_samples_leaf : int, float, optional (default=1)
+        The minimum number of samples required to be at a leaf node:
+
+        - If int, then consider `min_samples_leaf` as the minimum number.
+        - If float, then `min_samples_leaf` is a percentage and
+          `ceil(min_samples_leaf * n_samples)` are the minimum
+          number of samples for each node.
+
+        .. versionchanged:: 0.18
+           Added float values for percentages.
 
     min_weight_fraction_leaf : float, optional (default=0.)
         The minimum weighted fraction of the input samples required to be at a
@@ -1314,14 +1342,15 @@ class GradientBoostingClassifier(BaseGradientBoosting, ClassifierMixin):
 
     max_features : int, float, string or None, optional (default=None)
         The number of features to consider when looking for the best split:
-          - If int, then consider `max_features` features at each split.
-          - If float, then `max_features` is a percentage and
-            `int(max_features * n_features)` features are considered at each
-            split.
-          - If "auto", then `max_features=sqrt(n_features)`.
-          - If "sqrt", then `max_features=sqrt(n_features)`.
-          - If "log2", then `max_features=log2(n_features)`.
-          - If None, then `max_features=n_features`.
+
+        - If int, then consider `max_features` features at each split.
+        - If float, then `max_features` is a percentage and
+          `int(max_features * n_features)` features are considered at each
+          split.
+        - If "auto", then `max_features=sqrt(n_features)`.
+        - If "sqrt", then `max_features=sqrt(n_features)`.
+        - If "log2", then `max_features=log2(n_features)`.
+        - If None, then `max_features=n_features`.
 
         Choosing `max_features < n_features` leads to a reduction of variance
         and an increase in bias.
@@ -1334,7 +1363,12 @@ class GradientBoostingClassifier(BaseGradientBoosting, ClassifierMixin):
         Grow trees with ``max_leaf_nodes`` in best-first fashion.
         Best nodes are defined as relative reduction in impurity.
         If None then unlimited number of leaf nodes.
-        If not None then ``max_depth`` will be ignored.
+
+    min_impurity_split : float, optional (default=1e-7)
+        Threshold for early stopping in tree growth. A node will split
+        if its impurity is above the threshold, otherwise it is a leaf.
+
+        .. versionadded:: 0.18
 
     init : BaseEstimator, None, optional (default=None)
         An estimator object that is used to compute the initial
@@ -1413,22 +1447,24 @@ class GradientBoostingClassifier(BaseGradientBoosting, ClassifierMixin):
     _SUPPORTED_LOSS = ('deviance', 'exponential')
 
     def __init__(self, loss='deviance', learning_rate=0.1, n_estimators=100,
-                 subsample=1.0, min_samples_split=2,
+                 subsample=1.0, criterion='friedman_mse', min_samples_split=2,
                  min_samples_leaf=1, min_weight_fraction_leaf=0.,
-                 max_depth=3, init=None, random_state=None,
-                 max_features=None, verbose=0,
+                 max_depth=3, min_impurity_split=1e-7, init=None,
+                 random_state=None, max_features=None, verbose=0,
                  max_leaf_nodes=None, warm_start=False,
                  presort='auto'):
 
         super(GradientBoostingClassifier, self).__init__(
             loss=loss, learning_rate=learning_rate, n_estimators=n_estimators,
-            min_samples_split=min_samples_split,
+            criterion=criterion, min_samples_split=min_samples_split,
             min_samples_leaf=min_samples_leaf,
             min_weight_fraction_leaf=min_weight_fraction_leaf,
             max_depth=max_depth, init=init, subsample=subsample,
             max_features=max_features,
             random_state=random_state, verbose=verbose,
-            max_leaf_nodes=max_leaf_nodes, warm_start=warm_start,
+            max_leaf_nodes=max_leaf_nodes,
+            min_impurity_split=min_impurity_split,
+            warm_start=warm_start,
             presort=presort)
 
     def _validate_y(self, y):
@@ -1628,13 +1664,38 @@ class GradientBoostingRegressor(BaseGradientBoosting, RegressorMixin):
         depth limits the number of nodes in the tree. Tune this parameter
         for best performance; the best value depends on the interaction
         of the input variables.
-        Ignored if ``max_leaf_nodes`` is not None.
 
-    min_samples_split : integer, optional (default=2)
-        The minimum number of samples required to split an internal node.
+    criterion : string, optional (default="friedman_mse")
+        The function to measure the quality of a split. Supported criteria
+        are "friedman_mse" for the mean squared error with improvement
+        score by Friedman, "mse" for mean squared error, and "mae" for
+        the mean absolute error. The default value of "friedman_mse" is
+        generally the best as it can provide a better approximation in
+        some cases.
 
-    min_samples_leaf : integer, optional (default=1)
-        The minimum number of samples required to be at a leaf node.
+        .. versionadded:: 0.18
+
+    min_samples_split : int, float, optional (default=2)
+        The minimum number of samples required to split an internal node:
+
+        - If int, then consider `min_samples_split` as the minimum number.
+        - If float, then `min_samples_split` is a percentage and
+          `ceil(min_samples_split * n_samples)` are the minimum
+          number of samples for each split.
+
+        .. versionchanged:: 0.18
+           Added float values for percentages.
+
+    min_samples_leaf : int, float, optional (default=1)
+        The minimum number of samples required to be at a leaf node:
+
+        - If int, then consider `min_samples_leaf` as the minimum number.
+        - If float, then `min_samples_leaf` is a percentage and
+          `ceil(min_samples_leaf * n_samples)` are the minimum
+          number of samples for each node.
+
+        .. versionchanged:: 0.18
+           Added float values for percentages.
 
     min_weight_fraction_leaf : float, optional (default=0.)
         The minimum weighted fraction of the input samples required to be at a
@@ -1649,14 +1710,15 @@ class GradientBoostingRegressor(BaseGradientBoosting, RegressorMixin):
 
     max_features : int, float, string or None, optional (default=None)
         The number of features to consider when looking for the best split:
-          - If int, then consider `max_features` features at each split.
-          - If float, then `max_features` is a percentage and
-            `int(max_features * n_features)` features are considered at each
-            split.
-          - If "auto", then `max_features=n_features`.
-          - If "sqrt", then `max_features=sqrt(n_features)`.
-          - If "log2", then `max_features=log2(n_features)`.
-          - If None, then `max_features=n_features`.
+
+        - If int, then consider `max_features` features at each split.
+        - If float, then `max_features` is a percentage and
+          `int(max_features * n_features)` features are considered at each
+          split.
+        - If "auto", then `max_features=n_features`.
+        - If "sqrt", then `max_features=sqrt(n_features)`.
+        - If "log2", then `max_features=log2(n_features)`.
+        - If None, then `max_features=n_features`.
 
         Choosing `max_features < n_features` leads to a reduction of variance
         and an increase in bias.
@@ -1669,6 +1731,12 @@ class GradientBoostingRegressor(BaseGradientBoosting, RegressorMixin):
         Grow trees with ``max_leaf_nodes`` in best-first fashion.
         Best nodes are defined as relative reduction in impurity.
         If None then unlimited number of leaf nodes.
+
+    min_impurity_split : float, optional (default=1e-7)
+        Threshold for early stopping in tree growth. A node will split
+        if its impurity is above the threshold, otherwise it is a leaf.
+
+        .. versionadded:: 0.18
 
     alpha : float (default=0.9)
         The alpha-quantile of the huber loss function and the quantile
@@ -1748,19 +1816,19 @@ class GradientBoostingRegressor(BaseGradientBoosting, RegressorMixin):
     _SUPPORTED_LOSS = ('ls', 'lad', 'huber', 'quantile')
 
     def __init__(self, loss='ls', learning_rate=0.1, n_estimators=100,
-                 subsample=1.0, min_samples_split=2,
+                 subsample=1.0, criterion='friedman_mse', min_samples_split=2,
                  min_samples_leaf=1, min_weight_fraction_leaf=0.,
-                 max_depth=3, init=None, random_state=None,
+                 max_depth=3, min_impurity_split=1e-7, init=None, random_state=None,
                  max_features=None, alpha=0.9, verbose=0, max_leaf_nodes=None,
                  warm_start=False, presort='auto'):
 
         super(GradientBoostingRegressor, self).__init__(
             loss=loss, learning_rate=learning_rate, n_estimators=n_estimators,
-            min_samples_split=min_samples_split,
+            criterion=criterion, min_samples_split=min_samples_split,
             min_samples_leaf=min_samples_leaf,
             min_weight_fraction_leaf=min_weight_fraction_leaf,
             max_depth=max_depth, init=init, subsample=subsample,
-            max_features=max_features,
+            max_features=max_features, min_impurity_split=min_impurity_split,
             random_state=random_state, alpha=alpha, verbose=verbose,
             max_leaf_nodes=max_leaf_nodes, warm_start=warm_start,
             presort=presort)
@@ -1808,15 +1876,15 @@ class GradientBoostingRegressor(BaseGradientBoosting, RegressorMixin):
         Parameters
         ----------
         X : array-like or sparse matrix, shape = [n_samples, n_features]
-            The input samples. Internally, it will be converted to
-            ``dtype=np.float32`` and if a sparse matrix is provided
-            to a sparse ``csr_matrix``.
+            The input samples. Internally, its dtype will be converted to
+            ``dtype=np.float32``. If a sparse matrix is provided, it will
+            be converted to a sparse ``csr_matrix``.
 
         Returns
         -------
         X_leaves : array_like, shape = [n_samples, n_estimators]
             For each datapoint x in X and for each tree in the ensemble,
-            return the index of the leaf x ends up in in each estimator.
+            return the index of the leaf x ends up in each estimator.
         """
 
         leaves = super(GradientBoostingRegressor, self).apply(X)

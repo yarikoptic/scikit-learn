@@ -28,7 +28,8 @@ from ..externals.joblib import Parallel
 from ..externals.joblib import delayed
 
 
-def estimate_bandwidth(X, quantile=0.3, n_samples=None, random_state=0):
+def estimate_bandwidth(X, quantile=0.3, n_samples=None, random_state=0,
+                       n_jobs=1):
     """Estimate the bandwidth to use with the mean-shift algorithm.
 
     That this function takes time at least quadratic in n_samples. For large
@@ -49,6 +50,10 @@ def estimate_bandwidth(X, quantile=0.3, n_samples=None, random_state=0):
     random_state : int or RandomState
         Pseudo-random number generator state used for random sampling.
 
+    n_jobs : int, optional (default = 1)
+        The number of parallel jobs to run for neighbors search.
+        If ``-1``, then the number of jobs is set to the number of CPU cores.
+
     Returns
     -------
     bandwidth : float
@@ -58,7 +63,8 @@ def estimate_bandwidth(X, quantile=0.3, n_samples=None, random_state=0):
     if n_samples is not None:
         idx = random_state.permutation(X.shape[0])[:n_samples]
         X = X[idx]
-    nbrs = NearestNeighbors(n_neighbors=int(X.shape[0] * quantile))
+    nbrs = NearestNeighbors(n_neighbors=int(X.shape[0] * quantile),
+                            n_jobs=n_jobs)
     nbrs.fit(X)
 
     bandwidth = 0.
@@ -93,7 +99,7 @@ def _mean_shift_single_seed(my_mean, X, nbrs, max_iter):
 
 def mean_shift(X, bandwidth=None, seeds=None, bin_seeding=False,
                min_bin_freq=1, cluster_all=True, max_iter=300,
-               max_iterations=None, n_jobs=1):
+               n_jobs=1):
     """Perform mean shift clustering of data using a flat kernel.
 
     Read more in the :ref:`User Guide <mean_shift>`.
@@ -161,18 +167,12 @@ def mean_shift(X, bandwidth=None, seeds=None, bin_seeding=False,
 
     Notes
     -----
-    See examples/cluster/plot_meanshift.py for an example.
+    See examples/cluster/plot_mean_shift.py for an example.
 
     """
-    # FIXME To be removed in 0.18
-    if max_iterations is not None:
-        warnings.warn("The `max_iterations` parameter has been renamed to "
-                      "`max_iter` from version 0.16. The `max_iterations` "
-                      "parameter will be removed in 0.18", DeprecationWarning)
-        max_iter = max_iterations
 
     if bandwidth is None:
-        bandwidth = estimate_bandwidth(X)
+        bandwidth = estimate_bandwidth(X, n_jobs=n_jobs)
     elif bandwidth <= 0:
         raise ValueError("bandwidth needs to be greater than zero or None,\
             got %f" % bandwidth)
@@ -183,7 +183,7 @@ def mean_shift(X, bandwidth=None, seeds=None, bin_seeding=False,
             seeds = X
     n_samples, n_features = X.shape
     center_intensity_dict = {}
-    nbrs = NearestNeighbors(radius=bandwidth).fit(X)
+    nbrs = NearestNeighbors(radius=bandwidth, n_jobs=n_jobs).fit(X)
 
     # execute iterations on all seeds in parallel
     all_res = Parallel(n_jobs=n_jobs)(
@@ -209,7 +209,8 @@ def mean_shift(X, bandwidth=None, seeds=None, bin_seeding=False,
                                  key=lambda tup: tup[1], reverse=True)
     sorted_centers = np.array([tup[0] for tup in sorted_by_intensity])
     unique = np.ones(len(sorted_centers), dtype=np.bool)
-    nbrs = NearestNeighbors(radius=bandwidth).fit(sorted_centers)
+    nbrs = NearestNeighbors(radius=bandwidth,
+                            n_jobs=n_jobs).fit(sorted_centers)
     for i, center in enumerate(sorted_centers):
         if unique[i]:
             neighbor_idxs = nbrs.radius_neighbors([center],
@@ -219,7 +220,7 @@ def mean_shift(X, bandwidth=None, seeds=None, bin_seeding=False,
     cluster_centers = sorted_centers[unique]
 
     # ASSIGN LABELS: a point belongs to the cluster that it is closest to
-    nbrs = NearestNeighbors(n_neighbors=1).fit(cluster_centers)
+    nbrs = NearestNeighbors(n_neighbors=1, n_jobs=n_jobs).fit(cluster_centers)
     labels = np.zeros(n_samples, dtype=np.int)
     distances, idxs = nbrs.kneighbors(X)
     if cluster_all:
@@ -347,8 +348,8 @@ class MeanShift(BaseEstimator, ClusterMixin):
     Scalability:
 
     Because this implementation uses a flat kernel and
-    a Ball Tree to look up members of each kernel, the complexity will is
-    to O(T*n*log(n)) in lower dimensions, with n the number of samples
+    a Ball Tree to look up members of each kernel, the complexity will tend
+    towards O(T*n*log(n)) in lower dimensions, with n the number of samples
     and T the number of points. In higher dimensions the complexity will
     tend towards O(T*n^2).
 

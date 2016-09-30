@@ -26,12 +26,13 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.svm import SVR
 from sklearn.datasets import make_blobs
 from sklearn.utils.validation import (
-    NotFittedError,
     has_fit_parameter,
     check_is_fitted,
     check_consistent_length,
-    DataConversionWarning,
 )
+
+from sklearn.exceptions import NotFittedError
+from sklearn.exceptions import DataConversionWarning
 
 from sklearn.utils.testing import assert_raise_message
 
@@ -233,6 +234,16 @@ def test_check_array_pandas_dtype_object_conversion():
     # smoke-test against dataframes with column named "dtype"
     X_df.dtype = "Hans"
     assert_equal(check_array(X_df, ensure_2d=False).dtype.kind, "f")
+
+
+def test_check_array_on_mock_dataframe():
+    arr = np.array([[0.2, 0.7], [0.6, 0.5], [0.4, 0.1], [0.7, 0.2]])
+    mock_df = MockDataFrame(arr)
+    checked_arr = check_array(mock_df)
+    assert_equal(checked_arr.dtype,
+                 arr.dtype)
+    checked_arr = check_array(mock_df, dtype=np.float32)
+    assert_equal(checked_arr.dtype, np.dtype(np.float32))
 
 
 def test_check_array_dtype_stability():
