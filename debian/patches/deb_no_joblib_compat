@@ -1,0 +1,17 @@
+--- a/sklearn/model_selection/tests/test_search.py
++++ b/sklearn/model_selection/tests/test_search.py
+@@ -3,10 +3,13 @@
+ from collections import Iterable, Sized
+ from sklearn.externals.six.moves import cStringIO as StringIO
+ from sklearn.externals.six.moves import xrange
+-from sklearn.externals.joblib._compat import PY3_OR_LATER
++# Debian: no real need to access restricter attribute of external
++# dependency which we modularize out
++# from sklearn.externals.joblib._compat import PY3_OR_LATER
+ from itertools import chain, product
+ import pickle
+ import sys
++PY3_OR_LATER = sys.version_info[0] >= 3
+ 
+ import numpy as np
+ import scipy.sparse as sp
