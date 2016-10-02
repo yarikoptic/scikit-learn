@@ -5,10 +5,11 @@ Subject: use system-wide joblib and do not attempt to install joblib/test
 
 --- /dev/null
 +++ b/sklearn/externals/joblib/__init__.py
-@@ -0,0 +1,3 @@
+@@ -0,0 +1,4 @@
 +# yoh: use system-wide joblib
-+
-+from joblib import *
++# replace local name space with the one from system-wide joblib
++import joblib
++locals().update(joblib.__dict__)
 --- a/sklearn/metrics/pairwise.py
 +++ b/sklearn/metrics/pairwise.py
 @@ -24,7 +24,7 @@ from ..utils.extmath import row_norms, s

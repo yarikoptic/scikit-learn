@@ -1,3 +1,12 @@
+scikit-learn (0.18-2) unstable; urgency=medium
+
+  * debian/patches/deb_use_system_joblib
+    sklearn started to use other submodules of joblib directly, so previous
+    stub for import did not work.  Now update local namespace of the stub
+    entirely with definitions from joblib.__dict__  (Closes: #839348)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 02 Oct 2016 00:10:02 -0400
+
 scikit-learn (0.18-1) unstable; urgency=medium
 
   * Fresh upstream release
