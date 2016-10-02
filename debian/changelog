@@ -4,8 +4,11 @@ scikit-learn (0.18-2) unstable; urgency=medium
     sklearn started to use other submodules of joblib directly, so previous
     stub for import did not work.  Now update local namespace of the stub
     entirely with definitions from joblib.__dict__  (Closes: #839348)
+  * debian/rules
+    - allow joblib to parallelize to 2 processes, to overcome recent joblib
+      (0.10.2) bug with 0 value
 
- -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 02 Oct 2016 00:10:02 -0400
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 02 Oct 2016 09:36:31 -0400
 
 scikit-learn (0.18-1) unstable; urgency=medium
 
