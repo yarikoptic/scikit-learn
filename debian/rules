@@ -21,6 +21,10 @@ RECONF = $(shell dpkg --compare-versions $(CYTHON_VER) ge 0.23.1 && echo ",autor
 # Some tests are known to fail randomly so need to be excluded ATM
 # A bit aggressive exclusion of some tests which exhibit a problem I have no time to deal with on arm64
 NOSEARGS := $(shell dpkg --print-architecture | grep -q -v arm64 || echo --exclude='test_dump')
+# https://github.com/scikit-learn/scikit-learn/issues/7544
+NOSEARGS += $(shell dpkg --print-architecture | grep -q -v i386 || echo --exclude='test_gpr')
+# https://github.com/scikit-learn/scikit-learn/issues/7572
+NOSEARGS += $(shell dpkg --print-architecture | grep -q -v armel || echo --exclude='test_matthews_corrcoef')
 # --exclude='test_(sparse_svc_clone_with_callable_kernel|spectral_clustering_sparse|ovr_fit_predict)'
 
 # try to prevent unsunctioned downloads
