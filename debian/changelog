@@ -1,3 +1,11 @@
+scikit-learn (0.18-4) unstable; urgency=medium
+
+  * debian/rules
+    - added cythonization (from pandas) since upstream no longer stores
+      pre-generated files under GIT
+    
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 25 Oct 2016 08:24:18 -0400
+
 scikit-learn (0.18-3) unstable; urgency=medium
 
   * debian/rules
