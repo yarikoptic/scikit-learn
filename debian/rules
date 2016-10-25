@@ -28,6 +28,9 @@ NOSEARGS += $(shell dpkg --print-architecture | grep -q -v i386 || echo --exclud
 # https://github.com/scikit-learn/scikit-learn/issues/7572
 NOSEARGS += $(shell dpkg --print-architecture | grep -q -v armel || echo --exclude='test_matthews_corrcoef')
 # --exclude='test_(sparse_svc_clone_with_callable_kernel|spectral_clustering_sparse|ovr_fit_predict)'
+# https://buildd.debian.org/status/fetch.php?pkg=scikit-learn&arch=ppc64el&ver=0.18-3&stamp=1475603905
+NOSEARGS += $(shell dpkg --print-architecture | grep -q -v ppc64el || echo --exclude='test_non_meta_estimators')
+
 
 # try to prevent unsunctioned downloads
 export  http_proxy=http://127.0.0.1:9/
