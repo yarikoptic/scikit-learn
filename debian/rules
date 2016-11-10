@@ -62,10 +62,14 @@ _uncythonize%:
 	CYTHONVER=$$(dpkg -l cython$$PY 2>/dev/null | awk '/^ii/{print $$3;}' || echo 0); \
 	dpkg --compare-versions "$$CYTHONVER" lt "$(MIN_CYTHONVER)" && { \
 		echo "I: Using pre-Cython-ed files for Python $*"; \
+		touch PKG-INFO; \
 		cd debian/cythonized-files$$PY/ ; \
 		find . -regex '.*\.c\(\|pp\)' | while read f; do cp $$f ../../$$f; done; } || :
 
 cythonize: _cythonize2 _cythonize3
+
+override_dh_auto_configure: _uncythonize2 _uncythonize3
+	dh_auto_configure
 
 override_dh_autoreconf:
 	dh_autoreconf debian/rules -- clean_generated
