@@ -15,6 +15,7 @@ from math import log, sqrt
 import numpy as np
 from scipy import linalg
 from scipy.special import gammaln
+from scipy.sparse import issparse
 
 from ..externals import six
 
@@ -115,6 +116,9 @@ class PCA(_BasePCA):
     It can also use the scipy.sparse.linalg ARPACK implementation of the
     truncated SVD.
 
+    Notice that this class does not support sparse input. See
+    :class:`TruncatedSVD` for an alternative with sparse data.
+
     Read more in the :ref:`User Guide <PCA>`.
 
     Parameters
@@ -152,7 +156,7 @@ class PCA(_BasePCA):
             the solver is selected by a default policy based on `X.shape` and
             `n_components`: if the input data is larger than 500x500 and the
             number of components to extract is lower than 80% of the smallest
-            dimension of the data, then then more efficient 'randomized'
+            dimension of the data, then the more efficient 'randomized'
             method is enabled. Otherwise the exact full SVD is computed and
             optionally truncated afterwards.
         full :
@@ -331,6 +335,13 @@ class PCA(_BasePCA):
 
     def _fit(self, X):
         """Dispatch to the right submethod depending on the chosen solver."""
+
+        # Raise an error for sparse input.
+        # This is more informative than the generic one raised by check_array.
+        if issparse(X):
+            raise TypeError('PCA does not support sparse input. See '
+                            'TruncatedSVD for a possible alternative.')
+
         X = check_array(X, dtype=[np.float64], ensure_2d=True,
                         copy=self.copy)
 
@@ -525,6 +536,12 @@ class PCA(_BasePCA):
             "DOES NOT store whiten ``components_``. Apply transform to get them.")
 class RandomizedPCA(BaseEstimator, TransformerMixin):
     """Principal component analysis (PCA) using randomized SVD
+
+    .. deprecated:: 0.18
+        This class will be removed in 0.20.
+        Use :class:`PCA` with parameter svd_solver 'randomized' instead.
+        The new implementation DOES NOT store whiten ``components_``.
+        Apply transform to get them.
 
     Linear dimensionality reduction using approximated Singular Value
     Decomposition of the data and keeping only the most significant
