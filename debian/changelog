@@ -1,3 +1,9 @@
+scikit-learn (0.18.1-1) unstable; urgency=medium
+
+  * Fresh bugfix (strongly advised to upgrade) release
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 13 Nov 2016 18:52:53 -0500
+
 scikit-learn (0.18-4) unstable; urgency=medium
 
   * debian/rules
