@@ -64,8 +64,9 @@ def l1_cross_distances(X):
 class GaussianProcess(BaseEstimator, RegressorMixin):
     """The legacy Gaussian Process model class.
 
-    Note that this class was deprecated in version 0.18 and will be
-    removed in 0.20. Use the GaussianProcessRegressor instead.
+    .. deprecated:: 0.18
+        This class will be removed in 0.20.
+        Use the :class:`GaussianProcessRegressor` instead.
 
     Read more in the :ref:`User Guide <gaussian_process>`.
 
@@ -515,7 +516,7 @@ class GaussianProcess(BaseEstimator, RegressorMixin):
             if eval_MSE:
 
                 y, MSE = np.zeros(n_eval), np.zeros(n_eval)
-                for k in range(max(1, n_eval / batch_size)):
+                for k in range(max(1, int(n_eval / batch_size))):
                     batch_from = k * batch_size
                     batch_to = min([(k + 1) * batch_size + 1, n_eval + 1])
                     y[batch_from:batch_to], MSE[batch_from:batch_to] = \
@@ -527,7 +528,7 @@ class GaussianProcess(BaseEstimator, RegressorMixin):
             else:
 
                 y = np.zeros(n_eval)
-                for k in range(max(1, n_eval / batch_size)):
+                for k in range(max(1, int(n_eval / batch_size))):
                     batch_from = k * batch_size
                     batch_to = min([(k + 1) * batch_size + 1, n_eval + 1])
                     y[batch_from:batch_to] = \

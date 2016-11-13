@@ -24,7 +24,7 @@ from ..utils.extmath import row_norms, safe_sparse_dot
 from ..preprocessing import normalize
 from ..externals.joblib import Parallel
 from ..externals.joblib import delayed
-from ..externals.joblib.parallel import cpu_count
+from ..externals.joblib import cpu_count
 
 from .pairwise_fast import _chi2_kernel_fast, _sparse_manhattan
 
@@ -570,6 +570,11 @@ def cosine_distances(X, Y=None):
     S = cosine_similarity(X, Y)
     S *= -1
     S += 1
+    np.clip(S, 0, 2, out=S)
+    if X is Y or Y is None:
+        # Ensure that distances between vectors and themselves are set to 0.0.
+        # This may not be the case due to floating point rounding errors.
+        S[np.diag_indices_from(S)] = 0.0
     return S
 
 
@@ -787,7 +792,7 @@ def sigmoid_kernel(X, Y=None, gamma=None, coef0=1):
 
     Returns
     -------
-    Gram matrix: array of shape (n_samples_1, n_samples_2)
+    Gram matrix : array of shape (n_samples_1, n_samples_2)
     """
     X, Y = check_pairwise_arrays(X, Y)
     if gamma is None:
@@ -1354,7 +1359,7 @@ def pairwise_kernels(X, Y=None, metric="linear", filter_params=False,
         (n_cpus + 1 + n_jobs) are used. Thus for n_jobs = -2, all CPUs but one
         are used.
 
-    filter_params: boolean
+    filter_params : boolean
         Whether to filter invalid parameters or not.
 
     `**kwds` : optional keyword parameters
