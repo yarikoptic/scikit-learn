@@ -1,14 +1,22 @@
 --- a/doc/conf.py
 +++ b/doc/conf.py
-@@ -33,10 +33,17 @@ import sphinx_gallery
+@@ -33,11 +33,25 @@ import sphinx_gallery
  extensions = [
      'sphinx.ext.autodoc', 'sphinx.ext.autosummary',
      'numpy_ext.numpydoc',
 -    'sphinx.ext.linkcode', 'sphinx.ext.doctest',
 +    'sphinx.ext.doctest',
      'sphinx_gallery.gen_gallery',
+-    'sphinx_issues',
  ]
  
++try:
++    import sphinx_issues
++    # yet to be packaged
++    extensions.append('sphinx_issues')
++except ImportError:
++    pass
++
 +if make_linkcode_resolve:
 +    try:
 +        import sphinx.ext.linkcode as linkcode_module
@@ -16,10 +24,11 @@
 +    except ImportError:
 +        linkcode_module = None
 +
++
  # pngmath / imgmath compatibility layer for different sphinx versions
  import sphinx
  from distutils.version import LooseVersion
-@@ -279,7 +286,8 @@ def setup(app):
+@@ -287,7 +301,8 @@ def setup(app):
  
  
  # The following is used by sphinx.ext.linkcode to provide links to github

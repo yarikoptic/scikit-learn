@@ -7,12 +7,18 @@ Last-Update: 2015-11-05
 
 --- a/doc/about.rst
 +++ b/doc/about.rst
-@@ -166,49 +166,12 @@ for code sprints, as well as towards the
+@@ -178,49 +178,13 @@ for code sprints, as well as towards the
  The 2013 Paris international sprint
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 -|center-div|   |telecom|   |tinyclues|   |afpy| |FNRS|
--
++`telecom <http://www.telecom-paristech.fr/>`_,
++`tinyclues <http://www.tinyclues.com/>`_,
++`afpy <http://www.afpy.org>`_
++`SGR <http://www.svi.cnrs-bellevue.fr>`,
++`FNRS <http://www.frs-fnrs.be/>`_,
++`IAP VII/19 - DYSCO <http://sites.uclouvain.be/dysco/>`_.
+ 
 - |end-div|
 -
 -
@@ -22,7 +28,7 @@ Last-Update: 2015-11-05
 -    <div style="text-align: center; margin: -7px 0 -10px 0;">
 -
 -
--.. |telecom| image:: http://f.hypotheses.org/wp-content/blogs.dir/331/files/2011/03/Logo-TPT.jpg
+-.. |telecom| image:: themes/scikit-learn/static/img/telecom.png
 -   :width: 120pt
 -   :target: http://www.telecom-paristech.fr/
 -
@@ -54,12 +60,6 @@ Last-Update: 2015-11-05
 -.. |end-div| raw:: html
 -
 -  </div>
-+`telecom <http://www.telecom-paristech.fr/>`_,
-+`tinyclues <http://www.tinyclues.com/>`_,
-+`afpy <http://www.afpy.org>`_
-+`SGR <http://www.svi.cnrs-bellevue.fr>`,
-+`FNRS <http://www.frs-fnrs.be/>`_,
-+`IAP VII/19 - DYSCO <http://sites.uclouvain.be/dysco/>`_.
  
  *For more information on this sprint, see* `here
  <https://github.com/scikit-learn/administrative/blob/master/sprint_paris_2013/proposal.rst>`__
