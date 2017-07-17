@@ -12,7 +12,7 @@ Subject: use system-wide joblib and do not attempt to install joblib/test
 +locals().update(joblib.__dict__)
 --- a/sklearn/metrics/pairwise.py
 +++ b/sklearn/metrics/pairwise.py
-@@ -1073,7 +1073,7 @@ def _parallel_pairwise(X, Y, func, n_job
+@@ -1075,7 +1075,7 @@ def _parallel_pairwise(X, Y, func, n_job
      """Break the pairwise matrix in n_jobs even slices
      and compute them in parallel"""
      if n_jobs < 0:
