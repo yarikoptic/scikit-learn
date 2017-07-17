@@ -9,6 +9,7 @@ Build-Depends: debhelper (>= 9), dh-autoreconf,
                python-setuptools,
                python-numpy, python-scipy,
                python-nose,
+               python-pytest,
                python-matplotlib,
                python-joblib (>= 0.9.2),
                python3-all-dev,
@@ -16,6 +17,7 @@ Build-Depends: debhelper (>= 9), dh-autoreconf,
                python3-setuptools,
                python3-numpy, python3-scipy,
                python3-nose,
+               python3-pytest,
                python3-matplotlib,
                python3-joblib (>= 0.9.2),
                libsvm-dev (>= 2.84.0),
@@ -35,7 +37,7 @@ Architecture: all
 Depends: ${misc:Depends}, ${python:Depends}, python-numpy, python-scipy, python-sklearn-lib(>= ${source:Version}),
          python-joblib (>= 0.9.2),
 Provides: ${python:Provides}
-Recommends: python-nose, python-matplotlib
+Recommends: python-nose, python-pytest, python-matplotlib
 Suggests: python-dap, python-scikits-optimization, python-sklearn-doc, ipython
 Enhances: python-mvpa2, python-mdp
 Description: Python modules for machine learning and data mining
@@ -63,7 +65,7 @@ Architecture: all
 Depends: ${misc:Depends}, ${python3:Depends}, python3-numpy, python3-scipy, python3-sklearn-lib(>= ${source:Version}),
          python3-joblib (>= 0.9.2),
 Provides: ${python:Provides}
-Recommends: python3-nose, python3-matplotlib
+Recommends: python3-nose, python-pytest, python3-matplotlib
 Suggests: python3-dap, python-sklearn-doc, ipython3
 Enhances: python3-mvpa2, python3-mdp
 Description: Python modules for machine learning and data mining

@@ -5,6 +5,8 @@ scikit-learn (0.19~b2-1) experimental; urgency=medium
   * d/
     - boost compat to 9
     - boost policy to 3.9.8 (for now)
+  * d/control
+    - added pytest to b-depends and recommends
 
  -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 17 Jul 2017 10:35:52 -0400
 
