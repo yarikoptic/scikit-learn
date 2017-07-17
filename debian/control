@@ -3,7 +3,7 @@ Section: python
 Priority: optional
 Maintainer: NeuroDebian Team <team@neuro.debian.net>
 Uploaders: Yaroslav Halchenko <debian@onerussian.com>, Michael Hanke <michael.hanke@gmail.com>
-Build-Depends: debhelper (>= 7.0.50), dh-autoreconf,
+Build-Depends: debhelper (>= 9), dh-autoreconf,
                python-all-dev (>= 2.6.6-3~), dh-python,
                cython (>= 0.12~),
                python-setuptools,
@@ -22,7 +22,7 @@ Build-Depends: debhelper (>= 7.0.50), dh-autoreconf,
                libatlas3-base,
 Build-Depends-Indep:
                python-sphinx (>= 1.0), python-imaging, graphviz,
-Standards-Version: 3.9.6
+Standards-Version: 3.9.8
 X-Python-Version: >= 2.6
 Homepage: http://scikit-learn.sourceforge.net
 Vcs-Browser: http://github.com/yarikoptic/scikit-learn
