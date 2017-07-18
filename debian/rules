@@ -15,7 +15,7 @@ SPHINX_VER := $(shell python -c 'from sphinx import __version__; print __version
 NODOC = $(shell dpkg --compare-versions $(SPHINX_VER) lt 1.1.3 && echo "nodoc" || echo "")
 export DEB_BUILD_OPTIONS += $(NODOC)
 
-MIN_CYTHONVER = 0.23
+MIN_CYTHONVER = 0.24
 
 CYTHON_VER := $(shell dpkg -l cython 2>/dev/null | awk '/^ii/{print $$3;}' || echo 0)
 RECONF = $(shell dpkg --compare-versions $(CYTHON_VER) ge $(MIN_CYTHONVER) && echo ",autoreconf" || echo "")
