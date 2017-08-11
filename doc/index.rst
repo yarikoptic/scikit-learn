@@ -207,13 +207,15 @@
                     <li><em>On-going development:</em>
                     <a href="/dev/whats_new.html"><em>What's new</em> (Changelog)</a>
                     </li>
+                    <li><em>July 2017.</em> scikit-learn 0.19.0 is available for download (<a href="whats_new.html#version-0-19">Changelog</a>).
+                    </li>
+                    <li><em>June 2017.</em> scikit-learn 0.18.2 is available for download (<a href="whats_new.html#version-0-18-2">Changelog</a>).
+                    </li>
                     <li><em>September 2016.</em> scikit-learn 0.18.0 is available for download (<a href="whats_new.html#version-0-18">Changelog</a>).
                     </li>
                     <li><em>November 2015.</em> scikit-learn 0.17.0 is available for download (<a href="whats_new.html#version-0-17">Changelog</a>).
                     </li>
                     <li><em>March 2015.</em> scikit-learn 0.16.0 is available for download (<a href="whats_new.html#version-0-16">Changelog</a>).
-                    </li>
-                    <li><em>July 2014.</em> scikit-learn 0.15.0 is available for download (<a href="whats_new.html#version-0-15">Changelog</a>).
                     </li>
                     <li><em>July 14-20th, 2014: international sprint.</em>
                     During this week-long sprint, we gathered 18 of the core
@@ -323,14 +325,15 @@
                 Funding provided by INRIA and others.
               </div>
               <div class="span6">
-                 <a class="reference internal" href="about.html#funding" style="text-decoration: none" >
+                 <a class="reference internal" href="about.html#funding" style="text-decoration: none; white-space: nowrap" >
                        <img id="index-funding-logo-big" src="_static/img/inria-small.png" title="INRIA">
                    <img id="index-funding-logo-small" src="_static/img/google.png" title="Google">
                    <!--Due to Télécom ParisTech's logo text being smaller, a style has been added to improve readability-->
                    <img id="index-funding-logo-small" src="_static/img/telecom.png" title="Télécom ParisTech" style="max-height: 36px">
                    <img id="index-funding-logo-small" src="_static/img/FNRS-logo.png" title="FNRS">
-                   <img id="index-funding-logo-small" src="_static/img/nyu_short_color.png" title="NYU CDS">
+                   <img id="index-funding-logo-small" src="_static/img/sloan_logo.jpg" title="Alfred P. Sloan Foundation" style="max-height: 36px">
                    <img id="index-funding-logo-small" src="_static/img/columbia.png" title="Columbia University" style="max-height: 36px;">
+                   <img id="index-funding-logo-small" src="_static/img/sydney-stacked.jpeg" title="The University of Sydney" style="max-height: 36px;">
                  </a>
              </div>
              <div class="span3">
