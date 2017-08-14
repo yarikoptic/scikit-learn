@@ -1724,8 +1724,10 @@ static struct __pyx_vtabstruct_7sklearn_9neighbors_12dist_metrics_HaversineDista
 
 struct __pyx_vtabstruct_7sklearn_9neighbors_12dist_metrics_PyFuncDistance {
   struct __pyx_vtabstruct_7sklearn_9neighbors_12dist_metrics_DistanceMetric __pyx_base;
+  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t (*_dist)(struct __pyx_obj_7sklearn_9neighbors_12dist_metrics_PyFuncDistance *, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *, __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t);
 };
 static struct __pyx_vtabstruct_7sklearn_9neighbors_12dist_metrics_PyFuncDistance *__pyx_vtabptr_7sklearn_9neighbors_12dist_metrics_PyFuncDistance;
+static CYTHON_INLINE __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_14PyFuncDistance__dist(struct __pyx_obj_7sklearn_9neighbors_12dist_metrics_PyFuncDistance *, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *, __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t);
 
 
 /* "View.MemoryView":103
@@ -2513,6 +2515,7 @@ static __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors
 static __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_17HaversineDistance__rdist_to_dist(CYTHON_UNUSED struct __pyx_obj_7sklearn_9neighbors_12dist_metrics_HaversineDistance *__pyx_v_self, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_rdist); /* proto*/
 static __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_17HaversineDistance__dist_to_rdist(CYTHON_UNUSED struct __pyx_obj_7sklearn_9neighbors_12dist_metrics_HaversineDistance *__pyx_v_self, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_dist); /* proto*/
 static __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_14PyFuncDistance_dist(struct __pyx_obj_7sklearn_9neighbors_12dist_metrics_PyFuncDistance *__pyx_v_self, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x1, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x2, __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t __pyx_v_size); /* proto*/
+static CYTHON_INLINE __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_14PyFuncDistance__dist(struct __pyx_obj_7sklearn_9neighbors_12dist_metrics_PyFuncDistance *__pyx_v_self, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x1, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x2, __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t __pyx_v_size); /* proto*/
 static PyObject *__pyx_array_get_memview(struct __pyx_array_obj *__pyx_v_self); /* proto*/
 static char *__pyx_memoryview_get_item_pointer(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_index); /* proto*/
 static PyObject *__pyx_memoryview_is_slice(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_obj); /* proto*/
@@ -11242,7 +11245,7 @@ static int __pyx_pf_7sklearn_9neighbors_12dist_metrics_14PyFuncDistance___init__
  *         self.func = func
  *         self.kwargs = kwargs             # <<<<<<<<<<<<<<
  * 
- *     cdef inline DTYPE_t dist(self, DTYPE_t* x1, DTYPE_t* x2,
+ *     # in cython < 0.26, GIL was required to be acquired during definition of
  */
   __Pyx_INCREF(__pyx_v_kwargs);
   __Pyx_GIVEREF(__pyx_v_kwargs);
@@ -11264,15 +11267,62 @@ static int __pyx_pf_7sklearn_9neighbors_12dist_metrics_14PyFuncDistance___init__
   return __pyx_r;
 }
 
-/* "sklearn/neighbors/dist_metrics.pyx":1096
- *         self.kwargs = kwargs
- * 
+/* "sklearn/neighbors/dist_metrics.pyx":1101
+ *     # only way to be back compatible is to inherit `dist` from the base class
+ *     # without GIL and called an inline `_dist` which acquire GIL.
  *     cdef inline DTYPE_t dist(self, DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
- *                              ITYPE_t size) except -1 with gil:
- *         cdef np.ndarray x1arr
+ *                              ITYPE_t size) nogil except -1:
+ *         return self._dist(x1, x2, size)
  */
 
 static __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_14PyFuncDistance_dist(struct __pyx_obj_7sklearn_9neighbors_12dist_metrics_PyFuncDistance *__pyx_v_self, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x1, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x2, __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t __pyx_v_size) {
+  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_r;
+  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_t_1;
+
+  /* "sklearn/neighbors/dist_metrics.pyx":1103
+ *     cdef inline DTYPE_t dist(self, DTYPE_t* x1, DTYPE_t* x2,
+ *                              ITYPE_t size) nogil except -1:
+ *         return self._dist(x1, x2, size)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef inline DTYPE_t _dist(self, DTYPE_t* x1, DTYPE_t* x2,
+ */
+  __pyx_t_1 = __pyx_f_7sklearn_9neighbors_12dist_metrics_14PyFuncDistance__dist(__pyx_v_self, __pyx_v_x1, __pyx_v_x2, __pyx_v_size); if (unlikely(__pyx_t_1 == -1.0)) __PYX_ERR(1, 1103, __pyx_L1_error)
+  __pyx_r = __pyx_t_1;
+  goto __pyx_L0;
+
+  /* "sklearn/neighbors/dist_metrics.pyx":1101
+ *     # only way to be back compatible is to inherit `dist` from the base class
+ *     # without GIL and called an inline `_dist` which acquire GIL.
+ *     cdef inline DTYPE_t dist(self, DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
+ *                              ITYPE_t size) nogil except -1:
+ *         return self._dist(x1, x2, size)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  {
+    #ifdef WITH_THREAD
+    PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
+    #endif
+    __Pyx_AddTraceback("sklearn.neighbors.dist_metrics.PyFuncDistance.dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+    #ifdef WITH_THREAD
+    PyGILState_Release(__pyx_gilstate_save);
+    #endif
+  }
+  __pyx_r = -1.0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "sklearn/neighbors/dist_metrics.pyx":1105
+ *         return self._dist(x1, x2, size)
+ * 
+ *     cdef inline DTYPE_t _dist(self, DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
+ *                               ITYPE_t size) except -1 with gil:
+ *         cdef np.ndarray x1arr
+ */
+
+static CYTHON_INLINE __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_14PyFuncDistance__dist(struct __pyx_obj_7sklearn_9neighbors_12dist_metrics_PyFuncDistance *__pyx_v_self, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x1, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x2, __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t __pyx_v_size) {
   PyArrayObject *__pyx_v_x1arr = 0;
   PyArrayObject *__pyx_v_x2arr = 0;
   PyObject *__pyx_v_d = NULL;
@@ -11290,262 +11340,189 @@ static __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors
   #ifdef WITH_THREAD
   PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
   #endif
-  __Pyx_RefNannySetupContext("dist", 0);
+  __Pyx_RefNannySetupContext("_dist", 0);
   __Pyx_INCREF((PyObject *)__pyx_v_self);
-  #ifdef WITH_THREAD
-  PyGILState_Release(__pyx_gilstate_save);
-  #endif
 
-  /* "sklearn/neighbors/dist_metrics.pyx":1098
- *     cdef inline DTYPE_t dist(self, DTYPE_t* x1, DTYPE_t* x2,
- *                              ITYPE_t size) except -1 with gil:
- *         cdef np.ndarray x1arr             # <<<<<<<<<<<<<<
- *         cdef np.ndarray x2arr
- *         with gil:
- */
-  /*try:*/ {
-
-    /* "sklearn/neighbors/dist_metrics.pyx":1100
+  /* "sklearn/neighbors/dist_metrics.pyx":1109
  *         cdef np.ndarray x1arr
  *         cdef np.ndarray x2arr
- *         with gil:             # <<<<<<<<<<<<<<
- *             x1arr = _buffer_to_ndarray(x1, size)
- *             x2arr = _buffer_to_ndarray(x2, size)
+ *         x1arr = _buffer_to_ndarray(x1, size)             # <<<<<<<<<<<<<<
+ *         x2arr = _buffer_to_ndarray(x2, size)
+ *         d = self.func(x1arr, x2arr, **self.kwargs)
  */
-    {
-        #ifdef WITH_THREAD
-        PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-        #endif
-        /*try:*/ {
+  __pyx_t_1 = ((PyObject *)__pyx_f_7sklearn_9neighbors_12dist_metrics__buffer_to_ndarray(__pyx_v_x1, __pyx_v_size)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1109, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_x1arr = ((PyArrayObject *)__pyx_t_1);
+  __pyx_t_1 = 0;
 
-          /* "sklearn/neighbors/dist_metrics.pyx":1101
+  /* "sklearn/neighbors/dist_metrics.pyx":1110
  *         cdef np.ndarray x2arr
- *         with gil:
- *             x1arr = _buffer_to_ndarray(x1, size)             # <<<<<<<<<<<<<<
- *             x2arr = _buffer_to_ndarray(x2, size)
- *             d = self.func(x1arr, x2arr, **self.kwargs)
+ *         x1arr = _buffer_to_ndarray(x1, size)
+ *         x2arr = _buffer_to_ndarray(x2, size)             # <<<<<<<<<<<<<<
+ *         d = self.func(x1arr, x2arr, **self.kwargs)
+ *         try:
  */
-          __pyx_t_1 = ((PyObject *)__pyx_f_7sklearn_9neighbors_12dist_metrics__buffer_to_ndarray(__pyx_v_x1, __pyx_v_size)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1101, __pyx_L7_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __pyx_v_x1arr = ((PyArrayObject *)__pyx_t_1);
-          __pyx_t_1 = 0;
+  __pyx_t_1 = ((PyObject *)__pyx_f_7sklearn_9neighbors_12dist_metrics__buffer_to_ndarray(__pyx_v_x2, __pyx_v_size)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1110, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_x2arr = ((PyArrayObject *)__pyx_t_1);
+  __pyx_t_1 = 0;
 
-          /* "sklearn/neighbors/dist_metrics.pyx":1102
- *         with gil:
- *             x1arr = _buffer_to_ndarray(x1, size)
- *             x2arr = _buffer_to_ndarray(x2, size)             # <<<<<<<<<<<<<<
- *             d = self.func(x1arr, x2arr, **self.kwargs)
- *             try:
+  /* "sklearn/neighbors/dist_metrics.pyx":1111
+ *         x1arr = _buffer_to_ndarray(x1, size)
+ *         x2arr = _buffer_to_ndarray(x2, size)
+ *         d = self.func(x1arr, x2arr, **self.kwargs)             # <<<<<<<<<<<<<<
+ *         try:
+ *             # Cython generates code here that results in a TypeError
  */
-          __pyx_t_1 = ((PyObject *)__pyx_f_7sklearn_9neighbors_12dist_metrics__buffer_to_ndarray(__pyx_v_x2, __pyx_v_size)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1102, __pyx_L7_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __pyx_v_x2arr = ((PyArrayObject *)__pyx_t_1);
-          __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1111, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(((PyObject *)__pyx_v_x1arr));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_x1arr));
+  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_v_x1arr));
+  __Pyx_INCREF(((PyObject *)__pyx_v_x2arr));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_x2arr));
+  PyTuple_SET_ITEM(__pyx_t_1, 1, ((PyObject *)__pyx_v_x2arr));
+  if (unlikely(__pyx_v_self->__pyx_base.kwargs == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
+    __PYX_ERR(1, 1111, __pyx_L1_error)
+  }
+  if (likely(PyDict_CheckExact(__pyx_v_self->__pyx_base.kwargs))) {
+    __pyx_t_2 = PyDict_Copy(__pyx_v_self->__pyx_base.kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1111, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+  } else {
+    __pyx_t_2 = PyObject_CallFunctionObjArgs((PyObject*)&PyDict_Type, __pyx_v_self->__pyx_base.kwargs, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1111, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+  }
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_v_self->__pyx_base.func, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1111, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_d = __pyx_t_3;
+  __pyx_t_3 = 0;
 
-          /* "sklearn/neighbors/dist_metrics.pyx":1103
- *             x1arr = _buffer_to_ndarray(x1, size)
- *             x2arr = _buffer_to_ndarray(x2, size)
- *             d = self.func(x1arr, x2arr, **self.kwargs)             # <<<<<<<<<<<<<<
- *             try:
- *                 # Cython generates code here that results in a TypeError
+  /* "sklearn/neighbors/dist_metrics.pyx":1112
+ *         x2arr = _buffer_to_ndarray(x2, size)
+ *         d = self.func(x1arr, x2arr, **self.kwargs)
+ *         try:             # <<<<<<<<<<<<<<
+ *             # Cython generates code here that results in a TypeError
+ *             # if d is the wrong type.
  */
-          __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1103, __pyx_L7_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_INCREF(((PyObject *)__pyx_v_x1arr));
-          __Pyx_GIVEREF(((PyObject *)__pyx_v_x1arr));
-          PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_v_x1arr));
-          __Pyx_INCREF(((PyObject *)__pyx_v_x2arr));
-          __Pyx_GIVEREF(((PyObject *)__pyx_v_x2arr));
-          PyTuple_SET_ITEM(__pyx_t_1, 1, ((PyObject *)__pyx_v_x2arr));
-          if (unlikely(__pyx_v_self->__pyx_base.kwargs == Py_None)) {
-            PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-            __PYX_ERR(1, 1103, __pyx_L7_error)
-          }
-          if (likely(PyDict_CheckExact(__pyx_v_self->__pyx_base.kwargs))) {
-            __pyx_t_2 = PyDict_Copy(__pyx_v_self->__pyx_base.kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1103, __pyx_L7_error)
-            __Pyx_GOTREF(__pyx_t_2);
-          } else {
-            __pyx_t_2 = PyObject_CallFunctionObjArgs((PyObject*)&PyDict_Type, __pyx_v_self->__pyx_base.kwargs, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1103, __pyx_L7_error)
-            __Pyx_GOTREF(__pyx_t_2);
-          }
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_v_self->__pyx_base.func, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1103, __pyx_L7_error)
-          __Pyx_GOTREF(__pyx_t_3);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_v_d = __pyx_t_3;
-          __pyx_t_3 = 0;
+  {
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ExceptionSave(&__pyx_t_4, &__pyx_t_5, &__pyx_t_6);
+    __Pyx_XGOTREF(__pyx_t_4);
+    __Pyx_XGOTREF(__pyx_t_5);
+    __Pyx_XGOTREF(__pyx_t_6);
+    /*try:*/ {
 
-          /* "sklearn/neighbors/dist_metrics.pyx":1104
- *             x2arr = _buffer_to_ndarray(x2, size)
- *             d = self.func(x1arr, x2arr, **self.kwargs)
- *             try:             # <<<<<<<<<<<<<<
- *                 # Cython generates code here that results in a TypeError
- *                 # if d is the wrong type.
+      /* "sklearn/neighbors/dist_metrics.pyx":1115
+ *             # Cython generates code here that results in a TypeError
+ *             # if d is the wrong type.
+ *             return d             # <<<<<<<<<<<<<<
+ *         except TypeError:
+ *             raise TypeError("Custom distance function must accept two "
  */
-          {
-            __Pyx_PyThreadState_declare
-            __Pyx_PyThreadState_assign
-            __Pyx_ExceptionSave(&__pyx_t_4, &__pyx_t_5, &__pyx_t_6);
-            __Pyx_XGOTREF(__pyx_t_4);
-            __Pyx_XGOTREF(__pyx_t_5);
-            __Pyx_XGOTREF(__pyx_t_6);
-            /*try:*/ {
+      __pyx_t_7 = __pyx_PyFloat_AsDouble(__pyx_v_d); if (unlikely((__pyx_t_7 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1115, __pyx_L3_error)
+      __pyx_r = __pyx_t_7;
+      goto __pyx_L7_try_return;
 
-              /* "sklearn/neighbors/dist_metrics.pyx":1107
- *                 # Cython generates code here that results in a TypeError
- *                 # if d is the wrong type.
- *                 return d             # <<<<<<<<<<<<<<
- *             except TypeError:
- *                 raise TypeError("Custom distance function must accept two "
+      /* "sklearn/neighbors/dist_metrics.pyx":1112
+ *         x2arr = _buffer_to_ndarray(x2, size)
+ *         d = self.func(x1arr, x2arr, **self.kwargs)
+ *         try:             # <<<<<<<<<<<<<<
+ *             # Cython generates code here that results in a TypeError
+ *             # if d is the wrong type.
  */
-              __pyx_t_7 = __pyx_PyFloat_AsDouble(__pyx_v_d); if (unlikely((__pyx_t_7 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1107, __pyx_L9_error)
-              __pyx_r = __pyx_t_7;
-              goto __pyx_L13_try_return;
+    }
+    __pyx_L3_error:;
+    __Pyx_PyThreadState_assign
+    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-              /* "sklearn/neighbors/dist_metrics.pyx":1104
- *             x2arr = _buffer_to_ndarray(x2, size)
- *             d = self.func(x1arr, x2arr, **self.kwargs)
- *             try:             # <<<<<<<<<<<<<<
- *                 # Cython generates code here that results in a TypeError
- *                 # if d is the wrong type.
+    /* "sklearn/neighbors/dist_metrics.pyx":1116
+ *             # if d is the wrong type.
+ *             return d
+ *         except TypeError:             # <<<<<<<<<<<<<<
+ *             raise TypeError("Custom distance function must accept two "
+ *                             "vectors and return a float.")
  */
-            }
-            __pyx_L9_error:;
-            __Pyx_PyThreadState_assign
-            __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-            __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_TypeError);
+    if (__pyx_t_8) {
+      __Pyx_AddTraceback("sklearn.neighbors.dist_metrics.PyFuncDistance._dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(1, 1116, __pyx_L5_except_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_GOTREF(__pyx_t_1);
 
-            /* "sklearn/neighbors/dist_metrics.pyx":1108
- *                 # if d is the wrong type.
- *                 return d
- *             except TypeError:             # <<<<<<<<<<<<<<
- *                 raise TypeError("Custom distance function must accept two "
- *                                 "vectors and return a float.")
- */
-            __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_TypeError);
-            if (__pyx_t_8) {
-              __Pyx_AddTraceback("sklearn.neighbors.dist_metrics.PyFuncDistance.dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
-              if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(1, 1108, __pyx_L11_except_error)
-              __Pyx_GOTREF(__pyx_t_3);
-              __Pyx_GOTREF(__pyx_t_2);
-              __Pyx_GOTREF(__pyx_t_1);
-
-              /* "sklearn/neighbors/dist_metrics.pyx":1109
- *                 return d
- *             except TypeError:
- *                 raise TypeError("Custom distance function must accept two "             # <<<<<<<<<<<<<<
- *                                 "vectors and return a float.")
+      /* "sklearn/neighbors/dist_metrics.pyx":1117
+ *             return d
+ *         except TypeError:
+ *             raise TypeError("Custom distance function must accept two "             # <<<<<<<<<<<<<<
+ *                             "vectors and return a float.")
  * 
  */
-              __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 1109, __pyx_L11_except_error)
-              __Pyx_GOTREF(__pyx_t_9);
-              __Pyx_Raise(__pyx_t_9, 0, 0, 0);
-              __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-              __PYX_ERR(1, 1109, __pyx_L11_except_error)
-            }
-            goto __pyx_L11_except_error;
-            __pyx_L11_except_error:;
-
-            /* "sklearn/neighbors/dist_metrics.pyx":1104
- *             x2arr = _buffer_to_ndarray(x2, size)
- *             d = self.func(x1arr, x2arr, **self.kwargs)
- *             try:             # <<<<<<<<<<<<<<
- *                 # Cython generates code here that results in a TypeError
- *                 # if d is the wrong type.
- */
-            __Pyx_PyThreadState_assign
-            __Pyx_XGIVEREF(__pyx_t_4);
-            __Pyx_XGIVEREF(__pyx_t_5);
-            __Pyx_XGIVEREF(__pyx_t_6);
-            __Pyx_ExceptionReset(__pyx_t_4, __pyx_t_5, __pyx_t_6);
-            goto __pyx_L7_error;
-            __pyx_L13_try_return:;
-            __Pyx_PyThreadState_assign
-            __Pyx_XGIVEREF(__pyx_t_4);
-            __Pyx_XGIVEREF(__pyx_t_5);
-            __Pyx_XGIVEREF(__pyx_t_6);
-            __Pyx_ExceptionReset(__pyx_t_4, __pyx_t_5, __pyx_t_6);
-            goto __pyx_L6_return;
-          }
-        }
-
-        /* "sklearn/neighbors/dist_metrics.pyx":1100
- *         cdef np.ndarray x1arr
- *         cdef np.ndarray x2arr
- *         with gil:             # <<<<<<<<<<<<<<
- *             x1arr = _buffer_to_ndarray(x1, size)
- *             x2arr = _buffer_to_ndarray(x2, size)
- */
-        /*finally:*/ {
-          __pyx_L6_return: {
-            #ifdef WITH_THREAD
-            PyGILState_Release(__pyx_gilstate_save);
-            #endif
-            goto __pyx_L3_return;
-          }
-          __pyx_L7_error: {
-            #ifdef WITH_THREAD
-            PyGILState_Release(__pyx_gilstate_save);
-            #endif
-            goto __pyx_L4_error;
-          }
-        }
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 1117, __pyx_L5_except_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_Raise(__pyx_t_9, 0, 0, 0);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __PYX_ERR(1, 1117, __pyx_L5_except_error)
     }
+    goto __pyx_L5_except_error;
+    __pyx_L5_except_error:;
+
+    /* "sklearn/neighbors/dist_metrics.pyx":1112
+ *         x2arr = _buffer_to_ndarray(x2, size)
+ *         d = self.func(x1arr, x2arr, **self.kwargs)
+ *         try:             # <<<<<<<<<<<<<<
+ *             # Cython generates code here that results in a TypeError
+ *             # if d is the wrong type.
+ */
+    __Pyx_PyThreadState_assign
+    __Pyx_XGIVEREF(__pyx_t_4);
+    __Pyx_XGIVEREF(__pyx_t_5);
+    __Pyx_XGIVEREF(__pyx_t_6);
+    __Pyx_ExceptionReset(__pyx_t_4, __pyx_t_5, __pyx_t_6);
+    goto __pyx_L1_error;
+    __pyx_L7_try_return:;
+    __Pyx_PyThreadState_assign
+    __Pyx_XGIVEREF(__pyx_t_4);
+    __Pyx_XGIVEREF(__pyx_t_5);
+    __Pyx_XGIVEREF(__pyx_t_6);
+    __Pyx_ExceptionReset(__pyx_t_4, __pyx_t_5, __pyx_t_6);
+    goto __pyx_L0;
   }
 
-  /* "sklearn/neighbors/dist_metrics.pyx":1098
- *     cdef inline DTYPE_t dist(self, DTYPE_t* x1, DTYPE_t* x2,
- *                              ITYPE_t size) except -1 with gil:
- *         cdef np.ndarray x1arr             # <<<<<<<<<<<<<<
- *         cdef np.ndarray x2arr
- *         with gil:
- */
-  /*finally:*/ {
-    __pyx_L3_return: {
-      #ifdef WITH_THREAD
-      __pyx_gilstate_save = PyGILState_Ensure();
-      #endif
-      goto __pyx_L0;
-    }
-    __pyx_L4_error: {
-      #ifdef WITH_THREAD
-      __pyx_gilstate_save = PyGILState_Ensure();
-      #endif
-      goto __pyx_L1_error;
-    }
-  }
-
-  /* "sklearn/neighbors/dist_metrics.pyx":1096
- *         self.kwargs = kwargs
+  /* "sklearn/neighbors/dist_metrics.pyx":1105
+ *         return self._dist(x1, x2, size)
  * 
- *     cdef inline DTYPE_t dist(self, DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
- *                              ITYPE_t size) except -1 with gil:
+ *     cdef inline DTYPE_t _dist(self, DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
+ *                               ITYPE_t size) except -1 with gil:
  *         cdef np.ndarray x1arr
  */
 
   /* function exit code */
-  __pyx_r = 0;
-  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("sklearn.neighbors.dist_metrics.PyFuncDistance.dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("sklearn.neighbors.dist_metrics.PyFuncDistance._dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1.0;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_x1arr);
   __Pyx_XDECREF((PyObject *)__pyx_v_x2arr);
   __Pyx_XDECREF(__pyx_v_d);
   __Pyx_XDECREF((PyObject *)__pyx_v_self);
+  __Pyx_RefNannyFinishContext();
   #ifdef WITH_THREAD
   PyGILState_Release(__pyx_gilstate_save);
   #endif
   return __pyx_r;
 }
 
-/* "sklearn/neighbors/dist_metrics.pyx":1114
+/* "sklearn/neighbors/dist_metrics.pyx":1121
  * 
  * 
  * cdef inline double fmax(double a, double b) nogil:             # <<<<<<<<<<<<<<
@@ -11558,7 +11535,7 @@ static CYTHON_INLINE double __pyx_f_7sklearn_9neighbors_12dist_metrics_fmax(doub
   double __pyx_t_2;
   double __pyx_t_3;
 
-  /* "sklearn/neighbors/dist_metrics.pyx":1115
+  /* "sklearn/neighbors/dist_metrics.pyx":1122
  * 
  * cdef inline double fmax(double a, double b) nogil:
  *     return max(a, b)             # <<<<<<<<<<<<<<
@@ -11573,7 +11550,7 @@ static CYTHON_INLINE double __pyx_f_7sklearn_9neighbors_12dist_metrics_fmax(doub
   __pyx_r = __pyx_t_3;
   goto __pyx_L0;
 
-  /* "sklearn/neighbors/dist_metrics.pyx":1114
+  /* "sklearn/neighbors/dist_metrics.pyx":1121
  * 
  * 
  * cdef inline double fmax(double a, double b) nogil:             # <<<<<<<<<<<<<<
@@ -26442,7 +26419,7 @@ static PyTypeObject __pyx_type_7sklearn_9neighbors_12dist_metrics_DistanceMetric
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "DistanceMetric class\n\n    This class provides a uniform interface to fast distance metric\n    functions.  The various metrics can be accessed via the `get_metric`\n    class method and the metric string identifier (see below).\n    For example, to use the Euclidean distance:\n\n    >>> dist = DistanceMetric.get_metric('euclidean')\n    >>> X = [[0, 1, 2],\n             [3, 4, 5]])\n    >>> dist.pairwise(X)\n    array([[ 0.        ,  5.19615242],\n           [ 5.19615242,  0.        ]])\n\n    Available Metrics\n    The following lists the string metric identifiers and the associated\n    distance metric classes:\n\n    **Metrics intended for real-valued vector spaces:**\n\n    ==============  ====================  ========  ===============================\n    identifier      class name            args      distance function\n    --------------  --------------------  --------  -------------------------------\n    \"euclidean\"     EuclideanDistance     -         ``sqrt(sum((x - y)^2))``\n    \"manhattan\"     ManhattanDistance     -         ``sum(|x - y|)``\n    \"chebyshev\"     ChebyshevDistance     -         ``max(|x - y|)``\n    \"minkowski\"     MinkowskiDistance     p         ``sum(|x - y|^p)^(1/p)``\n    \"wminkowski\"    WMinkowskiDistance    p, w      ``sum(w * |x - y|^p)^(1/p)``\n    \"seuclidean\"    SEuclideanDistance    V         ``sqrt(sum((x - y)^2 / V))``\n    \"mahalanobis\"   MahalanobisDistance   V or VI   ``sqrt((x - y)' V^-1 (x - y))``\n    ==============  ====================  ========  ===============================\n\n    **Metrics intended for two-dimensional vector spaces:**  Note that the haversine\n    distance metric requires data in the form of [latitude, longitude] and both\n    inputs and outputs are in units of radians.\n\n    ============  ==================  ========================================\n    identifier    class name          distance function\n    ------------  ------------------  -----------------------------------""-----\n    \"haversine\"   HaversineDistance   2 arcsin(sqrt(sin^2(0.5*dx)\n                                             + cos(x1)cos(x2)sin^2(0.5*dy)))\n    ============  ==================  ========================================\n\n\n    **Metrics intended for integer-valued vector spaces:**  Though intended\n    for integer-valued vectors, these are also valid metrics in the case of\n    real-valued vectors.\n\n    =============  ====================  ========================================\n    identifier     class name            distance function\n    -------------  --------------------  ----------------------------------------\n    \"hamming\"      HammingDistance       ``N_unequal(x, y) / N_tot``\n    \"canberra\"     CanberraDistance      ``sum(|x - y| / (|x| + |y|))``\n    \"braycurtis\"   BrayCurtisDistance    ``sum(|x - y|) / (sum(|x|) + sum(|y|))``\n    =============  ====================  ========================================\n\n    **Metrics intended for boolean-valued vector spaces:**  Any nonzero entry\n    is evaluated to \"True\".  In the listings below, the following\n    abbreviations are used:\n\n     - N  : number of dimensions\n     - NTT : number of dims in which both values are True\n     - NTF : number of dims in which the first value is True, second is False\n     - NFT : number of dims in which the first value is False, second is True\n     - NFF : number of dims in which both values are False\n     - NNEQ : number of non-equal dimensions, NNEQ = NTF + NFT\n     - NNZ : number of nonzero dimensions, NNZ = NTF + NFT + NTT\n\n    =================  =======================  ===============================\n    identifier         class name               distance function\n    -----------------  -----------------------  -------------------------------\n    \"jaccard\"          JaccardDistance          NNEQ / NNZ\n    \"matching\"         MatchingDistance         NNEQ / N\n    \"dice\"             DiceDistance             NNEQ / (NTT + ""NNZ)\n    \"kulsinski\"        KulsinskiDistance        (NNEQ + N - NTT) / (NNEQ + N)\n    \"rogerstanimoto\"   RogersTanimotoDistance   2 * NNEQ / (N + NNEQ)\n    \"russellrao\"       RussellRaoDistance       NNZ / N\n    \"sokalmichener\"    SokalMichenerDistance    2 * NNEQ / (N + NNEQ)\n    \"sokalsneath\"      SokalSneathDistance      NNEQ / (NNEQ + 0.5 * NTT)\n    =================  =======================  ===============================\n\n    **User-defined distance:**\n\n    ===========    ===============    =======\n    identifier     class name         args\n    -----------    ---------------    -------\n    \"pyfunc\"       PyFuncDistance     func\n    ===========    ===============    =======\n\n    Here ``func`` is a function which takes two one-dimensional numpy\n    arrays, and returns a distance.  Note that in order to be used within\n    the BallTree, the distance must be a true metric:\n    i.e. it must satisfy the following properties\n\n    1) Non-negativity: d(x, y) >= 0\n    2) Identity: d(x, y) = 0 if and only if x == y\n    3) Symmetry: d(x, y) = d(y, x)\n    4) Triangle Inequality: d(x, y) + d(y, z) >= d(x, z)\n\n    Because of the Python object overhead involved in calling the python\n    function, this will be fairly slow, but it will have the same\n    scaling as other distances.\n    ", /*tp_doc*/
+  "DistanceMetric class\n\n    This class provides a uniform interface to fast distance metric\n    functions.  The various metrics can be accessed via the `get_metric`\n    class method and the metric string identifier (see below).\n    For example, to use the Euclidean distance:\n\n    >>> dist = DistanceMetric.get_metric('euclidean')\n    >>> X = [[0, 1, 2],\n             [3, 4, 5]]\n    >>> dist.pairwise(X)\n    array([[ 0.        ,  5.19615242],\n           [ 5.19615242,  0.        ]])\n\n    Available Metrics\n    The following lists the string metric identifiers and the associated\n    distance metric classes:\n\n    **Metrics intended for real-valued vector spaces:**\n\n    ==============  ====================  ========  ===============================\n    identifier      class name            args      distance function\n    --------------  --------------------  --------  -------------------------------\n    \"euclidean\"     EuclideanDistance     -         ``sqrt(sum((x - y)^2))``\n    \"manhattan\"     ManhattanDistance     -         ``sum(|x - y|)``\n    \"chebyshev\"     ChebyshevDistance     -         ``max(|x - y|)``\n    \"minkowski\"     MinkowskiDistance     p         ``sum(|x - y|^p)^(1/p)``\n    \"wminkowski\"    WMinkowskiDistance    p, w      ``sum(w * |x - y|^p)^(1/p)``\n    \"seuclidean\"    SEuclideanDistance    V         ``sqrt(sum((x - y)^2 / V))``\n    \"mahalanobis\"   MahalanobisDistance   V or VI   ``sqrt((x - y)' V^-1 (x - y))``\n    ==============  ====================  ========  ===============================\n\n    **Metrics intended for two-dimensional vector spaces:**  Note that the haversine\n    distance metric requires data in the form of [latitude, longitude] and both\n    inputs and outputs are in units of radians.\n\n    ============  ==================  ========================================\n    identifier    class name          distance function\n    ------------  ------------------  ------------------------------------""----\n    \"haversine\"   HaversineDistance   2 arcsin(sqrt(sin^2(0.5*dx)\n                                             + cos(x1)cos(x2)sin^2(0.5*dy)))\n    ============  ==================  ========================================\n\n\n    **Metrics intended for integer-valued vector spaces:**  Though intended\n    for integer-valued vectors, these are also valid metrics in the case of\n    real-valued vectors.\n\n    =============  ====================  ========================================\n    identifier     class name            distance function\n    -------------  --------------------  ----------------------------------------\n    \"hamming\"      HammingDistance       ``N_unequal(x, y) / N_tot``\n    \"canberra\"     CanberraDistance      ``sum(|x - y| / (|x| + |y|))``\n    \"braycurtis\"   BrayCurtisDistance    ``sum(|x - y|) / (sum(|x|) + sum(|y|))``\n    =============  ====================  ========================================\n\n    **Metrics intended for boolean-valued vector spaces:**  Any nonzero entry\n    is evaluated to \"True\".  In the listings below, the following\n    abbreviations are used:\n\n     - N  : number of dimensions\n     - NTT : number of dims in which both values are True\n     - NTF : number of dims in which the first value is True, second is False\n     - NFT : number of dims in which the first value is False, second is True\n     - NFF : number of dims in which both values are False\n     - NNEQ : number of non-equal dimensions, NNEQ = NTF + NFT\n     - NNZ : number of nonzero dimensions, NNZ = NTF + NFT + NTT\n\n    =================  =======================  ===============================\n    identifier         class name               distance function\n    -----------------  -----------------------  -------------------------------\n    \"jaccard\"          JaccardDistance          NNEQ / NNZ\n    \"matching\"         MatchingDistance         NNEQ / N\n    \"dice\"             DiceDistance             NNEQ / (NTT + N""NZ)\n    \"kulsinski\"        KulsinskiDistance        (NNEQ + N - NTT) / (NNEQ + N)\n    \"rogerstanimoto\"   RogersTanimotoDistance   2 * NNEQ / (N + NNEQ)\n    \"russellrao\"       RussellRaoDistance       NNZ / N\n    \"sokalmichener\"    SokalMichenerDistance    2 * NNEQ / (N + NNEQ)\n    \"sokalsneath\"      SokalSneathDistance      NNEQ / (NNEQ + 0.5 * NTT)\n    =================  =======================  ===============================\n\n    **User-defined distance:**\n\n    ===========    ===============    =======\n    identifier     class name         args\n    -----------    ---------------    -------\n    \"pyfunc\"       PyFuncDistance     func\n    ===========    ===============    =======\n\n    Here ``func`` is a function which takes two one-dimensional numpy\n    arrays, and returns a distance.  Note that in order to be used within\n    the BallTree, the distance must be a true metric:\n    i.e. it must satisfy the following properties\n\n    1) Non-negativity: d(x, y) >= 0\n    2) Identity: d(x, y) = 0 if and only if x == y\n    3) Symmetry: d(x, y) = d(y, x)\n    4) Triangle Inequality: d(x, y) + d(y, z) >= d(x, z)\n\n    Because of the Python object overhead involved in calling the python\n    function, this will be fairly slow, but it will have the same\n    scaling as other distances.\n    ", /*tp_doc*/
   __pyx_tp_traverse_7sklearn_9neighbors_12dist_metrics_DistanceMetric, /*tp_traverse*/
   __pyx_tp_clear_7sklearn_9neighbors_12dist_metrics_DistanceMetric, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -28781,7 +28758,7 @@ static int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 22, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 273, __pyx_L1_error)
   __pyx_builtin_NotImplementedError = __Pyx_GetBuiltinName(__pyx_n_s_NotImplementedError); if (!__pyx_builtin_NotImplementedError) __PYX_ERR(1, 291, __pyx_L1_error)
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 1108, __pyx_L1_error)
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 1116, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(2, 799, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 989, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(3, 146, __pyx_L1_error)
@@ -28977,14 +28954,14 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
 
-  /* "sklearn/neighbors/dist_metrics.pyx":1109
- *                 return d
- *             except TypeError:
- *                 raise TypeError("Custom distance function must accept two "             # <<<<<<<<<<<<<<
- *                                 "vectors and return a float.")
+  /* "sklearn/neighbors/dist_metrics.pyx":1117
+ *             return d
+ *         except TypeError:
+ *             raise TypeError("Custom distance function must accept two "             # <<<<<<<<<<<<<<
+ *                             "vectors and return a float.")
  * 
  */
-  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_Custom_distance_function_must_ac); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(1, 1109, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_Custom_distance_function_must_ac); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(1, 1117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
 
@@ -29625,6 +29602,7 @@ PyMODINIT_FUNC PyInit_dist_metrics(void)
   __pyx_vtabptr_7sklearn_9neighbors_12dist_metrics_PyFuncDistance = &__pyx_vtable_7sklearn_9neighbors_12dist_metrics_PyFuncDistance;
   __pyx_vtable_7sklearn_9neighbors_12dist_metrics_PyFuncDistance.__pyx_base = *__pyx_vtabptr_7sklearn_9neighbors_12dist_metrics_DistanceMetric;
   __pyx_vtable_7sklearn_9neighbors_12dist_metrics_PyFuncDistance.__pyx_base.dist = (__pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t (*)(struct __pyx_obj_7sklearn_9neighbors_12dist_metrics_DistanceMetric *, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *, __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t))__pyx_f_7sklearn_9neighbors_12dist_metrics_14PyFuncDistance_dist;
+  __pyx_vtable_7sklearn_9neighbors_12dist_metrics_PyFuncDistance._dist = (__pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t (*)(struct __pyx_obj_7sklearn_9neighbors_12dist_metrics_PyFuncDistance *, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *, __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t))__pyx_f_7sklearn_9neighbors_12dist_metrics_14PyFuncDistance__dist;
   __pyx_type_7sklearn_9neighbors_12dist_metrics_PyFuncDistance.tp_base = __pyx_ptype_7sklearn_9neighbors_12dist_metrics_DistanceMetric;
   if (PyType_Ready(&__pyx_type_7sklearn_9neighbors_12dist_metrics_PyFuncDistance) < 0) __PYX_ERR(1, 1082, __pyx_L1_error)
   __pyx_type_7sklearn_9neighbors_12dist_metrics_PyFuncDistance.tp_print = 0;

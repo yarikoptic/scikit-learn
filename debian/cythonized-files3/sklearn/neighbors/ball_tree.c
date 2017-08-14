@@ -2139,14 +2139,14 @@ __pyx_memoryview_copy_new_contig(const __Pyx_memviewslice *from_mvs,
                                  size_t sizeof_dtype, int contig_flag,
                                  int dtype_is_object);
 
+/* CIntFromPy.proto */
+static CYTHON_INLINE Py_intptr_t __Pyx_PyInt_As_Py_intptr_t(PyObject *);
+
 /* TypeInfoToFormat.proto */
 struct __pyx_typeinfo_string {
     char string[3];
 };
 static struct __pyx_typeinfo_string __Pyx_TypeInfoToFormat(__Pyx_TypeInfo *type);
-
-/* CIntFromPy.proto */
-static CYTHON_INLINE Py_intptr_t __Pyx_PyInt_As_Py_intptr_t(PyObject *);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
@@ -22838,6 +22838,233 @@ static CYTHON_INLINE __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7skle
   return __pyx_r;
 }
 
+/* "dist_metrics.pxd":18
+ * #  We use these for the default (euclidean) case so that they can be
+ * #  inlined.  This leads to faster computation for the most common case
+ * cdef inline DTYPE_t euclidean_dist(DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
+ *                                    ITYPE_t size) nogil except -1:
+ *     cdef DTYPE_t tmp, d=0
+ */
+
+static CYTHON_INLINE __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_euclidean_dist(__pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x1, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x2, __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t __pyx_v_size) {
+  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_tmp;
+  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_d;
+  __pyx_t_5numpy_intp_t __pyx_v_j;
+  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_r;
+  __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t __pyx_t_1;
+  __pyx_t_5numpy_intp_t __pyx_t_2;
+
+  /* "dist_metrics.pxd":20
+ * cdef inline DTYPE_t euclidean_dist(DTYPE_t* x1, DTYPE_t* x2,
+ *                                    ITYPE_t size) nogil except -1:
+ *     cdef DTYPE_t tmp, d=0             # <<<<<<<<<<<<<<
+ *     cdef np.intp_t j
+ *     for j in range(size):
+ */
+  __pyx_v_d = 0.0;
+
+  /* "dist_metrics.pxd":22
+ *     cdef DTYPE_t tmp, d=0
+ *     cdef np.intp_t j
+ *     for j in range(size):             # <<<<<<<<<<<<<<
+ *         tmp = x1[j] - x2[j]
+ *         d += tmp * tmp
+ */
+  __pyx_t_1 = __pyx_v_size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_j = __pyx_t_2;
+
+    /* "dist_metrics.pxd":23
+ *     cdef np.intp_t j
+ *     for j in range(size):
+ *         tmp = x1[j] - x2[j]             # <<<<<<<<<<<<<<
+ *         d += tmp * tmp
+ *     return sqrt(d)
+ */
+    __pyx_v_tmp = ((__pyx_v_x1[__pyx_v_j]) - (__pyx_v_x2[__pyx_v_j]));
+
+    /* "dist_metrics.pxd":24
+ *     for j in range(size):
+ *         tmp = x1[j] - x2[j]
+ *         d += tmp * tmp             # <<<<<<<<<<<<<<
+ *     return sqrt(d)
+ * 
+ */
+    __pyx_v_d = (__pyx_v_d + (__pyx_v_tmp * __pyx_v_tmp));
+  }
+
+  /* "dist_metrics.pxd":25
+ *         tmp = x1[j] - x2[j]
+ *         d += tmp * tmp
+ *     return sqrt(d)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = sqrt(__pyx_v_d);
+  goto __pyx_L0;
+
+  /* "dist_metrics.pxd":18
+ * #  We use these for the default (euclidean) case so that they can be
+ * #  inlined.  This leads to faster computation for the most common case
+ * cdef inline DTYPE_t euclidean_dist(DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
+ *                                    ITYPE_t size) nogil except -1:
+ *     cdef DTYPE_t tmp, d=0
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "dist_metrics.pxd":28
+ * 
+ * 
+ * cdef inline DTYPE_t euclidean_rdist(DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
+ *                                     ITYPE_t size) nogil except -1:
+ *     cdef DTYPE_t tmp, d=0
+ */
+
+static CYTHON_INLINE __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_euclidean_rdist(__pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x1, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x2, __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t __pyx_v_size) {
+  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_tmp;
+  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_d;
+  __pyx_t_5numpy_intp_t __pyx_v_j;
+  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_r;
+  __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t __pyx_t_1;
+  __pyx_t_5numpy_intp_t __pyx_t_2;
+
+  /* "dist_metrics.pxd":30
+ * cdef inline DTYPE_t euclidean_rdist(DTYPE_t* x1, DTYPE_t* x2,
+ *                                     ITYPE_t size) nogil except -1:
+ *     cdef DTYPE_t tmp, d=0             # <<<<<<<<<<<<<<
+ *     cdef np.intp_t j
+ *     for j in range(size):
+ */
+  __pyx_v_d = 0.0;
+
+  /* "dist_metrics.pxd":32
+ *     cdef DTYPE_t tmp, d=0
+ *     cdef np.intp_t j
+ *     for j in range(size):             # <<<<<<<<<<<<<<
+ *         tmp = x1[j] - x2[j]
+ *         d += tmp * tmp
+ */
+  __pyx_t_1 = __pyx_v_size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_j = __pyx_t_2;
+
+    /* "dist_metrics.pxd":33
+ *     cdef np.intp_t j
+ *     for j in range(size):
+ *         tmp = x1[j] - x2[j]             # <<<<<<<<<<<<<<
+ *         d += tmp * tmp
+ *     return d
+ */
+    __pyx_v_tmp = ((__pyx_v_x1[__pyx_v_j]) - (__pyx_v_x2[__pyx_v_j]));
+
+    /* "dist_metrics.pxd":34
+ *     for j in range(size):
+ *         tmp = x1[j] - x2[j]
+ *         d += tmp * tmp             # <<<<<<<<<<<<<<
+ *     return d
+ * 
+ */
+    __pyx_v_d = (__pyx_v_d + (__pyx_v_tmp * __pyx_v_tmp));
+  }
+
+  /* "dist_metrics.pxd":35
+ *         tmp = x1[j] - x2[j]
+ *         d += tmp * tmp
+ *     return d             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = __pyx_v_d;
+  goto __pyx_L0;
+
+  /* "dist_metrics.pxd":28
+ * 
+ * 
+ * cdef inline DTYPE_t euclidean_rdist(DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
+ *                                     ITYPE_t size) nogil except -1:
+ *     cdef DTYPE_t tmp, d=0
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "dist_metrics.pxd":38
+ * 
+ * 
+ * cdef inline DTYPE_t euclidean_dist_to_rdist(DTYPE_t dist) nogil except -1:             # <<<<<<<<<<<<<<
+ *     return dist * dist
+ * 
+ */
+
+static CYTHON_INLINE __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_euclidean_dist_to_rdist(__pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_dist) {
+  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_r;
+
+  /* "dist_metrics.pxd":39
+ * 
+ * cdef inline DTYPE_t euclidean_dist_to_rdist(DTYPE_t dist) nogil except -1:
+ *     return dist * dist             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = (__pyx_v_dist * __pyx_v_dist);
+  goto __pyx_L0;
+
+  /* "dist_metrics.pxd":38
+ * 
+ * 
+ * cdef inline DTYPE_t euclidean_dist_to_rdist(DTYPE_t dist) nogil except -1:             # <<<<<<<<<<<<<<
+ *     return dist * dist
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "dist_metrics.pxd":42
+ * 
+ * 
+ * cdef inline DTYPE_t euclidean_rdist_to_dist(DTYPE_t dist) except -1:             # <<<<<<<<<<<<<<
+ *     return sqrt(dist)
+ * 
+ */
+
+static CYTHON_INLINE __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_euclidean_rdist_to_dist(__pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_dist) {
+  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("euclidean_rdist_to_dist", 0);
+
+  /* "dist_metrics.pxd":43
+ * 
+ * cdef inline DTYPE_t euclidean_rdist_to_dist(DTYPE_t dist) except -1:
+ *     return sqrt(dist)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = sqrt(__pyx_v_dist);
+  goto __pyx_L0;
+
+  /* "dist_metrics.pxd":42
+ * 
+ * 
+ * cdef inline DTYPE_t euclidean_rdist_to_dist(DTYPE_t dist) except -1:             # <<<<<<<<<<<<<<
+ *     return sqrt(dist)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
 /* "../../../../../usr/lib/python3/dist-packages/Cython/Includes/numpy/__init__.pxd":197
  *         # experimental exception made for __getbuffer__ and __releasebuffer__
  *         # -- the details of this may change.
@@ -25347,233 +25574,6 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_AddTraceback("numpy.import_ufunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "dist_metrics.pxd":18
- * #  We use these for the default (euclidean) case so that they can be
- * #  inlined.  This leads to faster computation for the most common case
- * cdef inline DTYPE_t euclidean_dist(DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
- *                                    ITYPE_t size) nogil except -1:
- *     cdef DTYPE_t tmp, d=0
- */
-
-static CYTHON_INLINE __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_euclidean_dist(__pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x1, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x2, __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t __pyx_v_size) {
-  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_tmp;
-  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_d;
-  __pyx_t_5numpy_intp_t __pyx_v_j;
-  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_r;
-  __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t __pyx_t_1;
-  __pyx_t_5numpy_intp_t __pyx_t_2;
-
-  /* "dist_metrics.pxd":20
- * cdef inline DTYPE_t euclidean_dist(DTYPE_t* x1, DTYPE_t* x2,
- *                                    ITYPE_t size) nogil except -1:
- *     cdef DTYPE_t tmp, d=0             # <<<<<<<<<<<<<<
- *     cdef np.intp_t j
- *     for j in range(size):
- */
-  __pyx_v_d = 0.0;
-
-  /* "dist_metrics.pxd":22
- *     cdef DTYPE_t tmp, d=0
- *     cdef np.intp_t j
- *     for j in range(size):             # <<<<<<<<<<<<<<
- *         tmp = x1[j] - x2[j]
- *         d += tmp * tmp
- */
-  __pyx_t_1 = __pyx_v_size;
-  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
-    __pyx_v_j = __pyx_t_2;
-
-    /* "dist_metrics.pxd":23
- *     cdef np.intp_t j
- *     for j in range(size):
- *         tmp = x1[j] - x2[j]             # <<<<<<<<<<<<<<
- *         d += tmp * tmp
- *     return sqrt(d)
- */
-    __pyx_v_tmp = ((__pyx_v_x1[__pyx_v_j]) - (__pyx_v_x2[__pyx_v_j]));
-
-    /* "dist_metrics.pxd":24
- *     for j in range(size):
- *         tmp = x1[j] - x2[j]
- *         d += tmp * tmp             # <<<<<<<<<<<<<<
- *     return sqrt(d)
- * 
- */
-    __pyx_v_d = (__pyx_v_d + (__pyx_v_tmp * __pyx_v_tmp));
-  }
-
-  /* "dist_metrics.pxd":25
- *         tmp = x1[j] - x2[j]
- *         d += tmp * tmp
- *     return sqrt(d)             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __pyx_r = sqrt(__pyx_v_d);
-  goto __pyx_L0;
-
-  /* "dist_metrics.pxd":18
- * #  We use these for the default (euclidean) case so that they can be
- * #  inlined.  This leads to faster computation for the most common case
- * cdef inline DTYPE_t euclidean_dist(DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
- *                                    ITYPE_t size) nogil except -1:
- *     cdef DTYPE_t tmp, d=0
- */
-
-  /* function exit code */
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "dist_metrics.pxd":28
- * 
- * 
- * cdef inline DTYPE_t euclidean_rdist(DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
- *                                     ITYPE_t size) nogil except -1:
- *     cdef DTYPE_t tmp, d=0
- */
-
-static CYTHON_INLINE __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_euclidean_rdist(__pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x1, __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t *__pyx_v_x2, __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t __pyx_v_size) {
-  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_tmp;
-  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_d;
-  __pyx_t_5numpy_intp_t __pyx_v_j;
-  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_r;
-  __pyx_t_7sklearn_9neighbors_8typedefs_ITYPE_t __pyx_t_1;
-  __pyx_t_5numpy_intp_t __pyx_t_2;
-
-  /* "dist_metrics.pxd":30
- * cdef inline DTYPE_t euclidean_rdist(DTYPE_t* x1, DTYPE_t* x2,
- *                                     ITYPE_t size) nogil except -1:
- *     cdef DTYPE_t tmp, d=0             # <<<<<<<<<<<<<<
- *     cdef np.intp_t j
- *     for j in range(size):
- */
-  __pyx_v_d = 0.0;
-
-  /* "dist_metrics.pxd":32
- *     cdef DTYPE_t tmp, d=0
- *     cdef np.intp_t j
- *     for j in range(size):             # <<<<<<<<<<<<<<
- *         tmp = x1[j] - x2[j]
- *         d += tmp * tmp
- */
-  __pyx_t_1 = __pyx_v_size;
-  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
-    __pyx_v_j = __pyx_t_2;
-
-    /* "dist_metrics.pxd":33
- *     cdef np.intp_t j
- *     for j in range(size):
- *         tmp = x1[j] - x2[j]             # <<<<<<<<<<<<<<
- *         d += tmp * tmp
- *     return d
- */
-    __pyx_v_tmp = ((__pyx_v_x1[__pyx_v_j]) - (__pyx_v_x2[__pyx_v_j]));
-
-    /* "dist_metrics.pxd":34
- *     for j in range(size):
- *         tmp = x1[j] - x2[j]
- *         d += tmp * tmp             # <<<<<<<<<<<<<<
- *     return d
- * 
- */
-    __pyx_v_d = (__pyx_v_d + (__pyx_v_tmp * __pyx_v_tmp));
-  }
-
-  /* "dist_metrics.pxd":35
- *         tmp = x1[j] - x2[j]
- *         d += tmp * tmp
- *     return d             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __pyx_r = __pyx_v_d;
-  goto __pyx_L0;
-
-  /* "dist_metrics.pxd":28
- * 
- * 
- * cdef inline DTYPE_t euclidean_rdist(DTYPE_t* x1, DTYPE_t* x2,             # <<<<<<<<<<<<<<
- *                                     ITYPE_t size) nogil except -1:
- *     cdef DTYPE_t tmp, d=0
- */
-
-  /* function exit code */
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "dist_metrics.pxd":38
- * 
- * 
- * cdef inline DTYPE_t euclidean_dist_to_rdist(DTYPE_t dist) nogil except -1:             # <<<<<<<<<<<<<<
- *     return dist * dist
- * 
- */
-
-static CYTHON_INLINE __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_euclidean_dist_to_rdist(__pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_dist) {
-  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_r;
-
-  /* "dist_metrics.pxd":39
- * 
- * cdef inline DTYPE_t euclidean_dist_to_rdist(DTYPE_t dist) nogil except -1:
- *     return dist * dist             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __pyx_r = (__pyx_v_dist * __pyx_v_dist);
-  goto __pyx_L0;
-
-  /* "dist_metrics.pxd":38
- * 
- * 
- * cdef inline DTYPE_t euclidean_dist_to_rdist(DTYPE_t dist) nogil except -1:             # <<<<<<<<<<<<<<
- *     return dist * dist
- * 
- */
-
-  /* function exit code */
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "dist_metrics.pxd":42
- * 
- * 
- * cdef inline DTYPE_t euclidean_rdist_to_dist(DTYPE_t dist) except -1:             # <<<<<<<<<<<<<<
- *     return sqrt(dist)
- * 
- */
-
-static CYTHON_INLINE __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_f_7sklearn_9neighbors_12dist_metrics_euclidean_rdist_to_dist(__pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_v_dist) {
-  __pyx_t_7sklearn_9neighbors_8typedefs_DTYPE_t __pyx_r;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("euclidean_rdist_to_dist", 0);
-
-  /* "dist_metrics.pxd":43
- * 
- * cdef inline DTYPE_t euclidean_rdist_to_dist(DTYPE_t dist) except -1:
- *     return sqrt(dist)             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __pyx_r = sqrt(__pyx_v_dist);
-  goto __pyx_L0;
-
-  /* "dist_metrics.pxd":42
- * 
- * 
- * cdef inline DTYPE_t euclidean_rdist_to_dist(DTYPE_t dist) except -1:             # <<<<<<<<<<<<<<
- *     return sqrt(dist)
- * 
- */
-
-  /* function exit code */
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -45279,50 +45279,6 @@ no_fail:
     return new_mvs;
 }
 
-/* TypeInfoToFormat */
-              static struct __pyx_typeinfo_string __Pyx_TypeInfoToFormat(__Pyx_TypeInfo *type) {
-    struct __pyx_typeinfo_string result = { {0} };
-    char *buf = (char *) result.string;
-    size_t size = type->size;
-    switch (type->typegroup) {
-        case 'H':
-            *buf = 'c';
-            break;
-        case 'I':
-        case 'U':
-            if (size == 1)
-                *buf = (type->is_unsigned) ? 'B' : 'b';
-            else if (size == 2)
-                *buf = (type->is_unsigned) ? 'H' : 'h';
-            else if (size == 4)
-                *buf = (type->is_unsigned) ? 'I' : 'i';
-            else if (size == 8)
-                *buf = (type->is_unsigned) ? 'Q' : 'q';
-            break;
-        case 'P':
-            *buf = 'P';
-            break;
-        case 'C':
-         {
-            __Pyx_TypeInfo complex_type = *type;
-            complex_type.typegroup = 'R';
-            complex_type.size /= 2;
-            *buf++ = 'Z';
-            *buf = __Pyx_TypeInfoToFormat(&complex_type).string[0];
-            break;
-         }
-        case 'R':
-            if (size == 4)
-                *buf = 'f';
-            else if (size == 8)
-                *buf = 'd';
-            else
-                *buf = 'g';
-            break;
-    }
-    return result;
-}
-
 /* CIntFromPy */
               static CYTHON_INLINE Py_intptr_t __Pyx_PyInt_As_Py_intptr_t(PyObject *x) {
     const Py_intptr_t neg_one = (Py_intptr_t) -1, const_zero = (Py_intptr_t) 0;
@@ -45510,6 +45466,50 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to Py_intptr_t");
     return (Py_intptr_t) -1;
+}
+
+/* TypeInfoToFormat */
+              static struct __pyx_typeinfo_string __Pyx_TypeInfoToFormat(__Pyx_TypeInfo *type) {
+    struct __pyx_typeinfo_string result = { {0} };
+    char *buf = (char *) result.string;
+    size_t size = type->size;
+    switch (type->typegroup) {
+        case 'H':
+            *buf = 'c';
+            break;
+        case 'I':
+        case 'U':
+            if (size == 1)
+                *buf = (type->is_unsigned) ? 'B' : 'b';
+            else if (size == 2)
+                *buf = (type->is_unsigned) ? 'H' : 'h';
+            else if (size == 4)
+                *buf = (type->is_unsigned) ? 'I' : 'i';
+            else if (size == 8)
+                *buf = (type->is_unsigned) ? 'Q' : 'q';
+            break;
+        case 'P':
+            *buf = 'P';
+            break;
+        case 'C':
+         {
+            __Pyx_TypeInfo complex_type = *type;
+            complex_type.typegroup = 'R';
+            complex_type.size /= 2;
+            *buf++ = 'Z';
+            *buf = __Pyx_TypeInfoToFormat(&complex_type).string[0];
+            break;
+         }
+        case 'R':
+            if (size == 4)
+                *buf = 'f';
+            else if (size == 8)
+                *buf = 'd';
+            else
+                *buf = 'g';
+            break;
+    }
+    return result;
 }
 
 /* CIntFromPy */
