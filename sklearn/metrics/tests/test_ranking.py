@@ -29,7 +29,6 @@ from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import label_ranking_loss
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import roc_curve
-from sklearn.metrics import ndcg_score
 
 from sklearn.exceptions import UndefinedMetricWarning
 
@@ -458,6 +457,14 @@ def test_auc_score_non_binary_class():
                              roc_auc_score, y_true, y_pred)
 
 
+def test_binary_clf_curve():
+    rng = check_random_state(404)
+    y_true = rng.randint(0, 3, size=10)
+    y_pred = rng.rand(10)
+    msg = "multiclass format is not supported"
+    assert_raise_message(ValueError, msg, precision_recall_curve,
+                         y_true, y_pred)
+
 def test_precision_recall_curve():
     y_true, _, probas_pred = make_prediction(binary=True)
     _test_precision_recall_curve(y_true, probas_pred)
@@ -736,38 +743,6 @@ def check_zero_or_all_relevant_labels(lrap_score):
     # Degenerate case: only one label
     assert_almost_equal(lrap_score([[1], [0], [1], [0]],
                                    [[0.5], [0.5], [0.5], [0.5]]), 1.)
-
-
-def test_ndcg_score():
-    # Check perfect ranking
-    y_true = [1, 0, 2]
-    y_score = [
-        [0.15, 0.55, 0.2],
-        [0.7, 0.2, 0.1],
-        [0.06, 0.04, 0.9]
-    ]
-    perfect = ndcg_score(y_true, y_score)
-    assert_equal(perfect, 1.0)
-
-    # Check bad ranking with a small K
-    y_true = [0, 2, 1]
-    y_score = [
-        [0.15, 0.55, 0.2],
-        [0.7, 0.2, 0.1],
-        [0.06, 0.04, 0.9]
-    ]
-    short_k = ndcg_score(y_true, y_score, k=1)
-    assert_equal(short_k, 0.0)
-
-    # Check a random scoring
-    y_true = [2, 1, 0]
-    y_score = [
-        [0.15, 0.55, 0.2],
-        [0.7, 0.2, 0.1],
-        [0.06, 0.04, 0.9]
-    ]
-    average_ranking = ndcg_score(y_true, y_score, k=2)
-    assert_almost_equal(average_ranking, 0.63092975)
 
 
 def check_lrap_error_raised(lrap_score):

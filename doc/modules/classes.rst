@@ -26,8 +26,10 @@ Base classes
    :template: class.rst
 
    base.BaseEstimator
+   base.BiclusterMixin
    base.ClassifierMixin
    base.ClusterMixin
+   base.DensityMixin
    base.RegressorMixin
    base.TransformerMixin
 
@@ -783,7 +785,6 @@ details.
    metrics.classification_report
    metrics.cohen_kappa_score
    metrics.confusion_matrix
-   metrics.dcg_score
    metrics.f1_score
    metrics.fbeta_score
    metrics.hamming_loss
@@ -791,7 +792,6 @@ details.
    metrics.jaccard_similarity_score
    metrics.log_loss
    metrics.matthews_corrcoef
-   metrics.ndcg_score
    metrics.precision_recall_curve
    metrics.precision_recall_fscore_support
    metrics.precision_score
@@ -1377,6 +1377,7 @@ Low-level methods
    utils.sparsefuncs.inplace_swap_column
    utils.sparsefuncs.mean_variance_axis
    utils.validation.check_is_fitted
+   utils.validation.check_memory
    utils.validation.check_symmetric
    utils.validation.column_or_1d
    utils.validation.has_fit_parameter

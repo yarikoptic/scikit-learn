@@ -26,7 +26,7 @@ from scipy.stats import rankdata
 
 from ..utils import assert_all_finite
 from ..utils import check_consistent_length
-from ..utils import column_or_1d, check_array, check_X_y
+from ..utils import column_or_1d, check_array
 from ..utils.multiclass import type_of_target
 from ..utils.extmath import stable_cumsum
 from ..utils.sparsefuncs import count_nonzero
@@ -40,7 +40,9 @@ def auc(x, y, reorder=False):
     """Compute Area Under the Curve (AUC) using the trapezoidal rule
 
     This is a general function, given points on a curve.  For computing the
-    area under the ROC-curve, see :func:`roc_auc_score`.
+    area under the ROC-curve, see :func:`roc_auc_score`.  For an alternative
+    way to summarize a precision-recall curve, see
+    :func:`average_precision_score`.
 
     Parameters
     ----------
@@ -68,7 +70,8 @@ def auc(x, y, reorder=False):
 
     See also
     --------
-    roc_auc_score : Computes the area under the ROC curve
+    roc_auc_score : Compute the area under the ROC curve
+    average_precision_score : Compute average precision from prediction scores
     precision_recall_curve :
         Compute precision-recall pairs for different probability thresholds
     """
@@ -107,6 +110,19 @@ def auc(x, y, reorder=False):
 def average_precision_score(y_true, y_score, average="macro",
                             sample_weight=None):
     """Compute average precision (AP) from prediction scores
+
+    AP summarizes a precision-recall curve as the weighted mean of precisions
+    achieved at each threshold, with the increase in recall from the previous
+    threshold used as the weight:
+
+    .. math::
+        \\text{AP} = \\sum_n (R_n - R_{n-1}) P_n
+
+    where :math:`P_n` and :math:`R_n` are the precision and recall at the nth
+    threshold [1]_. This implementation is not interpolated and is different
+    from computing the area under the precision-recall curve with the
+    trapezoidal rule, which uses linear interpolation and can be too
+    optimistic.
 
     Note: this implementation is restricted to the binary classification task
     or multilabel classification task.
@@ -149,17 +165,12 @@ def average_precision_score(y_true, y_score, average="macro",
     References
     ----------
     .. [1] `Wikipedia entry for the Average precision
-           <http://en.wikipedia.org/wiki/Average_precision>`_
-    .. [2] `Stanford Information Retrieval book
-            <http://nlp.stanford.edu/IR-book/html/htmledition/
-            evaluation-of-ranked-retrieval-results-1.html>`_
-    .. [3] `The PASCAL Visual Object Classes (VOC) Challenge
-            <http://citeseerx.ist.psu.edu/viewdoc/
-            download?doi=10.1.1.157.5766&rep=rep1&type=pdf>`_
+           <http://en.wikipedia.org/w/index.php?title=Information_retrieval&
+           oldid=793358396#Average_precision>`_
 
     See also
     --------
-    roc_auc_score : Area under the ROC curve
+    roc_auc_score : Compute the area under the ROC curve
 
     precision_recall_curve :
         Compute precision-recall pairs for different probability thresholds
@@ -180,7 +191,7 @@ def average_precision_score(y_true, y_score, average="macro",
             y_true, y_score, sample_weight=sample_weight)
         # Return the step function integral
         # The following works because the last entry of precision is
-        # garantee to be 1, as returned by precision_recall_curve
+        # guaranteed to be 1, as returned by precision_recall_curve
         return -np.sum(np.diff(recall) * np.array(precision)[:-1])
 
     return _average_binary_score(_binary_uninterpolated_average_precision,
@@ -190,7 +201,8 @@ def average_precision_score(y_true, y_score, average="macro",
 
 
 def roc_auc_score(y_true, y_score, average="macro", sample_weight=None):
-    """Compute Area Under the Curve (AUC) from prediction scores
+    """Compute Area Under the Receiver Operating Characteristic Curve (ROC AUC)
+    from prediction scores.
 
     Note: this implementation is restricted to the binary classification task
     or multilabel classification task in label indicator format.
@@ -239,7 +251,7 @@ def roc_auc_score(y_true, y_score, average="macro", sample_weight=None):
     --------
     average_precision_score : Area under the precision-recall curve
 
-    roc_curve : Compute Receiver operating characteristic (ROC)
+    roc_curve : Compute Receiver operating characteristic (ROC) curve
 
     Examples
     --------
@@ -299,7 +311,13 @@ def _binary_clf_curve(y_true, y_score, pos_label=None, sample_weight=None):
     thresholds : array, shape = [n_thresholds]
         Decreasing score values.
     """
-    check_consistent_length(y_true, y_score)
+    # Check to make sure y_true is valid
+    y_type = type_of_target(y_true)
+    if not (y_type == "binary" or
+            (y_type == "multiclass" and pos_label is not None)):
+        raise ValueError("{0} format is not supported".format(y_type))
+
+    check_consistent_length(y_true, y_score, sample_weight)
     y_true = column_or_1d(y_true)
     y_score = column_or_1d(y_score)
     assert_all_finite(y_true)
@@ -396,6 +414,12 @@ def precision_recall_curve(y_true, probas_pred, pos_label=None,
         Increasing thresholds on the decision function used to compute
         precision and recall.
 
+    See also
+    --------
+    average_precision_score : Compute average precision from prediction scores
+
+    roc_curve : Compute Receiver operating characteristic (ROC) curve
+
     Examples
     --------
     >>> import numpy as np
@@ -477,7 +501,7 @@ def roc_curve(y_true, y_score, pos_label=None, sample_weight=None,
 
     See also
     --------
-    roc_auc_score : Compute Area Under the Curve (AUC) from prediction scores
+    roc_auc_score : Compute the area under the ROC curve
 
     Notes
     -----
@@ -770,91 +794,3 @@ def label_ranking_loss(y_true, y_score, sample_weight=None):
     loss[np.logical_or(n_positives == 0, n_positives == n_labels)] = 0.
 
     return np.average(loss, weights=sample_weight)
-
-
-def dcg_score(y_true, y_score, k=5):
-    """Discounted cumulative gain (DCG) at rank K.
-
-    Parameters
-    ----------
-    y_true : array, shape = [n_samples]
-        Ground truth (true relevance labels).
-    y_score : array, shape = [n_samples]
-        Predicted scores.
-    k : int
-        Rank.
-
-    Returns
-    -------
-    score : float
-
-    References
-    ----------
-    .. [1] `Wikipedia entry for the Discounted Cumulative Gain
-           <https://en.wikipedia.org/wiki/Discounted_cumulative_gain>`_
-    """
-    order = np.argsort(y_score)[::-1]
-    y_true = np.take(y_true, order[:k])
-
-    gain = 2 ** y_true - 1
-
-    discounts = np.log2(np.arange(len(y_true)) + 2)
-    return np.sum(gain / discounts)
-
-
-def ndcg_score(y_true, y_score, k=5):
-    """Normalized discounted cumulative gain (NDCG) at rank K.
-
-    Normalized Discounted Cumulative Gain (NDCG) measures the performance of a
-    recommendation system based on the graded relevance of the recommended
-    entities. It varies from 0.0 to 1.0, with 1.0 representing the ideal
-    ranking of the entities.
-
-    Parameters
-    ----------
-    y_true : array, shape = [n_samples]
-        Ground truth (true labels represended as integers).
-    y_score : array, shape = [n_samples, n_classes]
-        Predicted probabilities.
-    k : int
-        Rank.
-
-    Returns
-    -------
-    score : float
-
-    Examples
-    --------
-    >>> y_true = [1, 0, 2]
-    >>> y_score = [[0.15, 0.55, 0.2], [0.7, 0.2, 0.1], [0.06, 0.04, 0.9]]
-    >>> ndcg_score(y_true, y_score, k=2)
-    1.0
-    >>> y_score = [[0.9, 0.5, 0.8], [0.7, 0.2, 0.1], [0.06, 0.04, 0.9]]
-    >>> ndcg_score(y_true, y_score, k=2)
-    0.66666666666666663
-
-    References
-    ----------
-    .. [1] `Kaggle entry for the Normalized Discounted Cumulative Gain
-           <https://www.kaggle.com/wiki/NormalizedDiscountedCumulativeGain>`_
-    """
-    y_score, y_true = check_X_y(y_score, y_true)
-
-    # Make sure we use all the labels (max between the length and the higher
-    # number in the array)
-    lb = LabelBinarizer()
-    lb.fit(np.arange(max(np.max(y_true) + 1, len(y_true))))
-    binarized_y_true = lb.transform(y_true)
-
-    if binarized_y_true.shape != y_score.shape:
-        raise ValueError("y_true and y_score have different value ranges")
-
-    scores = []
-
-    # Iterate over each y_value_true and compute the DCG score
-    for y_value_true, y_value_score in zip(binarized_y_true, y_score):
-        actual = dcg_score(y_value_true, y_value_score, k)
-        best = dcg_score(y_value_true, y_value_true, k)
-        scores.append(actual / best)
-
-    return np.mean(scores)

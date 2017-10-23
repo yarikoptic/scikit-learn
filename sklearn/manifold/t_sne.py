@@ -158,8 +158,8 @@ def _kl_divergence(params, P, degrees_of_freedom, n_samples, n_components,
 
     # Q is a heavy-tailed distribution: Student's t-distribution
     dist = pdist(X_embedded, "sqeuclidean")
-    dist += 1.
     dist /= degrees_of_freedom
+    dist += 1.
     dist **= (degrees_of_freedom + 1.0) / -2.0
     Q = np.maximum(dist / (2.0 * np.sum(dist)), MACHINE_EPSILON)
 
@@ -711,10 +711,7 @@ class TSNE(BaseEstimator):
                 print("[t-SNE] Computing {} nearest neighbors...".format(k))
 
             # Find the nearest neighbors for every point
-            neighbors_method = 'ball_tree'
-            if (self.metric == 'precomputed'):
-                neighbors_method = 'brute'
-            knn = NearestNeighbors(algorithm=neighbors_method, n_neighbors=k,
+            knn = NearestNeighbors(algorithm='auto', n_neighbors=k,
                                    metric=self.metric)
             t0 = time()
             knn.fit(X)
@@ -767,7 +764,7 @@ class TSNE(BaseEstimator):
         # Laurens van der Maaten, 2009.
         degrees_of_freedom = max(self.n_components - 1.0, 1)
 
-        return self._tsne(P, degrees_of_freedom, n_samples, random_state,
+        return self._tsne(P, degrees_of_freedom, n_samples,
                           X_embedded=X_embedded,
                           neighbors=neighbors_nn,
                           skip_num_points=skip_num_points)
@@ -778,7 +775,7 @@ class TSNE(BaseEstimator):
     def n_iter_final(self):
         return self.n_iter_
 
-    def _tsne(self, P, degrees_of_freedom, n_samples, random_state, X_embedded,
+    def _tsne(self, P, degrees_of_freedom, n_samples, X_embedded,
               neighbors=None, skip_num_points=0):
         """Runs t-SNE."""
         # t-SNE minimizes the Kullback-Leiber divergence of the Gaussians P
@@ -851,6 +848,8 @@ class TSNE(BaseEstimator):
             If the metric is 'precomputed' X must be a square distance
             matrix. Otherwise it contains a sample per row.
 
+        y : Ignored.
+
         Returns
         -------
         X_new : array, shape (n_samples, n_components)
@@ -870,6 +869,8 @@ class TSNE(BaseEstimator):
             matrix. Otherwise it contains a sample per row. If the method
             is 'exact', X may be a sparse matrix of type 'csr', 'csc'
             or 'coo'.
+
+        y : Ignored.
         """
         self.fit_transform(X)
         return self
