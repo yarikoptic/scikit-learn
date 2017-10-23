@@ -2160,11 +2160,11 @@ static CYTHON_INLINE void __Pyx_XDEC_MEMVIEW(__Pyx_memviewslice *, int, int);
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 
-/* CIntFromPy.proto */
-static CYTHON_INLINE unsigned int __Pyx_PyInt_As_unsigned_int(PyObject *);
-
 /* BytesContains.proto */
 static CYTHON_INLINE int __Pyx_BytesContains(PyObject* bytes, char character);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE unsigned int __Pyx_PyInt_As_unsigned_int(PyObject *);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE char __Pyx_PyInt_As_char(PyObject *);
@@ -7078,7 +7078,7 @@ static PyObject *__pyx_pf_7sklearn_7cluster_8_k_means_18__pyx_fuse_1_assign_labe
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7sklearn_7cluster_8_k_means_5_mini_batch_update_csr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_7sklearn_7cluster_8_k_means_4_mini_batch_update_csr[] = "Incremental update of the centers for sparse MiniBatchKMeans.\n\n    Parameters\n    ----------\n\n    X : CSR matrix, dtype float\n        The complete (pre allocated) training set as a CSR matrix.\n\n    centers : array, shape (n_clusters, n_features)\n        The cluster centers\n\n    counts : array, shape (n_clusters,)\n         The vector in which we keep track of the numbers of elements in a\n         cluster\n\n    Returns\n    -------\n    inertia : float\n        The inertia of the batch prior to centers update, i.e. the sum\n        distances to the closest center for each sample. This is the objective\n        function being minimized by the k-means algorithm.\n\n    squared_diff : float\n        The sum of squared update (squared norm of the centers position\n        change). If compute_squared_diff is 0, this computation is skipped and\n        0.0 is returned instead.\n\n    Both squared diff and inertia are commonly used to monitor the convergence\n    of the algorithm.\n    ";
+static char __pyx_doc_7sklearn_7cluster_8_k_means_4_mini_batch_update_csr[] = "Incremental update of the centers for sparse MiniBatchKMeans.\n\n    Parameters\n    ----------\n\n    X : CSR matrix, dtype float\n        The complete (pre allocated) training set as a CSR matrix.\n\n    centers : array, shape (n_clusters, n_features)\n        The cluster centers\n\n    counts : array, shape (n_clusters,)\n         The vector in which we keep track of the numbers of elements in a\n         cluster\n\n    Returns\n    -------\n    inertia : float\n        The inertia of the batch prior to centers update, i.e. the sum\n        of squared distances to the closest center for each sample. This \n        is the objective function being minimized by the k-means algorithm.\n\n    squared_diff : float\n        The sum of squared update (squared norm of the centers position\n        change). If compute_squared_diff is 0, this computation is skipped and\n        0.0 is returned instead.\n\n    Both squared diff and inertia are commonly used to monitor the convergence\n    of the algorithm.\n    ";
 static PyMethodDef __pyx_mdef_7sklearn_7cluster_8_k_means_5_mini_batch_update_csr = {"_mini_batch_update_csr", (PyCFunction)__pyx_pw_7sklearn_7cluster_8_k_means_5_mini_batch_update_csr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_7sklearn_7cluster_8_k_means_4_mini_batch_update_csr};
 static PyObject *__pyx_pw_7sklearn_7cluster_8_k_means_5_mini_batch_update_csr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_signatures = 0;
@@ -35214,6 +35214,13 @@ raise_neg_overflow:
     return (int) -1;
 }
 
+/* BytesContains */
+                  static CYTHON_INLINE int __Pyx_BytesContains(PyObject* bytes, char character) {
+    const Py_ssize_t length = PyBytes_GET_SIZE(bytes);
+    char* char_start = PyBytes_AS_STRING(bytes);
+    return memchr(char_start, (unsigned char)character, (size_t)length) != NULL;
+}
+
 /* CIntFromPy */
                   static CYTHON_INLINE unsigned int __Pyx_PyInt_As_unsigned_int(PyObject *x) {
     const unsigned int neg_one = (unsigned int) -1, const_zero = (unsigned int) 0;
@@ -35401,13 +35408,6 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to unsigned int");
     return (unsigned int) -1;
-}
-
-/* BytesContains */
-                  static CYTHON_INLINE int __Pyx_BytesContains(PyObject* bytes, char character) {
-    const Py_ssize_t length = PyBytes_GET_SIZE(bytes);
-    char* char_start = PyBytes_AS_STRING(bytes);
-    return memchr(char_start, (unsigned char)character, (size_t)length) != NULL;
 }
 
 /* CIntFromPy */

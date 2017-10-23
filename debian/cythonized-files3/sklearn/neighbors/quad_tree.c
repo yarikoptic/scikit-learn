@@ -6446,7 +6446,7 @@ static PyObject *__pyx_pf_7sklearn_9neighbors_9quad_tree_9_QuadTree_12__getstate
  *     def __getstate__(self):
  *         """Getstate re-implementation, for pickling."""
  *         d = {}             # <<<<<<<<<<<<<<
- *         # capacity is infered during the __setstate__ using nodes
+ *         # capacity is inferred during the __setstate__ using nodes
  *         d["max_depth"] = self.max_depth
  */
   __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 523, __pyx_L1_error)
@@ -6456,7 +6456,7 @@ static PyObject *__pyx_pf_7sklearn_9neighbors_9quad_tree_9_QuadTree_12__getstate
 
   /* "sklearn/neighbors/quad_tree.pyx":525
  *         d = {}
- *         # capacity is infered during the __setstate__ using nodes
+ *         # capacity is inferred during the __setstate__ using nodes
  *         d["max_depth"] = self.max_depth             # <<<<<<<<<<<<<<
  *         d["cell_count"] = self.cell_count
  *         d["capacity"] = self.capacity
@@ -6467,7 +6467,7 @@ static PyObject *__pyx_pf_7sklearn_9neighbors_9quad_tree_9_QuadTree_12__getstate
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "sklearn/neighbors/quad_tree.pyx":526
- *         # capacity is infered during the __setstate__ using nodes
+ *         # capacity is inferred during the __setstate__ using nodes
  *         d["max_depth"] = self.max_depth
  *         d["cell_count"] = self.cell_count             # <<<<<<<<<<<<<<
  *         d["capacity"] = self.capacity

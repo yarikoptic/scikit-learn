@@ -3524,7 +3524,7 @@ static PyObject *__pyx_pf_7sklearn_12linear_model_8sag_fast_2sag(CYTHON_UNUSED P
  *     cdef int *x_ind_ptr = NULL
  *     # the number of non-zero features for current sample
  *     cdef int xnnz = -1             # <<<<<<<<<<<<<<
- *     # the label value for curent sample
+ *     # the label value for current sample
  *     cdef double y
  */
   __pyx_v_xnnz = -1;

@@ -2879,7 +2879,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_posi
  *             for ax in range(n_dimensions):
  *                 buff[ax] = pos_reference[i, ax] - pos_reference[j, ax]             # <<<<<<<<<<<<<<
  *                 dij += buff[ax] * buff[ax]
- *             qij = (((1.0 + dij) / dof) ** exponent)
+ *             qij = ((1.0 + dij / dof) ** exponent)
  */
         __pyx_t_11 = __pyx_v_i;
         __pyx_t_12 = __pyx_v_ax;
@@ -2891,7 +2891,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_posi
  *             for ax in range(n_dimensions):
  *                 buff[ax] = pos_reference[i, ax] - pos_reference[j, ax]
  *                 dij += buff[ax] * buff[ax]             # <<<<<<<<<<<<<<
- *             qij = (((1.0 + dij) / dof) ** exponent)
+ *             qij = ((1.0 + dij / dof) ** exponent)
  *             dij = pij * qij
  */
         __pyx_v_dij = (__pyx_v_dij + ((__pyx_v_buff[__pyx_v_ax]) * (__pyx_v_buff[__pyx_v_ax])));
@@ -2900,15 +2900,15 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_posi
       /* "sklearn/manifold/_barnes_hut_tsne.pyx":136
  *                 buff[ax] = pos_reference[i, ax] - pos_reference[j, ax]
  *                 dij += buff[ax] * buff[ax]
- *             qij = (((1.0 + dij) / dof) ** exponent)             # <<<<<<<<<<<<<<
+ *             qij = ((1.0 + dij / dof) ** exponent)             # <<<<<<<<<<<<<<
  *             dij = pij * qij
  *             qij /= sum_Q
  */
-      __pyx_v_qij = pow(((1.0 + __pyx_v_dij) / __pyx_v_dof), ((double)__pyx_v_exponent));
+      __pyx_v_qij = pow((1.0 + (__pyx_v_dij / __pyx_v_dof)), ((double)__pyx_v_exponent));
 
       /* "sklearn/manifold/_barnes_hut_tsne.pyx":137
  *                 dij += buff[ax] * buff[ax]
- *             qij = (((1.0 + dij) / dof) ** exponent)
+ *             qij = ((1.0 + dij / dof) ** exponent)
  *             dij = pij * qij             # <<<<<<<<<<<<<<
  *             qij /= sum_Q
  *             C += pij * log(max(pij, FLOAT32_TINY)
@@ -2916,7 +2916,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_posi
       __pyx_v_dij = (__pyx_v_pij * __pyx_v_qij);
 
       /* "sklearn/manifold/_barnes_hut_tsne.pyx":138
- *             qij = (((1.0 + dij) / dof) ** exponent)
+ *             qij = ((1.0 + dij / dof) ** exponent)
  *             dij = pij * qij
  *             qij /= sum_Q             # <<<<<<<<<<<<<<
  *             C += pij * log(max(pij, FLOAT32_TINY)
@@ -3302,7 +3302,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  * 
  *             dist2s = summary[j * offset + n_dimensions]             # <<<<<<<<<<<<<<
  *             size = summary[j * offset + n_dimensions + 1]
- *             qijZ = ((1.0 + dist2s) / dof) ** exponent  # 1/(1+dist)
+ *             qijZ = (1.0 + dist2s / dof) ** exponent  # 1/(1+dist)
  */
       __pyx_v_dist2s = (__pyx_v_summary[((__pyx_v_j * __pyx_v_offset) + __pyx_v_n_dimensions)]);
 
@@ -3310,7 +3310,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  * 
  *             dist2s = summary[j * offset + n_dimensions]
  *             size = summary[j * offset + n_dimensions + 1]             # <<<<<<<<<<<<<<
- *             qijZ = ((1.0 + dist2s) / dof) ** exponent  # 1/(1+dist)
+ *             qijZ = (1.0 + dist2s / dof) ** exponent  # 1/(1+dist)
  *             sum_Q[0] += size * qijZ   # size of the node * q
  */
       __pyx_v_size = (__pyx_v_summary[(((__pyx_v_j * __pyx_v_offset) + __pyx_v_n_dimensions) + 1)]);
@@ -3318,15 +3318,15 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
       /* "sklearn/manifold/_barnes_hut_tsne.pyx":198
  *             dist2s = summary[j * offset + n_dimensions]
  *             size = summary[j * offset + n_dimensions + 1]
- *             qijZ = ((1.0 + dist2s) / dof) ** exponent  # 1/(1+dist)             # <<<<<<<<<<<<<<
+ *             qijZ = (1.0 + dist2s / dof) ** exponent  # 1/(1+dist)             # <<<<<<<<<<<<<<
  *             sum_Q[0] += size * qijZ   # size of the node * q
  *             mult = size * qijZ * qijZ
  */
-      __pyx_v_qijZ = pow(((1.0 + __pyx_v_dist2s) / __pyx_v_dof), __pyx_v_exponent);
+      __pyx_v_qijZ = pow((1.0 + (__pyx_v_dist2s / __pyx_v_dof)), __pyx_v_exponent);
 
       /* "sklearn/manifold/_barnes_hut_tsne.pyx":199
  *             size = summary[j * offset + n_dimensions + 1]
- *             qijZ = ((1.0 + dist2s) / dof) ** exponent  # 1/(1+dist)
+ *             qijZ = (1.0 + dist2s / dof) ** exponent  # 1/(1+dist)
  *             sum_Q[0] += size * qijZ   # size of the node * q             # <<<<<<<<<<<<<<
  *             mult = size * qijZ * qijZ
  *             for ax in range(n_dimensions):
@@ -3335,7 +3335,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
       (__pyx_v_sum_Q[__pyx_t_11]) = ((__pyx_v_sum_Q[__pyx_t_11]) + (__pyx_v_size * __pyx_v_qijZ));
 
       /* "sklearn/manifold/_barnes_hut_tsne.pyx":200
- *             qijZ = ((1.0 + dist2s) / dof) ** exponent  # 1/(1+dist)
+ *             qijZ = (1.0 + dist2s / dof) ** exponent  # 1/(1+dist)
  *             sum_Q[0] += size * qijZ   # size of the node * q
  *             mult = size * qijZ * qijZ             # <<<<<<<<<<<<<<
  *             for ax in range(n_dimensions):
