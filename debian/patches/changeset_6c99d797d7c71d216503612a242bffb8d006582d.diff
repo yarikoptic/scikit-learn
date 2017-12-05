@@ -1,0 +1,5 @@
+From: Olivier Grisel <olivier.grisel@ensta.org>
+Subject: [MRG+1] Make TSNE trustworthiness test more robust (#9808)
+  Platform specific rounding errors can make the t-SNE algorithm converge to
+varying quality results especially on small datasets as done in this test.
+ We therefore need a lower threshold to account for that variability.
