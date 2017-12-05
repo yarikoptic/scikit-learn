@@ -3,6 +3,8 @@ scikit-learn (0.19.1-2) unstable; urgency=medium
   * debian/patches/deb_precisionloss
     - to mitigate a minor failing unittest on BE platforms
       (Closes: #883473)
+  * debian/control
+    - boosted policy to 4.1.2 (if something to be done, report a bug)
 
  -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 04 Dec 2017 22:42:37 -0500
 
