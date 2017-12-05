@@ -3,3 +3,17 @@ Subject: [MRG+1] Make TSNE trustworthiness test more robust (#9808)
   Platform specific rounding errors can make the t-SNE algorithm converge to
 varying quality results especially on small datasets as done in this test.
  We therefore need a lower threshold to account for that variability.
+
+YOH: Original commit was no longer applicable, so did it manually but to the same effect
+
+--- a/sklearn/manifold/tests/test_t_sne.py
++++ b/sklearn/manifold/tests/test_t_sne.py
+@@ -246,7 +246,7 @@ def test_preserve_trustworthiness_approx
+                         method=method)
+             X_embedded = tsne.fit_transform(X)
+             t = trustworthiness(X, X_embedded, n_neighbors=1)
+-            assert_greater(t, 0.9)
++            assert_greater(t, 0.85)
+ 
+ 
+ def test_optimization_minimizes_kl_divergence():
