@@ -1,3 +1,10 @@
+scikit-learn (0.19.2-1) unstable; urgency=medium
+
+  * Fresh upstream bugfix release (Closes: #904636)
+    - supports Python 3.7
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 26 Jul 2018 10:12:10 -0400
+
 scikit-learn (0.19.1-4) unstable; urgency=medium
 
   * debian/control
