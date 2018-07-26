@@ -1,7 +1,7 @@
 --- a/sklearn/model_selection/tests/test_search.py
 +++ b/sklearn/model_selection/tests/test_search.py
-@@ -3,13 +3,18 @@
- from collections import Iterable, Sized
+@@ -2,13 +2,18 @@
+ 
  from sklearn.externals.six.moves import cStringIO as StringIO
  from sklearn.externals.six.moves import xrange
 -from sklearn.externals.joblib._compat import PY3_OR_LATER
