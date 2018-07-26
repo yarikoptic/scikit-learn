@@ -2,6 +2,8 @@ scikit-learn (0.19.2-1) unstable; urgency=medium
 
   * Fresh upstream bugfix release (Closes: #904636)
     - supports Python 3.7
+  * debian/control
+    - removed transitional python-scikits-learn (Closes: #878863)
 
  -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 26 Jul 2018 10:12:10 -0400
 

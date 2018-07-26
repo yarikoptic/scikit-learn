@@ -101,11 +101,3 @@ Suggests: python-sklearn
 Description: documentation and examples for scikit-learn
  This package contains documentation and example scripts for
  python-sklearn.
-
-Package: python-scikits-learn
-Depends: python-sklearn, ${misc:Depends}, ${python:Depends}
-Architecture: all
-Section: oldlibs
-Description: transitional compatibility package for scikits.learn -> sklearn migration
- Provides old namespace (scikits.learn) and could be removed if
- dependent code migrated to use sklearn for clarity of the namespace.
