@@ -23,7 +23,10 @@ Build-Depends: debhelper (>= 9), dh-autoreconf,
                libsvm-dev (>= 2.84.0),
                libatlas3-base,
 Build-Depends-Indep:
-               python-sphinx (>= 1.0), python-pil, graphviz,
+               python-sphinx (>= 1.0),
+               python-numpydoc,
+               python-pil,
+               graphviz,
 Standards-Version: 4.1.2
 X-Python-Version: >= 2.6
 Homepage: http://scikit-learn.sourceforge.net
