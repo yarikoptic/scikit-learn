@@ -1,3 +1,9 @@
+scikit-learn (0.20~rc1-1) experimental; urgency=medium
+
+  * Fresh upstream release candidate
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 04 Sep 2018 20:45:13 -0400
+
 scikit-learn (0.19.2-1) unstable; urgency=medium
 
   * Fresh upstream bugfix release (Closes: #904636)
