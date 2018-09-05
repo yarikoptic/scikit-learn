@@ -1,0 +1,67 @@
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -24,7 +24,10 @@ from sklearn.externals.six import u
+ sys.path.insert(0, os.path.abspath('sphinxext'))
+ 
+ from github_link import make_linkcode_resolve
+-import sphinx_gallery
++try:
++    import sphinx_gallery
++except:
++    sphinx_gallery = None
+ 
+ # -- General configuration ---------------------------------------------------
+ 
+@@ -33,13 +36,29 @@ import sphinx_gallery
+ extensions = [
+     'sphinx.ext.autodoc', 'sphinx.ext.autosummary',
+     'numpydoc',
+-    'sphinx.ext.linkcode', 'sphinx.ext.doctest',
++    'sphinx.ext.doctest',
+     'sphinx.ext.intersphinx',
+     'sphinx.ext.imgconverter',
+-    'sphinx_gallery.gen_gallery',
+-    'sphinx_issues',
+ ]
+ 
++if sphinx_gallery:
++    extensions.append('sphinx_gallery.gen_gallery')
++
++try:
++    import sphinx_issues
++    # yet to be packaged
++    extensions.append('sphinx_issues')
++except ImportError:
++    pass
++
++if make_linkcode_resolve:
++    try:
++        import sphinx.ext.linkcode as linkcode_module
++        extensions.append('sphinx.ext.linkcode')
++    except ImportError:
++        linkcode_module = None
++
++
+ # this is needed for some reason...
+ # see https://github.com/numpy/numpydoc/issues/69
+ numpydoc_class_members_toctree = False
+@@ -270,7 +289,8 @@ def make_carousel_thumbs(app, exception)
+         image = os.path.join(image_dir, glr_plot)
+         if os.path.exists(image):
+             c_thumb = os.path.join(image_dir, glr_plot[:-4] + '_carousel.png')
+-            sphinx_gallery.gen_rst.scale_image(image, c_thumb, max_width, 190)
++            if sphinx_gallery:
++                sphinx_gallery.gen_rst.scale_image(image, c_thumb, max_width, 190)
+ 
+ 
+ # Config for sphinx_issues
+@@ -288,7 +308,8 @@ def setup(app):
+ 
+ 
+ # The following is used by sphinx.ext.linkcode to provide links to github
+-linkcode_resolve = make_linkcode_resolve('sklearn',
++if make_linkcode_resolve:
++    linkcode_resolve = make_linkcode_resolve('sklearn',
+                                          u'https://github.com/scikit-learn/'
+                                          'scikit-learn/blob/{revision}/'
+                                          '{package}/{path}#L{lineno}')
