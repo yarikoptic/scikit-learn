@@ -13,10 +13,7 @@ Making a release
 
         $ git shortlog -ns 0.998..
 
-    - edit the doc/conf.py to increase the version number
-
-    - edit the doc/themes/scikit-learn/layout.html to change the 'News'
-      entry of the front page.
+    - edit the doc/index.rst to change the 'News' entry of the front page.
 
 2. Update the version number in sklearn/__init__.py, the __version__
    variable
@@ -37,16 +34,22 @@ Making a release
 
        $ python setup.py sdist register upload
 
-   - Upload manually the tarball on SourceForge:
-     https://sourceforge.net/projects/scikit-learn/files/
 
-5. Push the documentation to the website (see README in doc folder)
+5. Push the documentation to the website. Circle CI should do this
+   automatically for master and <N>.<N>.X branches.
 
 
-6. Build binaries for windows and push them to PyPI::
+6. Build binaries using dedicated CI servers by updating the git submodule
+   reference to the new scikit-learn tag of the release at:
 
-    $ python setup.py bdist_wininst upload
+   https://github.com/MacPython/scikit-learn-wheels
 
-   And upload them also to sourceforge
+   Once the CI has completed successfully, collect the generated binary wheel
+   packages and upload them to PyPI by running the following commands in the
+   scikit-learn source folder (checked out at the release tag)::
+
+       $ pip install -U wheelhouse_uploader
+       $ python setup.py sdist fetch_artifacts upload_all
+
 
 7. FOR FINAL RELEASE: Update the release date in What's New

@@ -11,6 +11,7 @@ __all__ = ['NotFittedError',
            'EfficiencyWarning',
            'FitFailedWarning',
            'NonBLASDotWarning',
+           'SkipTestWarning',
            'UndefinedMetricWarning']
 
 
@@ -29,7 +30,7 @@ class NotFittedError(ValueError, AttributeError):
     ... except NotFittedError as e:
     ...     print(repr(e))
     ...                        # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    NotFittedError('This LinearSVC instance is not fitted yet',)
+    NotFittedError('This LinearSVC instance is not fitted yet'...)
 
     .. versionchanged:: 0.18
        Moved from sklearn.utils.validation.
@@ -117,10 +118,10 @@ class FitFailedWarning(RuntimeWarning):
     ...     except ValueError:
     ...         pass
     ...     print(repr(w[-1].message))
-    ... # doctest: +NORMALIZE_WHITESPACE
+    ... # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
     FitFailedWarning("Classifier fit failed. The score on this train-test
     partition for these parameters will be set to 0.000000. Details:
-    \\nValueError('Penalty term must be positive; got (C=-2)',)",)
+    \\nValueError('Penalty term must be positive; got (C=-2)'...)
 
     .. versionchanged:: 0.18
        Moved from sklearn.cross_validation.
@@ -135,6 +136,15 @@ class NonBLASDotWarning(EfficiencyWarning):
 
     .. versionchanged:: 0.18
        Moved from sklearn.utils.validation, extends EfficiencyWarning.
+    """
+
+
+class SkipTestWarning(UserWarning):
+    """Warning class used to notify the user of a test that was skipped.
+
+    For example, one of the estimator checks requires a pandas import.
+    If the pandas package cannot be imported, the test will be skipped rather
+    than register as a failure.
     """
 
 

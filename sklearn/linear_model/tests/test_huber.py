@@ -42,6 +42,13 @@ def test_huber_equals_lr_for_high_epsilon():
     assert_almost_equal(huber.intercept_, lr.intercept_, 2)
 
 
+def test_huber_max_iter():
+    X, y = make_regression_with_outliers()
+    huber = HuberRegressor(max_iter=1)
+    huber.fit(X, y)
+    assert huber.n_iter_ == huber.max_iter
+
+
 def test_huber_gradient():
     # Test that the gradient calculated by _huber_loss_and_gradient is correct
     rng = np.random.RandomState(1)
@@ -118,8 +125,7 @@ def test_huber_sparse():
 
 
 def test_huber_scaling_invariant():
-    """Test that outliers filtering is scaling independent."""
-    rng = np.random.RandomState(0)
+    # Test that outliers filtering is scaling independent.
     X, y = make_regression_with_outliers()
     huber = HuberRegressor(fit_intercept=False, alpha=0.0, max_iter=100)
     huber.fit(X, y)
@@ -136,7 +142,7 @@ def test_huber_scaling_invariant():
 
 
 def test_huber_and_sgd_same_results():
-    """Test they should converge to same coefficients for same parameters"""
+    # Test they should converge to same coefficients for same parameters
 
     X, y = make_regression_with_outliers(n_samples=10, n_features=2)
 
@@ -151,8 +157,8 @@ def test_huber_and_sgd_same_results():
     assert_almost_equal(huber.scale_, 1.0, 3)
 
     sgdreg = SGDRegressor(
-        alpha=0.0, loss="huber", shuffle=True, random_state=0, n_iter=10000,
-        fit_intercept=False, epsilon=1.35)
+        alpha=0.0, loss="huber", shuffle=True, random_state=0, max_iter=10000,
+        fit_intercept=False, epsilon=1.35, tol=None)
     sgdreg.fit(X_scale, y_scale)
     assert_array_almost_equal(huber.coef_, sgdreg.coef_, 1)
 

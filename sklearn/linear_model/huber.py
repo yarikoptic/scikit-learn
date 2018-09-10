@@ -41,10 +41,10 @@ def _huber_loss_and_gradient(w, X, y, epsilon, alpha, sample_weight=None):
 
     Returns
     -------
-    loss: float
+    loss : float
         Huber loss.
 
-    gradient: ndarray, shape (len(w))
+    gradient : ndarray, shape (len(w))
         Returns the derivative of the Huber loss with respect to each
         coefficient, intercept and the scale as a vector.
     """
@@ -181,9 +181,13 @@ class HuberRegressor(LinearModel, RegressorMixin, BaseEstimator):
 
     n_iter_ : int
         Number of iterations that fmin_l_bfgs_b has run for.
-        Not available if SciPy version is 0.9 and below.
 
-    outliers_: array, shape (n_samples,)
+        .. versionchanged:: 0.20
+
+            In SciPy <= 1.0.0 the number of lbfgs iterations may exceed
+            ``max_iter``. ``n_iter_`` will now report at most ``max_iter``.
+
+    outliers_ : array, shape (n_samples,)
         A boolean mask which is set to True where the samples are identified
         as outliers.
 
@@ -272,7 +276,9 @@ class HuberRegressor(LinearModel, RegressorMixin, BaseEstimator):
             raise ValueError("HuberRegressor convergence failed:"
                              " l-BFGS-b solver terminated with %s"
                              % dict_['task'].decode('ascii'))
-        self.n_iter_ = dict_.get('nit', None)
+        # In scipy <= 1.0.0, nit may exceed maxiter.
+        # See https://github.com/scipy/scipy/issues/7854.
+        self.n_iter_ = min(dict_['nit'], self.max_iter)
         self.scale_ = parameters[-1]
         if self.fit_intercept:
             self.intercept_ = parameters[-2]

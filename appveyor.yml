@@ -25,12 +25,12 @@ environment:
       PYTHON_VERSION: "2.7.8"
       PYTHON_ARCH: "64"
 
-    - PYTHON: "C:\\Python35"
-      PYTHON_VERSION: "3.5.0"
+    - PYTHON: "C:\\Python37"
+      PYTHON_VERSION: "3.7.0"
       PYTHON_ARCH: "32"
 
-    - PYTHON: "C:\\Python35-x64"
-      PYTHON_VERSION: "3.5.0"
+    - PYTHON: "C:\\Python37-x64"
+      PYTHON_VERSION: "3.7.0"
       PYTHON_ARCH: "64"
 
 
@@ -73,8 +73,7 @@ test_script:
   # installed library.
   - "mkdir empty_folder"
   - "cd empty_folder"
-
-  - "python -c \"import nose; nose.main()\" --with-timer --timer-top-n 20 -s -v sklearn"
+  - "python -c \"import nose; nose.main()\" --with-timer --timer-top-n 20 -s sklearn"
 
   # Move back to the project folder
   - "cd .."
