@@ -6,6 +6,7 @@ scikit-learn (0.19.2-2) UNRELEASED; urgency=medium
   * d/watch:
      - Point to pypi since releases are not tagged reliably at Github
      - Use repacksuffix=+dfsg, compression=xz
+     - Inject '~' between version number and rc to sort real release highter
   * d/control: Use Files-Excluded to remove files from upstream source
 
  -- Andreas Tille <tille@debian.org>  Mon, 10 Sep 2018 21:28:57 +0200
