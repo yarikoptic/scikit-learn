@@ -1,13 +1,15 @@
 --- a/doc/conf.py
 +++ b/doc/conf.py
-@@ -33,11 +33,25 @@ import sphinx_gallery
+@@ -33,13 +33,27 @@ import sphinx_gallery
  extensions = [
      'sphinx.ext.autodoc', 'sphinx.ext.autosummary',
-     'numpy_ext.numpydoc',
+     'numpydoc',
 -    'sphinx.ext.linkcode', 'sphinx.ext.doctest',
 +    'sphinx.ext.doctest',
+     'sphinx.ext.intersphinx',
+     'sphinx.ext.imgconverter',
      'sphinx_gallery.gen_gallery',
--    'sphinx_issues',
+     'sphinx_issues',
  ]
  
 +try:
@@ -24,11 +26,10 @@
 +    except ImportError:
 +        linkcode_module = None
 +
-+
- # pngmath / imgmath compatibility layer for different sphinx versions
- import sphinx
- from distutils.version import LooseVersion
-@@ -287,7 +301,8 @@ def setup(app):
+ # this is needed for some reason...
+ # see https://github.com/numpy/numpydoc/issues/69
+ numpydoc_class_members_toctree = False
+@@ -288,7 +302,8 @@ def setup(app):
  
  
  # The following is used by sphinx.ext.linkcode to provide links to github

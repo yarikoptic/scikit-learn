@@ -7,15 +7,10 @@ Last-Update: 2015-11-05
 
 --- a/doc/about.rst
 +++ b/doc/about.rst
-@@ -185,50 +185,13 @@ for code sprints, as well as towards the
- The 2013 Paris international sprint
- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@@ -213,44 +213,12 @@ The 2013 Paris international sprint
+  |end-div|
  
--|center-div|   |telecom|   |tinyclues|   |afpy| |FNRS|
--
-- |end-div|
--
--
+ 
 -
 -.. |center-div| raw:: html
 -
@@ -32,7 +27,7 @@ Last-Update: 2015-11-05
 -   :target: https://www.tinyclues.com/
 -
 -
--.. |afpy| image:: https://www.afpy.org/logo.png
+-.. |afpy| image:: https://www.afpy.org/static/images/logo.svg
 -   :width: 120pt
 -   :target: https://www.afpy.org
 -
@@ -54,14 +49,12 @@ Last-Update: 2015-11-05
 -.. |end-div| raw:: html
 -
 -  </div>
--
 +`telecom <http://www.telecom-paristech.fr/>`_,
 +`tinyclues <http://www.tinyclues.com/>`_,
 +`afpy <http://www.afpy.org>`_
 +`SGR <http://www.svi.cnrs-bellevue.fr>`,
 +`FNRS <http://www.frs-fnrs.be/>`_,
 +`IAP VII/19 - DYSCO <http://sites.uclouvain.be/dysco/>`_.
-+ 
+ 
  *For more information on this sprint, see* `here
  <https://github.com/scikit-learn/administrative/blob/master/sprint_paris_2013/proposal.rst>`__
- 

@@ -1,6 +1,6 @@
 --- a/doc/about.rst
 +++ b/doc/about.rst
-@@ -160,7 +160,8 @@ Donating to the project
+@@ -169,7 +169,8 @@ Donating to the project
  ~~~~~~~~~~~~~~~~~~~~~~~
  
  If you are interested in donating to the project or to one of our code-sprints, you can use
@@ -10,7 +10,7 @@
  
  All donations will be handled by `NumFOCUS
  <http://www.numfocus.org>`_, a non-profit-organization which is
-@@ -173,24 +174,6 @@ the project funded and available while i
+@@ -182,24 +183,6 @@ the project funded and available while i
  The received donations for the scikit-learn project mostly will go towards covering travel-expenses
  for code sprints, as well as towards the organization budget of the project [#f1]_.
  

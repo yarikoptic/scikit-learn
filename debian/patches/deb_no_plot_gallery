@@ -1,14 +1,8 @@
---- a/doc/conf.py
-+++ b/doc/conf.py
-@@ -61,7 +61,10 @@ source_suffix = '.rst'
- #source_encoding = 'utf-8'
- 
- # Generate the plots for the gallery
--plot_gallery = True
-+# yoh: some examples require network access (and thus get stuck at times), etc
-+#      so to robustify builds of the debian packages across platforms, for now
-+#      gallery is disabled
-+plot_gallery = False
- 
- # The master toctree document.
- master_doc = 'index'
+Author: Yaroslav Halchenko
+Date: 2015-03-11 12:25:57 -0400
+Description: some examples require network access (and thus get stuck at times), etc
+      so to robustify builds of the debian packages across platforms, for now
+      gallery is disabled
+Remark by Andreas Tille <tille@debian.org> while refreshing patches:
+  The option to set `plot_gallery = False` was removed from upstream source.
+  May be we need to exclude those tests by other means

@@ -10,14 +10,3 @@ Subject: use system-wide joblib and do not attempt to install joblib/test
 +# replace local name space with the one from system-wide joblib
 +import joblib
 +locals().update(joblib.__dict__)
---- a/sklearn/metrics/pairwise.py
-+++ b/sklearn/metrics/pairwise.py
-@@ -1075,7 +1075,7 @@ def _parallel_pairwise(X, Y, func, n_job
-     """Break the pairwise matrix in n_jobs even slices
-     and compute them in parallel"""
-     if n_jobs < 0:
--        n_jobs = max(cpu_count() + 1 + n_jobs, 1)
-+        n_jobs = max(parallel.cpu_count() + 1 + n_jobs, 1)
- 
-     if Y is None:
-         Y = X
