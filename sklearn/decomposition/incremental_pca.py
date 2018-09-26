@@ -4,6 +4,7 @@
 #         Giorgio Patrini
 # License: BSD 3 clause
 
+from __future__ import division
 import numpy as np
 from scipy import linalg
 
@@ -99,6 +100,20 @@ class IncrementalPCA(_BasePCA):
         The number of samples processed by the estimator. Will be reset on
         new calls to fit, but increments across ``partial_fit`` calls.
 
+    Examples
+    --------
+    >>> from sklearn.datasets import load_digits
+    >>> from sklearn.decomposition import IncrementalPCA
+    >>> X, _ = load_digits(return_X_y=True)
+    >>> transformer = IncrementalPCA(n_components=7, batch_size=200)
+    >>> # either partially fit on smaller batches of data
+    >>> transformer.partial_fit(X[:100, :])
+    IncrementalPCA(batch_size=200, copy=True, n_components=7, whiten=False)
+    >>> # or let the fit function itself divide the data into batches
+    >>> X_transformed = transformer.fit_transform(X)
+    >>> X_transformed.shape
+    (1797, 7)
+
     Notes
     -----
     Implements the incremental PCA model from:
@@ -135,7 +150,6 @@ class IncrementalPCA(_BasePCA):
     See also
     --------
     PCA
-    RandomizedPCA
     KernelPCA
     SparsePCA
     TruncatedSVD
@@ -157,7 +171,7 @@ class IncrementalPCA(_BasePCA):
             Training data, where n_samples is the number of samples and
             n_features is the number of features.
 
-        y : Ignored.
+        y : Ignored
 
         Returns
         -------
@@ -198,7 +212,7 @@ class IncrementalPCA(_BasePCA):
         check_input : bool
             Run check_array on X.
 
-        y : Ignored.
+        y : Ignored
 
         Returns
         -------
@@ -212,11 +226,18 @@ class IncrementalPCA(_BasePCA):
             self.components_ = None
 
         if self.n_components is None:
-            self.n_components_ = n_features
+            if self.components_ is None:
+                self.n_components_ = min(n_samples, n_features)
+            else:
+                self.n_components_ = self.components_.shape[0]
         elif not 1 <= self.n_components <= n_features:
             raise ValueError("n_components=%r invalid for n_features=%d, need "
                              "more rows than columns for IncrementalPCA "
                              "processing" % (self.n_components, n_features))
+        elif not self.n_components <= n_samples:
+            raise ValueError("n_components=%r must be less or equal to "
+                             "the batch number of samples "
+                             "%d." % (self.n_components, n_samples))
         else:
             self.n_components_ = self.n_components
 
@@ -235,9 +256,10 @@ class IncrementalPCA(_BasePCA):
 
         # Update stats - they are 0 if this is the fisrt step
         col_mean, col_var, n_total_samples = \
-            _incremental_mean_and_var(X, last_mean=self.mean_,
-                                      last_variance=self.var_,
-                                      last_sample_count=self.n_samples_seen_)
+            _incremental_mean_and_var(
+                X, last_mean=self.mean_, last_variance=self.var_,
+                last_sample_count=np.repeat(self.n_samples_seen_, X.shape[1]))
+        n_total_samples = n_total_samples[0]
 
         # Whitening
         if self.n_samples_seen_ == 0:
