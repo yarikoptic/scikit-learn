@@ -10,6 +10,7 @@ scikit-learn (0.20~rc1+dfsg-1) UNRELEASED; urgency=medium
      - Use repacksuffix=+dfsg, compression=xz
      - Inject '~' between version number and rc to sort real release highter
   * d/control: Use Files-Excluded to remove files from upstream source
+  * d/gbp.conf: Strip default and unusual options
 
  -- Andreas Tille <tille@debian.org>  Wed, 26 Sep 2018 11:18:48 +0200
 
