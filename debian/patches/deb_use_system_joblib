@@ -10,3 +10,16 @@ Subject: use system-wide joblib and do not attempt to install joblib/test
 +# replace local name space with the one from system-wide joblib
 +import joblib
 +locals().update(joblib.__dict__)
+--- a/sklearn/externals/setup.py
++++ b/sklearn/externals/setup.py
+@@ -4,10 +4,5 @@
+ def configuration(parent_package='', top_path=None):
+     from numpy.distutils.misc_util import Configuration
+     config = Configuration('externals', parent_package, top_path)
+-    config.add_subpackage('joblib')
+-    config.add_subpackage('joblib/externals')
+-    config.add_subpackage('joblib/externals/loky')
+-    config.add_subpackage('joblib/externals/loky/backend')
+-    config.add_subpackage('joblib/externals/cloudpickle')
+ 
+     return config
