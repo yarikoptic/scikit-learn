@@ -5,7 +5,7 @@ deb_skip_some_tests_on_arm
 deb_use_system_joblib
 deb_no_google_analytics
 deb_git_revision_cmd
-deb_no_plot_gallery
+# deb_no_plot_gallery
 deb_optional_linkcode
 deb_nopaypal
 0001-BF-Define-message-since-exception-might-happen-in-in.patch
