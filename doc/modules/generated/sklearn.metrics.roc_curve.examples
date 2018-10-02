@@ -1,0 +1,76 @@
+
+
+Examples using ``sklearn.metrics.roc_curve``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Modeling species&#x27; geographic distributions is an important problem in conservation biology. In ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/applications/images/thumb/sphx_glr_plot_species_distribution_modeling_thumb.png
+
+        :ref:`sphx_glr_auto_examples_applications_plot_species_distribution_modeling.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_applications_plot_species_distribution_modeling.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Transform your features into a higher dimensional, sparse space. Then train a linear model on t...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_feature_transformation_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_feature_transformation.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_feature_transformation.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of Receiver Operating Characteristic (ROC) metric to evaluate classifier output quality...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_roc_crossval_thumb.png
+
+        :ref:`sphx_glr_auto_examples_model_selection_plot_roc_crossval.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_model_selection_plot_roc_crossval.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of Receiver Operating Characteristic (ROC) metric to evaluate classifier output quality...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_roc_thumb.png
+
+        :ref:`sphx_glr_auto_examples_model_selection_plot_roc.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_model_selection_plot_roc.py`

@@ -1,0 +1,58 @@
+
+
+Examples using ``sklearn.neighbors.KernelDensity``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how kernel density estimation (KDE), a powerful non-parametric density estim...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/neighbors/images/thumb/sphx_glr_plot_digits_kde_sampling_thumb.png
+
+        :ref:`sphx_glr_auto_examples_neighbors_plot_digits_kde_sampling.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_neighbors_plot_digits_kde_sampling.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example does not perform any learning over the data (see :ref:`sphx_glr_auto_examples_appl...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/neighbors/images/thumb/sphx_glr_plot_species_kde_thumb.png
+
+        :ref:`sphx_glr_auto_examples_neighbors_plot_species_kde.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_neighbors_plot_species_kde.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The first plot shows one of the problems with using histograms to visualize the density of poin...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/neighbors/images/thumb/sphx_glr_plot_kde_1d_thumb.png
+
+        :ref:`sphx_glr_auto_examples_neighbors_plot_kde_1d.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_neighbors_plot_kde_1d.py`

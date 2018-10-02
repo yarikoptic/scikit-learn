@@ -1,0 +1,58 @@
+
+
+Examples using ``sklearn.covariance.LedoitWolf``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The usual covariance maximum likelihood estimate can be regularized using shrinkage. Ledoit and...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/covariance/images/thumb/sphx_glr_plot_lw_vs_oas_thumb.png
+
+        :ref:`sphx_glr_auto_examples_covariance_plot_lw_vs_oas.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_covariance_plot_lw_vs_oas.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="When working with covariance estimation, the usual approach is to use a maximum likelihood esti...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/covariance/images/thumb/sphx_glr_plot_covariance_estimation_thumb.png
+
+        :ref:`sphx_glr_auto_examples_covariance_plot_covariance_estimation.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_covariance_plot_covariance_estimation.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Probabilistic PCA and Factor Analysis are probabilistic models. The consequence is that the lik...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/decomposition/images/thumb/sphx_glr_plot_pca_vs_fa_model_selection_thumb.png
+
+        :ref:`sphx_glr_auto_examples_decomposition_plot_pca_vs_fa_model_selection.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_decomposition_plot_pca_vs_fa_model_selection.py`

@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.ensemble.partial_dependence.partial_dependence``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Partial dependence plots show the dependence between the target function [2]_ and a set of &#x27;tar...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_partial_dependence_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_partial_dependence.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_partial_dependence.py`

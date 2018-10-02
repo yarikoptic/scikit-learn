@@ -1,0 +1,256 @@
+
+
+Examples using ``sklearn.linear_model.LinearRegression``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An illustration of the isotonic regression on generated data. The isotonic regression finds a n...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_isotonic_regression_thumb.png
+
+        :ref:`sphx_glr_auto_examples_plot_isotonic_regression.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_plot_isotonic_regression.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows the use of multi-output estimator to complete images. The goal is to predict...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_multioutput_face_completion_thumb.png
+
+        :ref:`sphx_glr_auto_examples_plot_multioutput_face_completion.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_plot_multioutput_face_completion.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Ridge regression is basically minimizing a penalised version of the least-squared function. The...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ols_ridge_variance_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_ols_ridge_variance.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_ols_ridge_variance.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Shown in the plot is how the logistic regression would, in this synthetic dataset, classify val...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_logistic_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_logistic.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_logistic.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The coefficients, the residual sum of squares and the variance score are also calculated.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ols_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_ols.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_ols.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example we see how to robustly fit a linear model to faulty data using the RANSAC algor...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ransac_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_ransac.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_ransac.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Features 1 and 2 of the diabetes-dataset are fitted and plotted below. It illustrates that alth...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ols_3d_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_ols_3d.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_ols_3d.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Computes a Theil-Sen Regression on a synthetic dataset.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_theilsen_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_theilsen.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_theilsen.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here a sine function is fit with a polynomial of order 3, for values close to zero.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_robust_fit_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_robust_fit.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_robust_fit.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fit regression model with Bayesian Ridge Regression.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ard_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_ard.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_ard.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Computes a Bayesian Ridge Regression on a synthetic dataset.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_bayesian_ridge_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_bayesian_ridge.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_bayesian_ridge.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use `cross_val_predict` to visualize prediction errors.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_cv_predict_thumb.png
+
+        :ref:`sphx_glr_auto_examples_model_selection_plot_cv_predict.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_model_selection_plot_cv_predict.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the problems of underfitting and overfitting and how we can use linea...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_underfitting_overfitting_thumb.png
+
+        :ref:`sphx_glr_auto_examples_model_selection_plot_underfitting_overfitting.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_model_selection_plot_underfitting_overfitting.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The example compares prediction result of linear regression (linear model) and decision tree (t...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/preprocessing/images/thumb/sphx_glr_plot_discretization_thumb.png
+
+        :ref:`sphx_glr_auto_examples_preprocessing_plot_discretization.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_preprocessing_plot_discretization.py`

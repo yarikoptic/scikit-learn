@@ -1,0 +1,112 @@
+
+
+Examples using ``sklearn.utils.shuffle``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demonstrate how model complexity influences both prediction accuracy and computational performa...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/applications/images/thumb/sphx_glr_plot_model_complexity_influence_thumb.png
+
+        :ref:`sphx_glr_auto_examples_applications_plot_model_complexity_influence.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_applications_plot_model_complexity_influence.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an example showing the prediction latency of various scikit-learn estimators.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/applications/images/thumb/sphx_glr_plot_prediction_latency_thumb.png
+
+        :ref:`sphx_glr_auto_examples_applications_plot_prediction_latency.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_applications_plot_prediction_latency.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Performs a pixel-wise Vector Quantization (VQ) of an image of the summer palace (China), reduci...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_color_quantization_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_color_quantization.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_color_quantization.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Evaluate the ability of k-means initializations strategies to make the algorithm convergence ro...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_kmeans_stability_low_dim_dense_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_stability_low_dim_dense.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_stability_low_dim_dense.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demonstrate Gradient Boosting on the Boston housing dataset.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_gradient_boosting_regression_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_regression.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_regression.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Stochastic Gradient Descent is an optimization technique which minimizes a loss function in a s...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_sgd_early_stopping_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_early_stopping.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_early_stopping.py`

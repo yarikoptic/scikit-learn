@@ -1,0 +1,130 @@
+
+
+Examples using ``sklearn.naive_bayes.GaussianNB``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Well calibrated classifiers are probabilistic classifiers for which the output of the predict_p...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/calibration/images/thumb/sphx_glr_plot_compare_calibration_thumb.png
+
+        :ref:`sphx_glr_auto_examples_calibration_plot_compare_calibration.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_calibration_plot_compare_calibration.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="When performing classification one often wants to predict not only the class label, but also th...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/calibration/images/thumb/sphx_glr_plot_calibration_curve_thumb.png
+
+        :ref:`sphx_glr_auto_examples_calibration_plot_calibration_curve.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_calibration_plot_calibration_curve.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="When performing classification you often want to predict not only the class label, but also the...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/calibration/images/thumb/sphx_glr_plot_calibration_thumb.png
+
+        :ref:`sphx_glr_auto_examples_calibration_plot_calibration.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_calibration_plot_calibration.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A comparison of a several classifiers in scikit-learn on synthetic datasets. The point of this ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_classifier_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_classification_plot_classifier_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_classification_plot_classifier_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the class probabilities of the first sample in a toy dataset predicted by three different ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_voting_probas_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_voting_probas.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_voting_probas.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="On the left side the learning curve of a naive Bayes classifier is shown for the digits dataset...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_learning_curve_thumb.png
+
+        :ref:`sphx_glr_auto_examples_model_selection_plot_learning_curve.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_model_selection_plot_learning_curve.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Feature scaling through standardization (or Z-score normalization) can be an important preproce...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/preprocessing/images/thumb/sphx_glr_plot_scaling_importance_thumb.png
+
+        :ref:`sphx_glr_auto_examples_preprocessing_plot_scaling_importance.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_preprocessing_plot_scaling_importance.py`

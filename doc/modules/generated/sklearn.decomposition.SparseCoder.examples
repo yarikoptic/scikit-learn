@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.decomposition.SparseCoder``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Transform a signal as a sparse combination of Ricker wavelets. This example visually compares d...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/decomposition/images/thumb/sphx_glr_plot_sparse_coding_thumb.png
+
+        :ref:`sphx_glr_auto_examples_decomposition_plot_sparse_coding.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_decomposition_plot_sparse_coding.py`

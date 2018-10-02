@@ -1,0 +1,148 @@
+
+
+Examples using ``sklearn.cluster.MiniBatchKMeans``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the Spectral Co-clustering algorithm on the twenty newsgroups dataset...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/bicluster/images/thumb/sphx_glr_plot_bicluster_newsgroups_thumb.png
+
+        :ref:`sphx_glr_auto_examples_bicluster_plot_bicluster_newsgroups.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_bicluster_plot_bicluster_newsgroups.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example uses a large dataset of faces to learn a set of 20 x 20 images patches that consti...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_dict_face_patches_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_dict_face_patches.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_dict_face_patches.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example compares the timing of Birch (with and without the global clustering step) and Min...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_birch_vs_minibatchkmeans_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_birch_vs_minibatchkmeans.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_birch_vs_minibatchkmeans.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Evaluate the ability of k-means initializations strategies to make the algorithm convergence ro...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_kmeans_stability_low_dim_dense_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_stability_low_dim_dense.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_stability_low_dim_dense.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We want to compare the performance of the MiniBatchKMeans and KMeans: the MiniBatchKMeans is fa...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_mini_batch_kmeans_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_mini_batch_kmeans.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_mini_batch_kmeans.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows characteristics of different clustering algorithms on datasets that are &quot;int...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_cluster_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_cluster_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_cluster_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example applies to :ref:`olivetti_faces` different unsupervised matrix decomposition (dime...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/decomposition/images/thumb/sphx_glr_plot_faces_decomposition_thumb.png
+
+        :ref:`sphx_glr_auto_examples_decomposition_plot_faces_decomposition.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_decomposition_plot_faces_decomposition.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an example showing how the scikit-learn can be used to cluster documents by topics usin...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/text/images/thumb/sphx_glr_plot_document_clustering_thumb.png
+
+        :ref:`sphx_glr_auto_examples_text_plot_document_clustering.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_text_plot_document_clustering.py`

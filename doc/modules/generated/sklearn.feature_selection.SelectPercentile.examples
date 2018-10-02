@@ -1,0 +1,58 @@
+
+
+Examples using ``sklearn.feature_selection.SelectPercentile``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example compares 2 dimensionality reduction strategies:">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_feature_agglomeration_vs_univariate_selection_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_feature_agglomeration_vs_univariate_selection.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_feature_agglomeration_vs_univariate_selection.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing univariate feature selection.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/feature_selection/images/thumb/sphx_glr_plot_feature_selection_thumb.png
+
+        :ref:`sphx_glr_auto_examples_feature_selection_plot_feature_selection.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_feature_selection_plot_feature_selection.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform univariate feature selection before running a SVC (support ve...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/svm/images/thumb/sphx_glr_plot_svm_anova_thumb.png
+
+        :ref:`sphx_glr_auto_examples_svm_plot_svm_anova.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_svm_plot_svm_anova.py`

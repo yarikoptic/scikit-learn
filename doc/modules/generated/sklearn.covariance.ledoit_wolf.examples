@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.covariance.ledoit_wolf``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Using the GraphicalLasso estimator to learn a covariance and sparse precision from a small numb...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/covariance/images/thumb/sphx_glr_plot_sparse_cov_thumb.png
+
+        :ref:`sphx_glr_auto_examples_covariance_plot_sparse_cov.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_covariance_plot_sparse_cov.py`

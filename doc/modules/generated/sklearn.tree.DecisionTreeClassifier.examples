@@ -1,0 +1,166 @@
+
+
+Examples using ``sklearn.tree.DecisionTreeClassifier``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A comparison of a several classifiers in scikit-learn on synthetic datasets. The point of this ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_classifier_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_classification_plot_classifier_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_classification_plot_classifier_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the decision boundaries of a `VotingClassifier` for two features of the Iris dataset.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_voting_decision_regions_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_voting_decision_regions.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_voting_decision_regions.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example fits an AdaBoosted decision stump on a non-linearly separable classification datas...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_adaboost_twoclass_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_adaboost_twoclass.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_adaboost_twoclass.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example is based on Figure 10.2 from Hastie et al 2009 [1]_ and illustrates the difference...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_adaboost_hastie_10_2_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_adaboost_hastie_10_2.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_adaboost_hastie_10_2.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example reproduces Figure 1 of Zhu et al [1]_ and shows how boosting can improve predictio...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_adaboost_multiclass_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_adaboost_multiclass.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_adaboost_multiclass.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the decision surfaces of forests of randomized trees trained on pairs of features of the i...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_forest_iris_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_forest_iris.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_forest_iris.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Multiple metric parameter search can be done by setting the ``scoring`` parameter to a list of ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_multi_metric_evaluation_thumb.png
+
+        :ref:`sphx_glr_auto_examples_model_selection_plot_multi_metric_evaluation.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_model_selection_plot_multi_metric_evaluation.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the decision surface of a decision tree trained on pairs of features of the iris dataset.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/tree/images/thumb/sphx_glr_plot_iris_thumb.png
+
+        :ref:`sphx_glr_auto_examples_tree_plot_iris.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_tree_plot_iris.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The decision tree structure can be analysed to gain further insight on the relation between the...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/tree/images/thumb/sphx_glr_plot_unveil_tree_structure_thumb.png
+
+        :ref:`sphx_glr_auto_examples_tree_plot_unveil_tree_structure.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_tree_plot_unveil_tree_structure.py`
