@@ -83,7 +83,7 @@ X /= X.std(axis=0)
 # Estimate the covariance
 emp_cov = np.dot(X.T, X) / n_samples
 
-model = GraphicalLassoCV()
+model = GraphicalLassoCV(cv=5)
 model.fit(X)
 cov_ = model.covariance_
 prec_ = model.precision_
@@ -121,7 +121,10 @@ for i, (name, this_prec) in enumerate(precs):
     plt.xticks(())
     plt.yticks(())
     plt.title('%s precision' % name)
-    ax.set_axis_bgcolor('.7')
+    if hasattr(ax, 'set_facecolor'):
+        ax.set_facecolor('.7')
+    else:
+        ax.set_axis_bgcolor('.7')
 
 # plot the model selection metric
 plt.figure(figsize=(4, 3))

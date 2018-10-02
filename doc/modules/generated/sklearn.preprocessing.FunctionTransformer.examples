@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.preprocessing.FunctionTransformer``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Shows how to use a function transformer in a pipeline. If you know your dataset&#x27;s first princip...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/preprocessing/images/thumb/sphx_glr_plot_function_transformer_thumb.png
+
+        :ref:`sphx_glr_auto_examples_preprocessing_plot_function_transformer.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_preprocessing_plot_function_transformer.py`

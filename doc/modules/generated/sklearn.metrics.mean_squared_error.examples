@@ -1,0 +1,94 @@
+
+
+Examples using ``sklearn.metrics.mean_squared_error``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demonstrate how model complexity influences both prediction accuracy and computational performa...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/applications/images/thumb/sphx_glr_plot_model_complexity_influence_thumb.png
+
+        :ref:`sphx_glr_auto_examples_applications_plot_model_complexity_influence.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_applications_plot_model_complexity_influence.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demonstrate Gradient Boosting on the Boston housing dataset.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_gradient_boosting_regression_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_regression.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_regression.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip=":class:`Ridge` Regression is the estimator used in this example. Each color in the left plot re...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ridge_coeffs_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_ridge_coeffs.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_ridge_coeffs.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The coefficients, the residual sum of squares and the variance score are also calculated.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ols_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_ols.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_ols.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here a sine function is fit with a polynomial of order 3, for values close to zero.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_robust_fit_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_robust_fit.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_robust_fit.py`

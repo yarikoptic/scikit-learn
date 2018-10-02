@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.cluster.affinity_propagation``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example employs several unsupervised learning techniques to extract the stock market struc...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/applications/images/thumb/sphx_glr_plot_stock_market_thumb.png
+
+        :ref:`sphx_glr_auto_examples_applications_plot_stock_market.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_applications_plot_stock_market.py`

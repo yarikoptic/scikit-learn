@@ -1,0 +1,40 @@
+
+
+Examples using ``sklearn.kernel_ridge.KernelRidge``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Both kernel ridge regression (KRR) and SVR learn a non-linear function by employing the kernel ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_kernel_ridge_regression_thumb.png
+
+        :ref:`sphx_glr_auto_examples_plot_kernel_ridge_regression.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_plot_kernel_ridge_regression.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Both kernel ridge regression (KRR) and Gaussian process regression (GPR) learn a target functio...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/gaussian_process/images/thumb/sphx_glr_plot_compare_gpr_krr_thumb.png
+
+        :ref:`sphx_glr_auto_examples_gaussian_process_plot_compare_gpr_krr.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_gaussian_process_plot_compare_gpr_krr.py`

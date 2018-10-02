@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.linear_model.enet_path``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lasso and elastic net (L1 and L2 penalisation) implemented using a coordinate descent.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_lasso_coordinate_descent_path_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_coordinate_descent_path.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_coordinate_descent_path.py`

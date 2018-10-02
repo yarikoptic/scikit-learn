@@ -45,7 +45,7 @@ should be used when applicable.
 
 - :func:`validation.check_memory` checks that input is ``joblib.Memory``-like,
   which means that it can be converted into a
-  ``sklearn.externals.joblib.Memory`` instance (typically a str denoting
+  ``sklearn.utils.Memory`` instance (typically a str denoting
   the ``cachedir``) or has the same interface.
 
 If your code relies on a random number generator, it should never use
@@ -71,7 +71,7 @@ For example::
     >>> random_state = 0
     >>> random_state = check_random_state(random_state)
     >>> random_state.rand(4)
-    array([ 0.5488135 ,  0.71518937,  0.60276338,  0.54488318])
+    array([0.5488135 , 0.71518937, 0.60276338, 0.54488318])
 
 When developing your own scikit-learn compatible estimator, the following
 helpers are available.

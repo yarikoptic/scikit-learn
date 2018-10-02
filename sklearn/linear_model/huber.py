@@ -182,11 +182,38 @@ class HuberRegressor(LinearModel, RegressorMixin, BaseEstimator):
 
     n_iter_ : int
         Number of iterations that fmin_l_bfgs_b has run for.
-        Not available if SciPy version is 0.9 and below.
+
+        .. versionchanged:: 0.20
+
+            In SciPy <= 1.0.0 the number of lbfgs iterations may exceed
+            ``max_iter``. ``n_iter_`` will now report at most ``max_iter``.
 
     outliers_ : array, shape (n_samples,)
         A boolean mask which is set to True where the samples are identified
         as outliers.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from sklearn.linear_model import HuberRegressor, LinearRegression
+    >>> from sklearn.datasets import make_regression
+    >>> np.random.seed(0)
+    >>> X, y, coef = make_regression(
+    ...     n_samples=200, n_features=2, noise=4.0, coef=True, random_state=0)
+    >>> X[:4] = np.random.uniform(10, 20, (4, 2))
+    >>> y[:4] = np.random.uniform(10, 20, 4)
+    >>> huber = HuberRegressor().fit(X, y)
+    >>> huber.score(X, y) # doctest: +ELLIPSIS
+    -7.284608623514573
+    >>> huber.predict(X[:1,])
+    array([806.7200...])
+    >>> linear = LinearRegression().fit(X, y)
+    >>> print("True coefficients:", coef)
+    True coefficients: [20.4923...  34.1698...]
+    >>> print("Huber coefficients:", huber.coef_)
+    Huber coefficients: [17.7906... 31.0106...]
+    >>> print("Linear Regression coefficients:", linear.coef_)
+    Linear Regression coefficients: [-1.9221...  7.0226...]
 
     References
     ----------
@@ -264,7 +291,9 @@ class HuberRegressor(LinearModel, RegressorMixin, BaseEstimator):
             raise ValueError("HuberRegressor convergence failed:"
                              " l-BFGS-b solver terminated with %s"
                              % dict_['task'].decode('ascii'))
-        self.n_iter_ = dict_['nit']
+        # In scipy <= 1.0.0, nit may exceed maxiter.
+        # See https://github.com/scipy/scipy/issues/7854.
+        self.n_iter_ = min(dict_['nit'], self.max_iter)
         self.scale_ = parameters[-1]
         if self.fit_intercept:
             self.intercept_ = parameters[-2]

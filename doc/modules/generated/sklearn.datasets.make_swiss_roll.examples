@@ -1,0 +1,40 @@
+
+
+Examples using ``sklearn.datasets.make_swiss_roll``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example builds a swiss roll dataset and runs hierarchical clustering on their position.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_ward_structured_vs_unstructured_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_ward_structured_vs_unstructured.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_ward_structured_vs_unstructured.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An illustration of Swiss Roll reduction with locally linear embedding ">
+
+.. only:: html
+
+    .. figure:: /auto_examples/manifold/images/thumb/sphx_glr_plot_swissroll_thumb.png
+
+        :ref:`sphx_glr_auto_examples_manifold_plot_swissroll.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_manifold_plot_swissroll.py`

@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.datasets.dump_svmlight_file``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A simple graphical frontend for Libsvm mainly intended for didactic purposes. You can create da...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/applications/images/thumb/sphx_glr_svm_gui_thumb.png
+
+        :ref:`sphx_glr_auto_examples_applications_svm_gui.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_applications_svm_gui.py`

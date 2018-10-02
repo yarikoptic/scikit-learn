@@ -1,0 +1,40 @@
+
+
+Examples using ``sklearn.ensemble.VotingClassifier``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the decision boundaries of a `VotingClassifier` for two features of the Iris dataset.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_voting_decision_regions_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_voting_decision_regions.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_voting_decision_regions.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the class probabilities of the first sample in a toy dataset predicted by three different ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_voting_probas_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_voting_probas.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_voting_probas.py`

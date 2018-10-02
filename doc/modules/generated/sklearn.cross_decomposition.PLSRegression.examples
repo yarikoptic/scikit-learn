@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.cross_decomposition.PLSRegression``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Simple usage of various cross decomposition algorithms: - PLSCanonical - PLSRegression, with mu...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cross_decomposition/images/thumb/sphx_glr_plot_compare_cross_decomposition_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cross_decomposition_plot_compare_cross_decomposition.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cross_decomposition_plot_compare_cross_decomposition.py`

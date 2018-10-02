@@ -1,0 +1,76 @@
+
+
+Examples using ``sklearn.discriminant_analysis.LinearDiscriminantAnalysis``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Shows how shrinkage improves classification. ">
+
+.. only:: html
+
+    .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_lda_thumb.png
+
+        :ref:`sphx_glr_auto_examples_classification_plot_lda.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_classification_plot_lda.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example plots the covariance ellipsoids of each class and decision boundary learned by LDA...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_lda_qda_thumb.png
+
+        :ref:`sphx_glr_auto_examples_classification_plot_lda_qda.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_classification_plot_lda_qda.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The Iris dataset represents 3 kind of Iris flowers (Setosa, Versicolour and Virginica) with 4 a...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/decomposition/images/thumb/sphx_glr_plot_pca_vs_lda_thumb.png
+
+        :ref:`sphx_glr_auto_examples_decomposition_plot_pca_vs_lda.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_decomposition_plot_pca_vs_lda.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An illustration of various embeddings on the digits dataset.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/manifold/images/thumb/sphx_glr_plot_lle_digits_thumb.png
+
+        :ref:`sphx_glr_auto_examples_manifold_plot_lle_digits.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_manifold_plot_lle_digits.py`

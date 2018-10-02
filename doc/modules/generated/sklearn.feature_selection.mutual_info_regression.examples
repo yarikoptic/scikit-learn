@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.feature_selection.mutual_info_regression``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the differences between univariate F-test statistics and mutual inform...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/feature_selection/images/thumb/sphx_glr_plot_f_test_vs_mi_thumb.png
+
+        :ref:`sphx_glr_auto_examples_feature_selection_plot_f_test_vs_mi.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_feature_selection_plot_f_test_vs_mi.py`

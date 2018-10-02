@@ -1,0 +1,40 @@
+
+
+Examples using ``sklearn.feature_extraction.text.TfidfTransformer``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The dataset used in this example is the 20 newsgroups dataset which will be automatically downl...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/model_selection/images/thumb/sphx_glr_grid_search_text_feature_extraction_thumb.png
+
+        :ref:`sphx_glr_auto_examples_model_selection_grid_search_text_feature_extraction.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_model_selection_grid_search_text_feature_extraction.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an example showing how the scikit-learn can be used to cluster documents by topics usin...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/text/images/thumb/sphx_glr_plot_document_clustering_thumb.png
+
+        :ref:`sphx_glr_auto_examples_text_plot_document_clustering.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_text_plot_document_clustering.py`

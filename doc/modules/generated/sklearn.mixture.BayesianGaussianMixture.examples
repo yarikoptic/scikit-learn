@@ -1,0 +1,58 @@
+
+
+Examples using ``sklearn.mixture.BayesianGaussianMixture``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the confidence ellipsoids of a mixture of two Gaussians obtained with Expectation Maximisa...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/mixture/images/thumb/sphx_glr_plot_gmm_thumb.png
+
+        :ref:`sphx_glr_auto_examples_mixture_plot_gmm.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_mixture_plot_gmm.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the behavior of Gaussian mixture models fit on data that was not samp...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/mixture/images/thumb/sphx_glr_plot_gmm_sin_thumb.png
+
+        :ref:`sphx_glr_auto_examples_mixture_plot_gmm_sin.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_mixture_plot_gmm_sin.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example plots the ellipsoids obtained from a toy dataset (mixture of three Gaussians) fitt...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/mixture/images/thumb/sphx_glr_plot_concentration_prior_thumb.png
+
+        :ref:`sphx_glr_auto_examples_mixture_plot_concentration_prior.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_mixture_plot_concentration_prior.py`

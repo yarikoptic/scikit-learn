@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.externals.six.moves.zip``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example reproduces Figure 1 of Zhu et al [1]_ and shows how boosting can improve predictio...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_adaboost_multiclass_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_adaboost_multiclass.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_adaboost_multiclass.py`

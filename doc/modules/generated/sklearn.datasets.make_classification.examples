@@ -1,0 +1,220 @@
+
+
+Examples using ``sklearn.datasets.make_classification``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Well calibrated classifiers are probabilistic classifiers for which the output of the predict_p...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/calibration/images/thumb/sphx_glr_plot_compare_calibration_thumb.png
+
+        :ref:`sphx_glr_auto_examples_calibration_plot_compare_calibration.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_calibration_plot_compare_calibration.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="When performing classification one often wants to predict not only the class label, but also th...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/calibration/images/thumb/sphx_glr_plot_calibration_curve_thumb.png
+
+        :ref:`sphx_glr_auto_examples_calibration_plot_calibration_curve.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_calibration_plot_calibration_curve.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A comparison of a several classifiers in scikit-learn on synthetic datasets. The point of this ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_classifier_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_classification_plot_classifier_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_classification_plot_classifier_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot several randomly generated 2D classification datasets. This example illustrates the :func:...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/datasets/images/thumb/sphx_glr_plot_random_dataset_thumb.png
+
+        :ref:`sphx_glr_auto_examples_datasets_plot_random_dataset.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_datasets_plot_random_dataset.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This examples shows the use of forests of trees to evaluate the importance of features on an ar...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_forest_importances_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_forest_importances.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_forest_importances.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The ``RandomForestClassifier`` is trained using *bootstrap aggregation*, where each new tree is...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_ensemble_oob_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_ensemble_oob.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_ensemble_oob.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Transform your features into a higher dimensional, sparse space. Then train a linear model on t...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_feature_transformation_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_feature_transformation.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_feature_transformation.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Simple usage of Pipeline that runs successively a univariate feature selection with anova and t...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/feature_selection/images/thumb/sphx_glr_plot_feature_selection_pipeline_thumb.png
+
+        :ref:`sphx_glr_auto_examples_feature_selection_plot_feature_selection_pipeline.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_feature_selection_plot_feature_selection_pipeline.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A recursive feature elimination example with automatic tuning of the number of features selecte...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/feature_selection/images/thumb/sphx_glr_plot_rfe_with_cross_validation_thumb.png
+
+        :ref:`sphx_glr_auto_examples_feature_selection_plot_rfe_with_cross_validation.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_feature_selection_plot_rfe_with_cross_validation.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A comparison of different values for regularization parameter &#x27;alpha&#x27; on synthetic datasets. Th...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/neural_networks/images/thumb/sphx_glr_plot_mlp_alpha_thumb.png
+
+        :ref:`sphx_glr_auto_examples_neural_networks_plot_mlp_alpha.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_neural_networks_plot_mlp_alpha.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A demonstration of feature discretization on synthetic classification datasets. Feature discret...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/preprocessing/images/thumb/sphx_glr_plot_discretization_classification_thumb.png
+
+        :ref:`sphx_glr_auto_examples_preprocessing_plot_discretization_classification.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_preprocessing_plot_discretization_classification.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The following example illustrates the effect of scaling the regularization parameter when using...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/svm/images/thumb/sphx_glr_plot_svm_scale_c_thumb.png
+
+        :ref:`sphx_glr_auto_examples_svm_plot_svm_scale_c.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_svm_plot_svm_scale_c.py`

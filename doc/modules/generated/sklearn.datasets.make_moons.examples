@@ -1,0 +1,130 @@
+
+
+Examples using ``sklearn.datasets.make_moons``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows characteristics of different anomaly detection algorithms on 2D datasets. Da...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_anomaly_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_plot_anomaly_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_plot_anomaly_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A comparison of a several classifiers in scikit-learn on synthetic datasets. The point of this ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_classifier_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_classification_plot_classifier_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_classification_plot_classifier_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows characteristics of different linkage methods for hierarchical clustering on ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_linkage_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_linkage_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_linkage_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows characteristics of different clustering algorithms on datasets that are &quot;int...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_cluster_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_cluster_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_cluster_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example visualizes some training loss curves for different stochastic learning strategies,...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/neural_networks/images/thumb/sphx_glr_plot_mlp_training_curves_thumb.png
+
+        :ref:`sphx_glr_auto_examples_neural_networks_plot_mlp_training_curves.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_neural_networks_plot_mlp_training_curves.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A comparison of different values for regularization parameter &#x27;alpha&#x27; on synthetic datasets. Th...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/neural_networks/images/thumb/sphx_glr_plot_mlp_alpha_thumb.png
+
+        :ref:`sphx_glr_auto_examples_neural_networks_plot_mlp_alpha.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_neural_networks_plot_mlp_alpha.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A demonstration of feature discretization on synthetic classification datasets. Feature discret...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/preprocessing/images/thumb/sphx_glr_plot_discretization_classification_thumb.png
+
+        :ref:`sphx_glr_auto_examples_preprocessing_plot_discretization_classification.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_preprocessing_plot_discretization_classification.py`

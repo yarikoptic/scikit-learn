@@ -1,0 +1,58 @@
+
+
+Examples using ``sklearn.datasets.fetch_20newsgroups_vectorized``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip=" The `Johnson-Lindenstrauss lemma`_ states that any high dimensional dataset can be randomly pr...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_johnson_lindenstrauss_bound_thumb.png
+
+        :ref:`sphx_glr_auto_examples_plot_johnson_lindenstrauss_bound.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_plot_johnson_lindenstrauss_bound.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demonstrate how model complexity influences both prediction accuracy and computational performa...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/applications/images/thumb/sphx_glr_plot_model_complexity_influence_thumb.png
+
+        :ref:`sphx_glr_auto_examples_applications_plot_model_complexity_influence.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_applications_plot_model_complexity_influence.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Comparison of multinomial logistic L1 vs one-versus-rest L1 logistic regression to classify doc...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_sparse_logistic_regression_20newsgroups_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_sparse_logistic_regression_20newsgroups.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_sparse_logistic_regression_20newsgroups.py`

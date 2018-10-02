@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.metrics.make_scorer``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Multiple metric parameter search can be done by setting the ``scoring`` parameter to a list of ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_multi_metric_evaluation_thumb.png
+
+        :ref:`sphx_glr_auto_examples_model_selection_plot_multi_metric_evaluation.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_model_selection_plot_multi_metric_evaluation.py`

@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.externals.six.moves.urllib.request.urlopen``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A classical way to assert the relative importance of vertices in a graph is to compute the prin...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/applications/images/thumb/sphx_glr_wikipedia_principal_eigenvector_thumb.png
+
+        :ref:`sphx_glr_auto_examples_applications_wikipedia_principal_eigenvector.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_applications_wikipedia_principal_eigenvector.py`

@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.decomposition.KernelPCA``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows that Kernel PCA is able to find a projection of the data that makes data lin...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/decomposition/images/thumb/sphx_glr_plot_kernel_pca_thumb.png
+
+        :ref:`sphx_glr_auto_examples_decomposition_plot_kernel_pca.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_decomposition_plot_kernel_pca.py`

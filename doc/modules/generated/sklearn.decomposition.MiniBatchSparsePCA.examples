@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.decomposition.MiniBatchSparsePCA``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example applies to :ref:`olivetti_faces` different unsupervised matrix decomposition (dime...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/decomposition/images/thumb/sphx_glr_plot_faces_decomposition_thumb.png
+
+        :ref:`sphx_glr_auto_examples_decomposition_plot_faces_decomposition.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_decomposition_plot_faces_decomposition.py`
