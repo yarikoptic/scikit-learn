@@ -1,8 +1,8 @@
-scikit-learn (0.20~rc1+dfsg-1) UNRELEASED; urgency=medium
+scikit-learn (0.20.0+dfsg-1) unstable; urgency=medium
 
+  [ Andreas Tille ]
   * Team upload.
-  * New upstream pre-release
-    FIXME: #907806
+  * New upstream pre-release (Closes: #907806)
   * Move to Debian Science team maintenance
   * Maintained at salsa.debian.org
   * d/watch:
@@ -12,7 +12,7 @@ scikit-learn (0.20~rc1+dfsg-1) UNRELEASED; urgency=medium
   * d/control: Use Files-Excluded to remove files from upstream source
   * d/gbp.conf: Strip default and unusual options
 
- -- Andreas Tille <tille@debian.org>  Wed, 26 Sep 2018 11:18:48 +0200
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 02 Oct 2018 11:21:20 -0400
 
 scikit-learn (0.19.2-1) unstable; urgency=medium
 
