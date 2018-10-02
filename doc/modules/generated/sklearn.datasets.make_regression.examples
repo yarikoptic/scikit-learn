@@ -1,0 +1,112 @@
+
+
+Examples using ``sklearn.datasets.make_regression``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an example showing the prediction latency of various scikit-learn estimators.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/applications/images/thumb/sphx_glr_plot_prediction_latency_thumb.png
+
+        :ref:`sphx_glr_auto_examples_applications_plot_prediction_latency.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_applications_plot_prediction_latency.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we give an overview of the :class:`sklearn.compose.TransformedTargetRegressor`...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/compose/images/thumb/sphx_glr_plot_transformed_target_thumb.png
+
+        :ref:`sphx_glr_auto_examples_compose_plot_transformed_target.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_compose_plot_transformed_target.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip=":class:`Ridge` Regression is the estimator used in this example. Each color in the left plot re...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ridge_coeffs_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_ridge_coeffs.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_ridge_coeffs.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example we see how to robustly fit a linear model to faulty data using the RANSAC algor...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ransac_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_ransac.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_ransac.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We show that linear_model.Lasso provides the same results for dense and sparse data and that in...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_lasso_dense_vs_sparse_data_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_dense_vs_sparse_data.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_dense_vs_sparse_data.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fit Ridge and HuberRegressor on a dataset with outliers.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_huber_vs_ridge_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_huber_vs_ridge.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_huber_vs_ridge.py`

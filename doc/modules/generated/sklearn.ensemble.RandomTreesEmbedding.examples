@@ -1,0 +1,58 @@
+
+
+Examples using ``sklearn.ensemble.RandomTreesEmbedding``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="RandomTreesEmbedding provides a way to map data to a very high-dimensional, sparse representati...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_random_forest_embedding_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_random_forest_embedding.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_random_forest_embedding.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Transform your features into a higher dimensional, sparse space. Then train a linear model on t...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_feature_transformation_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_feature_transformation.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_feature_transformation.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An illustration of various embeddings on the digits dataset.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/manifold/images/thumb/sphx_glr_plot_lle_digits_thumb.png
+
+        :ref:`sphx_glr_auto_examples_manifold_plot_lle_digits.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_manifold_plot_lle_digits.py`

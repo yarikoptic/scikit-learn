@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.preprocessing.MaxAbsScaler``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Feature 0 (median income in a block) and feature 5 (number of households) of the `California ho...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/preprocessing/images/thumb/sphx_glr_plot_all_scaling_thumb.png
+
+        :ref:`sphx_glr_auto_examples_preprocessing_plot_all_scaling.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_preprocessing_plot_all_scaling.py`

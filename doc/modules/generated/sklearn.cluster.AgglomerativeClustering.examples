@@ -1,0 +1,130 @@
+
+
+Examples using ``sklearn.cluster.AgglomerativeClustering``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Compute the segmentation of a 2D image with Ward hierarchical clustering. The clustering is spa...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_coin_ward_segmentation_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_coin_ward_segmentation.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_coin_ward_segmentation.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows the effect of imposing a connectivity graph to capture local structure in th...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_agglomerative_clustering_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_agglomerative_clustering.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_agglomerative_clustering.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An illustration of various linkage option for agglomerative clustering on a 2D embedding of the...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_digits_linkage_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_digits_linkage.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_digits_linkage.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example builds a swiss roll dataset and runs hierarchical clustering on their position.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_ward_structured_vs_unstructured_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_ward_structured_vs_unstructured.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_ward_structured_vs_unstructured.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demonstrates the effect of different metrics on the hierarchical clustering.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_agglomerative_clustering_metrics_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_agglomerative_clustering_metrics.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_agglomerative_clustering_metrics.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows characteristics of different linkage methods for hierarchical clustering on ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_linkage_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_linkage_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_linkage_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows characteristics of different clustering algorithms on datasets that are &quot;int...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_cluster_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_cluster_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_cluster_comparison.py`

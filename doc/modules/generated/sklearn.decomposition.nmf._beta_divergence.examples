@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.decomposition.nmf._beta_divergence``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A plot that compares the various Beta-divergence loss functions supported by the Multiplicative...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/decomposition/images/thumb/sphx_glr_plot_beta_divergence_thumb.png
+
+        :ref:`sphx_glr_auto_examples_decomposition_plot_beta_divergence.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_decomposition_plot_beta_divergence.py`

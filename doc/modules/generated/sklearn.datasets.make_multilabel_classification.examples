@@ -1,0 +1,40 @@
+
+
+Examples using ``sklearn.datasets.make_multilabel_classification``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example simulates a multi-label document classification problem. The dataset is generated ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_multilabel_thumb.png
+
+        :ref:`sphx_glr_auto_examples_plot_multilabel.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_plot_multilabel.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This illustrates the `datasets.make_multilabel_classification` dataset generator. Each sample c...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/datasets/images/thumb/sphx_glr_plot_random_multilabel_dataset_thumb.png
+
+        :ref:`sphx_glr_auto_examples_datasets_plot_random_multilabel_dataset.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_datasets_plot_random_multilabel_dataset.py`

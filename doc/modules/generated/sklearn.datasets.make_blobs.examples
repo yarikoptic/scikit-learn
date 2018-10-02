@@ -1,0 +1,346 @@
+
+
+Examples using ``sklearn.datasets.make_blobs``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows characteristics of different anomaly detection algorithms on 2D datasets. Da...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_anomaly_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_plot_anomaly_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_plot_anomaly_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="When performing classification you often want to predict not only the class label, but also the...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/calibration/images/thumb/sphx_glr_plot_calibration_thumb.png
+
+        :ref:`sphx_glr_auto_examples_calibration_plot_calibration.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_calibration_plot_calibration.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how sigmoid calibration changes predicted probabilities for a 3-class ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/calibration/images/thumb/sphx_glr_plot_calibration_multiclass_thumb.png
+
+        :ref:`sphx_glr_auto_examples_calibration_plot_calibration_multiclass.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_calibration_plot_calibration_multiclass.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Shows how shrinkage improves classification. ">
+
+.. only:: html
+
+    .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_lda_thumb.png
+
+        :ref:`sphx_glr_auto_examples_classification_plot_lda.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_classification_plot_lda.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Reference:">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_mean_shift_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_mean_shift.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_mean_shift.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example is meant to illustrate situations where k-means will produce unintuitive and possi...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_kmeans_assumptions_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_assumptions.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_assumptions.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Reference: Brendan J. Frey and Delbert Dueck, &quot;Clustering by Passing Messages Between Data Poin...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_affinity_propagation_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_affinity_propagation.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_affinity_propagation.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Finds core samples of high density and expands clusters from them.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_dbscan_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_dbscan.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_dbscan.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example compares the timing of Birch (with and without the global clustering step) and Min...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_birch_vs_minibatchkmeans_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_birch_vs_minibatchkmeans.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_birch_vs_minibatchkmeans.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We want to compare the performance of the MiniBatchKMeans and KMeans: the MiniBatchKMeans is fa...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_mini_batch_kmeans_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_mini_batch_kmeans.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_mini_batch_kmeans.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows characteristics of different linkage methods for hierarchical clustering on ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_linkage_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_linkage_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_linkage_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Silhouette analysis can be used to study the separation distance between the resulting clusters...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_kmeans_silhouette_analysis_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_silhouette_analysis.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_silhouette_analysis.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows characteristics of different clustering algorithms on datasets that are &quot;int...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/cluster/images/thumb/sphx_glr_plot_cluster_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_cluster_plot_cluster_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_cluster_plot_cluster_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot several randomly generated 2D classification datasets. This example illustrates the :func:...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/datasets/images/thumb/sphx_glr_plot_random_dataset_thumb.png
+
+        :ref:`sphx_glr_auto_examples_datasets_plot_random_dataset.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_datasets_plot_random_dataset.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the maximum margin separating hyperplane within a two-class separable dataset using a line...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_sgd_separating_hyperplane_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_separating_hyperplane.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_separating_hyperplane.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot decision surface of multinomial and One-vs-Rest Logistic Regression. The hyperplanes corre...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_logistic_multinomial_thumb.png
+
+        :ref:`sphx_glr_auto_examples_linear_model_plot_logistic_multinomial.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_linear_model_plot_logistic_multinomial.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example presents the different strategies implemented in KBinsDiscretizer:">
+
+.. only:: html
+
+    .. figure:: /auto_examples/preprocessing/images/thumb/sphx_glr_plot_discretization_strategies_thumb.png
+
+        :ref:`sphx_glr_auto_examples_preprocessing_plot_discretization_strategies.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_preprocessing_plot_discretization_strategies.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the maximum margin separating hyperplane within a two-class separable dataset using a Supp...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/svm/images/thumb/sphx_glr_plot_separating_hyperplane_thumb.png
+
+        :ref:`sphx_glr_auto_examples_svm_plot_separating_hyperplane.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_svm_plot_separating_hyperplane.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Find the optimal separating hyperplane using an SVC for classes that are unbalanced.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/svm/images/thumb/sphx_glr_plot_separating_hyperplane_unbalanced_thumb.png
+
+        :ref:`sphx_glr_auto_examples_svm_plot_separating_hyperplane_unbalanced.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_svm_plot_separating_hyperplane_unbalanced.py`

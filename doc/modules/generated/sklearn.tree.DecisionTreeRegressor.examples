@@ -1,0 +1,94 @@
+
+
+Examples using ``sklearn.tree.DecisionTreeRegressor``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A decision tree is boosted using the AdaBoost.R2 [1]_ algorithm on a 1D sinusoidal dataset with...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_adaboost_regression_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_adaboost_regression.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_adaboost_regression.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates and compares the bias-variance decomposition of the expected mean squa...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_bias_variance_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_bias_variance.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_bias_variance.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The example compares prediction result of linear regression (linear model) and decision tree (t...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/preprocessing/images/thumb/sphx_glr_plot_discretization_thumb.png
+
+        :ref:`sphx_glr_auto_examples_preprocessing_plot_discretization.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_preprocessing_plot_discretization.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A 1D regression with decision tree.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/tree/images/thumb/sphx_glr_plot_tree_regression_thumb.png
+
+        :ref:`sphx_glr_auto_examples_tree_plot_tree_regression.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_tree_plot_tree_regression.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example to illustrate multi-output regression with decision tree.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/tree/images/thumb/sphx_glr_plot_tree_regression_multioutput_thumb.png
+
+        :ref:`sphx_glr_auto_examples_tree_plot_tree_regression_multioutput.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_tree_plot_tree_regression_multioutput.py`

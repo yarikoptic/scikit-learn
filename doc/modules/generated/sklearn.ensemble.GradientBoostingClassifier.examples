@@ -1,0 +1,94 @@
+
+
+Examples using ``sklearn.ensemble.GradientBoostingClassifier``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Illustration of the effect of different regularization strategies for Gradient Boosting. The ex...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_gradient_boosting_regularization_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_regularization.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_regularization.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Gradient boosting is an ensembling technique where several weak learners (regression trees) are...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_gradient_boosting_early_stopping_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_early_stopping.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_early_stopping.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Transform your features into a higher dimensional, sparse space. Then train a linear model on t...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_feature_transformation_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_feature_transformation.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_feature_transformation.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Out-of-bag (OOB) estimates can be a useful heuristic to estimate the &quot;optimal&quot; number of boosti...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_gradient_boosting_oob_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_oob.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_oob.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A demonstration of feature discretization on synthetic classification datasets. Feature discret...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/preprocessing/images/thumb/sphx_glr_plot_discretization_classification_thumb.png
+
+        :ref:`sphx_glr_auto_examples_preprocessing_plot_discretization_classification.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_preprocessing_plot_discretization_classification.py`
