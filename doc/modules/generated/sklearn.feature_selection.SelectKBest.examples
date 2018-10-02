@@ -1,0 +1,76 @@
+
+
+Examples using ``sklearn.feature_selection.SelectKBest``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In many real-world examples, there are many ways to extract features from a dataset. Often it i...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/compose/images/thumb/sphx_glr_plot_feature_union_thumb.png
+
+        :ref:`sphx_glr_auto_examples_compose_plot_feature_union.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_compose_plot_feature_union.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example constructs a pipeline that does dimensionality reduction followed by prediction wi...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/compose/images/thumb/sphx_glr_plot_compare_reduction_thumb.png
+
+        :ref:`sphx_glr_auto_examples_compose_plot_compare_reduction.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_compose_plot_compare_reduction.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Simple usage of Pipeline that runs successively a univariate feature selection with anova and t...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/feature_selection/images/thumb/sphx_glr_plot_feature_selection_pipeline_thumb.png
+
+        :ref:`sphx_glr_auto_examples_feature_selection_plot_feature_selection_pipeline.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_feature_selection_plot_feature_selection_pipeline.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an example showing how scikit-learn can be used to classify documents by topics using a...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/text/images/thumb/sphx_glr_plot_document_classification_20newsgroups_thumb.png
+
+        :ref:`sphx_glr_auto_examples_text_plot_document_classification_20newsgroups.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_text_plot_document_classification_20newsgroups.py`

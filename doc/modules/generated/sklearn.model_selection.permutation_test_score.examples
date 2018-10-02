@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.model_selection.permutation_test_score``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In order to test if a classification score is significative a technique in repeating the classi...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/feature_selection/images/thumb/sphx_glr_plot_permutation_test_for_classification_thumb.png
+
+        :ref:`sphx_glr_auto_examples_feature_selection_plot_permutation_test_for_classification.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_feature_selection_plot_permutation_test_for_classification.py`

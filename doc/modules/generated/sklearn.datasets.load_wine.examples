@@ -1,0 +1,22 @@
+
+
+Examples using ``sklearn.datasets.load_wine``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Feature scaling through standardization (or Z-score normalization) can be an important preproce...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/preprocessing/images/thumb/sphx_glr_plot_scaling_importance_thumb.png
+
+        :ref:`sphx_glr_auto_examples_preprocessing_plot_scaling_importance.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_preprocessing_plot_scaling_importance.py`

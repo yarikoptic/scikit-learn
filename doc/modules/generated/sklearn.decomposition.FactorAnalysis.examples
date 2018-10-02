@@ -1,0 +1,40 @@
+
+
+Examples using ``sklearn.decomposition.FactorAnalysis``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Probabilistic PCA and Factor Analysis are probabilistic models. The consequence is that the lik...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/decomposition/images/thumb/sphx_glr_plot_pca_vs_fa_model_selection_thumb.png
+
+        :ref:`sphx_glr_auto_examples_decomposition_plot_pca_vs_fa_model_selection.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_decomposition_plot_pca_vs_fa_model_selection.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example applies to :ref:`olivetti_faces` different unsupervised matrix decomposition (dime...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/decomposition/images/thumb/sphx_glr_plot_faces_decomposition_thumb.png
+
+        :ref:`sphx_glr_auto_examples_decomposition_plot_faces_decomposition.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_decomposition_plot_faces_decomposition.py`

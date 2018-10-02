@@ -1,0 +1,94 @@
+
+
+Examples using ``sklearn.neighbors.KNeighborsClassifier``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A comparison of a several classifiers in scikit-learn on synthetic datasets. The point of this ...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_classifier_comparison_thumb.png
+
+        :ref:`sphx_glr_auto_examples_classification_plot_classifier_comparison.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_classification_plot_classifier_comparison.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the decision boundaries of a `VotingClassifier` for two features of the Iris dataset.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_voting_decision_regions_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_voting_decision_regions.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_voting_decision_regions.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A tutorial exercise regarding the use of classification techniques on the Digits dataset.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/exercises/images/thumb/sphx_glr_plot_digits_classification_exercise_thumb.png
+
+        :ref:`sphx_glr_auto_examples_exercises_plot_digits_classification_exercise.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_exercises_plot_digits_classification_exercise.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Sample usage of Nearest Neighbors classification. It will plot the decision boundaries for each...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/neighbors/images/thumb/sphx_glr_plot_classification_thumb.png
+
+        :ref:`sphx_glr_auto_examples_neighbors_plot_classification.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_neighbors_plot_classification.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an example showing how scikit-learn can be used to classify documents by topics using a...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/text/images/thumb/sphx_glr_plot_document_classification_20newsgroups_thumb.png
+
+        :ref:`sphx_glr_auto_examples_text_plot_document_classification_20newsgroups.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_text_plot_document_classification_20newsgroups.py`

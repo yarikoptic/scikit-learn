@@ -1,0 +1,76 @@
+
+
+Examples using ``sklearn.ensemble.ExtraTreesClassifier``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows the use of forests of trees to evaluate the importance of the pixels in an i...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_forest_importances_faces_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_forest_importances_faces.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_forest_importances_faces.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This examples shows the use of forests of trees to evaluate the importance of features on an ar...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_forest_importances_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_forest_importances.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_forest_importances.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="RandomTreesEmbedding provides a way to map data to a very high-dimensional, sparse representati...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_random_forest_embedding_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_random_forest_embedding.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_random_forest_embedding.py`
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the decision surfaces of forests of randomized trees trained on pairs of features of the i...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/ensemble/images/thumb/sphx_glr_plot_forest_iris_thumb.png
+
+        :ref:`sphx_glr_auto_examples_ensemble_plot_forest_iris.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+    * :ref:`sphx_glr_auto_examples_ensemble_plot_forest_iris.py`
