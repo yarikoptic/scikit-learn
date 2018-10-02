@@ -68,7 +68,7 @@ _uncythonize%:
 
 cythonize: _cythonize2 _cythonize3
 
-override_dh_auto_configure: _uncythonize2 _uncythonize3
+override_dh_auto_configure:
 	dh_auto_configure
 
 override_dh_autoreconf:
@@ -80,7 +80,7 @@ override_dh_clean:
 
 override_dh_auto_install: ${PYVERS:%=python-install%} ${PY3VERS:%=python-install%} ${PYVERS:%=python-test%} ${PY3VERS:%=python-test%}
 # Per Python version logic -- install, test, move .so into -lib
-python-install%: _uncythonize%
+python-install%:
 	python$* setup.py install --install-layout=deb  --root=$(CURDIR)/debian/tmp
 
 python-test%: python-install%
