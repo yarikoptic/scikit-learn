@@ -1964,7 +1964,7 @@ static PyObject *__pyx_pw_7sklearn_3svm_6libsvm_1fit(PyObject *__pyx_self, PyObj
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_X,&__pyx_n_s_Y,&__pyx_n_s_svm_type,&__pyx_n_s_kernel,&__pyx_n_s_degree,&__pyx_n_s_gamma,&__pyx_n_s_coef0,&__pyx_n_s_tol,&__pyx_n_s_C,&__pyx_n_s_nu,&__pyx_n_s_epsilon,&__pyx_n_s_class_weight,&__pyx_n_s_sample_weight,&__pyx_n_s_shrinking,&__pyx_n_s_probability,&__pyx_n_s_cache_size,&__pyx_n_s_max_iter,&__pyx_n_s_random_seed,0};
     PyObject* values[18] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    values[3] = ((PyObject*)__pyx_n_s_rbf);
+    values[3] = ((PyObject *)__pyx_n_s_rbf);
     values[11] = (PyObject *)__pyx_k_;
     values[12] = (PyObject *)__pyx_k__2;
     if (unlikely(__pyx_kwds)) {
@@ -2168,7 +2168,7 @@ static PyObject *__pyx_pw_7sklearn_3svm_6libsvm_1fit(PyObject *__pyx_self, PyObj
     } else {
       __pyx_v_svm_type = ((int)0);
     }
-    __pyx_v_kernel = ((PyObject*)values[3]);
+    __pyx_v_kernel = values[3];
     if (values[4]) {
       __pyx_v_degree = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_degree == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L3_error)
     } else {
@@ -2242,7 +2242,6 @@ static PyObject *__pyx_pw_7sklearn_3svm_6libsvm_1fit(PyObject *__pyx_self, PyObj
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_X), __pyx_ptype_5numpy_ndarray, 1, "X", 0))) __PYX_ERR(0, 55, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_Y), __pyx_ptype_5numpy_ndarray, 1, "Y", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_kernel), (&PyString_Type), 1, "kernel", 1))) __PYX_ERR(0, 57, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_class_weight), __pyx_ptype_5numpy_ndarray, 1, "class_weight", 0))) __PYX_ERR(0, 60, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sample_weight), __pyx_ptype_5numpy_ndarray, 1, "sample_weight", 0))) __PYX_ERR(0, 62, __pyx_L1_error)
   __pyx_r = __pyx_pf_7sklearn_3svm_6libsvm_fit(__pyx_self, __pyx_v_X, __pyx_v_Y, __pyx_v_svm_type, __pyx_v_kernel, __pyx_v_degree, __pyx_v_gamma, __pyx_v_coef0, __pyx_v_tol, __pyx_v_C, __pyx_v_nu, __pyx_v_epsilon, __pyx_v_class_weight, __pyx_v_sample_weight, __pyx_v_shrinking, __pyx_v_probability, __pyx_v_cache_size, __pyx_v_max_iter, __pyx_v_random_seed);
@@ -4785,7 +4784,7 @@ static PyObject *__pyx_pw_7sklearn_3svm_6libsvm_5predict_proba(PyObject *__pyx_s
     PyObject* values[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     values[6] = (PyObject *)__pyx_k__15;
     values[7] = (PyObject *)__pyx_k__16;
-    values[9] = ((PyObject*)__pyx_n_s_rbf);
+    values[9] = ((PyObject *)__pyx_n_s_rbf);
     values[13] = (PyObject *)__pyx_k__17;
     values[14] = (PyObject *)__pyx_k__18;
     if (unlikely(__pyx_kwds)) {
@@ -4971,7 +4970,7 @@ static PyObject *__pyx_pw_7sklearn_3svm_6libsvm_5predict_proba(PyObject *__pyx_s
     } else {
       __pyx_v_svm_type = ((int)0);
     }
-    __pyx_v_kernel = ((PyObject*)values[9]);
+    __pyx_v_kernel = values[9];
     if (values[10]) {
       __pyx_v_degree = __Pyx_PyInt_As_int(values[10]); if (unlikely((__pyx_v_degree == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 345, __pyx_L3_error)
     } else {
@@ -5011,7 +5010,6 @@ static PyObject *__pyx_pw_7sklearn_3svm_6libsvm_5predict_proba(PyObject *__pyx_s
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_intercept), __pyx_ptype_5numpy_ndarray, 1, "intercept", 0))) __PYX_ERR(0, 342, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_probA), __pyx_ptype_5numpy_ndarray, 1, "probA", 0))) __PYX_ERR(0, 343, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_probB), __pyx_ptype_5numpy_ndarray, 1, "probB", 0))) __PYX_ERR(0, 344, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_kernel), (&PyString_Type), 1, "kernel", 1))) __PYX_ERR(0, 345, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_class_weight), __pyx_ptype_5numpy_ndarray, 1, "class_weight", 0))) __PYX_ERR(0, 347, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sample_weight), __pyx_ptype_5numpy_ndarray, 1, "sample_weight", 0))) __PYX_ERR(0, 349, __pyx_L1_error)
   __pyx_r = __pyx_pf_7sklearn_3svm_6libsvm_4predict_proba(__pyx_self, __pyx_v_X, __pyx_v_support, __pyx_v_SV, __pyx_v_nSV, __pyx_v_sv_coef, __pyx_v_intercept, __pyx_v_probA, __pyx_v_probB, __pyx_v_svm_type, __pyx_v_kernel, __pyx_v_degree, __pyx_v_gamma, __pyx_v_coef0, __pyx_v_class_weight, __pyx_v_sample_weight, __pyx_v_cache_size);
@@ -6371,7 +6369,7 @@ static PyObject *__pyx_pw_7sklearn_3svm_6libsvm_9cross_validation(PyObject *__py
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_X,&__pyx_n_s_Y,&__pyx_n_s_n_fold,&__pyx_n_s_svm_type,&__pyx_n_s_kernel,&__pyx_n_s_degree,&__pyx_n_s_gamma,&__pyx_n_s_coef0,&__pyx_n_s_tol,&__pyx_n_s_C,&__pyx_n_s_nu,&__pyx_n_s_epsilon,&__pyx_n_s_class_weight,&__pyx_n_s_sample_weight,&__pyx_n_s_shrinking,&__pyx_n_s_probability,&__pyx_n_s_cache_size,&__pyx_n_s_max_iter,&__pyx_n_s_random_seed,0};
     PyObject* values[19] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     values[3] = ((PyObject *)__pyx_int_0);
-    values[4] = ((PyObject*)__pyx_n_s_rbf);
+    values[4] = ((PyObject *)__pyx_n_s_rbf);
     values[12] = (PyObject *)__pyx_k__25;
     values[13] = (PyObject *)__pyx_k__26;
     if (unlikely(__pyx_kwds)) {
@@ -6581,7 +6579,7 @@ static PyObject *__pyx_pw_7sklearn_3svm_6libsvm_9cross_validation(PyObject *__py
     __pyx_v_Y = ((PyArrayObject *)values[1]);
     __pyx_v_n_fold = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_n_fold == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 465, __pyx_L3_error)
     __pyx_v_svm_type = values[3];
-    __pyx_v_kernel = ((PyObject*)values[4]);
+    __pyx_v_kernel = values[4];
     if (values[5]) {
       __pyx_v_degree = __Pyx_PyInt_As_int(values[5]); if (unlikely((__pyx_v_degree == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 465, __pyx_L3_error)
     } else {
@@ -6655,7 +6653,6 @@ static PyObject *__pyx_pw_7sklearn_3svm_6libsvm_9cross_validation(PyObject *__py
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_X), __pyx_ptype_5numpy_ndarray, 1, "X", 0))) __PYX_ERR(0, 463, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_Y), __pyx_ptype_5numpy_ndarray, 1, "Y", 0))) __PYX_ERR(0, 464, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_kernel), (&PyString_Type), 1, "kernel", 1))) __PYX_ERR(0, 465, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_class_weight), __pyx_ptype_5numpy_ndarray, 1, "class_weight", 0))) __PYX_ERR(0, 468, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sample_weight), __pyx_ptype_5numpy_ndarray, 1, "sample_weight", 0))) __PYX_ERR(0, 470, __pyx_L1_error)
   __pyx_r = __pyx_pf_7sklearn_3svm_6libsvm_8cross_validation(__pyx_self, __pyx_v_X, __pyx_v_Y, __pyx_v_n_fold, __pyx_v_svm_type, __pyx_v_kernel, __pyx_v_degree, __pyx_v_gamma, __pyx_v_coef0, __pyx_v_tol, __pyx_v_C, __pyx_v_nu, __pyx_v_epsilon, __pyx_v_class_weight, __pyx_v_sample_weight, __pyx_v_shrinking, __pyx_v_probability, __pyx_v_cache_size, __pyx_v_max_iter, __pyx_v_random_seed);
@@ -10347,7 +10344,7 @@ static int __Pyx_InitCachedConstants(void) {
  *     np.ndarray[np.float64_t, ndim=1, mode='c'] intercept,
  *     np.ndarray[np.float64_t, ndim=1, mode='c'] probA=np.empty(0),             # <<<<<<<<<<<<<<
  *     np.ndarray[np.float64_t, ndim=1, mode='c'] probB=np.empty(0),
- *     int svm_type=0, str kernel='rbf', int degree=3,
+ *     int svm_type=0, kernel='rbf', int degree=3,
  */
   __pyx_tuple__48 = PyTuple_Pack(1, __pyx_int_0); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__48);
@@ -10357,7 +10354,7 @@ static int __Pyx_InitCachedConstants(void) {
  *     np.ndarray[np.float64_t, ndim=1, mode='c'] intercept,
  *     np.ndarray[np.float64_t, ndim=1, mode='c'] probA=np.empty(0),
  *     np.ndarray[np.float64_t, ndim=1, mode='c'] probB=np.empty(0),             # <<<<<<<<<<<<<<
- *     int svm_type=0, str kernel='rbf', int degree=3,
+ *     int svm_type=0, kernel='rbf', int degree=3,
  *     double gamma=0.1, double coef0=0.,
  */
   __pyx_tuple__49 = PyTuple_Pack(1, __pyx_int_0); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 344, __pyx_L1_error)
@@ -10980,7 +10977,7 @@ if (!__Pyx_RefNanny) {
  *     np.ndarray[np.float64_t, ndim=1, mode='c'] intercept,
  *     np.ndarray[np.float64_t, ndim=1, mode='c'] probA=np.empty(0),             # <<<<<<<<<<<<<<
  *     np.ndarray[np.float64_t, ndim=1, mode='c'] probB=np.empty(0),
- *     int svm_type=0, str kernel='rbf', int degree=3,
+ *     int svm_type=0, kernel='rbf', int degree=3,
  */
   __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -10999,7 +10996,7 @@ if (!__Pyx_RefNanny) {
  *     np.ndarray[np.float64_t, ndim=1, mode='c'] intercept,
  *     np.ndarray[np.float64_t, ndim=1, mode='c'] probA=np.empty(0),
  *     np.ndarray[np.float64_t, ndim=1, mode='c'] probB=np.empty(0),             # <<<<<<<<<<<<<<
- *     int svm_type=0, str kernel='rbf', int degree=3,
+ *     int svm_type=0, kernel='rbf', int degree=3,
  *     double gamma=0.1, double coef0=0.,
  */
   __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)

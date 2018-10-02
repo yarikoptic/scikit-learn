@@ -1262,7 +1262,7 @@ enum  {
  * # have is_leaf and max_width consecutive as it permits to avoid padding by
  * # the compiler and keep the size coherent for both C and numpy data structures.
  * cdef struct Cell:             # <<<<<<<<<<<<<<
- *     # Base storage stucture for cells in a QuadTree object
+ *     # Base storage structure for cells in a QuadTree object
  * 
  */
 struct __pyx_t_7sklearn_9neighbors_9quad_tree_Cell {
@@ -1650,6 +1650,9 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject
 /* PyObjectCallOneArg.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
 
+/* GetModuleGlobalName.proto */
+static CYTHON_INLINE PyObject *__Pyx_GetModuleGlobalName(PyObject *name);
+
 /* MemviewSliceInit.proto */
 #define __Pyx_BUF_MAX_NDIMS %(BUF_MAX_NDIMS)d
 #define __Pyx_MEMVIEW_DIRECT   1
@@ -1847,9 +1850,6 @@ static CYTHON_INLINE PyObject* __Pyx_decode_c_string(
 
 /* GetAttr3.proto */
 static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *, PyObject *, PyObject *);
-
-/* GetModuleGlobalName.proto */
-static CYTHON_INLINE PyObject *__Pyx_GetModuleGlobalName(PyObject *name);
 
 /* SwapException.proto */
 #if CYTHON_FAST_THREAD_STATE
@@ -2283,9 +2283,9 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, struct __pyx_obj_7sklearn_9neighbors_9quad_tree__QuadTree *, float, float, long, long); /*proto*/
-static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_positive(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, float *, int, float, double, __pyx_t_5numpy_int64_t, int); /*proto*/
-static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negative(__Pyx_memviewslice, float *, struct __pyx_obj_7sklearn_9neighbors_9quad_tree__QuadTree *, double *, float, float, long, long); /*proto*/
+static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, struct __pyx_obj_7sklearn_9neighbors_9quad_tree__QuadTree *, float, int, long, long, int); /*proto*/
+static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_positive(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, float *, int, int, double, __pyx_t_5numpy_int64_t, int, int); /*proto*/
+static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negative(__Pyx_memviewslice, float *, struct __pyx_obj_7sklearn_9neighbors_9quad_tree__QuadTree *, double *, int, float, long, long); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -2346,6 +2346,7 @@ static const char __pyx_k_np[] = "np";
 static const char __pyx_k_qt[] = "qt";
 static const char __pyx_k_dof[] = "dof";
 static const char __pyx_k_eps[] = "eps";
+static const char __pyx_k_nan[] = "nan";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_obj[] = "obj";
 static const char __pyx_k_base[] = "base";
@@ -2412,6 +2413,7 @@ static const char __pyx_k_RuntimeError[] = "RuntimeError";
 static const char __pyx_k_n_dimensions[] = "n_dimensions";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_stringsource[] = "stringsource";
+static const char __pyx_k_compute_error[] = "compute_error";
 static const char __pyx_k_pyx_getbuffer[] = "__pyx_getbuffer";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_View_MemoryView[] = "View.MemoryView";
@@ -2499,6 +2501,7 @@ static PyObject *__pyx_n_s_c;
 static PyObject *__pyx_n_u_c;
 static PyObject *__pyx_n_s_class;
 static PyObject *__pyx_n_s_cline_in_traceback;
+static PyObject *__pyx_n_s_compute_error;
 static PyObject *__pyx_kp_s_contiguous_and_direct;
 static PyObject *__pyx_kp_s_contiguous_and_indirect;
 static PyObject *__pyx_n_s_dict;
@@ -2532,6 +2535,7 @@ static PyObject *__pyx_n_s_n;
 static PyObject *__pyx_n_s_n_dimensions;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_name_2;
+static PyObject *__pyx_n_s_nan;
 static PyObject *__pyx_kp_u_ndarray_is_not_C_contiguous;
 static PyObject *__pyx_kp_u_ndarray_is_not_Fortran_contiguou;
 static PyObject *__pyx_n_s_ndim;
@@ -2586,7 +2590,7 @@ static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_val_P;
 static PyObject *__pyx_n_s_verbose;
-static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_val_P, __Pyx_memviewslice __pyx_v_pos_output, __Pyx_memviewslice __pyx_v_neighbors, __Pyx_memviewslice __pyx_v_indptr, __Pyx_memviewslice __pyx_v_forces, float __pyx_v_theta, int __pyx_v_n_dimensions, int __pyx_v_verbose, float __pyx_v_dof, long __pyx_v_skip_num_points); /* proto */
+static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_val_P, __Pyx_memviewslice __pyx_v_pos_output, __Pyx_memviewslice __pyx_v_neighbors, __Pyx_memviewslice __pyx_v_indptr, __Pyx_memviewslice __pyx_v_forces, float __pyx_v_theta, int __pyx_v_n_dimensions, int __pyx_v_verbose, int __pyx_v_dof, long __pyx_v_skip_num_points, int __pyx_v_compute_error); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -2689,7 +2693,7 @@ static PyObject *__pyx_codeobj__39;
  *                             np.int64_t[:] neighbors,
  */
 
-static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Pyx_memviewslice __pyx_v_val_P, __Pyx_memviewslice __pyx_v_pos_reference, __Pyx_memviewslice __pyx_v_neighbors, __Pyx_memviewslice __pyx_v_indptr, __Pyx_memviewslice __pyx_v_tot_force, struct __pyx_obj_7sklearn_9neighbors_9quad_tree__QuadTree *__pyx_v_qt, float __pyx_v_theta, float __pyx_v_dof, long __pyx_v_start, long __pyx_v_stop) {
+static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Pyx_memviewslice __pyx_v_val_P, __Pyx_memviewslice __pyx_v_pos_reference, __Pyx_memviewslice __pyx_v_neighbors, __Pyx_memviewslice __pyx_v_indptr, __Pyx_memviewslice __pyx_v_tot_force, struct __pyx_obj_7sklearn_9neighbors_9quad_tree__QuadTree *__pyx_v_qt, float __pyx_v_theta, int __pyx_v_dof, long __pyx_v_start, long __pyx_v_stop, int __pyx_v_compute_error) {
   long __pyx_v_i;
   long __pyx_v_coord;
   int __pyx_v_ax;
@@ -2700,6 +2704,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
   clock_t __pyx_v_t2;
   float __pyx_v_sQ;
   float __pyx_v_error;
+  int __pyx_v_take_timing;
   float *__pyx_v_neg_f;
   float *__pyx_v_pos_f;
   float __pyx_r;
@@ -2713,7 +2718,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
   Py_ssize_t __pyx_t_8;
   Py_ssize_t __pyx_t_9;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":61
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":62
  *         long i, coord
  *         int ax
  *         long n_samples = pos_reference.shape[0]             # <<<<<<<<<<<<<<
@@ -2722,18 +2727,42 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
  */
   __pyx_v_n_samples = (__pyx_v_pos_reference.shape[0]);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":62
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":63
  *         int ax
  *         long n_samples = pos_reference.shape[0]
  *         int n_dimensions = qt.n_dimensions             # <<<<<<<<<<<<<<
  *         double[1] sum_Q
- *         clock_t t1, t2
+ *         clock_t t1 = 0, t2 = 0
  */
   __pyx_t_1 = __pyx_v_qt->n_dimensions;
   __pyx_v_n_dimensions = __pyx_t_1;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":67
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":65
+ *         int n_dimensions = qt.n_dimensions
+ *         double[1] sum_Q
+ *         clock_t t1 = 0, t2 = 0             # <<<<<<<<<<<<<<
  *         float sQ, error
+ *         int take_timing = 1 if qt.verbose > 15 else 0
+ */
+  __pyx_v_t1 = 0;
+  __pyx_v_t2 = 0;
+
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":67
+ *         clock_t t1 = 0, t2 = 0
+ *         float sQ, error
+ *         int take_timing = 1 if qt.verbose > 15 else 0             # <<<<<<<<<<<<<<
+ * 
+ *     if qt.verbose > 11:
+ */
+  if (((__pyx_v_qt->verbose > 15) != 0)) {
+    __pyx_t_1 = 1;
+  } else {
+    __pyx_t_1 = 0;
+  }
+  __pyx_v_take_timing = __pyx_t_1;
+
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":69
+ *         int take_timing = 1 if qt.verbose > 15 else 0
  * 
  *     if qt.verbose > 11:             # <<<<<<<<<<<<<<
  *         printf("[t-SNE] Allocating %li elements in force arrays\n",
@@ -2742,7 +2771,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
   __pyx_t_2 = ((__pyx_v_qt->verbose > 11) != 0);
   if (__pyx_t_2) {
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":68
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":70
  * 
  *     if qt.verbose > 11:
  *         printf("[t-SNE] Allocating %li elements in force arrays\n",             # <<<<<<<<<<<<<<
@@ -2751,8 +2780,8 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
  */
     (void)(printf(((char const *)"[t-SNE] Allocating %li elements in force arrays\n"), ((__pyx_v_n_samples * __pyx_v_n_dimensions) * 2)));
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":67
- *         float sQ, error
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":69
+ *         int take_timing = 1 if qt.verbose > 15 else 0
  * 
  *     if qt.verbose > 11:             # <<<<<<<<<<<<<<
  *         printf("[t-SNE] Allocating %li elements in force arrays\n",
@@ -2760,7 +2789,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
  */
   }
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":70
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":72
  *         printf("[t-SNE] Allocating %li elements in force arrays\n",
  *                 n_samples * n_dimensions * 2)
  *     cdef float* neg_f = <float*> malloc(sizeof(float) * n_samples * n_dimensions)             # <<<<<<<<<<<<<<
@@ -2769,7 +2798,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
  */
   __pyx_v_neg_f = ((float *)malloc((((sizeof(float)) * __pyx_v_n_samples) * __pyx_v_n_dimensions)));
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":71
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":73
  *                 n_samples * n_dimensions * 2)
  *     cdef float* neg_f = <float*> malloc(sizeof(float) * n_samples * n_dimensions)
  *     cdef float* pos_f = <float*> malloc(sizeof(float) * n_samples * n_dimensions)             # <<<<<<<<<<<<<<
@@ -2778,136 +2807,174 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
  */
   __pyx_v_pos_f = ((float *)malloc((((sizeof(float)) * __pyx_v_n_samples) * __pyx_v_n_dimensions)));
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":73
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":75
  *     cdef float* pos_f = <float*> malloc(sizeof(float) * n_samples * n_dimensions)
  * 
  *     sum_Q[0] = 0.0             # <<<<<<<<<<<<<<
- *     t1 = clock()
- *     compute_gradient_negative(pos_reference, neg_f, qt, sum_Q,
+ *     if take_timing:
+ *         t1 = clock()
  */
   (__pyx_v_sum_Q[0]) = 0.0;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":74
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":76
  * 
  *     sum_Q[0] = 0.0
- *     t1 = clock()             # <<<<<<<<<<<<<<
+ *     if take_timing:             # <<<<<<<<<<<<<<
+ *         t1 = clock()
  *     compute_gradient_negative(pos_reference, neg_f, qt, sum_Q,
- *                               dof, theta, start, stop)
  */
-  __pyx_v_t1 = clock();
-
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":75
- *     sum_Q[0] = 0.0
- *     t1 = clock()
- *     compute_gradient_negative(pos_reference, neg_f, qt, sum_Q,             # <<<<<<<<<<<<<<
- *                               dof, theta, start, stop)
- *     t2 = clock()
- */
-  __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negative(__pyx_v_pos_reference, __pyx_v_neg_f, __pyx_v_qt, __pyx_v_sum_Q, __pyx_v_dof, __pyx_v_theta, __pyx_v_start, __pyx_v_stop);
-
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":77
- *     compute_gradient_negative(pos_reference, neg_f, qt, sum_Q,
- *                               dof, theta, start, stop)
- *     t2 = clock()             # <<<<<<<<<<<<<<
- *     if qt.verbose > 15:
- *         printf("[t-SNE] Computing negative gradient: %e ticks\n", ((float) (t2 - t1)))
- */
-  __pyx_v_t2 = clock();
-
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":78
- *                               dof, theta, start, stop)
- *     t2 = clock()
- *     if qt.verbose > 15:             # <<<<<<<<<<<<<<
- *         printf("[t-SNE] Computing negative gradient: %e ticks\n", ((float) (t2 - t1)))
- *     sQ = sum_Q[0]
- */
-  __pyx_t_2 = ((__pyx_v_qt->verbose > 15) != 0);
+  __pyx_t_2 = (__pyx_v_take_timing != 0);
   if (__pyx_t_2) {
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":79
- *     t2 = clock()
- *     if qt.verbose > 15:
- *         printf("[t-SNE] Computing negative gradient: %e ticks\n", ((float) (t2 - t1)))             # <<<<<<<<<<<<<<
- *     sQ = sum_Q[0]
- *     t1 = clock()
- */
-    (void)(printf(((char const *)"[t-SNE] Computing negative gradient: %e ticks\n"), ((double)(__pyx_v_t2 - __pyx_v_t1))));
-
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":78
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":77
+ *     sum_Q[0] = 0.0
+ *     if take_timing:
+ *         t1 = clock()             # <<<<<<<<<<<<<<
+ *     compute_gradient_negative(pos_reference, neg_f, qt, sum_Q,
  *                               dof, theta, start, stop)
- *     t2 = clock()
- *     if qt.verbose > 15:             # <<<<<<<<<<<<<<
- *         printf("[t-SNE] Computing negative gradient: %e ticks\n", ((float) (t2 - t1)))
- *     sQ = sum_Q[0]
+ */
+    __pyx_v_t1 = clock();
+
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":76
+ * 
+ *     sum_Q[0] = 0.0
+ *     if take_timing:             # <<<<<<<<<<<<<<
+ *         t1 = clock()
+ *     compute_gradient_negative(pos_reference, neg_f, qt, sum_Q,
  */
   }
 
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":78
+ *     if take_timing:
+ *         t1 = clock()
+ *     compute_gradient_negative(pos_reference, neg_f, qt, sum_Q,             # <<<<<<<<<<<<<<
+ *                               dof, theta, start, stop)
+ *     if take_timing:
+ */
+  __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negative(__pyx_v_pos_reference, __pyx_v_neg_f, __pyx_v_qt, __pyx_v_sum_Q, __pyx_v_dof, __pyx_v_theta, __pyx_v_start, __pyx_v_stop);
+
   /* "sklearn/manifold/_barnes_hut_tsne.pyx":80
- *     if qt.verbose > 15:
+ *     compute_gradient_negative(pos_reference, neg_f, qt, sum_Q,
+ *                               dof, theta, start, stop)
+ *     if take_timing:             # <<<<<<<<<<<<<<
+ *         t2 = clock()
+ *         printf("[t-SNE] Computing negative gradient: %e ticks\n", ((float) (t2 - t1)))
+ */
+  __pyx_t_2 = (__pyx_v_take_timing != 0);
+  if (__pyx_t_2) {
+
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":81
+ *                               dof, theta, start, stop)
+ *     if take_timing:
+ *         t2 = clock()             # <<<<<<<<<<<<<<
+ *         printf("[t-SNE] Computing negative gradient: %e ticks\n", ((float) (t2 - t1)))
+ *     sQ = sum_Q[0]
+ */
+    __pyx_v_t2 = clock();
+
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":82
+ *     if take_timing:
+ *         t2 = clock()
+ *         printf("[t-SNE] Computing negative gradient: %e ticks\n", ((float) (t2 - t1)))             # <<<<<<<<<<<<<<
+ *     sQ = sum_Q[0]
+ * 
+ */
+    (void)(printf(((char const *)"[t-SNE] Computing negative gradient: %e ticks\n"), ((double)(__pyx_v_t2 - __pyx_v_t1))));
+
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":80
+ *     compute_gradient_negative(pos_reference, neg_f, qt, sum_Q,
+ *                               dof, theta, start, stop)
+ *     if take_timing:             # <<<<<<<<<<<<<<
+ *         t2 = clock()
+ *         printf("[t-SNE] Computing negative gradient: %e ticks\n", ((float) (t2 - t1)))
+ */
+  }
+
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":83
+ *         t2 = clock()
  *         printf("[t-SNE] Computing negative gradient: %e ticks\n", ((float) (t2 - t1)))
  *     sQ = sum_Q[0]             # <<<<<<<<<<<<<<
- *     t1 = clock()
- *     error = compute_gradient_positive(val_P, pos_reference, neighbors, indptr,
+ * 
+ *     if take_timing:
  */
   __pyx_v_sQ = (__pyx_v_sum_Q[0]);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":81
- *         printf("[t-SNE] Computing negative gradient: %e ticks\n", ((float) (t2 - t1)))
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":85
  *     sQ = sum_Q[0]
- *     t1 = clock()             # <<<<<<<<<<<<<<
+ * 
+ *     if take_timing:             # <<<<<<<<<<<<<<
+ *         t1 = clock()
+ *     error = compute_gradient_positive(val_P, pos_reference, neighbors, indptr,
+ */
+  __pyx_t_2 = (__pyx_v_take_timing != 0);
+  if (__pyx_t_2) {
+
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":86
+ * 
+ *     if take_timing:
+ *         t1 = clock()             # <<<<<<<<<<<<<<
  *     error = compute_gradient_positive(val_P, pos_reference, neighbors, indptr,
  *                                       pos_f, n_dimensions, dof, sQ, start,
  */
-  __pyx_v_t1 = clock();
+    __pyx_v_t1 = clock();
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":82
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":85
  *     sQ = sum_Q[0]
- *     t1 = clock()
+ * 
+ *     if take_timing:             # <<<<<<<<<<<<<<
+ *         t1 = clock()
+ *     error = compute_gradient_positive(val_P, pos_reference, neighbors, indptr,
+ */
+  }
+
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":87
+ *     if take_timing:
+ *         t1 = clock()
  *     error = compute_gradient_positive(val_P, pos_reference, neighbors, indptr,             # <<<<<<<<<<<<<<
  *                                       pos_f, n_dimensions, dof, sQ, start,
- *                                       qt.verbose)
+ *                                       qt.verbose, compute_error)
  */
-  __pyx_v_error = __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_positive(__pyx_v_val_P, __pyx_v_pos_reference, __pyx_v_neighbors, __pyx_v_indptr, __pyx_v_pos_f, __pyx_v_n_dimensions, __pyx_v_dof, __pyx_v_sQ, __pyx_v_start, __pyx_v_qt->verbose);
+  __pyx_v_error = __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_positive(__pyx_v_val_P, __pyx_v_pos_reference, __pyx_v_neighbors, __pyx_v_indptr, __pyx_v_pos_f, __pyx_v_n_dimensions, __pyx_v_dof, __pyx_v_sQ, __pyx_v_start, __pyx_v_qt->verbose, __pyx_v_compute_error);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":85
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":90
  *                                       pos_f, n_dimensions, dof, sQ, start,
- *                                       qt.verbose)
- *     t2 = clock()             # <<<<<<<<<<<<<<
- *     if qt.verbose > 15:
+ *                                       qt.verbose, compute_error)
+ *     if take_timing:             # <<<<<<<<<<<<<<
+ *         t2 = clock()
  *         printf("[t-SNE] Computing positive gradient: %e ticks\n", ((float) (t2 - t1)))
  */
-  __pyx_v_t2 = clock();
+  __pyx_t_2 = (__pyx_v_take_timing != 0);
+  if (__pyx_t_2) {
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":86
- *                                       qt.verbose)
- *     t2 = clock()
- *     if qt.verbose > 15:             # <<<<<<<<<<<<<<
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":91
+ *                                       qt.verbose, compute_error)
+ *     if take_timing:
+ *         t2 = clock()             # <<<<<<<<<<<<<<
  *         printf("[t-SNE] Computing positive gradient: %e ticks\n", ((float) (t2 - t1)))
  *     for i in range(start, n_samples):
  */
-  __pyx_t_2 = ((__pyx_v_qt->verbose > 15) != 0);
-  if (__pyx_t_2) {
+    __pyx_v_t2 = clock();
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":87
- *     t2 = clock()
- *     if qt.verbose > 15:
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":92
+ *     if take_timing:
+ *         t2 = clock()
  *         printf("[t-SNE] Computing positive gradient: %e ticks\n", ((float) (t2 - t1)))             # <<<<<<<<<<<<<<
  *     for i in range(start, n_samples):
  *         for ax in range(n_dimensions):
  */
     (void)(printf(((char const *)"[t-SNE] Computing positive gradient: %e ticks\n"), ((double)(__pyx_v_t2 - __pyx_v_t1))));
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":86
- *                                       qt.verbose)
- *     t2 = clock()
- *     if qt.verbose > 15:             # <<<<<<<<<<<<<<
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":90
+ *                                       pos_f, n_dimensions, dof, sQ, start,
+ *                                       qt.verbose, compute_error)
+ *     if take_timing:             # <<<<<<<<<<<<<<
+ *         t2 = clock()
  *         printf("[t-SNE] Computing positive gradient: %e ticks\n", ((float) (t2 - t1)))
- *     for i in range(start, n_samples):
  */
   }
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":88
- *     if qt.verbose > 15:
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":93
+ *         t2 = clock()
  *         printf("[t-SNE] Computing positive gradient: %e ticks\n", ((float) (t2 - t1)))
  *     for i in range(start, n_samples):             # <<<<<<<<<<<<<<
  *         for ax in range(n_dimensions):
@@ -2918,7 +2985,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
   for (__pyx_t_5 = __pyx_v_start; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":89
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":94
  *         printf("[t-SNE] Computing positive gradient: %e ticks\n", ((float) (t2 - t1)))
  *     for i in range(start, n_samples):
  *         for ax in range(n_dimensions):             # <<<<<<<<<<<<<<
@@ -2930,7 +2997,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_ax = __pyx_t_7;
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":90
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":95
  *     for i in range(start, n_samples):
  *         for ax in range(n_dimensions):
  *             coord = i * n_dimensions + ax             # <<<<<<<<<<<<<<
@@ -2939,7 +3006,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
  */
       __pyx_v_coord = ((__pyx_v_i * __pyx_v_n_dimensions) + __pyx_v_ax);
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":91
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":96
  *         for ax in range(n_dimensions):
  *             coord = i * n_dimensions + ax
  *             tot_force[i, ax] = pos_f[coord] - (neg_f[coord] / sQ)             # <<<<<<<<<<<<<<
@@ -2952,7 +3019,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
     }
   }
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":93
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":98
  *             tot_force[i, ax] = pos_f[coord] - (neg_f[coord] / sQ)
  * 
  *     free(neg_f)             # <<<<<<<<<<<<<<
@@ -2961,7 +3028,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
  */
   free(__pyx_v_neg_f);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":94
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":99
  * 
  *     free(neg_f)
  *     free(pos_f)             # <<<<<<<<<<<<<<
@@ -2970,7 +3037,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
  */
   free(__pyx_v_pos_f);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":95
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":100
  *     free(neg_f)
  *     free(pos_f)
  *     return error             # <<<<<<<<<<<<<<
@@ -2993,7 +3060,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
   return __pyx_r;
 }
 
-/* "sklearn/manifold/_barnes_hut_tsne.pyx":98
+/* "sklearn/manifold/_barnes_hut_tsne.pyx":103
  * 
  * 
  * cdef float compute_gradient_positive(float[:] val_P,             # <<<<<<<<<<<<<<
@@ -3001,7 +3068,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__Py
  *                                      np.int64_t[:] neighbors,
  */
 
-static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_positive(__Pyx_memviewslice __pyx_v_val_P, __Pyx_memviewslice __pyx_v_pos_reference, __Pyx_memviewslice __pyx_v_neighbors, __Pyx_memviewslice __pyx_v_indptr, float *__pyx_v_pos_f, int __pyx_v_n_dimensions, float __pyx_v_dof, double __pyx_v_sum_Q, __pyx_t_5numpy_int64_t __pyx_v_start, int __pyx_v_verbose) {
+static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_positive(__Pyx_memviewslice __pyx_v_val_P, __Pyx_memviewslice __pyx_v_pos_reference, __Pyx_memviewslice __pyx_v_neighbors, __Pyx_memviewslice __pyx_v_indptr, float *__pyx_v_pos_f, int __pyx_v_n_dimensions, int __pyx_v_dof, double __pyx_v_sum_Q, __pyx_t_5numpy_int64_t __pyx_v_start, int __pyx_v_verbose, int __pyx_v_compute_error) {
   int __pyx_v_ax;
   long __pyx_v_i;
   long __pyx_v_j;
@@ -3012,36 +3079,37 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_posi
   float __pyx_v_pij;
   float __pyx_v_C;
   float __pyx_v_exponent;
+  float __pyx_v_float_dof;
   float __pyx_v_buff[3];
   clock_t __pyx_v_t1;
   clock_t __pyx_v_t2;
-  double __pyx_v_dt;
+  float __pyx_v_dt;
   float __pyx_r;
-  long __pyx_t_1;
+  int __pyx_t_1;
   long __pyx_t_2;
   long __pyx_t_3;
-  int __pyx_t_4;
+  long __pyx_t_4;
   int __pyx_t_5;
   int __pyx_t_6;
-  Py_ssize_t __pyx_t_7;
-  __pyx_t_5numpy_int64_t __pyx_t_8;
-  Py_ssize_t __pyx_t_9;
-  __pyx_t_5numpy_int64_t __pyx_t_10;
-  long __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
+  int __pyx_t_7;
+  Py_ssize_t __pyx_t_8;
+  __pyx_t_5numpy_int64_t __pyx_t_9;
+  Py_ssize_t __pyx_t_10;
+  __pyx_t_5numpy_int64_t __pyx_t_11;
+  long __pyx_t_12;
   Py_ssize_t __pyx_t_13;
   Py_ssize_t __pyx_t_14;
   Py_ssize_t __pyx_t_15;
   Py_ssize_t __pyx_t_16;
   Py_ssize_t __pyx_t_17;
-  float __pyx_t_18;
+  Py_ssize_t __pyx_t_18;
   float __pyx_t_19;
   float __pyx_t_20;
   float __pyx_t_21;
-  long __pyx_t_22;
-  int __pyx_t_23;
+  float __pyx_t_22;
+  long __pyx_t_23;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":116
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":122
  *         int ax
  *         long i, j, k
  *         long n_samples = indptr.shape[0] - 1             # <<<<<<<<<<<<<<
@@ -3050,58 +3118,96 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_posi
  */
   __pyx_v_n_samples = ((__pyx_v_indptr.shape[0]) - 1);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":118
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":124
  *         long n_samples = indptr.shape[0] - 1
  *         float dij, qij, pij
  *         float C = 0.0             # <<<<<<<<<<<<<<
- *         float exponent = (dof + 1.0) / -2.0
- *         float[3] buff
+ *         float exponent = (dof + 1.0) / 2.0
+ *         float float_dof = (float) (dof)
  */
   __pyx_v_C = 0.0;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":119
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":125
  *         float dij, qij, pij
  *         float C = 0.0
- *         float exponent = (dof + 1.0) / -2.0             # <<<<<<<<<<<<<<
+ *         float exponent = (dof + 1.0) / 2.0             # <<<<<<<<<<<<<<
+ *         float float_dof = (float) (dof)
  *         float[3] buff
- *         clock_t t1, t2
  */
-  __pyx_v_exponent = ((__pyx_v_dof + 1.0) / -2.0);
+  __pyx_v_exponent = ((__pyx_v_dof + 1.0) / 2.0);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":123
- *         clock_t t1, t2
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":126
+ *         float C = 0.0
+ *         float exponent = (dof + 1.0) / 2.0
+ *         float float_dof = (float) (dof)             # <<<<<<<<<<<<<<
+ *         float[3] buff
+ *         clock_t t1 = 0, t2 = 0
+ */
+  __pyx_v_float_dof = ((double)__pyx_v_dof);
+
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":128
+ *         float float_dof = (float) (dof)
+ *         float[3] buff
+ *         clock_t t1 = 0, t2 = 0             # <<<<<<<<<<<<<<
+ *         float dt
  * 
- *     t1 = clock()             # <<<<<<<<<<<<<<
+ */
+  __pyx_v_t1 = 0;
+  __pyx_v_t2 = 0;
+
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":131
+ *         float dt
+ * 
+ *     if verbose > 10:             # <<<<<<<<<<<<<<
+ *         t1 = clock()
+ *     for i in range(start, n_samples):
+ */
+  __pyx_t_1 = ((__pyx_v_verbose > 10) != 0);
+  if (__pyx_t_1) {
+
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":132
+ * 
+ *     if verbose > 10:
+ *         t1 = clock()             # <<<<<<<<<<<<<<
  *     for i in range(start, n_samples):
  *         # Init the gradient vector
  */
-  __pyx_v_t1 = clock();
+    __pyx_v_t1 = clock();
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":124
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":131
+ *         float dt
  * 
- *     t1 = clock()
+ *     if verbose > 10:             # <<<<<<<<<<<<<<
+ *         t1 = clock()
+ *     for i in range(start, n_samples):
+ */
+  }
+
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":133
+ *     if verbose > 10:
+ *         t1 = clock()
  *     for i in range(start, n_samples):             # <<<<<<<<<<<<<<
  *         # Init the gradient vector
  *         for ax in range(n_dimensions):
  */
-  __pyx_t_1 = __pyx_v_n_samples;
-  __pyx_t_2 = __pyx_t_1;
-  for (__pyx_t_3 = __pyx_v_start; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
-    __pyx_v_i = __pyx_t_3;
+  __pyx_t_2 = __pyx_v_n_samples;
+  __pyx_t_3 = __pyx_t_2;
+  for (__pyx_t_4 = __pyx_v_start; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+    __pyx_v_i = __pyx_t_4;
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":126
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":135
  *     for i in range(start, n_samples):
  *         # Init the gradient vector
  *         for ax in range(n_dimensions):             # <<<<<<<<<<<<<<
  *             pos_f[i * n_dimensions + ax] = 0.0
  *         # Compute the positive interaction for the nearest neighbors
  */
-    __pyx_t_4 = __pyx_v_n_dimensions;
-    __pyx_t_5 = __pyx_t_4;
-    for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
-      __pyx_v_ax = __pyx_t_6;
+    __pyx_t_5 = __pyx_v_n_dimensions;
+    __pyx_t_6 = __pyx_t_5;
+    for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+      __pyx_v_ax = __pyx_t_7;
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":127
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":136
  *         # Init the gradient vector
  *         for ax in range(n_dimensions):
  *             pos_f[i * n_dimensions + ax] = 0.0             # <<<<<<<<<<<<<<
@@ -3111,31 +3217,31 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_posi
       (__pyx_v_pos_f[((__pyx_v_i * __pyx_v_n_dimensions) + __pyx_v_ax)]) = 0.0;
     }
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":129
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":138
  *             pos_f[i * n_dimensions + ax] = 0.0
  *         # Compute the positive interaction for the nearest neighbors
  *         for k in range(indptr[i], indptr[i+1]):             # <<<<<<<<<<<<<<
  *             j = neighbors[k]
  *             dij = 0.0
  */
-    __pyx_t_7 = (__pyx_v_i + 1);
-    __pyx_t_8 = (*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_indptr.data + __pyx_t_7 * __pyx_v_indptr.strides[0]) )));
-    __pyx_t_9 = __pyx_v_i;
-    __pyx_t_10 = __pyx_t_8;
-    for (__pyx_t_11 = (*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_indptr.data + __pyx_t_9 * __pyx_v_indptr.strides[0]) ))); __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-      __pyx_v_k = __pyx_t_11;
+    __pyx_t_8 = (__pyx_v_i + 1);
+    __pyx_t_9 = (*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_indptr.data + __pyx_t_8 * __pyx_v_indptr.strides[0]) )));
+    __pyx_t_10 = __pyx_v_i;
+    __pyx_t_11 = __pyx_t_9;
+    for (__pyx_t_12 = (*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_indptr.data + __pyx_t_10 * __pyx_v_indptr.strides[0]) ))); __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+      __pyx_v_k = __pyx_t_12;
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":130
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":139
  *         # Compute the positive interaction for the nearest neighbors
  *         for k in range(indptr[i], indptr[i+1]):
  *             j = neighbors[k]             # <<<<<<<<<<<<<<
  *             dij = 0.0
  *             pij = val_P[k]
  */
-      __pyx_t_12 = __pyx_v_k;
-      __pyx_v_j = (*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_neighbors.data + __pyx_t_12 * __pyx_v_neighbors.strides[0]) )));
+      __pyx_t_13 = __pyx_v_k;
+      __pyx_v_j = (*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_neighbors.data + __pyx_t_13 * __pyx_v_neighbors.strides[0]) )));
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":131
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":140
  *         for k in range(indptr[i], indptr[i+1]):
  *             j = neighbors[k]
  *             dij = 0.0             # <<<<<<<<<<<<<<
@@ -3144,190 +3250,221 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_posi
  */
       __pyx_v_dij = 0.0;
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":132
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":141
  *             j = neighbors[k]
  *             dij = 0.0
  *             pij = val_P[k]             # <<<<<<<<<<<<<<
  *             for ax in range(n_dimensions):
  *                 buff[ax] = pos_reference[i, ax] - pos_reference[j, ax]
  */
-      __pyx_t_13 = __pyx_v_k;
-      __pyx_v_pij = (*((float *) ( /* dim=0 */ (__pyx_v_val_P.data + __pyx_t_13 * __pyx_v_val_P.strides[0]) )));
+      __pyx_t_14 = __pyx_v_k;
+      __pyx_v_pij = (*((float *) ( /* dim=0 */ (__pyx_v_val_P.data + __pyx_t_14 * __pyx_v_val_P.strides[0]) )));
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":133
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":142
  *             dij = 0.0
  *             pij = val_P[k]
  *             for ax in range(n_dimensions):             # <<<<<<<<<<<<<<
  *                 buff[ax] = pos_reference[i, ax] - pos_reference[j, ax]
  *                 dij += buff[ax] * buff[ax]
  */
-      __pyx_t_4 = __pyx_v_n_dimensions;
-      __pyx_t_5 = __pyx_t_4;
-      for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
-        __pyx_v_ax = __pyx_t_6;
+      __pyx_t_5 = __pyx_v_n_dimensions;
+      __pyx_t_6 = __pyx_t_5;
+      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+        __pyx_v_ax = __pyx_t_7;
 
-        /* "sklearn/manifold/_barnes_hut_tsne.pyx":134
+        /* "sklearn/manifold/_barnes_hut_tsne.pyx":143
  *             pij = val_P[k]
  *             for ax in range(n_dimensions):
  *                 buff[ax] = pos_reference[i, ax] - pos_reference[j, ax]             # <<<<<<<<<<<<<<
  *                 dij += buff[ax] * buff[ax]
- *             qij = ((1.0 + dij / dof) ** exponent)
+ *             qij = float_dof / (float_dof + dij)
  */
-        __pyx_t_14 = __pyx_v_i;
-        __pyx_t_15 = __pyx_v_ax;
-        __pyx_t_16 = __pyx_v_j;
-        __pyx_t_17 = __pyx_v_ax;
-        (__pyx_v_buff[__pyx_v_ax]) = ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pos_reference.data + __pyx_t_14 * __pyx_v_pos_reference.strides[0]) ) + __pyx_t_15 * __pyx_v_pos_reference.strides[1]) ))) - (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pos_reference.data + __pyx_t_16 * __pyx_v_pos_reference.strides[0]) ) + __pyx_t_17 * __pyx_v_pos_reference.strides[1]) ))));
+        __pyx_t_15 = __pyx_v_i;
+        __pyx_t_16 = __pyx_v_ax;
+        __pyx_t_17 = __pyx_v_j;
+        __pyx_t_18 = __pyx_v_ax;
+        (__pyx_v_buff[__pyx_v_ax]) = ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pos_reference.data + __pyx_t_15 * __pyx_v_pos_reference.strides[0]) ) + __pyx_t_16 * __pyx_v_pos_reference.strides[1]) ))) - (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pos_reference.data + __pyx_t_17 * __pyx_v_pos_reference.strides[0]) ) + __pyx_t_18 * __pyx_v_pos_reference.strides[1]) ))));
 
-        /* "sklearn/manifold/_barnes_hut_tsne.pyx":135
+        /* "sklearn/manifold/_barnes_hut_tsne.pyx":144
  *             for ax in range(n_dimensions):
  *                 buff[ax] = pos_reference[i, ax] - pos_reference[j, ax]
  *                 dij += buff[ax] * buff[ax]             # <<<<<<<<<<<<<<
- *             qij = ((1.0 + dij / dof) ** exponent)
- *             dij = pij * qij
+ *             qij = float_dof / (float_dof + dij)
+ *             if dof != 1:  # i.e. exponent != 1
  */
         __pyx_v_dij = (__pyx_v_dij + ((__pyx_v_buff[__pyx_v_ax]) * (__pyx_v_buff[__pyx_v_ax])));
       }
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":136
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":145
  *                 buff[ax] = pos_reference[i, ax] - pos_reference[j, ax]
  *                 dij += buff[ax] * buff[ax]
- *             qij = ((1.0 + dij / dof) ** exponent)             # <<<<<<<<<<<<<<
- *             dij = pij * qij
- *             qij /= sum_Q
+ *             qij = float_dof / (float_dof + dij)             # <<<<<<<<<<<<<<
+ *             if dof != 1:  # i.e. exponent != 1
+ *                 qij **= exponent
  */
-      __pyx_v_qij = pow((1.0 + (__pyx_v_dij / __pyx_v_dof)), ((double)__pyx_v_exponent));
+      __pyx_v_qij = (__pyx_v_float_dof / (__pyx_v_float_dof + __pyx_v_dij));
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":137
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":146
  *                 dij += buff[ax] * buff[ax]
- *             qij = ((1.0 + dij / dof) ** exponent)
+ *             qij = float_dof / (float_dof + dij)
+ *             if dof != 1:  # i.e. exponent != 1             # <<<<<<<<<<<<<<
+ *                 qij **= exponent
+ *             dij = pij * qij
+ */
+      __pyx_t_1 = ((__pyx_v_dof != 1) != 0);
+      if (__pyx_t_1) {
+
+        /* "sklearn/manifold/_barnes_hut_tsne.pyx":147
+ *             qij = float_dof / (float_dof + dij)
+ *             if dof != 1:  # i.e. exponent != 1
+ *                 qij **= exponent             # <<<<<<<<<<<<<<
+ *             dij = pij * qij
+ * 
+ */
+        __pyx_v_qij = powf(__pyx_v_qij, __pyx_v_exponent);
+
+        /* "sklearn/manifold/_barnes_hut_tsne.pyx":146
+ *                 dij += buff[ax] * buff[ax]
+ *             qij = float_dof / (float_dof + dij)
+ *             if dof != 1:  # i.e. exponent != 1             # <<<<<<<<<<<<<<
+ *                 qij **= exponent
+ *             dij = pij * qij
+ */
+      }
+
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":148
+ *             if dof != 1:  # i.e. exponent != 1
+ *                 qij **= exponent
  *             dij = pij * qij             # <<<<<<<<<<<<<<
- *             qij /= sum_Q
- *             C += pij * log(max(pij, FLOAT32_TINY)
+ * 
+ *             # only compute the error when needed
  */
       __pyx_v_dij = (__pyx_v_pij * __pyx_v_qij);
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":138
- *             qij = ((1.0 + dij / dof) ** exponent)
- *             dij = pij * qij
- *             qij /= sum_Q             # <<<<<<<<<<<<<<
- *             C += pij * log(max(pij, FLOAT32_TINY)
- *                            / max(qij, FLOAT32_TINY))
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":151
+ * 
+ *             # only compute the error when needed
+ *             if compute_error:             # <<<<<<<<<<<<<<
+ *                 qij /= sum_Q
+ *                 C += pij * log(max(pij, FLOAT32_TINY) / max(qij, FLOAT32_TINY))
  */
-      __pyx_v_qij = (__pyx_v_qij / __pyx_v_sum_Q);
+      __pyx_t_1 = (__pyx_v_compute_error != 0);
+      if (__pyx_t_1) {
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":139
- *             dij = pij * qij
- *             qij /= sum_Q
- *             C += pij * log(max(pij, FLOAT32_TINY)             # <<<<<<<<<<<<<<
- *                            / max(qij, FLOAT32_TINY))
+        /* "sklearn/manifold/_barnes_hut_tsne.pyx":152
+ *             # only compute the error when needed
+ *             if compute_error:
+ *                 qij /= sum_Q             # <<<<<<<<<<<<<<
+ *                 C += pij * log(max(pij, FLOAT32_TINY) / max(qij, FLOAT32_TINY))
  *             for ax in range(n_dimensions):
  */
-      __pyx_t_18 = __pyx_v_7sklearn_8manifold_16_barnes_hut_tsne_FLOAT32_TINY;
-      __pyx_t_19 = __pyx_v_pij;
-      if (((__pyx_t_18 > __pyx_t_19) != 0)) {
-        __pyx_t_20 = __pyx_t_18;
-      } else {
-        __pyx_t_20 = __pyx_t_19;
-      }
+        __pyx_v_qij = (__pyx_v_qij / __pyx_v_sum_Q);
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":140
- *             qij /= sum_Q
- *             C += pij * log(max(pij, FLOAT32_TINY)
- *                            / max(qij, FLOAT32_TINY))             # <<<<<<<<<<<<<<
+        /* "sklearn/manifold/_barnes_hut_tsne.pyx":153
+ *             if compute_error:
+ *                 qij /= sum_Q
+ *                 C += pij * log(max(pij, FLOAT32_TINY) / max(qij, FLOAT32_TINY))             # <<<<<<<<<<<<<<
  *             for ax in range(n_dimensions):
  *                 pos_f[i * n_dimensions + ax] += dij * buff[ax]
  */
-      __pyx_t_18 = __pyx_v_7sklearn_8manifold_16_barnes_hut_tsne_FLOAT32_TINY;
-      __pyx_t_19 = __pyx_v_qij;
-      if (((__pyx_t_18 > __pyx_t_19) != 0)) {
-        __pyx_t_21 = __pyx_t_18;
-      } else {
-        __pyx_t_21 = __pyx_t_19;
+        __pyx_t_19 = __pyx_v_7sklearn_8manifold_16_barnes_hut_tsne_FLOAT32_TINY;
+        __pyx_t_20 = __pyx_v_pij;
+        if (((__pyx_t_19 > __pyx_t_20) != 0)) {
+          __pyx_t_21 = __pyx_t_19;
+        } else {
+          __pyx_t_21 = __pyx_t_20;
+        }
+        __pyx_t_19 = __pyx_v_7sklearn_8manifold_16_barnes_hut_tsne_FLOAT32_TINY;
+        __pyx_t_20 = __pyx_v_qij;
+        if (((__pyx_t_19 > __pyx_t_20) != 0)) {
+          __pyx_t_22 = __pyx_t_19;
+        } else {
+          __pyx_t_22 = __pyx_t_20;
+        }
+        __pyx_v_C = (__pyx_v_C + (__pyx_v_pij * log((__pyx_t_21 / __pyx_t_22))));
+
+        /* "sklearn/manifold/_barnes_hut_tsne.pyx":151
+ * 
+ *             # only compute the error when needed
+ *             if compute_error:             # <<<<<<<<<<<<<<
+ *                 qij /= sum_Q
+ *                 C += pij * log(max(pij, FLOAT32_TINY) / max(qij, FLOAT32_TINY))
+ */
       }
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":139
- *             dij = pij * qij
- *             qij /= sum_Q
- *             C += pij * log(max(pij, FLOAT32_TINY)             # <<<<<<<<<<<<<<
- *                            / max(qij, FLOAT32_TINY))
- *             for ax in range(n_dimensions):
- */
-      __pyx_v_C = (__pyx_v_C + (__pyx_v_pij * log((__pyx_t_20 / __pyx_t_21))));
-
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":141
- *             C += pij * log(max(pij, FLOAT32_TINY)
- *                            / max(qij, FLOAT32_TINY))
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":154
+ *                 qij /= sum_Q
+ *                 C += pij * log(max(pij, FLOAT32_TINY) / max(qij, FLOAT32_TINY))
  *             for ax in range(n_dimensions):             # <<<<<<<<<<<<<<
  *                 pos_f[i * n_dimensions + ax] += dij * buff[ax]
- *     t2 = clock()
+ *     if verbose > 10:
  */
-      __pyx_t_4 = __pyx_v_n_dimensions;
-      __pyx_t_5 = __pyx_t_4;
-      for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
-        __pyx_v_ax = __pyx_t_6;
+      __pyx_t_5 = __pyx_v_n_dimensions;
+      __pyx_t_6 = __pyx_t_5;
+      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+        __pyx_v_ax = __pyx_t_7;
 
-        /* "sklearn/manifold/_barnes_hut_tsne.pyx":142
- *                            / max(qij, FLOAT32_TINY))
+        /* "sklearn/manifold/_barnes_hut_tsne.pyx":155
+ *                 C += pij * log(max(pij, FLOAT32_TINY) / max(qij, FLOAT32_TINY))
  *             for ax in range(n_dimensions):
  *                 pos_f[i * n_dimensions + ax] += dij * buff[ax]             # <<<<<<<<<<<<<<
- *     t2 = clock()
- *     dt = ((float) (t2 - t1))
+ *     if verbose > 10:
+ *         t2 = clock()
  */
-        __pyx_t_22 = ((__pyx_v_i * __pyx_v_n_dimensions) + __pyx_v_ax);
-        (__pyx_v_pos_f[__pyx_t_22]) = ((__pyx_v_pos_f[__pyx_t_22]) + (__pyx_v_dij * (__pyx_v_buff[__pyx_v_ax])));
+        __pyx_t_23 = ((__pyx_v_i * __pyx_v_n_dimensions) + __pyx_v_ax);
+        (__pyx_v_pos_f[__pyx_t_23]) = ((__pyx_v_pos_f[__pyx_t_23]) + (__pyx_v_dij * (__pyx_v_buff[__pyx_v_ax])));
       }
     }
   }
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":143
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":156
  *             for ax in range(n_dimensions):
  *                 pos_f[i * n_dimensions + ax] += dij * buff[ax]
- *     t2 = clock()             # <<<<<<<<<<<<<<
- *     dt = ((float) (t2 - t1))
- *     if verbose > 10:
+ *     if verbose > 10:             # <<<<<<<<<<<<<<
+ *         t2 = clock()
+ *         dt = ((float) (t2 - t1))
  */
-  __pyx_v_t2 = clock();
+  __pyx_t_1 = ((__pyx_v_verbose > 10) != 0);
+  if (__pyx_t_1) {
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":144
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":157
  *                 pos_f[i * n_dimensions + ax] += dij * buff[ax]
- *     t2 = clock()
- *     dt = ((float) (t2 - t1))             # <<<<<<<<<<<<<<
  *     if verbose > 10:
+ *         t2 = clock()             # <<<<<<<<<<<<<<
+ *         dt = ((float) (t2 - t1))
  *         printf("[t-SNE] Computed error=%1.4f in %1.1e ticks\n", C, dt)
  */
-  __pyx_v_dt = ((double)(__pyx_v_t2 - __pyx_v_t1));
+    __pyx_v_t2 = clock();
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":145
- *     t2 = clock()
- *     dt = ((float) (t2 - t1))
- *     if verbose > 10:             # <<<<<<<<<<<<<<
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":158
+ *     if verbose > 10:
+ *         t2 = clock()
+ *         dt = ((float) (t2 - t1))             # <<<<<<<<<<<<<<
  *         printf("[t-SNE] Computed error=%1.4f in %1.1e ticks\n", C, dt)
  *     return C
  */
-  __pyx_t_23 = ((__pyx_v_verbose > 10) != 0);
-  if (__pyx_t_23) {
+    __pyx_v_dt = ((double)(__pyx_v_t2 - __pyx_v_t1));
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":146
- *     dt = ((float) (t2 - t1))
- *     if verbose > 10:
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":159
+ *         t2 = clock()
+ *         dt = ((float) (t2 - t1))
  *         printf("[t-SNE] Computed error=%1.4f in %1.1e ticks\n", C, dt)             # <<<<<<<<<<<<<<
  *     return C
  * 
  */
     (void)(printf(((char const *)"[t-SNE] Computed error=%1.4f in %1.1e ticks\n"), __pyx_v_C, __pyx_v_dt));
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":145
- *     t2 = clock()
- *     dt = ((float) (t2 - t1))
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":156
+ *             for ax in range(n_dimensions):
+ *                 pos_f[i * n_dimensions + ax] += dij * buff[ax]
  *     if verbose > 10:             # <<<<<<<<<<<<<<
- *         printf("[t-SNE] Computed error=%1.4f in %1.1e ticks\n", C, dt)
- *     return C
+ *         t2 = clock()
+ *         dt = ((float) (t2 - t1))
  */
   }
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":147
- *     if verbose > 10:
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":160
+ *         dt = ((float) (t2 - t1))
  *         printf("[t-SNE] Computed error=%1.4f in %1.1e ticks\n", C, dt)
  *     return C             # <<<<<<<<<<<<<<
  * 
@@ -3336,7 +3473,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_posi
   __pyx_r = __pyx_v_C;
   goto __pyx_L0;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":98
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":103
  * 
  * 
  * cdef float compute_gradient_positive(float[:] val_P,             # <<<<<<<<<<<<<<
@@ -3349,7 +3486,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_posi
   return __pyx_r;
 }
 
-/* "sklearn/manifold/_barnes_hut_tsne.pyx":150
+/* "sklearn/manifold/_barnes_hut_tsne.pyx":163
  * 
  * 
  * cdef void compute_gradient_negative(float[:, :] pos_reference,             # <<<<<<<<<<<<<<
@@ -3357,7 +3494,7 @@ static float __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_posi
  *                                     quad_tree._QuadTree qt,
  */
 
-static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negative(__Pyx_memviewslice __pyx_v_pos_reference, float *__pyx_v_neg_f, struct __pyx_obj_7sklearn_9neighbors_9quad_tree__QuadTree *__pyx_v_qt, double *__pyx_v_sum_Q, float __pyx_v_dof, float __pyx_v_theta, long __pyx_v_start, long __pyx_v_stop) {
+static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negative(__Pyx_memviewslice __pyx_v_pos_reference, float *__pyx_v_neg_f, struct __pyx_obj_7sklearn_9neighbors_9quad_tree__QuadTree *__pyx_v_qt, double *__pyx_v_sum_Q, int __pyx_v_dof, float __pyx_v_theta, long __pyx_v_start, long __pyx_v_stop) {
   int __pyx_v_ax;
   int __pyx_v_n_dimensions;
   long __pyx_v_i;
@@ -3370,6 +3507,8 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
   float __pyx_v_size;
   float __pyx_v_dist2s;
   float __pyx_v_mult;
+  float __pyx_v_exponent;
+  float __pyx_v_float_dof;
   double __pyx_v_qijZ;
   float __pyx_v_iQ[1];
   float __pyx_v_force[3];
@@ -3378,8 +3517,8 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
   clock_t __pyx_v_t1;
   clock_t __pyx_v_t2;
   clock_t __pyx_v_t3;
+  int __pyx_v_take_timing;
   float *__pyx_v_summary;
-  double __pyx_v_exponent;
   int __pyx_t_1;
   int __pyx_t_2;
   long __pyx_t_3;
@@ -3399,7 +3538,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
   double __pyx_t_17;
   double __pyx_t_18;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":158
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":171
  *                                     long start,
  *                                     long stop) nogil:
  *     if stop == -1:             # <<<<<<<<<<<<<<
@@ -3409,7 +3548,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
   __pyx_t_1 = ((__pyx_v_stop == -1L) != 0);
   if (__pyx_t_1) {
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":159
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":172
  *                                     long stop) nogil:
  *     if stop == -1:
  *         stop = pos_reference.shape[0]             # <<<<<<<<<<<<<<
@@ -3418,7 +3557,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  */
     __pyx_v_stop = (__pyx_v_pos_reference.shape[0]);
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":158
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":171
  *                                     long start,
  *                                     long stop) nogil:
  *     if stop == -1:             # <<<<<<<<<<<<<<
@@ -3427,7 +3566,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  */
   }
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":162
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":175
  *     cdef:
  *         int ax
  *         int n_dimensions = qt.n_dimensions             # <<<<<<<<<<<<<<
@@ -3437,7 +3576,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
   __pyx_t_2 = __pyx_v_qt->n_dimensions;
   __pyx_v_n_dimensions = __pyx_t_2;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":164
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":177
  *         int n_dimensions = qt.n_dimensions
  *         long i, j, idx
  *         long n = stop - start             # <<<<<<<<<<<<<<
@@ -3446,7 +3585,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  */
   __pyx_v_n = (__pyx_v_stop - __pyx_v_start);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":165
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":178
  *         long i, j, idx
  *         long n = stop - start
  *         long dta = 0             # <<<<<<<<<<<<<<
@@ -3455,26 +3594,69 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  */
   __pyx_v_dta = 0;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":166
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":179
  *         long n = stop - start
  *         long dta = 0
  *         long dtb = 0             # <<<<<<<<<<<<<<
  *         long offset = n_dimensions + 2
- *         long* l
+ *         float size, dist2s, mult
  */
   __pyx_v_dtb = 0;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":167
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":180
  *         long dta = 0
  *         long dtb = 0
  *         long offset = n_dimensions + 2             # <<<<<<<<<<<<<<
- *         long* l
  *         float size, dist2s, mult
+ *         float exponent = (dof + 1.0) / 2.0
  */
   __pyx_v_offset = (__pyx_v_n_dimensions + 2);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":175
- *         clock_t t1, t2, t3
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":182
+ *         long offset = n_dimensions + 2
+ *         float size, dist2s, mult
+ *         float exponent = (dof + 1.0) / 2.0             # <<<<<<<<<<<<<<
+ *         float float_dof = (float) (dof)
+ *         double qijZ
+ */
+  __pyx_v_exponent = ((__pyx_v_dof + 1.0) / 2.0);
+
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":183
+ *         float size, dist2s, mult
+ *         float exponent = (dof + 1.0) / 2.0
+ *         float float_dof = (float) (dof)             # <<<<<<<<<<<<<<
+ *         double qijZ
+ *         float[1] iQ
+ */
+  __pyx_v_float_dof = ((double)__pyx_v_dof);
+
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":187
+ *         float[1] iQ
+ *         float[3] force, neg_force, pos
+ *         clock_t t1 = 0, t2 = 0, t3 = 0             # <<<<<<<<<<<<<<
+ *         int take_timing = 1 if qt.verbose > 20 else 0
+ * 
+ */
+  __pyx_v_t1 = 0;
+  __pyx_v_t2 = 0;
+  __pyx_v_t3 = 0;
+
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":188
+ *         float[3] force, neg_force, pos
+ *         clock_t t1 = 0, t2 = 0, t3 = 0
+ *         int take_timing = 1 if qt.verbose > 20 else 0             # <<<<<<<<<<<<<<
+ * 
+ *     summary = <float*> malloc(sizeof(float) * n * offset)
+ */
+  if (((__pyx_v_qt->verbose > 20) != 0)) {
+    __pyx_t_2 = 1;
+  } else {
+    __pyx_t_2 = 0;
+  }
+  __pyx_v_take_timing = __pyx_t_2;
+
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":190
+ *         int take_timing = 1 if qt.verbose > 20 else 0
  * 
  *     summary = <float*> malloc(sizeof(float) * n * offset)             # <<<<<<<<<<<<<<
  * 
@@ -3482,7 +3664,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  */
   __pyx_v_summary = ((float *)malloc((((sizeof(float)) * __pyx_v_n) * __pyx_v_offset)));
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":177
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":192
  *     summary = <float*> malloc(sizeof(float) * n * offset)
  * 
  *     for i in range(start, stop):             # <<<<<<<<<<<<<<
@@ -3494,7 +3676,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
   for (__pyx_t_5 = __pyx_v_start; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":179
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":194
  *     for i in range(start, stop):
  *         # Clear the arrays
  *         for ax in range(n_dimensions):             # <<<<<<<<<<<<<<
@@ -3506,7 +3688,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_ax = __pyx_t_7;
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":180
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":195
  *         # Clear the arrays
  *         for ax in range(n_dimensions):
  *             force[ax] = 0.0             # <<<<<<<<<<<<<<
@@ -3515,7 +3697,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  */
       (__pyx_v_force[__pyx_v_ax]) = 0.0;
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":181
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":196
  *         for ax in range(n_dimensions):
  *             force[ax] = 0.0
  *             neg_force[ax] = 0.0             # <<<<<<<<<<<<<<
@@ -3524,7 +3706,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  */
       (__pyx_v_neg_force[__pyx_v_ax]) = 0.0;
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":182
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":197
  *             force[ax] = 0.0
  *             neg_force[ax] = 0.0
  *             pos[ax] = pos_reference[i, ax]             # <<<<<<<<<<<<<<
@@ -3536,7 +3718,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
       (__pyx_v_pos[__pyx_v_ax]) = (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pos_reference.data + __pyx_t_8 * __pyx_v_pos_reference.strides[0]) ) + __pyx_t_9 * __pyx_v_pos_reference.strides[1]) )));
     }
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":183
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":198
  *             neg_force[ax] = 0.0
  *             pos[ax] = pos_reference[i, ax]
  *         iQ[0] = 0.0             # <<<<<<<<<<<<<<
@@ -3545,48 +3727,77 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  */
     (__pyx_v_iQ[0]) = 0.0;
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":186
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":201
  *         # Find which nodes are summarizing and collect their centers of mass
  *         # deltas, and sizes, into vectorized arrays
- *         t1 = clock()             # <<<<<<<<<<<<<<
+ *         if take_timing:             # <<<<<<<<<<<<<<
+ *             t1 = clock()
  *         idx = qt.summarize(pos, summary, theta*theta)
- *         t2 = clock()
  */
-    __pyx_v_t1 = clock();
+    __pyx_t_1 = (__pyx_v_take_timing != 0);
+    if (__pyx_t_1) {
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":187
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":202
  *         # deltas, and sizes, into vectorized arrays
- *         t1 = clock()
+ *         if take_timing:
+ *             t1 = clock()             # <<<<<<<<<<<<<<
+ *         idx = qt.summarize(pos, summary, theta*theta)
+ *         if take_timing:
+ */
+      __pyx_v_t1 = clock();
+
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":201
+ *         # Find which nodes are summarizing and collect their centers of mass
+ *         # deltas, and sizes, into vectorized arrays
+ *         if take_timing:             # <<<<<<<<<<<<<<
+ *             t1 = clock()
+ *         idx = qt.summarize(pos, summary, theta*theta)
+ */
+    }
+
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":203
+ *         if take_timing:
+ *             t1 = clock()
  *         idx = qt.summarize(pos, summary, theta*theta)             # <<<<<<<<<<<<<<
- *         t2 = clock()
- *         # Compute the t-SNE negative force
+ *         if take_timing:
+ *             t2 = clock()
  */
     __pyx_t_11.__pyx_n = 1;
     __pyx_t_11.squared_theta = (__pyx_v_theta * __pyx_v_theta);
     __pyx_t_10 = ((struct __pyx_vtabstruct_7sklearn_9neighbors_9quad_tree__QuadTree *)__pyx_v_qt->__pyx_vtab)->summarize(__pyx_v_qt, __pyx_v_pos, __pyx_v_summary, &__pyx_t_11); 
     __pyx_v_idx = __pyx_t_10;
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":188
- *         t1 = clock()
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":204
+ *             t1 = clock()
  *         idx = qt.summarize(pos, summary, theta*theta)
- *         t2 = clock()             # <<<<<<<<<<<<<<
+ *         if take_timing:             # <<<<<<<<<<<<<<
+ *             t2 = clock()
+ *         # Compute the t-SNE negative force
+ */
+    __pyx_t_1 = (__pyx_v_take_timing != 0);
+    if (__pyx_t_1) {
+
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":205
+ *         idx = qt.summarize(pos, summary, theta*theta)
+ *         if take_timing:
+ *             t2 = clock()             # <<<<<<<<<<<<<<
  *         # Compute the t-SNE negative force
  *         # for the digits dataset, walking the tree
  */
-    __pyx_v_t2 = clock();
+      __pyx_v_t2 = clock();
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":193
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":204
+ *             t1 = clock()
+ *         idx = qt.summarize(pos, summary, theta*theta)
+ *         if take_timing:             # <<<<<<<<<<<<<<
+ *             t2 = clock()
+ *         # Compute the t-SNE negative force
+ */
+    }
+
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":210
  *         # is about 10-15x more expensive than the
  *         # following for loop
- *         exponent = (dof + 1.0) / -2.0             # <<<<<<<<<<<<<<
- *         for j in range(idx // offset):
- * 
- */
-    __pyx_v_exponent = ((__pyx_v_dof + 1.0) / -2.0);
-
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":194
- *         # following for loop
- *         exponent = (dof + 1.0) / -2.0
  *         for j in range(idx // offset):             # <<<<<<<<<<<<<<
  * 
  *             dist2s = summary[j * offset + n_dimensions]
@@ -3596,36 +3807,64 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_j = __pyx_t_13;
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":196
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":212
  *         for j in range(idx // offset):
  * 
  *             dist2s = summary[j * offset + n_dimensions]             # <<<<<<<<<<<<<<
  *             size = summary[j * offset + n_dimensions + 1]
- *             qijZ = (1.0 + dist2s / dof) ** exponent  # 1/(1+dist)
+ *             qijZ = float_dof / (float_dof + dist2s)  # 1/(1+dist)
  */
       __pyx_v_dist2s = (__pyx_v_summary[((__pyx_v_j * __pyx_v_offset) + __pyx_v_n_dimensions)]);
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":197
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":213
  * 
  *             dist2s = summary[j * offset + n_dimensions]
  *             size = summary[j * offset + n_dimensions + 1]             # <<<<<<<<<<<<<<
- *             qijZ = (1.0 + dist2s / dof) ** exponent  # 1/(1+dist)
- *             sum_Q[0] += size * qijZ   # size of the node * q
+ *             qijZ = float_dof / (float_dof + dist2s)  # 1/(1+dist)
+ *             if dof != 1:  # i.e. exponent != 1
  */
       __pyx_v_size = (__pyx_v_summary[(((__pyx_v_j * __pyx_v_offset) + __pyx_v_n_dimensions) + 1)]);
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":198
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":214
  *             dist2s = summary[j * offset + n_dimensions]
  *             size = summary[j * offset + n_dimensions + 1]
- *             qijZ = (1.0 + dist2s / dof) ** exponent  # 1/(1+dist)             # <<<<<<<<<<<<<<
+ *             qijZ = float_dof / (float_dof + dist2s)  # 1/(1+dist)             # <<<<<<<<<<<<<<
+ *             if dof != 1:  # i.e. exponent != 1
+ *                 qijZ **= exponent
+ */
+      __pyx_v_qijZ = (__pyx_v_float_dof / (__pyx_v_float_dof + __pyx_v_dist2s));
+
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":215
+ *             size = summary[j * offset + n_dimensions + 1]
+ *             qijZ = float_dof / (float_dof + dist2s)  # 1/(1+dist)
+ *             if dof != 1:  # i.e. exponent != 1             # <<<<<<<<<<<<<<
+ *                 qijZ **= exponent
+ *             sum_Q[0] += size * qijZ   # size of the node * q
+ */
+      __pyx_t_1 = ((__pyx_v_dof != 1) != 0);
+      if (__pyx_t_1) {
+
+        /* "sklearn/manifold/_barnes_hut_tsne.pyx":216
+ *             qijZ = float_dof / (float_dof + dist2s)  # 1/(1+dist)
+ *             if dof != 1:  # i.e. exponent != 1
+ *                 qijZ **= exponent             # <<<<<<<<<<<<<<
  *             sum_Q[0] += size * qijZ   # size of the node * q
  *             mult = size * qijZ * qijZ
  */
-      __pyx_v_qijZ = pow((1.0 + (__pyx_v_dist2s / __pyx_v_dof)), __pyx_v_exponent);
+        __pyx_v_qijZ = pow(__pyx_v_qijZ, ((double)__pyx_v_exponent));
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":199
+        /* "sklearn/manifold/_barnes_hut_tsne.pyx":215
  *             size = summary[j * offset + n_dimensions + 1]
- *             qijZ = (1.0 + dist2s / dof) ** exponent  # 1/(1+dist)
+ *             qijZ = float_dof / (float_dof + dist2s)  # 1/(1+dist)
+ *             if dof != 1:  # i.e. exponent != 1             # <<<<<<<<<<<<<<
+ *                 qijZ **= exponent
+ *             sum_Q[0] += size * qijZ   # size of the node * q
+ */
+      }
+
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":217
+ *             if dof != 1:  # i.e. exponent != 1
+ *                 qijZ **= exponent
  *             sum_Q[0] += size * qijZ   # size of the node * q             # <<<<<<<<<<<<<<
  *             mult = size * qijZ * qijZ
  *             for ax in range(n_dimensions):
@@ -3633,8 +3872,8 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
       __pyx_t_14 = 0;
       (__pyx_v_sum_Q[__pyx_t_14]) = ((__pyx_v_sum_Q[__pyx_t_14]) + (__pyx_v_size * __pyx_v_qijZ));
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":200
- *             qijZ = (1.0 + dist2s / dof) ** exponent  # 1/(1+dist)
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":218
+ *                 qijZ **= exponent
  *             sum_Q[0] += size * qijZ   # size of the node * q
  *             mult = size * qijZ * qijZ             # <<<<<<<<<<<<<<
  *             for ax in range(n_dimensions):
@@ -3642,101 +3881,139 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  */
       __pyx_v_mult = ((__pyx_v_size * __pyx_v_qijZ) * __pyx_v_qijZ);
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":201
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":219
  *             sum_Q[0] += size * qijZ   # size of the node * q
  *             mult = size * qijZ * qijZ
  *             for ax in range(n_dimensions):             # <<<<<<<<<<<<<<
  *                 neg_force[ax] += mult * summary[j * offset + ax]
- *         t3 = clock()
+ *         if take_timing:
  */
       __pyx_t_2 = __pyx_v_n_dimensions;
       __pyx_t_6 = __pyx_t_2;
       for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
         __pyx_v_ax = __pyx_t_7;
 
-        /* "sklearn/manifold/_barnes_hut_tsne.pyx":202
+        /* "sklearn/manifold/_barnes_hut_tsne.pyx":220
  *             mult = size * qijZ * qijZ
  *             for ax in range(n_dimensions):
  *                 neg_force[ax] += mult * summary[j * offset + ax]             # <<<<<<<<<<<<<<
- *         t3 = clock()
- *         for ax in range(n_dimensions):
+ *         if take_timing:
+ *             t3 = clock()
  */
         __pyx_t_15 = __pyx_v_ax;
         (__pyx_v_neg_force[__pyx_t_15]) = ((__pyx_v_neg_force[__pyx_t_15]) + (__pyx_v_mult * (__pyx_v_summary[((__pyx_v_j * __pyx_v_offset) + __pyx_v_ax)])));
       }
     }
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":203
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":221
  *             for ax in range(n_dimensions):
  *                 neg_force[ax] += mult * summary[j * offset + ax]
- *         t3 = clock()             # <<<<<<<<<<<<<<
+ *         if take_timing:             # <<<<<<<<<<<<<<
+ *             t3 = clock()
+ *         for ax in range(n_dimensions):
+ */
+    __pyx_t_1 = (__pyx_v_take_timing != 0);
+    if (__pyx_t_1) {
+
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":222
+ *                 neg_force[ax] += mult * summary[j * offset + ax]
+ *         if take_timing:
+ *             t3 = clock()             # <<<<<<<<<<<<<<
  *         for ax in range(n_dimensions):
  *             neg_f[i * n_dimensions + ax] = neg_force[ax]
  */
-    __pyx_v_t3 = clock();
+      __pyx_v_t3 = clock();
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":204
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":221
+ *             for ax in range(n_dimensions):
  *                 neg_force[ax] += mult * summary[j * offset + ax]
- *         t3 = clock()
+ *         if take_timing:             # <<<<<<<<<<<<<<
+ *             t3 = clock()
+ *         for ax in range(n_dimensions):
+ */
+    }
+
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":223
+ *         if take_timing:
+ *             t3 = clock()
  *         for ax in range(n_dimensions):             # <<<<<<<<<<<<<<
  *             neg_f[i * n_dimensions + ax] = neg_force[ax]
- *         dta += t2 - t1
+ *         if take_timing:
  */
     __pyx_t_2 = __pyx_v_n_dimensions;
     __pyx_t_6 = __pyx_t_2;
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_ax = __pyx_t_7;
 
-      /* "sklearn/manifold/_barnes_hut_tsne.pyx":205
- *         t3 = clock()
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":224
+ *             t3 = clock()
  *         for ax in range(n_dimensions):
  *             neg_f[i * n_dimensions + ax] = neg_force[ax]             # <<<<<<<<<<<<<<
- *         dta += t2 - t1
- *         dtb += t3 - t2
+ *         if take_timing:
+ *             dta += t2 - t1
  */
       (__pyx_v_neg_f[((__pyx_v_i * __pyx_v_n_dimensions) + __pyx_v_ax)]) = (__pyx_v_neg_force[__pyx_v_ax]);
     }
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":206
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":225
  *         for ax in range(n_dimensions):
  *             neg_f[i * n_dimensions + ax] = neg_force[ax]
- *         dta += t2 - t1             # <<<<<<<<<<<<<<
- *         dtb += t3 - t2
- *     if qt.verbose > 20:
+ *         if take_timing:             # <<<<<<<<<<<<<<
+ *             dta += t2 - t1
+ *             dtb += t3 - t2
  */
-    __pyx_v_dta = (__pyx_v_dta + (__pyx_v_t2 - __pyx_v_t1));
+    __pyx_t_1 = (__pyx_v_take_timing != 0);
+    if (__pyx_t_1) {
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":207
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":226
  *             neg_f[i * n_dimensions + ax] = neg_force[ax]
- *         dta += t2 - t1
- *         dtb += t3 - t2             # <<<<<<<<<<<<<<
- *     if qt.verbose > 20:
+ *         if take_timing:
+ *             dta += t2 - t1             # <<<<<<<<<<<<<<
+ *             dtb += t3 - t2
+ *     if take_timing:
+ */
+      __pyx_v_dta = (__pyx_v_dta + (__pyx_v_t2 - __pyx_v_t1));
+
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":227
+ *         if take_timing:
+ *             dta += t2 - t1
+ *             dtb += t3 - t2             # <<<<<<<<<<<<<<
+ *     if take_timing:
  *         printf("[t-SNE] Tree: %li clock ticks | ", dta)
  */
-    __pyx_v_dtb = (__pyx_v_dtb + (__pyx_v_t3 - __pyx_v_t2));
+      __pyx_v_dtb = (__pyx_v_dtb + (__pyx_v_t3 - __pyx_v_t2));
+
+      /* "sklearn/manifold/_barnes_hut_tsne.pyx":225
+ *         for ax in range(n_dimensions):
+ *             neg_f[i * n_dimensions + ax] = neg_force[ax]
+ *         if take_timing:             # <<<<<<<<<<<<<<
+ *             dta += t2 - t1
+ *             dtb += t3 - t2
+ */
+    }
   }
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":208
- *         dta += t2 - t1
- *         dtb += t3 - t2
- *     if qt.verbose > 20:             # <<<<<<<<<<<<<<
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":228
+ *             dta += t2 - t1
+ *             dtb += t3 - t2
+ *     if take_timing:             # <<<<<<<<<<<<<<
  *         printf("[t-SNE] Tree: %li clock ticks | ", dta)
  *         printf("Force computation: %li clock ticks\n", dtb)
  */
-  __pyx_t_1 = ((__pyx_v_qt->verbose > 20) != 0);
+  __pyx_t_1 = (__pyx_v_take_timing != 0);
   if (__pyx_t_1) {
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":209
- *         dtb += t3 - t2
- *     if qt.verbose > 20:
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":229
+ *             dtb += t3 - t2
+ *     if take_timing:
  *         printf("[t-SNE] Tree: %li clock ticks | ", dta)             # <<<<<<<<<<<<<<
  *         printf("Force computation: %li clock ticks\n", dtb)
  * 
  */
     (void)(printf(((char const *)"[t-SNE] Tree: %li clock ticks | "), __pyx_v_dta));
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":210
- *     if qt.verbose > 20:
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":230
+ *     if take_timing:
  *         printf("[t-SNE] Tree: %li clock ticks | ", dta)
  *         printf("Force computation: %li clock ticks\n", dtb)             # <<<<<<<<<<<<<<
  * 
@@ -3744,16 +4021,16 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  */
     (void)(printf(((char const *)"Force computation: %li clock ticks\n"), __pyx_v_dtb));
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":208
- *         dta += t2 - t1
- *         dtb += t3 - t2
- *     if qt.verbose > 20:             # <<<<<<<<<<<<<<
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":228
+ *             dta += t2 - t1
+ *             dtb += t3 - t2
+ *     if take_timing:             # <<<<<<<<<<<<<<
  *         printf("[t-SNE] Tree: %li clock ticks | ", dta)
  *         printf("Force computation: %li clock ticks\n", dtb)
  */
   }
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":213
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":233
  * 
  *     # Put sum_Q to machine EPSILON to avoid divisions by 0
  *     sum_Q[0] = max(sum_Q[0], FLOAT64_EPS)             # <<<<<<<<<<<<<<
@@ -3769,7 +4046,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
   }
   (__pyx_v_sum_Q[0]) = __pyx_t_18;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":214
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":234
  *     # Put sum_Q to machine EPSILON to avoid divisions by 0
  *     sum_Q[0] = max(sum_Q[0], FLOAT64_EPS)
  *     free(summary)             # <<<<<<<<<<<<<<
@@ -3778,7 +4055,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
  */
   free(__pyx_v_summary);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":150
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":163
  * 
  * 
  * cdef void compute_gradient_negative(float[:, :] pos_reference,             # <<<<<<<<<<<<<<
@@ -3789,7 +4066,7 @@ static void __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient_negat
   /* function exit code */
 }
 
-/* "sklearn/manifold/_barnes_hut_tsne.pyx":217
+/* "sklearn/manifold/_barnes_hut_tsne.pyx":237
  * 
  * 
  * def gradient(float[:] val_P,             # <<<<<<<<<<<<<<
@@ -3809,18 +4086,21 @@ static PyObject *__pyx_pw_7sklearn_8manifold_16_barnes_hut_tsne_1gradient(PyObje
   float __pyx_v_theta;
   int __pyx_v_n_dimensions;
   int __pyx_v_verbose;
-  float __pyx_v_dof;
+  int __pyx_v_dof;
   long __pyx_v_skip_num_points;
+  int __pyx_v_compute_error;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("gradient (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_val_P,&__pyx_n_s_pos_output,&__pyx_n_s_neighbors,&__pyx_n_s_indptr,&__pyx_n_s_forces,&__pyx_n_s_theta,&__pyx_n_s_n_dimensions,&__pyx_n_s_verbose,&__pyx_n_s_dof,&__pyx_n_s_skip_num_points,0};
-    PyObject* values[10] = {0,0,0,0,0,0,0,0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_val_P,&__pyx_n_s_pos_output,&__pyx_n_s_neighbors,&__pyx_n_s_indptr,&__pyx_n_s_forces,&__pyx_n_s_theta,&__pyx_n_s_n_dimensions,&__pyx_n_s_verbose,&__pyx_n_s_dof,&__pyx_n_s_skip_num_points,&__pyx_n_s_compute_error,0};
+    PyObject* values[11] = {0,0,0,0,0,0,0,0,0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case 11: values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
+        CYTHON_FALLTHROUGH;
         case 10: values[9] = PyTuple_GET_ITEM(__pyx_args, 9);
         CYTHON_FALLTHROUGH;
         case  9: values[8] = PyTuple_GET_ITEM(__pyx_args, 8);
@@ -3853,43 +4133,43 @@ static PyObject *__pyx_pw_7sklearn_8manifold_16_barnes_hut_tsne_1gradient(PyObje
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pos_output)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 10, 1); __PYX_ERR(0, 217, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 11, 1); __PYX_ERR(0, 237, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_neighbors)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 10, 2); __PYX_ERR(0, 217, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 11, 2); __PYX_ERR(0, 237, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_indptr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 10, 3); __PYX_ERR(0, 217, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 11, 3); __PYX_ERR(0, 237, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_forces)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 10, 4); __PYX_ERR(0, 217, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 11, 4); __PYX_ERR(0, 237, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_theta)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 10, 5); __PYX_ERR(0, 217, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 11, 5); __PYX_ERR(0, 237, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_n_dimensions)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 10, 6); __PYX_ERR(0, 217, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 11, 6); __PYX_ERR(0, 237, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_verbose)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 10, 7); __PYX_ERR(0, 217, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 11, 7); __PYX_ERR(0, 237, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
@@ -3903,12 +4183,20 @@ static PyObject *__pyx_pw_7sklearn_8manifold_16_barnes_hut_tsne_1gradient(PyObje
           PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_skip_num_points);
           if (value) { values[9] = value; kw_args--; }
         }
+        CYTHON_FALLTHROUGH;
+        case 10:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_compute_error);
+          if (value) { values[10] = value; kw_args--; }
+        }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "gradient") < 0)) __PYX_ERR(0, 217, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "gradient") < 0)) __PYX_ERR(0, 237, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case 11: values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
+        CYTHON_FALLTHROUGH;
         case 10: values[9] = PyTuple_GET_ITEM(__pyx_args, 9);
         CYTHON_FALLTHROUGH;
         case  9: values[8] = PyTuple_GET_ITEM(__pyx_args, 8);
@@ -3925,43 +4213,48 @@ static PyObject *__pyx_pw_7sklearn_8manifold_16_barnes_hut_tsne_1gradient(PyObje
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_val_P = __Pyx_PyObject_to_MemoryviewSlice_ds_float(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_val_P.memview)) __PYX_ERR(0, 217, __pyx_L3_error)
-    __pyx_v_pos_output = __Pyx_PyObject_to_MemoryviewSlice_dsds_float(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_pos_output.memview)) __PYX_ERR(0, 218, __pyx_L3_error)
-    __pyx_v_neighbors = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_5numpy_int64_t(values[2], PyBUF_WRITABLE); if (unlikely(!__pyx_v_neighbors.memview)) __PYX_ERR(0, 219, __pyx_L3_error)
-    __pyx_v_indptr = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_5numpy_int64_t(values[3], PyBUF_WRITABLE); if (unlikely(!__pyx_v_indptr.memview)) __PYX_ERR(0, 220, __pyx_L3_error)
-    __pyx_v_forces = __Pyx_PyObject_to_MemoryviewSlice_dsds_float(values[4], PyBUF_WRITABLE); if (unlikely(!__pyx_v_forces.memview)) __PYX_ERR(0, 221, __pyx_L3_error)
-    __pyx_v_theta = __pyx_PyFloat_AsFloat(values[5]); if (unlikely((__pyx_v_theta == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 222, __pyx_L3_error)
-    __pyx_v_n_dimensions = __Pyx_PyInt_As_int(values[6]); if (unlikely((__pyx_v_n_dimensions == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 223, __pyx_L3_error)
-    __pyx_v_verbose = __Pyx_PyInt_As_int(values[7]); if (unlikely((__pyx_v_verbose == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L3_error)
+    __pyx_v_val_P = __Pyx_PyObject_to_MemoryviewSlice_ds_float(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_val_P.memview)) __PYX_ERR(0, 237, __pyx_L3_error)
+    __pyx_v_pos_output = __Pyx_PyObject_to_MemoryviewSlice_dsds_float(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_pos_output.memview)) __PYX_ERR(0, 238, __pyx_L3_error)
+    __pyx_v_neighbors = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_5numpy_int64_t(values[2], PyBUF_WRITABLE); if (unlikely(!__pyx_v_neighbors.memview)) __PYX_ERR(0, 239, __pyx_L3_error)
+    __pyx_v_indptr = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_5numpy_int64_t(values[3], PyBUF_WRITABLE); if (unlikely(!__pyx_v_indptr.memview)) __PYX_ERR(0, 240, __pyx_L3_error)
+    __pyx_v_forces = __Pyx_PyObject_to_MemoryviewSlice_dsds_float(values[4], PyBUF_WRITABLE); if (unlikely(!__pyx_v_forces.memview)) __PYX_ERR(0, 241, __pyx_L3_error)
+    __pyx_v_theta = __pyx_PyFloat_AsFloat(values[5]); if (unlikely((__pyx_v_theta == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 242, __pyx_L3_error)
+    __pyx_v_n_dimensions = __Pyx_PyInt_As_int(values[6]); if (unlikely((__pyx_v_n_dimensions == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 243, __pyx_L3_error)
+    __pyx_v_verbose = __Pyx_PyInt_As_int(values[7]); if (unlikely((__pyx_v_verbose == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 244, __pyx_L3_error)
     if (values[8]) {
-      __pyx_v_dof = __pyx_PyFloat_AsFloat(values[8]); if (unlikely((__pyx_v_dof == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L3_error)
+      __pyx_v_dof = __Pyx_PyInt_As_int(values[8]); if (unlikely((__pyx_v_dof == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 245, __pyx_L3_error)
     } else {
-      __pyx_v_dof = ((float)1.0);
+      __pyx_v_dof = ((int)1);
     }
     if (values[9]) {
-      __pyx_v_skip_num_points = __Pyx_PyInt_As_long(values[9]); if (unlikely((__pyx_v_skip_num_points == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 226, __pyx_L3_error)
+      __pyx_v_skip_num_points = __Pyx_PyInt_As_long(values[9]); if (unlikely((__pyx_v_skip_num_points == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 246, __pyx_L3_error)
     } else {
       __pyx_v_skip_num_points = ((long)0);
+    }
+    if (values[10]) {
+      __pyx_v_compute_error = __Pyx_PyObject_IsTrue(values[10]); if (unlikely((__pyx_v_compute_error == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 247, __pyx_L3_error)
+    } else {
+      __pyx_v_compute_error = ((int)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 10, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 217, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("gradient", 0, 8, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 237, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("sklearn.manifold._barnes_hut_tsne.gradient", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(__pyx_self, __pyx_v_val_P, __pyx_v_pos_output, __pyx_v_neighbors, __pyx_v_indptr, __pyx_v_forces, __pyx_v_theta, __pyx_v_n_dimensions, __pyx_v_verbose, __pyx_v_dof, __pyx_v_skip_num_points);
+  __pyx_r = __pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(__pyx_self, __pyx_v_val_P, __pyx_v_pos_output, __pyx_v_neighbors, __pyx_v_indptr, __pyx_v_forces, __pyx_v_theta, __pyx_v_n_dimensions, __pyx_v_verbose, __pyx_v_dof, __pyx_v_skip_num_points, __pyx_v_compute_error);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_val_P, __Pyx_memviewslice __pyx_v_pos_output, __Pyx_memviewslice __pyx_v_neighbors, __Pyx_memviewslice __pyx_v_indptr, __Pyx_memviewslice __pyx_v_forces, float __pyx_v_theta, int __pyx_v_n_dimensions, int __pyx_v_verbose, float __pyx_v_dof, long __pyx_v_skip_num_points) {
+static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_val_P, __Pyx_memviewslice __pyx_v_pos_output, __Pyx_memviewslice __pyx_v_neighbors, __Pyx_memviewslice __pyx_v_indptr, __Pyx_memviewslice __pyx_v_forces, float __pyx_v_theta, int __pyx_v_n_dimensions, int __pyx_v_verbose, int __pyx_v_dof, long __pyx_v_skip_num_points, int __pyx_v_compute_error) {
   float __pyx_v_C;
-  Py_ssize_t __pyx_v_n;
+  int __pyx_v_n;
   PyObject *__pyx_v_m = NULL;
   struct __pyx_obj_7sklearn_9neighbors_9quad_tree__QuadTree *__pyx_v_qt = 0;
   PyObject *__pyx_r = NULL;
@@ -3972,19 +4265,20 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
+  float __pyx_t_7;
   __Pyx_RefNannySetupContext("gradient", 0);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":231
- *     # up in-place
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":253
  *     cdef float C
+ *     cdef int n
  *     n = pos_output.shape[0]             # <<<<<<<<<<<<<<
  *     assert val_P.itemsize == 4
  *     assert pos_output.itemsize == 4
  */
   __pyx_v_n = (__pyx_v_pos_output.shape[0]);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":232
- *     cdef float C
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":254
+ *     cdef int n
  *     n = pos_output.shape[0]
  *     assert val_P.itemsize == 4             # <<<<<<<<<<<<<<
  *     assert pos_output.itemsize == 4
@@ -3992,24 +4286,24 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
  */
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
-    __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_val_P, 1, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_val_P, 1, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_itemsize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_itemsize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_4, 4, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_4, 4, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 254, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(!__pyx_t_3)) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 232, __pyx_L1_error)
+      __PYX_ERR(0, 254, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":233
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":255
  *     n = pos_output.shape[0]
  *     assert val_P.itemsize == 4
  *     assert pos_output.itemsize == 4             # <<<<<<<<<<<<<<
@@ -4018,24 +4312,24 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
  */
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
-    __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_pos_output, 2, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
+    __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_pos_output, 2, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_itemsize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_itemsize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_4, 4, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_4, 4, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 233, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(!__pyx_t_3)) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 233, __pyx_L1_error)
+      __PYX_ERR(0, 255, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":234
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":256
  *     assert val_P.itemsize == 4
  *     assert pos_output.itemsize == 4
  *     assert forces.itemsize == 4             # <<<<<<<<<<<<<<
@@ -4044,24 +4338,24 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
  */
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
-    __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_forces, 2, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+    __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_forces, 2, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_itemsize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 234, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_itemsize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_4, 4, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_4, 4, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 234, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 256, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(!__pyx_t_3)) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 234, __pyx_L1_error)
+      __PYX_ERR(0, 256, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":235
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":257
  *     assert pos_output.itemsize == 4
  *     assert forces.itemsize == 4
  *     m = "Forces array and pos_output shapes are incompatible"             # <<<<<<<<<<<<<<
@@ -4071,7 +4365,7 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
   __Pyx_INCREF(__pyx_kp_s_Forces_array_and_pos_output_shap);
   __pyx_v_m = __pyx_kp_s_Forces_array_and_pos_output_shap;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":236
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":258
  *     assert forces.itemsize == 4
  *     m = "Forces array and pos_output shapes are incompatible"
  *     assert n == forces.shape[0], m             # <<<<<<<<<<<<<<
@@ -4081,16 +4375,16 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_n == (__pyx_v_forces.shape[0])) != 0))) {
-      __pyx_t_1 = PyTuple_Pack(1, __pyx_v_m); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_Pack(1, __pyx_v_m); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       PyErr_SetObject(PyExc_AssertionError, __pyx_t_1);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 236, __pyx_L1_error)
+      __PYX_ERR(0, 258, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":237
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":259
  *     m = "Forces array and pos_output shapes are incompatible"
  *     assert n == forces.shape[0], m
  *     m = "Pij and pos_output shapes are incompatible"             # <<<<<<<<<<<<<<
@@ -4100,7 +4394,7 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
   __Pyx_INCREF(__pyx_kp_s_Pij_and_pos_output_shapes_are_in);
   __Pyx_DECREF_SET(__pyx_v_m, __pyx_kp_s_Pij_and_pos_output_shapes_are_in);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":238
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":260
  *     assert n == forces.shape[0], m
  *     m = "Pij and pos_output shapes are incompatible"
  *     assert n == indptr.shape[0] - 1, m             # <<<<<<<<<<<<<<
@@ -4110,16 +4404,16 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_n == ((__pyx_v_indptr.shape[0]) - 1)) != 0))) {
-      __pyx_t_1 = PyTuple_Pack(1, __pyx_v_m); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_Pack(1, __pyx_v_m); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       PyErr_SetObject(PyExc_AssertionError, __pyx_t_1);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 238, __pyx_L1_error)
+      __PYX_ERR(0, 260, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":239
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":261
  *     m = "Pij and pos_output shapes are incompatible"
  *     assert n == indptr.shape[0] - 1, m
  *     if verbose > 10:             # <<<<<<<<<<<<<<
@@ -4129,7 +4423,7 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
   __pyx_t_3 = ((__pyx_v_verbose > 10) != 0);
   if (__pyx_t_3) {
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":240
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":262
  *     assert n == indptr.shape[0] - 1, m
  *     if verbose > 10:
  *         printf("[t-SNE] Initializing tree of n_dimensions %i\n", n_dimensions)             # <<<<<<<<<<<<<<
@@ -4138,7 +4432,7 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
  */
     (void)(printf(((char const *)"[t-SNE] Initializing tree of n_dimensions %i\n"), __pyx_v_n_dimensions));
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":239
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":261
  *     m = "Pij and pos_output shapes are incompatible"
  *     assert n == indptr.shape[0] - 1, m
  *     if verbose > 10:             # <<<<<<<<<<<<<<
@@ -4147,34 +4441,34 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
  */
   }
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":241
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":263
  *     if verbose > 10:
  *         printf("[t-SNE] Initializing tree of n_dimensions %i\n", n_dimensions)
  *     cdef quad_tree._QuadTree qt = quad_tree._QuadTree(pos_output.shape[1],             # <<<<<<<<<<<<<<
  *                                                       verbose)
  *     if verbose > 10:
  */
-  __pyx_t_1 = PyInt_FromSsize_t((__pyx_v_pos_output.shape[1])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t((__pyx_v_pos_output.shape[1])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":242
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":264
  *         printf("[t-SNE] Initializing tree of n_dimensions %i\n", n_dimensions)
  *     cdef quad_tree._QuadTree qt = quad_tree._QuadTree(pos_output.shape[1],
  *                                                       verbose)             # <<<<<<<<<<<<<<
  *     if verbose > 10:
  *         printf("[t-SNE] Inserting %li points\n", pos_output.shape[0])
  */
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_verbose); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_verbose); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":241
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":263
  *     if verbose > 10:
  *         printf("[t-SNE] Initializing tree of n_dimensions %i\n", n_dimensions)
  *     cdef quad_tree._QuadTree qt = quad_tree._QuadTree(pos_output.shape[1],             # <<<<<<<<<<<<<<
  *                                                       verbose)
  *     if verbose > 10:
  */
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -4182,13 +4476,13 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_2);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7sklearn_9neighbors_9quad_tree__QuadTree), __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7sklearn_9neighbors_9quad_tree__QuadTree), __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_qt = ((struct __pyx_obj_7sklearn_9neighbors_9quad_tree__QuadTree *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":243
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":265
  *     cdef quad_tree._QuadTree qt = quad_tree._QuadTree(pos_output.shape[1],
  *                                                       verbose)
  *     if verbose > 10:             # <<<<<<<<<<<<<<
@@ -4198,7 +4492,7 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
   __pyx_t_3 = ((__pyx_v_verbose > 10) != 0);
   if (__pyx_t_3) {
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":244
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":266
  *                                                       verbose)
  *     if verbose > 10:
  *         printf("[t-SNE] Inserting %li points\n", pos_output.shape[0])             # <<<<<<<<<<<<<<
@@ -4207,7 +4501,7 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
  */
     (void)(printf(((char const *)"[t-SNE] Inserting %li points\n"), (__pyx_v_pos_output.shape[0])));
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":243
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":265
  *     cdef quad_tree._QuadTree qt = quad_tree._QuadTree(pos_output.shape[1],
  *                                                       verbose)
  *     if verbose > 10:             # <<<<<<<<<<<<<<
@@ -4216,16 +4510,16 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
  */
   }
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":245
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":267
  *     if verbose > 10:
  *         printf("[t-SNE] Inserting %li points\n", pos_output.shape[0])
  *     qt.build_tree(pos_output)             # <<<<<<<<<<<<<<
  *     if verbose > 10:
  *         # XXX: format hack to workaround lack of `const char *` type
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_qt), __pyx_n_s_build_tree); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_qt), __pyx_n_s_build_tree); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_pos_output, 2, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_pos_output, 2, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -4238,14 +4532,14 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_1};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 245, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4254,20 +4548,20 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_1};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 245, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 245, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 267, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 245, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -4275,7 +4569,7 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":246
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":268
  *         printf("[t-SNE] Inserting %li points\n", pos_output.shape[0])
  *     qt.build_tree(pos_output)
  *     if verbose > 10:             # <<<<<<<<<<<<<<
@@ -4285,16 +4579,16 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
   __pyx_t_3 = ((__pyx_v_verbose > 10) != 0);
   if (__pyx_t_3) {
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":250
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":272
  *         # in the generated C code that triggers error with gcc 4.9
  *         # and -Werror=format-security
  *         printf("[t-SNE] Computing gradient\n%s", EMPTY_STRING)             # <<<<<<<<<<<<<<
  *     C = compute_gradient(val_P, pos_output, neighbors, indptr, forces,
- *                          qt, theta, dof, skip_num_points, -1)
+ *                          qt, theta, dof, skip_num_points, -1, compute_error)
  */
     (void)(printf(((char const *)"[t-SNE] Computing gradient\n%s"), __pyx_v_7sklearn_8manifold_16_barnes_hut_tsne_EMPTY_STRING));
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":246
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":268
  *         printf("[t-SNE] Inserting %li points\n", pos_output.shape[0])
  *     qt.build_tree(pos_output)
  *     if verbose > 10:             # <<<<<<<<<<<<<<
@@ -4303,18 +4597,18 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
  */
   }
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":251
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":273
  *         # and -Werror=format-security
  *         printf("[t-SNE] Computing gradient\n%s", EMPTY_STRING)
  *     C = compute_gradient(val_P, pos_output, neighbors, indptr, forces,             # <<<<<<<<<<<<<<
- *                          qt, theta, dof, skip_num_points, -1)
+ *                          qt, theta, dof, skip_num_points, -1, compute_error)
  *     if verbose > 10:
  */
-  __pyx_v_C = __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__pyx_v_val_P, __pyx_v_pos_output, __pyx_v_neighbors, __pyx_v_indptr, __pyx_v_forces, __pyx_v_qt, __pyx_v_theta, __pyx_v_dof, __pyx_v_skip_num_points, -1L);
+  __pyx_v_C = __pyx_f_7sklearn_8manifold_16_barnes_hut_tsne_compute_gradient(__pyx_v_val_P, __pyx_v_pos_output, __pyx_v_neighbors, __pyx_v_indptr, __pyx_v_forces, __pyx_v_qt, __pyx_v_theta, __pyx_v_dof, __pyx_v_skip_num_points, -1L, __pyx_v_compute_error);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":253
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":275
  *     C = compute_gradient(val_P, pos_output, neighbors, indptr, forces,
- *                          qt, theta, dof, skip_num_points, -1)
+ *                          qt, theta, dof, skip_num_points, -1, compute_error)
  *     if verbose > 10:             # <<<<<<<<<<<<<<
  *         # XXX: format hack to workaround lack of `const char *` type
  *         # in the generated C code
@@ -4322,7 +4616,7 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
   __pyx_t_3 = ((__pyx_v_verbose > 10) != 0);
   if (__pyx_t_3) {
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":257
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":279
  *         # in the generated C code
  *         # and -Werror=format-security
  *         printf("[t-SNE] Checking tree consistency\n%s", EMPTY_STRING)             # <<<<<<<<<<<<<<
@@ -4331,56 +4625,91 @@ static PyObject *__pyx_pf_7sklearn_8manifold_16_barnes_hut_tsne_gradient(CYTHON_
  */
     (void)(printf(((char const *)"[t-SNE] Checking tree consistency\n%s"), __pyx_v_7sklearn_8manifold_16_barnes_hut_tsne_EMPTY_STRING));
 
-    /* "sklearn/manifold/_barnes_hut_tsne.pyx":253
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":275
  *     C = compute_gradient(val_P, pos_output, neighbors, indptr, forces,
- *                          qt, theta, dof, skip_num_points, -1)
+ *                          qt, theta, dof, skip_num_points, -1, compute_error)
  *     if verbose > 10:             # <<<<<<<<<<<<<<
  *         # XXX: format hack to workaround lack of `const char *` type
  *         # in the generated C code
  */
   }
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":258
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":280
  *         # and -Werror=format-security
  *         printf("[t-SNE] Checking tree consistency\n%s", EMPTY_STRING)
  *     m = "Tree consistency failed: unexpected number of points on the tree"             # <<<<<<<<<<<<<<
  *     assert qt.cells[0].cumulative_size == qt.n_points, m
- *     return C
+ *     if not compute_error:
  */
   __Pyx_INCREF(__pyx_kp_s_Tree_consistency_failed_unexpect);
   __Pyx_DECREF_SET(__pyx_v_m, __pyx_kp_s_Tree_consistency_failed_unexpect);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":259
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":281
  *         printf("[t-SNE] Checking tree consistency\n%s", EMPTY_STRING)
  *     m = "Tree consistency failed: unexpected number of points on the tree"
  *     assert qt.cells[0].cumulative_size == qt.n_points, m             # <<<<<<<<<<<<<<
- *     return C
+ *     if not compute_error:
+ *         C = np.nan
  */
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!(((__pyx_v_qt->cells[0]).cumulative_size == __pyx_v_qt->n_points) != 0))) {
-      __pyx_t_2 = PyTuple_Pack(1, __pyx_v_m); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_Pack(1, __pyx_v_m); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       PyErr_SetObject(PyExc_AssertionError, __pyx_t_2);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 259, __pyx_L1_error)
+      __PYX_ERR(0, 281, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":260
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":282
  *     m = "Tree consistency failed: unexpected number of points on the tree"
  *     assert qt.cells[0].cumulative_size == qt.n_points, m
+ *     if not compute_error:             # <<<<<<<<<<<<<<
+ *         C = np.nan
+ *     return C
+ */
+  __pyx_t_3 = ((!(__pyx_v_compute_error != 0)) != 0);
+  if (__pyx_t_3) {
+
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":283
+ *     assert qt.cells[0].cumulative_size == qt.n_points, m
+ *     if not compute_error:
+ *         C = np.nan             # <<<<<<<<<<<<<<
+ *     return C
+ */
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 283, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_nan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 283, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 283, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_v_C = __pyx_t_7;
+
+    /* "sklearn/manifold/_barnes_hut_tsne.pyx":282
+ *     m = "Tree consistency failed: unexpected number of points on the tree"
+ *     assert qt.cells[0].cumulative_size == qt.n_points, m
+ *     if not compute_error:             # <<<<<<<<<<<<<<
+ *         C = np.nan
+ *     return C
+ */
+  }
+
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":284
+ *     if not compute_error:
+ *         C = np.nan
  *     return C             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_C); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_C); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":217
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":237
  * 
  * 
  * def gradient(float[:] val_P,             # <<<<<<<<<<<<<<
@@ -20535,6 +20864,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 1, 0, 1},
   {&__pyx_n_s_class, __pyx_k_class, sizeof(__pyx_k_class), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
+  {&__pyx_n_s_compute_error, __pyx_k_compute_error, sizeof(__pyx_k_compute_error), 0, 0, 1, 1},
   {&__pyx_kp_s_contiguous_and_direct, __pyx_k_contiguous_and_direct, sizeof(__pyx_k_contiguous_and_direct), 0, 0, 1, 0},
   {&__pyx_kp_s_contiguous_and_indirect, __pyx_k_contiguous_and_indirect, sizeof(__pyx_k_contiguous_and_indirect), 0, 0, 1, 0},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
@@ -20568,6 +20898,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_n_dimensions, __pyx_k_n_dimensions, sizeof(__pyx_k_n_dimensions), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_name_2, __pyx_k_name_2, sizeof(__pyx_k_name_2), 0, 0, 1, 1},
+  {&__pyx_n_s_nan, __pyx_k_nan, sizeof(__pyx_k_nan), 0, 0, 1, 1},
   {&__pyx_kp_u_ndarray_is_not_C_contiguous, __pyx_k_ndarray_is_not_C_contiguous, sizeof(__pyx_k_ndarray_is_not_C_contiguous), 0, 1, 0, 0},
   {&__pyx_kp_u_ndarray_is_not_Fortran_contiguou, __pyx_k_ndarray_is_not_Fortran_contiguou, sizeof(__pyx_k_ndarray_is_not_Fortran_contiguou), 0, 1, 0, 0},
   {&__pyx_n_s_ndim, __pyx_k_ndim, sizeof(__pyx_k_ndim), 0, 0, 1, 1},
@@ -20625,7 +20956,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 93, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 229, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 810, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 1000, __pyx_L1_error)
@@ -20966,17 +21297,17 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":217
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":237
  * 
  * 
  * def gradient(float[:] val_P,             # <<<<<<<<<<<<<<
  *              float[:, :] pos_output,
  *              np.int64_t[:] neighbors,
  */
-  __pyx_tuple__31 = PyTuple_Pack(14, __pyx_n_s_val_P, __pyx_n_s_pos_output, __pyx_n_s_neighbors, __pyx_n_s_indptr, __pyx_n_s_forces, __pyx_n_s_theta, __pyx_n_s_n_dimensions, __pyx_n_s_verbose, __pyx_n_s_dof, __pyx_n_s_skip_num_points, __pyx_n_s_C, __pyx_n_s_n, __pyx_n_s_m, __pyx_n_s_qt); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(15, __pyx_n_s_val_P, __pyx_n_s_pos_output, __pyx_n_s_neighbors, __pyx_n_s_indptr, __pyx_n_s_forces, __pyx_n_s_theta, __pyx_n_s_n_dimensions, __pyx_n_s_verbose, __pyx_n_s_dof, __pyx_n_s_skip_num_points, __pyx_n_s_compute_error, __pyx_n_s_C, __pyx_n_s_n, __pyx_n_s_m, __pyx_n_s_qt); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__31);
   __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(10, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_sklearn_manifold__barnes_hut_tsn, __pyx_n_s_gradient, 217, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(11, 0, 15, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_sklearn_manifold__barnes_hut_tsn, __pyx_n_s_gradient, 237, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 237, __pyx_L1_error)
 
   /* "View.MemoryView":285
  *         return self.name
@@ -21476,16 +21807,16 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_7sklearn_8manifold_16_barnes_hut_tsne_FLOAT64_EPS = __pyx_t_4;
 
-  /* "sklearn/manifold/_barnes_hut_tsne.pyx":217
+  /* "sklearn/manifold/_barnes_hut_tsne.pyx":237
  * 
  * 
  * def gradient(float[:] val_P,             # <<<<<<<<<<<<<<
  *              float[:, :] pos_output,
  *              np.int64_t[:] neighbors,
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7sklearn_8manifold_16_barnes_hut_tsne_1gradient, NULL, __pyx_n_s_sklearn_manifold__barnes_hut_tsn_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7sklearn_8manifold_16_barnes_hut_tsne_1gradient, NULL, __pyx_n_s_sklearn_manifold__barnes_hut_tsn_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_gradient, __pyx_t_1) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_gradient, __pyx_t_1) < 0) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "sklearn/manifold/_barnes_hut_tsne.pyx":1
@@ -22179,8 +22510,35 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObjec
 }
 #endif
 
+/* GetModuleGlobalName */
+static CYTHON_INLINE PyObject *__Pyx_GetModuleGlobalName(PyObject *name) {
+    PyObject *result;
+#if !CYTHON_AVOID_BORROWED_REFS
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030500A1
+    result = _PyDict_GetItem_KnownHash(__pyx_d, name, ((PyASCIIObject *) name)->hash);
+    if (likely(result)) {
+        Py_INCREF(result);
+    } else if (unlikely(PyErr_Occurred())) {
+        result = NULL;
+    } else {
+#else
+    result = PyDict_GetItem(__pyx_d, name);
+    if (likely(result)) {
+        Py_INCREF(result);
+    } else {
+#endif
+#else
+    result = PyObject_GetItem(__pyx_d, name);
+    if (!result) {
+        PyErr_Clear();
+#endif
+        result = __Pyx_GetBuiltinName(name);
+    }
+    return result;
+}
+
 /* MemviewSliceInit */
-static int
+    static int
 __Pyx_init_memviewslice(struct __pyx_memoryview_obj *memview,
                         int ndim,
                         __Pyx_memviewslice *memviewslice,
@@ -22318,7 +22676,7 @@ static CYTHON_INLINE void __Pyx_XDEC_MEMVIEW(__Pyx_memviewslice *memslice,
 }
 
 /* PyErrFetchRestore */
-#if CYTHON_FAST_THREAD_STATE
+    #if CYTHON_FAST_THREAD_STATE
 static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
     PyObject *tmp_type, *tmp_value, *tmp_tb;
     tmp_type = tstate->curexc_type;
@@ -22342,7 +22700,7 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
 #endif
 
 /* RaiseException */
-#if PY_MAJOR_VERSION < 3
+    #if PY_MAJOR_VERSION < 3
 static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb,
                         CYTHON_UNUSED PyObject *cause) {
     __Pyx_PyThreadState_declare
@@ -22501,7 +22859,7 @@ bad:
 #endif
 
 /* DictGetItem */
-#if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
+    #if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
 static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key) {
     PyObject *value;
     value = PyDict_GetItemWithError(d, key);
@@ -22520,25 +22878,25 @@ static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key) {
 #endif
 
 /* RaiseTooManyValuesToUnpack */
-static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected) {
+    static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected) {
     PyErr_Format(PyExc_ValueError,
                  "too many values to unpack (expected %" CYTHON_FORMAT_SSIZE_T "d)", expected);
 }
 
 /* RaiseNeedMoreValuesToUnpack */
-static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index) {
+    static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index) {
     PyErr_Format(PyExc_ValueError,
                  "need more than %" CYTHON_FORMAT_SSIZE_T "d value%.1s to unpack",
                  index, (index == 1) ? "" : "s");
 }
 
 /* RaiseNoneIterError */
-static CYTHON_INLINE void __Pyx_RaiseNoneNotIterableError(void) {
+    static CYTHON_INLINE void __Pyx_RaiseNoneNotIterableError(void) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
 }
 
 /* ExtTypeTest */
-static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type) {
+    static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type) {
     if (unlikely(!type)) {
         PyErr_SetString(PyExc_SystemError, "Missing type object");
         return 0;
@@ -22551,7 +22909,7 @@ static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type) {
 }
 
 /* SaveResetException */
-#if CYTHON_FAST_THREAD_STATE
+    #if CYTHON_FAST_THREAD_STATE
 static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
     #if PY_VERSION_HEX >= 0x030700A3
     *type = tstate->exc_state.exc_type;
@@ -22590,7 +22948,7 @@ static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject 
 #endif
 
 /* PyErrExceptionMatches */
-#if CYTHON_FAST_THREAD_STATE
+    #if CYTHON_FAST_THREAD_STATE
 static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
     Py_ssize_t i, n;
     n = PyTuple_GET_SIZE(tuple);
@@ -22615,7 +22973,7 @@ static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tsta
 #endif
 
 /* GetException */
-#if CYTHON_FAST_THREAD_STATE
+    #if CYTHON_FAST_THREAD_STATE
 static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
 #else
 static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb) {
@@ -22685,7 +23043,7 @@ bad:
 }
 
 /* ArgTypeTest */
-  static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact)
+      static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact)
 {
     if (unlikely(!type)) {
         PyErr_SetString(PyExc_SystemError, "Missing type object");
@@ -22706,7 +23064,7 @@ bad:
 }
 
 /* BytesEquals */
-  static CYTHON_INLINE int __Pyx_PyBytes_Equals(PyObject* s1, PyObject* s2, int equals) {
+      static CYTHON_INLINE int __Pyx_PyBytes_Equals(PyObject* s1, PyObject* s2, int equals) {
 #if CYTHON_COMPILING_IN_PYPY
     return PyObject_RichCompareBool(s1, s2, equals);
 #else
@@ -22753,7 +23111,7 @@ bad:
 }
 
 /* UnicodeEquals */
-  static CYTHON_INLINE int __Pyx_PyUnicode_Equals(PyObject* s1, PyObject* s2, int equals) {
+      static CYTHON_INLINE int __Pyx_PyUnicode_Equals(PyObject* s1, PyObject* s2, int equals) {
 #if CYTHON_COMPILING_IN_PYPY
     return PyObject_RichCompareBool(s1, s2, equals);
 #else
@@ -22852,7 +23210,7 @@ return_ne:
 }
 
 /* GetAttr */
-  static CYTHON_INLINE PyObject *__Pyx_GetAttr(PyObject *o, PyObject *n) {
+      static CYTHON_INLINE PyObject *__Pyx_GetAttr(PyObject *o, PyObject *n) {
 #if CYTHON_USE_TYPE_SLOTS
 #if PY_MAJOR_VERSION >= 3
     if (likely(PyUnicode_Check(n)))
@@ -22865,7 +23223,7 @@ return_ne:
 }
 
 /* GetItemInt */
-  static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
+      static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
     PyObject *r;
     if (!j) return NULL;
     r = PyObject_GetItem(o, j);
@@ -22952,7 +23310,7 @@ static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, 
 }
 
 /* ObjectGetItem */
-  #if CYTHON_USE_TYPE_SLOTS
+      #if CYTHON_USE_TYPE_SLOTS
 static PyObject *__Pyx_PyObject_GetIndex(PyObject *obj, PyObject* index) {
     PyObject *runerr;
     Py_ssize_t key_value;
@@ -22981,7 +23339,7 @@ static PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key) {
 #endif
 
 /* decode_c_string */
-  static CYTHON_INLINE PyObject* __Pyx_decode_c_string(
+      static CYTHON_INLINE PyObject* __Pyx_decode_c_string(
          const char* cstring, Py_ssize_t start, Py_ssize_t stop,
          const char* encoding, const char* errors,
          PyObject* (*decode_func)(const char *s, Py_ssize_t size, const char *errors)) {
@@ -23014,7 +23372,7 @@ static PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key) {
 }
 
 /* GetAttr3 */
-  static PyObject *__Pyx_GetAttr3Default(PyObject *d) {
+      static PyObject *__Pyx_GetAttr3Default(PyObject *d) {
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
     if (unlikely(!__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
@@ -23026,33 +23384,6 @@ static PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key) {
 static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *o, PyObject *n, PyObject *d) {
     PyObject *r = __Pyx_GetAttr(o, n);
     return (likely(r)) ? r : __Pyx_GetAttr3Default(d);
-}
-
-/* GetModuleGlobalName */
-  static CYTHON_INLINE PyObject *__Pyx_GetModuleGlobalName(PyObject *name) {
-    PyObject *result;
-#if !CYTHON_AVOID_BORROWED_REFS
-#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030500A1
-    result = _PyDict_GetItem_KnownHash(__pyx_d, name, ((PyASCIIObject *) name)->hash);
-    if (likely(result)) {
-        Py_INCREF(result);
-    } else if (unlikely(PyErr_Occurred())) {
-        result = NULL;
-    } else {
-#else
-    result = PyDict_GetItem(__pyx_d, name);
-    if (likely(result)) {
-        Py_INCREF(result);
-    } else {
-#endif
-#else
-    result = PyObject_GetItem(__pyx_d, name);
-    if (!result) {
-        PyErr_Clear();
-#endif
-        result = __Pyx_GetBuiltinName(name);
-    }
-    return result;
 }
 
 /* SwapException */

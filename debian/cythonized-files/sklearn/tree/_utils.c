@@ -1271,6 +1271,8 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
 
 /*--- Type declarations ---*/
 struct __pyx_obj_7sklearn_4tree_10_criterion_Criterion;
+struct __pyx_obj_7sklearn_4tree_10_criterion_ClassificationCriterion;
+struct __pyx_obj_7sklearn_4tree_10_criterion_RegressionCriterion;
 struct __pyx_obj_7sklearn_4tree_9_splitter_Splitter;
 struct __pyx_obj_7sklearn_4tree_5_tree_Tree;
 struct __pyx_obj_7sklearn_4tree_5_tree_TreeBuilder;
@@ -1425,7 +1427,7 @@ enum  {
  * # have is_leaf and max_width consecutive as it permits to avoid padding by
  * # the compiler and keep the size coherent for both C and numpy data structures.
  * cdef struct Cell:             # <<<<<<<<<<<<<<
- *     # Base storage stucture for cells in a QuadTree object
+ *     # Base storage structure for cells in a QuadTree object
  * 
  */
 struct __pyx_t_7sklearn_9neighbors_9quad_tree_Cell {
@@ -1594,6 +1596,33 @@ struct __pyx_obj_7sklearn_4tree_10_criterion_Criterion {
   double *sum_total;
   double *sum_left;
   double *sum_right;
+};
+
+
+/* "_criterion.pxd":69
+ *     cdef double proxy_impurity_improvement(self) nogil
+ * 
+ * cdef class ClassificationCriterion(Criterion):             # <<<<<<<<<<<<<<
+ *     """Abstract criterion for classification."""
+ * 
+ */
+struct __pyx_obj_7sklearn_4tree_10_criterion_ClassificationCriterion {
+  struct __pyx_obj_7sklearn_4tree_10_criterion_Criterion __pyx_base;
+  __pyx_t_7sklearn_4tree_10_criterion_SIZE_t *n_classes;
+  __pyx_t_7sklearn_4tree_10_criterion_SIZE_t sum_stride;
+};
+
+
+/* "_criterion.pxd":75
+ *     cdef SIZE_t sum_stride
+ * 
+ * cdef class RegressionCriterion(Criterion):             # <<<<<<<<<<<<<<
+ *     """Abstract regression criterion."""
+ * 
+ */
+struct __pyx_obj_7sklearn_4tree_10_criterion_RegressionCriterion {
+  struct __pyx_obj_7sklearn_4tree_10_criterion_Criterion __pyx_base;
+  double sq_sum_total;
 };
 
 
@@ -1780,6 +1809,34 @@ struct __pyx_vtabstruct_7sklearn_4tree_10_criterion_Criterion {
   double (*proxy_impurity_improvement)(struct __pyx_obj_7sklearn_4tree_10_criterion_Criterion *);
 };
 static struct __pyx_vtabstruct_7sklearn_4tree_10_criterion_Criterion *__pyx_vtabptr_7sklearn_4tree_10_criterion_Criterion;
+
+
+/* "_criterion.pxd":69
+ *     cdef double proxy_impurity_improvement(self) nogil
+ * 
+ * cdef class ClassificationCriterion(Criterion):             # <<<<<<<<<<<<<<
+ *     """Abstract criterion for classification."""
+ * 
+ */
+
+struct __pyx_vtabstruct_7sklearn_4tree_10_criterion_ClassificationCriterion {
+  struct __pyx_vtabstruct_7sklearn_4tree_10_criterion_Criterion __pyx_base;
+};
+static struct __pyx_vtabstruct_7sklearn_4tree_10_criterion_ClassificationCriterion *__pyx_vtabptr_7sklearn_4tree_10_criterion_ClassificationCriterion;
+
+
+/* "_criterion.pxd":75
+ *     cdef SIZE_t sum_stride
+ * 
+ * cdef class RegressionCriterion(Criterion):             # <<<<<<<<<<<<<<
+ *     """Abstract regression criterion."""
+ * 
+ */
+
+struct __pyx_vtabstruct_7sklearn_4tree_10_criterion_RegressionCriterion {
+  struct __pyx_vtabstruct_7sklearn_4tree_10_criterion_Criterion __pyx_base;
+};
+static struct __pyx_vtabstruct_7sklearn_4tree_10_criterion_RegressionCriterion *__pyx_vtabptr_7sklearn_4tree_10_criterion_RegressionCriterion;
 
 
 /* "_splitter.pxd":34
@@ -2429,6 +2486,8 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void); /*proto*/
 
 /* Module declarations from 'sklearn.tree._criterion' */
 static PyTypeObject *__pyx_ptype_7sklearn_4tree_10_criterion_Criterion = 0;
+static PyTypeObject *__pyx_ptype_7sklearn_4tree_10_criterion_ClassificationCriterion = 0;
+static PyTypeObject *__pyx_ptype_7sklearn_4tree_10_criterion_RegressionCriterion = 0;
 
 /* Module declarations from 'sklearn.tree._splitter' */
 static PyTypeObject *__pyx_ptype_7sklearn_4tree_9_splitter_Splitter = 0;
@@ -13088,6 +13147,10 @@ static int __Pyx_modinit_type_import_code(void) {
   __pyx_ptype_5numpy_ufunc = __Pyx_ImportType("numpy", "ufunc", sizeof(PyUFuncObject), 0); if (unlikely(!__pyx_ptype_5numpy_ufunc)) __PYX_ERR(2, 872, __pyx_L1_error)
   __pyx_ptype_7sklearn_4tree_10_criterion_Criterion = __Pyx_ImportType("sklearn.tree._criterion", "Criterion", sizeof(struct __pyx_obj_7sklearn_4tree_10_criterion_Criterion), 1); if (unlikely(!__pyx_ptype_7sklearn_4tree_10_criterion_Criterion)) __PYX_ERR(4, 21, __pyx_L1_error)
   __pyx_vtabptr_7sklearn_4tree_10_criterion_Criterion = (struct __pyx_vtabstruct_7sklearn_4tree_10_criterion_Criterion*)__Pyx_GetVtable(__pyx_ptype_7sklearn_4tree_10_criterion_Criterion->tp_dict); if (unlikely(!__pyx_vtabptr_7sklearn_4tree_10_criterion_Criterion)) __PYX_ERR(4, 21, __pyx_L1_error)
+  __pyx_ptype_7sklearn_4tree_10_criterion_ClassificationCriterion = __Pyx_ImportType("sklearn.tree._criterion", "ClassificationCriterion", sizeof(struct __pyx_obj_7sklearn_4tree_10_criterion_ClassificationCriterion), 1); if (unlikely(!__pyx_ptype_7sklearn_4tree_10_criterion_ClassificationCriterion)) __PYX_ERR(4, 69, __pyx_L1_error)
+  __pyx_vtabptr_7sklearn_4tree_10_criterion_ClassificationCriterion = (struct __pyx_vtabstruct_7sklearn_4tree_10_criterion_ClassificationCriterion*)__Pyx_GetVtable(__pyx_ptype_7sklearn_4tree_10_criterion_ClassificationCriterion->tp_dict); if (unlikely(!__pyx_vtabptr_7sklearn_4tree_10_criterion_ClassificationCriterion)) __PYX_ERR(4, 69, __pyx_L1_error)
+  __pyx_ptype_7sklearn_4tree_10_criterion_RegressionCriterion = __Pyx_ImportType("sklearn.tree._criterion", "RegressionCriterion", sizeof(struct __pyx_obj_7sklearn_4tree_10_criterion_RegressionCriterion), 1); if (unlikely(!__pyx_ptype_7sklearn_4tree_10_criterion_RegressionCriterion)) __PYX_ERR(4, 75, __pyx_L1_error)
+  __pyx_vtabptr_7sklearn_4tree_10_criterion_RegressionCriterion = (struct __pyx_vtabstruct_7sklearn_4tree_10_criterion_RegressionCriterion*)__Pyx_GetVtable(__pyx_ptype_7sklearn_4tree_10_criterion_RegressionCriterion->tp_dict); if (unlikely(!__pyx_vtabptr_7sklearn_4tree_10_criterion_RegressionCriterion)) __PYX_ERR(4, 75, __pyx_L1_error)
   __pyx_ptype_7sklearn_4tree_9_splitter_Splitter = __Pyx_ImportType("sklearn.tree._splitter", "Splitter", sizeof(struct __pyx_obj_7sklearn_4tree_9_splitter_Splitter), 1); if (unlikely(!__pyx_ptype_7sklearn_4tree_9_splitter_Splitter)) __PYX_ERR(5, 34, __pyx_L1_error)
   __pyx_vtabptr_7sklearn_4tree_9_splitter_Splitter = (struct __pyx_vtabstruct_7sklearn_4tree_9_splitter_Splitter*)__Pyx_GetVtable(__pyx_ptype_7sklearn_4tree_9_splitter_Splitter->tp_dict); if (unlikely(!__pyx_vtabptr_7sklearn_4tree_9_splitter_Splitter)) __PYX_ERR(5, 34, __pyx_L1_error)
   __pyx_ptype_7sklearn_4tree_5_tree_Tree = __Pyx_ImportType("sklearn.tree._tree", "Tree", sizeof(struct __pyx_obj_7sklearn_4tree_5_tree_Tree), 1); if (unlikely(!__pyx_ptype_7sklearn_4tree_5_tree_Tree)) __PYX_ERR(6, 37, __pyx_L1_error)

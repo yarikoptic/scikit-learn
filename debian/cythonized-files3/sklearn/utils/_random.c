@@ -1926,7 +1926,7 @@ static PyObject *__pyx_f_7sklearn_5utils_7_random__sample_without_replacement_wi
  *         np.int_t n_population,
  *         np.int_t n_samples,
  *         random_state=None):             # <<<<<<<<<<<<<<
- *     """Sample integers without replacement.
+ *     r"""Sample integers without replacement.
  * 
  */
   PyObject *__pyx_v_random_state = ((PyObject *)Py_None);
@@ -2358,7 +2358,7 @@ static PyObject *__pyx_pw_7sklearn_5utils_7_random_3_sample_without_replacement_
  *         np.int_t n_population,
  *         np.int_t n_samples,
  *         random_state=None):             # <<<<<<<<<<<<<<
- *     """Sample integers without replacement.
+ *     r"""Sample integers without replacement.
  * 
  */
     values[2] = ((PyObject *)Py_None);

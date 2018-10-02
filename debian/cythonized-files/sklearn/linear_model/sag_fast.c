@@ -2404,7 +2404,7 @@ static double __pyx_f_7sklearn_12linear_model_8sag_fast__logsumexp(double *__pyx
  * cdef class MultinomialLogLoss:
  *     cdef double _loss(self, double* prediction, double y, int n_classes,             # <<<<<<<<<<<<<<
  *                       double sample_weight) nogil:
- *         """Multinomial Logistic regression loss.
+ *         r"""Multinomial Logistic regression loss.
  */
 
 static double __pyx_f_7sklearn_12linear_model_8sag_fast_18MultinomialLogLoss__loss(CYTHON_UNUSED struct __pyx_obj_7sklearn_12linear_model_8sag_fast_MultinomialLogLoss *__pyx_v_self, double *__pyx_v_prediction, double __pyx_v_y, int __pyx_v_n_classes, double __pyx_v_sample_weight) {
@@ -2445,7 +2445,7 @@ static double __pyx_f_7sklearn_12linear_model_8sag_fast_18MultinomialLogLoss__lo
  * cdef class MultinomialLogLoss:
  *     cdef double _loss(self, double* prediction, double y, int n_classes,             # <<<<<<<<<<<<<<
  *                       double sample_weight) nogil:
- *         """Multinomial Logistic regression loss.
+ *         r"""Multinomial Logistic regression loss.
  */
 
   /* function exit code */
@@ -2458,7 +2458,7 @@ static double __pyx_f_7sklearn_12linear_model_8sag_fast_18MultinomialLogLoss__lo
  * 
  *     cdef void _dloss(self, double* prediction, double y, int n_classes,             # <<<<<<<<<<<<<<
  *                      double sample_weight, double* gradient_ptr) nogil:
- *         """Multinomial Logistic regression gradient of the loss.
+ *         r"""Multinomial Logistic regression gradient of the loss.
  */
 
 static void __pyx_f_7sklearn_12linear_model_8sag_fast_18MultinomialLogLoss__dloss(CYTHON_UNUSED struct __pyx_obj_7sklearn_12linear_model_8sag_fast_MultinomialLogLoss *__pyx_v_self, double *__pyx_v_prediction, double __pyx_v_y, int __pyx_v_n_classes, double __pyx_v_sample_weight, double *__pyx_v_gradient_ptr) {
@@ -2545,7 +2545,7 @@ static void __pyx_f_7sklearn_12linear_model_8sag_fast_18MultinomialLogLoss__dlos
  * 
  *     cdef void _dloss(self, double* prediction, double y, int n_classes,             # <<<<<<<<<<<<<<
  *                      double sample_weight, double* gradient_ptr) nogil:
- *         """Multinomial Logistic regression gradient of the loss.
+ *         r"""Multinomial Logistic regression gradient of the loss.
  */
 
   /* function exit code */
@@ -3335,7 +3335,7 @@ static CYTHON_INLINE double __pyx_f_7sklearn_12linear_model_8sag_fast__soft_thre
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7sklearn_12linear_model_8sag_fast_3sag(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_7sklearn_12linear_model_8sag_fast_2sag[] = "Stochastic Average Gradient (SAG) and SAGA solvers.\n\n    Used in Ridge and LogisticRegression.\n\n    Reference\n    ---------\n    Schmidt, M., Roux, N. L., & Bach, F. (2013).\n    Minimizing finite sums with the stochastic average gradient\n    https://hal.inria.fr/hal-00860051/PDF/sag_journal.pdf\n    (section 4.3)\n\n    Defazio, A., Bach, F., Lacoste-Julien, S. (2014),\n    SAGA: A Fast Incremental Gradient Method With Support\n    for Non-Strongly Convex Composite Objectives\n    https://arxiv.org/abs/1407.0202\n\n    ";
+static char __pyx_doc_7sklearn_12linear_model_8sag_fast_2sag[] = "Stochastic Average Gradient (SAG) and SAGA solvers.\n\n    Used in Ridge and LogisticRegression.\n\n    Reference\n    ---------\n    Schmidt, M., Roux, N. L., & Bach, F. (2013).\n    Minimizing finite sums with the stochastic average gradient\n    https://hal.inria.fr/hal-00860051/document\n    (section 4.3)\n\n    Defazio, A., Bach, F., Lacoste-Julien, S. (2014),\n    SAGA: A Fast Incremental Gradient Method With Support\n    for Non-Strongly Convex Composite Objectives\n    https://arxiv.org/abs/1407.0202\n\n    ";
 static PyMethodDef __pyx_mdef_7sklearn_12linear_model_8sag_fast_3sag = {"sag", (PyCFunction)__pyx_pw_7sklearn_12linear_model_8sag_fast_3sag, METH_VARARGS|METH_KEYWORDS, __pyx_doc_7sklearn_12linear_model_8sag_fast_2sag};
 static PyObject *__pyx_pw_7sklearn_12linear_model_8sag_fast_3sag(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_7sklearn_5utils_11seq_dataset_SequentialDataset *__pyx_v_dataset = 0;

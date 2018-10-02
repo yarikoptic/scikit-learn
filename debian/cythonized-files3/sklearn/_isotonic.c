@@ -3539,7 +3539,7 @@ static PyObject *__pyx_pf_7sklearn_9_isotonic_2_make_unique(CYTHON_UNUSED PyObje
  *         if x != current_x:
  *             # next unique value
  *             x_out[i] = current_x             # <<<<<<<<<<<<<<
- *             weights_out[i] = current_weight / current_count
+ *             weights_out[i] = current_weight
  *             y_out[i] = current_y / current_weight
  */
       __pyx_t_15 = __pyx_v_i;
@@ -3548,16 +3548,16 @@ static PyObject *__pyx_pf_7sklearn_9_isotonic_2_make_unique(CYTHON_UNUSED PyObje
       /* "sklearn/_isotonic.pyx":103
  *             # next unique value
  *             x_out[i] = current_x
- *             weights_out[i] = current_weight / current_count             # <<<<<<<<<<<<<<
+ *             weights_out[i] = current_weight             # <<<<<<<<<<<<<<
  *             y_out[i] = current_y / current_weight
  *             i += 1
  */
       __pyx_t_16 = __pyx_v_i;
-      *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_weights_out.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_weights_out.diminfo[0].strides) = (__pyx_v_current_weight / __pyx_v_current_count);
+      *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_weights_out.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_weights_out.diminfo[0].strides) = __pyx_v_current_weight;
 
       /* "sklearn/_isotonic.pyx":104
  *             x_out[i] = current_x
- *             weights_out[i] = current_weight / current_count
+ *             weights_out[i] = current_weight
  *             y_out[i] = current_y / current_weight             # <<<<<<<<<<<<<<
  *             i += 1
  *             current_x = x
@@ -3566,7 +3566,7 @@ static PyObject *__pyx_pf_7sklearn_9_isotonic_2_make_unique(CYTHON_UNUSED PyObje
       *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_y_out.rcbuffer->pybuffer.buf, __pyx_t_17, __pyx_pybuffernd_y_out.diminfo[0].strides) = (__pyx_v_current_y / __pyx_v_current_weight);
 
       /* "sklearn/_isotonic.pyx":105
- *             weights_out[i] = current_weight / current_count
+ *             weights_out[i] = current_weight
  *             y_out[i] = current_y / current_weight
  *             i += 1             # <<<<<<<<<<<<<<
  *             current_x = x
@@ -3661,7 +3661,7 @@ static PyObject *__pyx_pf_7sklearn_9_isotonic_2_make_unique(CYTHON_UNUSED PyObje
  *             current_count += 1
  * 
  *     x_out[i] = current_x             # <<<<<<<<<<<<<<
- *     weights_out[i] = current_weight / current_count
+ *     weights_out[i] = current_weight
  *     y_out[i] = current_y / current_weight
  */
   __pyx_t_24 = __pyx_v_i;
@@ -3670,16 +3670,16 @@ static PyObject *__pyx_pf_7sklearn_9_isotonic_2_make_unique(CYTHON_UNUSED PyObje
   /* "sklearn/_isotonic.pyx":116
  * 
  *     x_out[i] = current_x
- *     weights_out[i] = current_weight / current_count             # <<<<<<<<<<<<<<
+ *     weights_out[i] = current_weight             # <<<<<<<<<<<<<<
  *     y_out[i] = current_y / current_weight
  *     return x_out, y_out, weights_out
  */
   __pyx_t_25 = __pyx_v_i;
-  *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_weights_out.rcbuffer->pybuffer.buf, __pyx_t_25, __pyx_pybuffernd_weights_out.diminfo[0].strides) = (__pyx_v_current_weight / __pyx_v_current_count);
+  *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_weights_out.rcbuffer->pybuffer.buf, __pyx_t_25, __pyx_pybuffernd_weights_out.diminfo[0].strides) = __pyx_v_current_weight;
 
   /* "sklearn/_isotonic.pyx":117
  *     x_out[i] = current_x
- *     weights_out[i] = current_weight / current_count
+ *     weights_out[i] = current_weight
  *     y_out[i] = current_y / current_weight             # <<<<<<<<<<<<<<
  *     return x_out, y_out, weights_out
  */
@@ -3687,7 +3687,7 @@ static PyObject *__pyx_pf_7sklearn_9_isotonic_2_make_unique(CYTHON_UNUSED PyObje
   *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_y_out.rcbuffer->pybuffer.buf, __pyx_t_26, __pyx_pybuffernd_y_out.diminfo[0].strides) = (__pyx_v_current_y / __pyx_v_current_weight);
 
   /* "sklearn/_isotonic.pyx":118
- *     weights_out[i] = current_weight / current_count
+ *     weights_out[i] = current_weight
  *     y_out[i] = current_y / current_weight
  *     return x_out, y_out, weights_out             # <<<<<<<<<<<<<<
  */
