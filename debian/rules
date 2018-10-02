@@ -75,7 +75,7 @@ override_dh_autoreconf:
 	dh_autoreconf debian/rules -- clean_generated
 
 override_dh_clean:
-	rm -rf build doc/_build doc/auto_examples *-stamp *.egg-info sklearn/datasets/__config__.py
+	rm -rf build doc/_build *-stamp *.egg-info sklearn/datasets/__config__.py
 	dh_clean
 
 override_dh_auto_install: ${PYVERS:%=python-install%} ${PY3VERS:%=python-install%} ${PYVERS:%=python-test%} ${PY3VERS:%=python-test%}
