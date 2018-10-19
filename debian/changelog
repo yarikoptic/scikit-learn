@@ -19,6 +19,8 @@ scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
     - bump debhelper compat to 11
   * d/control
     - remove deprecated X-Python*-Version fields
+    - add build dep python3-doc, python-numpy-doc, python-scipy-doc and
+      python-matplotlib-doc for intersphinx mappings
     - switch to Python 3 doc build dep
     - bump standard to 4.2.1
   * d/patches

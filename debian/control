@@ -25,6 +25,10 @@ Build-Depends: debhelper (>= 11~), dh-autoreconf,
 Build-Depends-Indep: python3-sphinx (>= 1.0),
                      python3-pil,
                      graphviz,
+                     python3-doc,
+                     python-numpy-doc,
+                     python-scipy-doc,
+                     python-matplotlib-doc,
 Standards-Version: 4.2.1
 Vcs-Browser: https://salsa.debian.org/science-team/scikit-learn
 Vcs-Git: https://salsa.debian.org/science-team/scikit-learn.git
