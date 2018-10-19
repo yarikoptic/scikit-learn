@@ -102,7 +102,11 @@ Conflicts: python-scikits-learn-doc
 Replaces: python-scikits-learn-doc
 Architecture: all
 Section: doc
-Depends: ${misc:Depends}, libjs-jquery, libjs-underscore
+Depends: ${misc:Depends},
+         ${sphinxdoc:Depends},
+         libjs-bootstrap,
+         libjs-mathjax,
+Built-Using: ${sphinxdoc:Built-Using},
 Suggests: python-sklearn
 Description: documentation and examples for scikit-learn
  This package contains documentation and example scripts for
