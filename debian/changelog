@@ -22,6 +22,7 @@ scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
     - switch to Python 3 doc build dep
     - bump standard to 4.2.1
   * d/patches
+    - add no-download-intersphinx-mapping.patch
     - update deb_use_system_joblib to fix test failure
 
  -- Yangfl <mmyangfl@gmail.com>  Thu, 18 Oct 2018 12:37:47 +0800
