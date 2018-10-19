@@ -26,6 +26,7 @@ scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
     - add build dep python3-doc, python-numpy-doc, python-scipy-doc and
       python-matplotlib-doc for intersphinx mappings
     - add dep libjs-{bootstrap,mathjax} for python-sklearn-doc
+    - fix Recommends python3-pytest of python3-sklearn
     - switch to Python 3 doc build dep
     - bump standard to 4.2.1
   * d/patches
