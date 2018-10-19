@@ -3,9 +3,8 @@ Section: python
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Yaroslav Halchenko <debian@onerussian.com>, Michael Hanke <michael.hanke@gmail.com>
-Build-Depends: debhelper (>= 11~), dh-autoreconf,
-               python-all-dev (>= 2.6.6-3~), dh-python,
-               cython (>= 0.12~),
+Build-Depends: debhelper (>= 11~),
+               python-all-dev (>= 2.6.6-3~),
                python-setuptools,
                python-numpy (>= 1:1.8.2~), python-scipy,
                python-nose,
