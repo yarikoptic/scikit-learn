@@ -1,6 +1,8 @@
 scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
 
   * Team upload.
+
+  [ Andreas Tille <tille@debian.org> ]
   * New upstream pre-release
     FIXME: #907806
   * Move to Debian Science team maintenance
@@ -12,7 +14,11 @@ scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
   * d/control: Use Files-Excluded to remove files from upstream source
   * d/gbp.conf: Strip default and unusual options
 
- -- Andreas Tille <tille@debian.org>  Wed, 26 Sep 2018 11:18:48 +0200
+  [ Yangfl <mmyangfl@gmail.com> ]
+  * d/compat
+    - bump debhelper compat to 11
+
+ -- Yangfl <mmyangfl@gmail.com>  Thu, 18 Oct 2018 12:37:47 +0800
 
 scikit-learn (0.19.2-1) unstable; urgency=medium
 
@@ -121,7 +127,7 @@ scikit-learn (0.18-1) unstable; urgency=medium
 scikit-learn (0.17.1-2) unstable; urgency=medium
 
   * debian/rules
-    - skip test_dump tests on arm64 to prevent FTBFS - actual resolution 
+    - skip test_dump tests on arm64 to prevent FTBFS - actual resolution
       is TODO
     - robustify use of xargs to not fail if no matches (e.g. upon rebuild)
 
@@ -347,7 +353,7 @@ scikit-learn (0.13-2) experimental; urgency=low
 scikit-learn (0.13-1) experimental; urgency=low
 
   * Fresh upstream release
-    - dropping CP-ed changesets and deb_disable_test_spectral_old_scipy patch 
+    - dropping CP-ed changesets and deb_disable_test_spectral_old_scipy patch
   * debian/rules
     - removing exclusion of tests previously failed
 
@@ -389,7 +395,7 @@ scikit-learn (0.11.0-1) unstable; urgency=low
     import
   * debian/rules:
     - run unittests in verbose mode
-    - exclude 1 test with known failures (reported upstream) 
+    - exclude 1 test with known failures (reported upstream)
       to avoid FTBFS
 
  -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 07 May 2012 22:40:04 -0400
@@ -497,7 +503,7 @@ scikit-learn (0.5~rc3-1) UNRELEASED; urgency=low
 
   * New upstream release-candidate
     - pruning joblib in favor of external package
-      added patch deb_use_system_joblib 
+      added patch deb_use_system_joblib
   * New patches for upstream
     - up_libsvm_verbosity_control -- API for controlling libsvm verbosity
     - up_system_libsvm_no_svmhdepends -- do not use shipped svm.h
