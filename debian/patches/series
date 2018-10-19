@@ -10,3 +10,4 @@ deb_optional_linkcode
 deb_nopaypal
 0001-BF-Define-message-since-exception-might-happen-in-in.patch
 no-download-intersphinx-mapping.patch
+disable-doctest.patch
