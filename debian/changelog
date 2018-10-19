@@ -20,6 +20,8 @@ scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
   * d/control
     - remove deprecated X-Python*-Version fields
     - bump standard to 4.2.1
+  * d/patches
+    - update deb_use_system_joblib to fix test failure
 
  -- Yangfl <mmyangfl@gmail.com>  Thu, 18 Oct 2018 12:37:47 +0800
 

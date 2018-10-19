@@ -4,12 +4,24 @@ Subject: use system-wide joblib and do not attempt to install joblib/test
  Relies on DFSG-ed sources with no joblib present
 
 --- /dev/null
-+++ b/sklearn/externals/joblib/__init__.py
-@@ -0,0 +1,4 @@
-+# yoh: use system-wide joblib
-+# replace local name space with the one from system-wide joblib
-+import joblib
-+locals().update(joblib.__dict__)
++++ b/sklearn/externals/joblib.py
+@@ -0,0 +16,16 @@
++import imp
++import sys
++
++
++def import_non_local(name, custom_name=None):
++    custom_name = custom_name or name
++
++    f, pathname, desc = imp.find_module(name, sys.path[1:])
++    module = imp.load_module(custom_name, f, pathname, desc)
++    if f is not None:
++        f.close()
++
++    return module
++
++
++locals().update(import_non_local('joblib').__dict__)
 --- a/sklearn/externals/setup.py
 +++ b/sklearn/externals/setup.py
 @@ -4,10 +4,5 @@
