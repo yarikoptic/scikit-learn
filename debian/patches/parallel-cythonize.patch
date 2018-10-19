@@ -1,0 +1,10 @@
+diff --git a/sklearn/_build_utils/__init__.py b/sklearn/_build_utils/__init__.py
+index 0ed4968a1..91aa60f62 100644
+--- a/sklearn/_build_utils/__init__.py
++++ b/sklearn/_build_utils/__init__.py
+@@ -81,4 +81,4 @@ def maybe_cythonize_extensions(top_path, config):
+             exc.args += (message,)
+             raise
+ 
+-        config.ext_modules = cythonize(config.ext_modules)
++        config.ext_modules = cythonize(config.ext_modules, nthreads=int(os.environ.get('JOBS', 1)))

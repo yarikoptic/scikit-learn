@@ -32,6 +32,7 @@ scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
   * d/patches
     - add disable-doctest.patch to prevent Python 2 doctest failure
     - add no-download-intersphinx-mapping.patch
+    - add parallel-cythonize.patch
     - update deb_use_system_joblib to fix test failure
     - update deb_no_online_jquery
     - remove deb_optional_linkcode
