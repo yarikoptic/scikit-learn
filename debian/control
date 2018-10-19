@@ -70,10 +70,10 @@ Package: python3-sklearn
 Architecture: all
 Depends: ${misc:Depends}, ${python3:Depends}, python3-numpy, python3-scipy, python3-sklearn-lib(>= ${source:Version}),
          python3-joblib (>= 0.9.2),
-Provides: ${python:Provides}
 Recommends: python3-nose, python-pytest, python3-matplotlib
 Suggests: python3-dap, python-sklearn-doc, ipython3
 Enhances: python3-mvpa2, python3-mdp
+Provides: ${python3:Provides}
 Description: Python modules for machine learning and data mining
  scikit-learn is a collection of Python modules relevant to
  machine/statistical learning and data mining.  Non-exhaustive list of
@@ -88,7 +88,7 @@ Description: Python modules for machine learning and data mining
 Package: python3-sklearn-lib
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends}, python3-numpy
-Provides: ${python:Provides}
+Provides: ${python3:Provides}
 Description: low-level implementations and bindings for scikit-learn - Python 3
  This is an add-on package for python-sklearn. It provides
  low-level implementations and custom Python bindings for the LIBSVM
