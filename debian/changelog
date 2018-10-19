@@ -28,6 +28,9 @@ scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
     - add no-download-intersphinx-mapping.patch
     - update deb_use_system_joblib to fix test failure
     - update deb_no_online_jquery
+  * d/rules
+    - switch from python_distutils to pybuild
+    - rewrite
 
  -- Yangfl <mmyangfl@gmail.com>  Thu, 18 Oct 2018 12:37:47 +0800
 
