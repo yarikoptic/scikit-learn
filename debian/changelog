@@ -23,8 +23,8 @@ scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
     - remove deprecated X-Python*-Version fields
     - remove build dep dh-autoreconf and cython
     - add build dep dh-python
-    - add build dep librsvg2-bin, python3-pandas and python3-skimage, required
-      by doc building
+    - add build dep librsvg2-bin, python3-sphinx-gallery, python3-numpydoc,
+      python3-pandas and python3-skimage, required by doc building
     - add build dep python3-doc, python-numpy-doc, python-scipy-doc and
       python-matplotlib-doc for intersphinx mappings
     - add dep libjs-{bootstrap,mathjax} for python-sklearn-doc
