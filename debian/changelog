@@ -16,6 +16,7 @@ scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
 
   [ Yangfl <mmyangfl@gmail.com> ]
   * Introduce dh_sphinxdoc (Closes: #859149)
+  * Refresh d/copyright
   * d/compat
     - bump debhelper compat to 11
   * d/control
