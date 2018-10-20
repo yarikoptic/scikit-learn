@@ -11,3 +11,4 @@ deb_nopaypal
 no-download-intersphinx-mapping.patch
 disable-doctest.patch
 parallel-cythonize.patch
+no-buttons-js.patch
