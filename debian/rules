@@ -3,9 +3,9 @@
 
 # See also: skimage
 
-PY2VERS = $(shell pyversions -vr)
-PY3VERS = $(shell py3versions -vr)
-PY3VER = $(shell py3versions -vd)
+PY2VERS ?= $(shell pyversions -vr)
+PY3VER  ?= $(shell py3versions -vd)
+PY3VERS ?= $(shell py3versions -vr)
 
 export DEB_BUILD_MAINT_OPTIONS := hardening=+all
 
@@ -13,9 +13,9 @@ export DEB_CFLAGS_MAINT_APPEND :=
 export DEB_LDFLAGS_MAINT_APPEND := -Wl,--as-needed
 
 ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
-  JOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+  JOBS := $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 else
-  JOBS = 1
+  JOBS := 1
 endif
 export JOBS := $(JOBS)
 
@@ -30,16 +30,13 @@ ifeq ($(DEB_HOST_ARCH),arm64)
 endif
 ifeq ($(DEB_HOST_ARCH),i386)
   # https://github.com/scikit-learn/scikit-learn/issues/7544
-  PYBUILD_TEST_ARGS += -k-test_gpr
-endif
-ifeq ($(DEB_HOST_ARCH),armel)
-  # https://github.com/scikit-learn/scikit-learn/issues/7572
-  PYBUILD_TEST_ARGS += -k-test_matthews_corrcoef
+  # Closing as outdated -- let's see
+  # PYBUILD_TEST_ARGS += -k-test_gpr
 endif
 ifeq ($(DEB_HOST_ARCH),ppc64el)
-  # --exclude='test_(sparse_svc_clone_with_callable_kernel|spectral_clustering_sparse|ovr_fit_predict)'
   # https://buildd.debian.org/status/fetch.php?pkg=scikit-learn&arch=ppc64el&ver=0.18-3&stamp=1475603905
-  PYBUILD_TEST_ARGS += -k-test_non_meta_estimators
+  # suspicious
+  # PYBUILD_TEST_ARGS += -k-test_non_meta_estimators
 endif
 
 # fetch_california_housing -> Downloading Cal. housing
@@ -52,8 +49,8 @@ export PYBUILD_TEST_ARGS_python3 := $(PYBUILD_TEST_ARGS) --doctest-modules
 export JOBLIB_MULTIPROCESSING := $(shell expr $(JOBS) / $$(expr $(words $(PY2VERS)) + $(words $(PY3VERS))))
 
 # try to prevent unsunctioned downloads
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
+export http_proxy := http://127.0.0.1:9/
+export https_proxy := http://127.0.0.1:9/
 
 
 %:
@@ -67,9 +64,12 @@ clean:
 
 # silly distutils does not support parallelism! waste hours of time
 .PHONY: build
-build-arch: $(addprefix debian/build-stamp-python,$(PY2VERS)) $(addprefix debian/build-stamp-python,$(PY3VERS))
+build build-arch build-indep:
+	$(MAKE) -j $(JOBS) -f debian/rules _$@
+
+_build-arch: $(addprefix debian/build-stamp-python,$(PY2VERS)) $(addprefix debian/build-stamp-python,$(PY3VERS))
 	:
-build build-indep: build-arch doc/_build/html
+_build _build-indep: _build-arch doc/_build/html
 	:
 
 debian/build-stamp-python%: debian/build-stamp-pyx
@@ -95,7 +95,7 @@ endif
 
 debian/build-stamp-pyx:
 	-mv PKG-INFO PKG-INFO-BAK
-	python3 setup.py config
+	python$(PY3VER) setup.py config
 	mv PKG-INFO-BAK PKG-INFO
 	touch $@
 
@@ -108,6 +108,7 @@ ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS)))
 		SPHINXBUILD="python$(PY3VER) -m sphinx -j $(JOBS) -D mathjax_path=MathJax.js" \
 		SPHINXOPTS="-j $(JOBS) -D mathjax_path=MathJax.js" \
 		$(MAKE) -C doc html
+	[ -d $@ ]
 endif
 
 # Test data not copied to .pybuild -- manually link for them
@@ -128,41 +129,33 @@ override_dh_auto_install:
 	# cleanup python3 cache (mixing python3 subversions)
 	-find debian/tmp -name "__pycache__" -exec rm -r {} +
 
-override_dh_installdocs:
+override_dh_installdocs-arch:
 	dh_installdocs -A README*.rst
+
+override_dh_installdocs-indep:
+	dh_installdocs -A README*.rst
+ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS)))
 	mv \
 		debian/python-sklearn-doc/usr/share/doc/python-sklearn-doc/stable \
 		debian/python-sklearn-doc/usr/share/doc/python-sklearn-doc/html
+endif
 
 override_dh_installchangelogs:
 	dh_installchangelogs doc/whats_new.rst
 
-## while removing 2 if not present
+# remove .so libraries from main package, and call dh_numpy*
 _dh_python%:
-	# remove .so libraries from main package, and call dh_numpy*
 	-find debian/python$(*:2=)-sklearn/usr/lib -name "*.so" -delete;
+
 	dh_numpy$(*:2=) -ppython$(*:2=)-sklearn-lib
-	# Prune scikits/__init__.py to avoid conflicts
-	find debian -wholename \*scikits/__init__.py -delete
-	# Move scikits. space into a compatibility package
-	if [ $* -eq 2 ]; then \
-	set -e; \
-	find debian -wholename \*scikits -type d | while read skd; do \
-		skbd=$$(dirname $$skd); \
-		skbd_=$$(echo $$skbd | sed -e 's/sklearn/scikits-learn/g'); \
-		mkdir -p $$skbd_; \
-		mv $$skd $$skbd_; \
-	done; \
-	fi
 	dh_python$*
 
-## "Instantiate" both rules so dh sees them
 override_dh_python2: _dh_python2
 override_dh_python3: _dh_python3
 
 ## immediately useable documentation and exemplar scripts/data
 override_dh_compress:
-	dh_compress -X.py -X.html -X.pdf -X.css -X.jpg -X.txt -X.js -X.json -X.rtc -Xobjects.inv
+	dh_compress -X.py -X.html -X.pdf -X.css -X.jpg -X.txt -X.js -X.json -X.rtc
 
 override_dh_sphinxdoc-indep:
 ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS)))
