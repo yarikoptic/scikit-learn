@@ -3,8 +3,8 @@ scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
   * Team upload.
 
   [ Andreas Tille <tille@debian.org> ]
-  * New upstream pre-release
-    FIXME: #907806
+  * New upstream release
+    Closes: #907806
   * Move to Debian Science team maintenance
   * Maintained at salsa.debian.org
   * d/watch:
