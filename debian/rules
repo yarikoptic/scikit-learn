@@ -23,6 +23,8 @@ include /usr/share/dpkg/architecture.mk
 
 PYBUILD_TEST_ARGS :=
 
+# make sure sync test args to autopkgtest!
+
 # Some tests are known to fail randomly so need to be excluded ATM
 ifeq ($(DEB_HOST_ARCH),arm64)
   # A bit aggressive exclusion of some tests which exhibit a problem I have no time to deal with on arm64

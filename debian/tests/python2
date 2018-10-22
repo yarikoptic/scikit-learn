@@ -6,6 +6,10 @@ pkgbuild=${pkgbuild:-no}
 
 srcdir=$PWD
 
+test_args="-k-test_feature_importance_regression"
+
+dpkg-architecture -e arm64 && test_args="$test_args -k-test_dump"
+
 for py in $pys; do
     echo "=== python$py ==="
     if [ "$pkgbuild" = "yes" ]; then
@@ -16,5 +20,5 @@ for py in $pys; do
         cd "$ADTTMP"
     fi
 
-    xvfb-run -a python$py -m pytest -s -v $module 2>&1
+    python$py -m pytest -s -v $module $test_args 2>&1
 done
