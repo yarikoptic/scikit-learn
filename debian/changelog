@@ -1,4 +1,4 @@
-scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
+scikit-learn (0.20.0+dfsg-1) unstable; urgency=medium
 
   * Team upload.
 
@@ -47,7 +47,7 @@ scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
   [ Mo Zhou <cdluminate@gmail.com> ]
   * Fixup autopkgtest for python3.
 
- -- Yangfl <mmyangfl@gmail.com>  Thu, 18 Oct 2018 12:37:47 +0800
+ -- Yangfl <mmyangfl@gmail.com>  Mon, 22 Oct 2018 13:34:15 +0000
 
 scikit-learn (0.19.2-1) unstable; urgency=medium
 
