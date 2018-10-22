@@ -44,6 +44,9 @@ scikit-learn (0.20.0+dfsg-1) UNRELEASED; urgency=medium
     - switch from python_distutils to pybuild
     - rewrite
 
+  [ Mo Zhou <cdluminate@gmail.com> ]
+  * Fixup autopkgtest for python3.
+
  -- Yangfl <mmyangfl@gmail.com>  Thu, 18 Oct 2018 12:37:47 +0800
 
 scikit-learn (0.19.2-1) unstable; urgency=medium
