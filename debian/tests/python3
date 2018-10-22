@@ -13,10 +13,10 @@ dpkg-architecture -e arm64 && test_args="$test_args -k-test_dump"
 for py in $pys; do
     echo "=== python$py ==="
     if [ "$pkgbuild" = "yes" ]; then
-        module="$srcdir/debian/tmp/usr/lib/python$py/dist-packages/sklearn"
+        module="$srcdir/debian/tmp/usr/lib/python3/dist-packages/sklearn"
         cd "$srcdir/build/"
     else
-        module="/usr/lib/python$py/dist-packages/sklearn"
+        module="/usr/lib/python3/dist-packages/sklearn"
         cd "$ADTTMP"
     fi
 
