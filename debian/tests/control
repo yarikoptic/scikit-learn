@@ -1,0 +1,7 @@
+Tests: python2
+Depends: python-all, python-nose, python-sklearn, python-setuptools, python-numpy (>= 1:1.8.2~), python-scipy, python-nose, python-pytest, python-matplotlib, python-joblib (>= 0.9.2)
+Restrictions: allow-stderr
+
+Tests: python3
+Depends: python3-all, python3-nose, python3-sklearn, python3-numpy, python3-scipy, python3-nose, python3-pytest, python3-matplotlib, python3-joblib (>= 0.9.2),
+Restrictions: allow-stderr

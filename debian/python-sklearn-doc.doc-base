@@ -1,0 +1,10 @@
+Document: scikit-learn
+Title: scikit-learn User Manual
+Author: scikit-learn developers
+Abstract: This manual describes features of scikit-learn, provides
+ examples, API reference, and a user guide.
+Section: Science/Data Analysis
+
+Format: HTML
+Index: /usr/share/doc/python-sklearn-doc/html/index.html
+Files: /usr/share/doc/python-sklearn-doc/html/*

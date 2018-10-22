@@ -1,0 +1,20 @@
+#!/bin/sh
+set -efux
+
+pys="$(py3versions -rv 2>/dev/null)"
+pkgbuild=${pkgbuild:-no}
+
+srcdir=$PWD
+
+for py in $pys; do
+    echo "=== python$py ==="
+    if [ "$pkgbuild" = "yes" ]; then
+        module="$srcdir/debian/tmp/usr/lib/python$py/dist-packages/sklearn"
+        cd "$srcdir/build/"
+    else
+        module="/usr/lib/python$py/dist-packages/sklearn"
+        cd "$ADTTMP"
+    fi
+
+    xvfb-run -a python$py -m pytest -s -v $module 2>&1
+done
