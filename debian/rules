@@ -37,10 +37,12 @@ ifeq ($(DEB_HOST_ARCH),i386)
 endif
 ifeq ($(DEB_HOST_ARCH),ppc64el)
   # https://buildd.debian.org/status/fetch.php?pkg=scikit-learn&arch=ppc64el&ver=0.18-3&stamp=1475603905
-  # suspicious
+
   PYTEST_KEYWORD += and not test_show_versions_with_blas
   # https://github.com/scikit-learn/scikit-learn/issues/10561
   PYTEST_KEYWORD += and not test_estimate_bandwidth_1sample
+  # https://github.com/scikit-learn/scikit-learn/issues/12448
+  PYTEST_KEYWORD += and not test_logistic_regression_multi_class_auto
   PYBUILD_TEST_ARGS += -k "$(PYTEST_KEYWORD)"
 endif
 
