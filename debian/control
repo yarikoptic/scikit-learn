@@ -3,7 +3,7 @@ Section: python
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Yaroslav Halchenko <debian@onerussian.com>, Michael Hanke <michael.hanke@gmail.com>
-Build-Depends: debhelper (>= 11~),
+Build-Depends: debhelper (>= 10~),
                dh-python,
                python-all-dev (>= 2.6.6-3~),
                python-setuptools,
