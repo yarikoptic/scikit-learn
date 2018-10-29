@@ -3,6 +3,8 @@ scikit-learn (0.20.0+dfsg-2) UNRELEASED; urgency=medium
   [ Yaroslav Halchenko ]
   * dump debhelper compat to 10 to ease backportability. Added a note to
     debian/README.source
+    - with that it correctly places numerous examples within -doc package
+      instead of a selected pure python- one
   * debian/rules
     - removed running doctests on python3 as well -- output fluctuates across
       platforms and releases
