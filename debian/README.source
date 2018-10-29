@@ -6,4 +6,11 @@ obtained directly from upstream git repository, releases "merged" into
 dfsg branch while stripping materials already present on Debian system
 (e.g. joblib), and packaged into .orig.tar.gz using git-buildpackage.
 
- -- Yaroslav Halchenko <debian@onerussian.com>, Mon, 17 Oct 2011 23:48:57 -0400
+debian/compat
+=============
+
+Unless would provide big gains, or mandated/necessary
+**DO NOT BUMP DEBHELPER COMPATIBILITY**.  It unnecessarily complicates
+backporting.
+
+ -- Yaroslav Halchenko <debian@onerussian.com>, Mon, 29 Oct 2018 17:08:43 -0400
