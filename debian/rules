@@ -21,9 +21,8 @@ export JOBS := $(JOBS)
 
 include /usr/share/dpkg/architecture.mk
 
-# fetch_california_housing -> Downloading Cal. housing
-PYBUILD_TEST_ARGS =
-PYTEST_KEYWORD = not test_feature_importance_regression
+PYBUILD_TEST_ARGS = "-m not network"
+PYTEST_KEYWORD =
 
 # Some tests are known to fail randomly so need to be excluded ATM
 ifeq ($(DEB_HOST_ARCH),arm64)

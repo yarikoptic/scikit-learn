@@ -8,11 +8,11 @@ scikit-learn (0.20.0+dfsg-2) UNRELEASED; urgency=medium
   * debian/rules
     - removed running doctests on python3 as well -- output fluctuates across
       platforms and releases
+    - skip tests marked "network" (requiring download of some test datasets)
 
   [ Mo Zhou <cdluminate@gmail.com>]
   * debian/rules
-    - skip some tests which either demand data download or show
-      problems on some architectures
+    - skip some tests which show problems on some architectures
 
  -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 29 Oct 2018 17:06:36 -0400
 
