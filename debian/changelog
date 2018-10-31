@@ -9,6 +9,11 @@ scikit-learn (0.20.0+dfsg-2) UNRELEASED; urgency=medium
     - removed running doctests on python3 as well -- output fluctuates across
       platforms and releases
     - skip tests marked "network" (requiring download of some test datasets)
+  * debian/patches
+    + Skip some tests if joblib is forced into serial mode
+      (from https://github.com/scikit-learn/scikit-learn/pull/12496)
+      0001-BF-skip-test_backend_respected-if-joblib-is-forced-i.patch
+      0002-BF-TST-skip-test_lr_liblinear_warning-in-joblib-seri.patch
 
   [ Mo Zhou <cdluminate@gmail.com>]
   * debian/rules

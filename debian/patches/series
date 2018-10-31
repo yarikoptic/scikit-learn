@@ -1,3 +1,5 @@
+0001-BF-skip-test_backend_respected-if-joblib-is-forced-i.patch
+0002-BF-TST-skip-test_lr_liblinear_warning-in-joblib-seri.patch
 deb_no_tinyclues_external_image
 deb_no_online_jquery
 up_workaround_buggy_pil

@@ -1,0 +1,96 @@
+From 105b4910c5445ea73a3a9bd2d665581ebac31964 Mon Sep 17 00:00:00 2001
+From: Yaroslav Halchenko <debian@onerussian.com>
+Date: Tue, 30 Oct 2018 22:07:07 -0400
+Subject: [PATCH 1/2] BF: skip test_backend_respected if joblib is forced into
+ serial mode
+
+The reason is that some package builders/environments might force
+joblib to perform without paralellization by setting JOBLIB_MULTIPROCESSING=0
+That causes this test to break (different ways depending on the version of sklearn)
+e.g. 0.20.0 with system wide joblib:
+
+    sklearn/ensemble/tests/test_forest.py::test_backend_respected FAILED                                     [100%]
+
+    =================================================== FAILURES ===================================================
+    ____________________________________________ test_backend_respected ____________________________________________
+
+        def test_backend_respected():
+            clf = RandomForestClassifier(n_estimators=10, n_jobs=2)
+
+            with parallel_backend("testing") as (ba, _):
+    >           clf.fit(X, y)
+
+    sklearn/ensemble/tests/test_forest.py:1289:
+    _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+    sklearn/ensemble/forest.py:335: in fit
+        for i, t in enumerate(trees))
+    /usr/lib/python3/dist-packages/joblib/parallel.py:940: in __call__
+        n_jobs = self._initialize_backend()
+    /usr/lib/python3/dist-packages/joblib/parallel.py:739: in _initialize_backend
+        **self._backend_args)
+    _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    self = <sklearn.ensemble.tests.test_forest.MyBackend object at 0x7f175f23f470>, n_jobs = 1
+    parallel = Parallel(n_jobs=2), prefer = threads, require = None, idle_worker_timeout = 300
+    memmappingexecutor_args = {max_nbytes: 1048576, mmap_mode: r, temp_folder: None, verbose: 0}
+
+        def configure(self, n_jobs=1, parallel=None, prefer=None, require=None,
+                      idle_worker_timeout=300, **memmappingexecutor_args):
+            """Build a process executor and return the number of workers"""
+            n_jobs = self.effective_n_jobs(n_jobs)
+            if n_jobs == 1:
+                raise FallbackToBackend(
+    >               SequentialBackend(nesting_level=self.nesting_level))
+    E           sklearn.externals.joblib._parallel_backends.FallbackToBackend: <sklearn.externals.joblib._parallel_backends.SequentialBackend object at 0x7f175f23f240>
+
+    /usr/lib/python3/dist-packages/joblib/_parallel_backends.py:467: FallbackToBackend
+
+(less verbose but still fail the test in master).
+
+With this change test would simply be skipped if joblib has no parallel.mp
+---
+ sklearn/ensemble/tests/test_forest.py | 4 +++-
+ sklearn/utils/testing.py              | 2 ++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/sklearn/ensemble/tests/test_forest.py b/sklearn/ensemble/tests/test_forest.py
+index d7586c286..e7221e372 100644
+--- a/sklearn/ensemble/tests/test_forest.py
++++ b/sklearn/ensemble/tests/test_forest.py
+@@ -37,6 +37,7 @@ from sklearn.utils.testing import assert_warns
+ from sklearn.utils.testing import assert_warns_message
+ from sklearn.utils.testing import assert_no_warnings
+ from sklearn.utils.testing import ignore_warnings
++from sklearn.utils.testing import skip_if_no_parallel
+ 
+ from sklearn import datasets
+ from sklearn.decomposition import TruncatedSVD
+@@ -1282,10 +1283,11 @@ class MyBackend(LokyBackend):
+ register_parallel_backend('testing', MyBackend)
+ 
+ 
++@skip_if_no_parallel
+ def test_backend_respected():
+     clf = RandomForestClassifier(n_estimators=10, n_jobs=2)
+ 
+-    with parallel_backend("testing") as (ba, _):
++    with parallel_backend("testing") as (ba, n_jobs):
+         clf.fit(X, y)
+ 
+     assert ba.count > 0
+diff --git a/sklearn/utils/testing.py b/sklearn/utils/testing.py
+index 75b378961..4de7757b0 100644
+--- a/sklearn/utils/testing.py
++++ b/sklearn/utils/testing.py
+@@ -763,6 +763,8 @@ try:
+                                      reason='skip on travis')
+     fails_if_pypy = pytest.mark.xfail(IS_PYPY, raises=NotImplementedError,
+                                       reason='not compatible with PyPy')
++    skip_if_no_parallel = pytest.mark.skipif(not joblib.parallel.mp,
++                                             reason="joblib is in serial mode")
+ 
+     #  Decorator for tests involving both BLAS calls and multiprocessing.
+     #
+-- 
+2.19.0
+

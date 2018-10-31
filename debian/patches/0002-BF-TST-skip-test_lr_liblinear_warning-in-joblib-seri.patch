@@ -1,0 +1,33 @@
+From c4bf75dd8147fcdf12602c20a1d55b015a0bbaf0 Mon Sep 17 00:00:00 2001
+From: Yaroslav Halchenko <debian@onerussian.com>
+Date: Tue, 30 Oct 2018 22:12:44 -0400
+Subject: [PATCH 2/2] BF(TST): skip test_lr_liblinear_warning in joblib serial
+ mode while forcing n_jobs=2 and expecting warning
+
+---
+ sklearn/linear_model/tests/test_logistic.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/sklearn/linear_model/tests/test_logistic.py b/sklearn/linear_model/tests/test_logistic.py
+index 4195405b8..04a857ccf 100644
+--- a/sklearn/linear_model/tests/test_logistic.py
++++ b/sklearn/linear_model/tests/test_logistic.py
+@@ -26,6 +26,7 @@ from sklearn.utils.testing import assert_warns
+ from sklearn.utils.testing import ignore_warnings
+ from sklearn.utils.testing import assert_warns_message
+ from sklearn.utils.testing import assert_no_warnings
++from sklearn.utils.testing import skip_if_no_parallel
+ 
+ from sklearn.exceptions import ConvergenceWarning
+ from sklearn.exceptions import ChangedBehaviorWarning
+@@ -146,6 +147,7 @@ def test_logistic_cv_score_does_not_warn_by_default():
+     assert len(record) == 0
+ 
+ 
++@skip_if_no_parallel
+ def test_lr_liblinear_warning():
+     n_samples, n_features = iris.data.shape
+     target = iris.target_names[iris.target]
+-- 
+2.19.0
+
