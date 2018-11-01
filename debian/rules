@@ -21,7 +21,7 @@ export JOBS := $(JOBS)
 
 include /usr/share/dpkg/architecture.mk
 
-PYBUILD_TEST_ARGS = "-m not network"
+PYBUILD_TEST_ARGS = -m "not network"
 PYTEST_KEYWORD =
 
 # Some tests are known to fail randomly so need to be excluded ATM
@@ -42,11 +42,11 @@ ifeq ($(DEB_HOST_ARCH),ppc64el)
   PYTEST_KEYWORD += and not test_estimate_bandwidth_1sample
   # https://github.com/scikit-learn/scikit-learn/issues/12448
   PYTEST_KEYWORD += and not test_logistic_regression_multi_class_auto
-  PYBUILD_TEST_ARGS += -k "$(PYTEST_KEYWORD)"
 endif
 
 # TODO: figure out WTF
-PYTEST_KEYWORD += and not test_show_versions_with_blas
+PYTEST_KEYWORD += not test_show_versions_with_blas
+PYBUILD_TEST_ARGS += -k "$(PYTEST_KEYWORD)"
 
 
 export PYBUILD_TEST_PYTEST := 1
