@@ -1,0 +1,340 @@
+diff --git a/debian/compat b/debian/compat
+index f599e28b8..ec635144f 100644
+--- a/debian/compat
++++ b/debian/compat
+@@ -1 +1 @@
+-10
++9
+diff --git a/debian/control b/debian/control
+index 4983e6987..02b9f5571 100644
+--- a/debian/control
++++ b/debian/control
+@@ -3,7 +3,7 @@ Section: python
+ Priority: optional
+ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+ Uploaders: Yaroslav Halchenko <debian@onerussian.com>, Michael Hanke <michael.hanke@gmail.com>
+-Build-Depends: debhelper (>= 10~),
++Build-Depends: debhelper (>= 9~),
+                dh-python,
+                python-all-dev (>= 2.6.6-3~),
+                python-setuptools,
+diff --git a/doc/about.rst b/doc/about.rst
+index 218b0ad89..a9df62f1d 100644
+--- a/doc/about.rst
++++ b/doc/about.rst
+@@ -193,7 +193,8 @@ Donating to the project
+ ~~~~~~~~~~~~~~~~~~~~~~~
+ 
+ If you are interested in donating to the project or to one of our code-sprints, you can use
+-the *Paypal* button below or the `NumFOCUS Donations Page <http://www.numfocus.org/support-numfocus.html>`_ (if you use the latter, please indicate that you are donating for the scikit-learn project).
++the `*Paypal* button on upstream website <http://scikit-learn.org/stable/about.html#donating-to-the-project>`_
++or the `NumFOCUS Donations Page <http://www.numfocus.org/support-numfocus.html>`_ (if you use the latter, please indicate that you are donating for the scikit-learn project).
+ 
+ All donations will be handled by `NumFOCUS
+ <http://www.numfocus.org>`_, a non-profit-organization which is
+@@ -206,24 +207,6 @@ the project funded and available while in compliance with tax regulations.
+ The received donations for the scikit-learn project mostly will go towards covering travel-expenses
+ for code sprints, as well as towards the organization budget of the project [#f1]_.
+ 
+-.. raw :: html
+-
+-    </br></br>
+-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post"
+-    target="_top">
+-    <input type="hidden" name="cmd" value="_s-xclick">
+-    <input type="hidden" name="hosted_button_id" value="74EYUMF3FTSW8">
+-    <input type="image"
+-    src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+-    border="0" name="submit" alt="PayPal - The safer, easier way to pay
+-    online!" style="position: relative;
+-    left: 40%;">
+-    <img alt="" border="0"
+-    src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1"
+-    height="1">
+-    </form>
+-    </br>
+-
+ .. rubric:: Notes
+ 
+ .. [#f1] Regarding the organization budget in particular, we might use some of the donated funds to pay for other project expenses such as DNS, hosting or continuous integration services.
+@@ -237,44 +220,12 @@ The 2013 Paris international sprint
+  |end-div|
+ 
+ 
+-
+-.. |center-div| raw:: html
+-
+-    <div style="text-align: center; margin: -7px 0 -10px 0;">
+-
+-
+-.. |telecom| image:: themes/scikit-learn/static/img/telecom.png
+-   :width: 120pt
+-   :target: http://www.telecom-paristech.fr/
+-
+-
+-.. |tinyclues| image:: https://www.tinyclues.com/web/wp-content/uploads/2016/06/Tinyclues-PNG-logo.png
+-   :width: 120pt
+-   :target: https://www.tinyclues.com/
+-
+-
+-.. |afpy| image:: https://www.afpy.org/static/images/logo.svg
+-   :width: 120pt
+-   :target: https://www.afpy.org
+-
+-
+-.. |SGR| image:: http://www.svi.cnrs-bellevue.fr/wikimedia/images/Logo_svi_inp.png
+-   :width: 120pt
+-   :target: http://www.svi.cnrs-bellevue.fr
+-
+-.. |FNRS| image:: http://www.fnrs.be/en/images/FRS-FNRS_rose_transp.png
+-   :width: 120pt
+-   :target: http://www.frs-fnrs.be/
+-
+-.. figure:: images/dysco.png
+-   :width: 120pt
+-   :target: http://sites.uclouvain.be/dysco/
+-
+-   IAP VII/19 - DYSCO
+-
+-.. |end-div| raw:: html
+-
+-  </div>
++`telecom <http://www.telecom-paristech.fr/>`_,
++`tinyclues <http://www.tinyclues.com/>`_,
++`afpy <http://www.afpy.org>`_
++`SGR <http://www.svi.cnrs-bellevue.fr>`,
++`FNRS <http://www.frs-fnrs.be/>`_,
++`IAP VII/19 - DYSCO <http://sites.uclouvain.be/dysco/>`_.
+ 
+ *For more information on this sprint, see* `here
+ <https://github.com/scikit-learn/administrative/blob/master/sprint_paris_2013/proposal.rst>`__
+diff --git a/doc/conf.py b/doc/conf.py
+index e0dc4c6f4..96c104ab5 100644
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -133,7 +133,7 @@ html_theme = 'scikit-learn'
+ # further.  For a list of options available for each theme, see the
+ # documentation.
+ html_theme_options = {'oldversion': False, 'collapsiblesidebar': True,
+-                      'google_analytics': True, 'surveybanner': False,
++                      'google_analytics': False, 'surveybanner': False,
+                       'sprintbanner': True}
+ 
+ # Add any paths that contain custom themes here, relative to this directory.
+@@ -232,12 +232,10 @@ trim_doctests_flags = True
+ # intersphinx configuration
+ intersphinx_mapping = {
+     'python': ('https://docs.python.org/{.major}'.format(
+-        sys.version_info), None),
+-    'numpy': ('https://docs.scipy.org/doc/numpy/', None),
+-    'scipy': ('https://docs.scipy.org/doc/scipy/reference', None),
+-    'matplotlib': ('https://matplotlib.org/', None),
+-    'pandas': ('https://pandas.pydata.org/pandas-docs/stable/', None),
+-    'joblib': ('https://joblib.readthedocs.io/en/latest/', None),
++        sys.version_info), '/usr/share/doc/python3.6/html/objects.inv'),
++    'numpy': ('https://docs.scipy.org/doc/numpy/', '/usr/share/doc/python-numpy-doc/html/objects.inv'),
++    'scipy': ('https://docs.scipy.org/doc/scipy/reference', '/usr/share/doc/python-scipy-doc/html/objects.inv'),
++    'matplotlib': ('https://matplotlib.org/', '/usr/share/doc/python-matplotlib-doc/html/objects.inv'),
+ }
+ 
+ sphinx_gallery_conf = {
+diff --git a/doc/developers/contributing.rst b/doc/developers/contributing.rst
+index 31f5e5ef8..b8959316e 100644
+--- a/doc/developers/contributing.rst
++++ b/doc/developers/contributing.rst
+@@ -68,7 +68,6 @@ link to it from your website, or simply star to say "I use it":
+    <a class="github-button" href="https://github.com/scikit-learn/scikit-learn"
+    data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star
+    scikit-learn/scikit-learn on GitHub">Star</a>
+-   <script async defer src="https://buttons.github.io/buttons.js"></script>
+ 
+ .. topic:: Contributing to related projects
+ 
+diff --git a/doc/sphinxext/github_link.py b/doc/sphinxext/github_link.py
+index 38d048687..38ce93c0a 100644
+--- a/doc/sphinxext/github_link.py
++++ b/doc/sphinxext/github_link.py
+@@ -5,7 +5,8 @@ import os
+ import sys
+ from functools import partial
+ 
+-REVISION_CMD = 'git rev-parse --short HEAD'
++#REVISION_CMD = 'git rev-parse --short HEAD'
++REVISION_CMD = 'cat ../debian/github-revision.txt'
+ 
+ 
+ def _get_git_revision():
+diff --git a/doc/themes/scikit-learn/theme.conf b/doc/themes/scikit-learn/theme.conf
+index 716b82a02..af1c34d12 100644
+--- a/doc/themes/scikit-learn/theme.conf
++++ b/doc/themes/scikit-learn/theme.conf
+@@ -6,6 +6,6 @@ pygments_style = tango
+ [options]
+ oldversion = False
+ collapsiblesidebar = True
+-google_analytics = True
++google_analytics = False
+ surveybanner = False
+ sprintbanner = True
+diff --git a/doc/tutorial/machine_learning_map/index.rst b/doc/tutorial/machine_learning_map/index.rst
+index 3690d76b3..fec3508b8 100644
+--- a/doc/tutorial/machine_learning_map/index.rst
++++ b/doc/tutorial/machine_learning_map/index.rst
+@@ -64,7 +64,6 @@ Click on any estimator in the chart below to see its documentation.
+     </style>
+ 
+     <body>
+-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+ 	<script type="text/javascript" src="../../_static/jquery.maphilight.min.js"></script>
+ 	<script type="text/javascript" src="../../_static/jquery.min.js"></script>
+ 	<script type="text/javascript">$(function() {
+diff --git a/setup.cfg b/setup.cfg
+index 59c4804c1..34018ed23 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -9,7 +9,6 @@ addopts =
+     --ignore benchmarks
+     --ignore doc
+     --ignore examples
+-    --doctest-modules
+     --disable-pytest-warnings
+     -rs
+ 
+diff --git a/sklearn/_build_utils/__init__.py b/sklearn/_build_utils/__init__.py
+index 0ed4968a1..91aa60f62 100644
+--- a/sklearn/_build_utils/__init__.py
++++ b/sklearn/_build_utils/__init__.py
+@@ -81,4 +81,4 @@ def maybe_cythonize_extensions(top_path, config):
+             exc.args += (message,)
+             raise
+ 
+-        config.ext_modules = cythonize(config.ext_modules)
++        config.ext_modules = cythonize(config.ext_modules, nthreads=int(os.environ.get('JOBS', 1)))
+diff --git a/sklearn/datasets/lfw.py b/sklearn/datasets/lfw.py
+index cf09f366c..07c055e34 100644
+--- a/sklearn/datasets/lfw.py
++++ b/sklearn/datasets/lfw.py
+@@ -184,7 +184,7 @@ def _load_imgs(file_paths, slice_, color, resize):
+         face = np.asarray(img[slice_], dtype=np.float32)
+         face /= 255.0  # scale uint8 coded colors to the [0.0, 1.0] floats
+         if resize is not None:
+-            face = imresize(face, resize)
++            face = imresize(face, (h, w))
+         if not color:
+             # average the color channels to compute a gray levels
+             # representation
+diff --git a/sklearn/ensemble/tests/test_forest.py b/sklearn/ensemble/tests/test_forest.py
+index d7586c286..e7221e372 100644
+--- a/sklearn/ensemble/tests/test_forest.py
++++ b/sklearn/ensemble/tests/test_forest.py
+@@ -37,6 +37,7 @@ from sklearn.utils.testing import assert_warns
+ from sklearn.utils.testing import assert_warns_message
+ from sklearn.utils.testing import assert_no_warnings
+ from sklearn.utils.testing import ignore_warnings
++from sklearn.utils.testing import skip_if_no_parallel
+ 
+ from sklearn import datasets
+ from sklearn.decomposition import TruncatedSVD
+@@ -1282,10 +1283,11 @@ class MyBackend(LokyBackend):
+ register_parallel_backend('testing', MyBackend)
+ 
+ 
++@skip_if_no_parallel
+ def test_backend_respected():
+     clf = RandomForestClassifier(n_estimators=10, n_jobs=2)
+ 
+-    with parallel_backend("testing") as (ba, _):
++    with parallel_backend("testing") as (ba, n_jobs):
+         clf.fit(X, y)
+ 
+     assert ba.count > 0
+diff --git a/sklearn/externals/setup.py b/sklearn/externals/setup.py
+index 452f7d25d..985503ce3 100644
+--- a/sklearn/externals/setup.py
++++ b/sklearn/externals/setup.py
+@@ -4,10 +4,5 @@
+ def configuration(parent_package='', top_path=None):
+     from numpy.distutils.misc_util import Configuration
+     config = Configuration('externals', parent_package, top_path)
+-    config.add_subpackage('joblib')
+-    config.add_subpackage('joblib/externals')
+-    config.add_subpackage('joblib/externals/loky')
+-    config.add_subpackage('joblib/externals/loky/backend')
+-    config.add_subpackage('joblib/externals/cloudpickle')
+ 
+     return config
+diff --git a/sklearn/feature_extraction/tests/test_text.py b/sklearn/feature_extraction/tests/test_text.py
+index d6b1b2b64..f9617bfe9 100644
+--- a/sklearn/feature_extraction/tests/test_text.py
++++ b/sklearn/feature_extraction/tests/test_text.py
+@@ -371,6 +371,10 @@ def test_tfidf_no_smoothing():
+         numpy_provides_div0_warning = len(w) == 1
+ 
+     in_warning_message = 'divide by zero'
++    import platform
++    if platform.uname()[4].startswith('armv'):
++        raise SkipTest("no warning gets issued on armel")
++
+     tfidf = assert_warns_message(RuntimeWarning, in_warning_message,
+                                  tr.fit_transform, X).toarray()
+     if not numpy_provides_div0_warning:
+diff --git a/sklearn/linear_model/tests/test_logistic.py b/sklearn/linear_model/tests/test_logistic.py
+index 4195405b8..04a857ccf 100644
+--- a/sklearn/linear_model/tests/test_logistic.py
++++ b/sklearn/linear_model/tests/test_logistic.py
+@@ -26,6 +26,7 @@ from sklearn.utils.testing import assert_warns
+ from sklearn.utils.testing import ignore_warnings
+ from sklearn.utils.testing import assert_warns_message
+ from sklearn.utils.testing import assert_no_warnings
++from sklearn.utils.testing import skip_if_no_parallel
+ 
+ from sklearn.exceptions import ConvergenceWarning
+ from sklearn.exceptions import ChangedBehaviorWarning
+@@ -146,6 +147,7 @@ def test_logistic_cv_score_does_not_warn_by_default():
+     assert len(record) == 0
+ 
+ 
++@skip_if_no_parallel
+ def test_lr_liblinear_warning():
+     n_samples, n_features = iris.data.shape
+     target = iris.target_names[iris.target]
+diff --git a/sklearn/metrics/tests/test_ranking.py b/sklearn/metrics/tests/test_ranking.py
+index b921fb112..1d4744fa9 100644
+--- a/sklearn/metrics/tests/test_ranking.py
++++ b/sklearn/metrics/tests/test_ranking.py
+@@ -612,6 +612,10 @@ def test_precision_recall_curve_toydata():
+ 
+         y_true = [0, 0]
+         y_score = [0.25, 0.75]
++        import platform
++        if platform.uname()[4].startswith('armv'):
++            import nose
++            raise nose.SkipTest("no precision-related exceptions get issued on armel")
+         assert_raises(Exception, precision_recall_curve, y_true, y_score)
+         assert_raises(Exception, average_precision_score, y_true, y_score)
+ 
+diff --git a/sklearn/tests/test_init.py b/sklearn/tests/test_init.py
+index 75c9dd921..72a4625b1 100644
+--- a/sklearn/tests/test_init.py
++++ b/sklearn/tests/test_init.py
+@@ -30,6 +30,7 @@ def test_import_skl():
+ def test_import_sklearn_no_warnings():
+     # Test that importing scikit-learn main modules doesn't raise any warnings.
+ 
++    message = "No message yet"
+     try:
+         pkgs = pkgutil.iter_modules(path=sklearn.__path__, prefix='sklearn.')
+         import_modules = '; '.join(['import ' + modname
+diff --git a/sklearn/utils/testing.py b/sklearn/utils/testing.py
+index 75b378961..4de7757b0 100644
+--- a/sklearn/utils/testing.py
++++ b/sklearn/utils/testing.py
+@@ -763,6 +763,8 @@ try:
+                                      reason='skip on travis')
+     fails_if_pypy = pytest.mark.xfail(IS_PYPY, raises=NotImplementedError,
+                                       reason='not compatible with PyPy')
++    skip_if_no_parallel = pytest.mark.skipif(not joblib.parallel.mp,
++                                             reason="joblib is in serial mode")
+ 
+     #  Decorator for tests involving both BLAS calls and multiprocessing.
+     #
