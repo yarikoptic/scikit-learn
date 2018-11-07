@@ -111,7 +111,7 @@ ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS)))
 	# urllib.error.URLError -- have to ignore
 	# hotfix SPHINXOPTS -- remove in next release
 	-+\
-		PYTHONPATH=$(CURDIR)/.pybuild/cpython3_$(PY3VER)/build:$$(python3 -c 'import sys;print(":".join(sys.path))') \
+		PYTHONPATH=`/bin/ls -d $(CURDIR)/.pybuild/*python*_$(PY3VER)/build`:$$(python3 -c 'import sys;print(":".join(sys.path))') \
 		SPHINXBUILD="python$(PY3VER) -m sphinx -j $(JOBS) -D mathjax_path=MathJax.js" \
 		SPHINXOPTS="-j $(JOBS) -D mathjax_path=MathJax.js" \
 		$(MAKE) -C doc html
@@ -121,7 +121,7 @@ endif
 # Test data not copied to .pybuild -- manually link for them
 override_dh_auto_test-arch:
 	for ver in $(PYBUILD_VERSIONS); do \
-		i=.pybuild/cpython$${ver%.*}_$$ver/build/sklearn; \
+		i=`/bin/ls -d .pybuild/*python*_$$ver/build/sklearn`; \
 		for dir in data descr images; do \
 			rm -rf $$i/datasets/$$dir || true; \
 			ln -s ../../../../../sklearn/datasets/$$dir $$i/datasets; \
