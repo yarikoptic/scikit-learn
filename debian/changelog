@@ -1,3 +1,9 @@
+scikit-learn (0.20.0+dfsg-3) UNRELEASED; urgency=medium
+
+  * cd to .pybuild to run show_versions()
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 08 Nov 2018 12:10:49 -0500
+
 scikit-learn (0.20.0+dfsg-2) unstable; urgency=medium
 
   [ Yaroslav Halchenko ]
