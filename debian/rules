@@ -122,6 +122,7 @@ endif
 override_dh_auto_test-arch:
 	for ver in $(PYBUILD_VERSIONS); do \
 		i=`/bin/ls -d .pybuild/*python*_$$ver/build/sklearn`; \
+        PYTHONPATH=$$(dirname $$i) python$$ver -c 'import sklearn; sklearn.show_versions()'; \
 		for dir in data descr images; do \
 			rm -rf $$i/datasets/$$dir || true; \
 			ln -s ../../../../../sklearn/datasets/$$dir $$i/datasets; \
