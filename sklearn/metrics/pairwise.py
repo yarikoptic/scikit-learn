@@ -24,9 +24,9 @@ from ..utils import gen_even_slices
 from ..utils import gen_batches, get_chunk_n_rows
 from ..utils.extmath import row_norms, safe_sparse_dot
 from ..preprocessing import normalize
-from ..utils import Parallel
-from ..utils import delayed
-from ..utils import effective_n_jobs
+from ..utils._joblib import Parallel
+from ..utils._joblib import delayed
+from ..utils._joblib import effective_n_jobs
 
 from .pairwise_fast import _chi2_kernel_fast, _sparse_manhattan
 
@@ -357,8 +357,6 @@ def pairwise_distances_argmin_min(X, Y, axis=1, metric="euclidean",
     indices = np.concatenate(indices)
     values = np.concatenate(values)
 
-    if metric == "euclidean" and not metric_kwargs.get("squared", False):
-        np.sqrt(values, values)
     return indices, values
 
 
@@ -742,7 +740,7 @@ def polynomial_kernel(X, Y=None, degree=3, gamma=None, coef0=1):
     gamma : float, default None
         if None, defaults to 1.0 / n_features
 
-    coef0 : int, default 1
+    coef0 : float, default 1
 
     Returns
     -------
@@ -776,7 +774,7 @@ def sigmoid_kernel(X, Y=None, gamma=None, coef0=1):
     gamma : float, default None
         If None, defaults to 1.0 / n_features
 
-    coef0 : int, default 1
+    coef0 : float, default 1
 
     Returns
     -------
@@ -946,7 +944,7 @@ def additive_chi2_kernel(X, Y=None):
       Local features and kernels for classification of texture and object
       categories: A comprehensive study
       International Journal of Computer Vision 2007
-      http://research.microsoft.com/en-us/um/people/manik/projects/trade-off/papers/ZhangIJCV06.pdf
+      https://research.microsoft.com/en-us/um/people/manik/projects/trade-off/papers/ZhangIJCV06.pdf
 
 
     See also
@@ -1004,7 +1002,7 @@ def chi2_kernel(X, Y=None, gamma=1.):
       Local features and kernels for classification of texture and object
       categories: A comprehensive study
       International Journal of Computer Vision 2007
-      http://research.microsoft.com/en-us/um/people/manik/projects/trade-off/papers/ZhangIJCV06.pdf
+      https://research.microsoft.com/en-us/um/people/manik/projects/trade-off/papers/ZhangIJCV06.pdf
 
     See also
     --------
@@ -1280,6 +1278,12 @@ def pairwise_distances_chunked(X, Y=None, reduce_func=None,
             X_chunk = X[sl]
         D_chunk = pairwise_distances(X_chunk, Y, metric=metric,
                                      n_jobs=n_jobs, **kwds)
+        if ((X is Y or Y is None)
+                and PAIRWISE_DISTANCE_FUNCTIONS.get(metric, None)
+                is euclidean_distances):
+            # zeroing diagonal, taking care of aliases of "euclidean",
+            # i.e. "l2"
+            D_chunk.flat[sl.start::_num_samples(X) + 1] = 0
         if reduce_func is not None:
             chunk_size = D_chunk.shape[0]
             D_chunk = reduce_func(D_chunk, sl.start)

@@ -218,7 +218,7 @@ def randomized_range_finder(A, size, n_iter,
     Follows Algorithm 4.3 of
     Finding structure with randomness: Stochastic algorithms for constructing
     approximate matrix decompositions
-    Halko, et al., 2009 (arXiv:909) http://arxiv.org/pdf/0909.4061
+    Halko, et al., 2009 (arXiv:909) https://arxiv.org/pdf/0909.4061.pdf
 
     An implementation of a randomized algorithm for principal component
     analysis
@@ -331,7 +331,7 @@ def randomized_svd(M, n_components, n_oversamples=10, n_iter='auto',
     ----------
     * Finding structure with randomness: Stochastic algorithms for constructing
       approximate matrix decompositions
-      Halko, et al., 2009 http://arxiv.org/abs/arXiv:0909.4061
+      Halko, et al., 2009 https://arxiv.org/abs/0909.4061
 
     * A randomized algorithm for the decomposition of matrices
       Per-Gunnar Martinsson, Vladimir Rokhlin and Mark Tygert
@@ -661,7 +661,7 @@ def softmax(X, copy=True):
 def safe_min(X):
     """Returns the minimum value of a dense or a CSR/CSC matrix.
 
-    Adapated from http://stackoverflow.com/q/13426580
+    Adapated from https://stackoverflow.com/q/13426580
 
     Parameters
     ----------
@@ -763,7 +763,12 @@ def _incremental_mean_and_var(X, last_mean, last_variance, last_sample_count):
     # new = the current increment
     # updated = the aggregated stats
     last_sum = last_mean * last_sample_count
-    new_sum = np.nansum(X, axis=0)
+    if np.issubdtype(X.dtype, np.floating) and X.dtype.itemsize < 8:
+        # Use at least float64 for the accumulator to avoid precision issues;
+        # see https://github.com/numpy/numpy/issues/9393
+        new_sum = np.nansum(X, axis=0, dtype=np.float64).astype(X.dtype)
+    else:
+        new_sum = np.nansum(X, axis=0)
 
     new_sample_count = np.sum(~np.isnan(X), axis=0)
     updated_sample_count = last_sample_count + new_sample_count
