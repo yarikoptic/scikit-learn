@@ -16,7 +16,6 @@ from sklearn.utils.testing import assert_almost_equal
 from sklearn.utils.testing import assert_allclose
 from sklearn.utils.testing import assert_array_equal
 from sklearn.utils.testing import assert_array_almost_equal
-from sklearn.utils.testing import assert_true
 from sklearn.utils.testing import assert_false
 from sklearn.utils.testing import assert_greater
 from sklearn.utils.testing import assert_warns
@@ -437,7 +436,7 @@ def test_randomized_svd_sign_flip_with_transpose():
     # Without transpose
     u_flipped, _, v_flipped = randomized_svd(mat, 3, flip_sign=True)
     u_based, v_based = max_loading_is_positive(u_flipped, v_flipped)
-    assert_true(u_based)
+    assert u_based
     assert_false(v_based)
 
     # With transpose
@@ -445,7 +444,7 @@ def test_randomized_svd_sign_flip_with_transpose():
         mat, 3, flip_sign=True, transpose=True)
     u_based, v_based = max_loading_is_positive(
         u_flipped_with_transpose, v_flipped_with_transpose)
-    assert_true(u_based)
+    assert u_based
     assert_false(v_based)
 
 
@@ -489,7 +488,7 @@ def test_logistic_sigmoid():
 
 def test_incremental_variance_update_formulas():
     # Test Youngs and Cramer incremental variance formulas.
-    # Doggie data from http://www.mathsisfun.com/data/standard-deviation.html
+    # Doggie data from https://www.mathsisfun.com/data/standard-deviation.html
     A = np.array([[600, 470, 170, 430, 300],
                   [600, 470, 170, 430, 300],
                   [600, 470, 170, 430, 300],

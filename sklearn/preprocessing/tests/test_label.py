@@ -13,7 +13,6 @@ from sklearn.utils.multiclass import type_of_target
 
 from sklearn.utils.testing import assert_array_equal
 from sklearn.utils.testing import assert_equal
-from sklearn.utils.testing import assert_true
 from sklearn.utils.testing import assert_raises
 from sklearn.utils.testing import assert_raise_message
 from sklearn.utils.testing import assert_warns_message
@@ -53,7 +52,7 @@ def test_label_binarizer():
     # For sparse case:
     lb = LabelBinarizer(sparse_output=True)
     got = lb.fit_transform(inp)
-    assert_true(issparse(got))
+    assert issparse(got)
     assert_array_equal(lb.classes_, ["pos"])
     assert_array_equal(expected, got.toarray())
     assert_array_equal(lb.inverse_transform(got.toarray()), inp)
@@ -373,6 +372,12 @@ def test_multilabel_binarizer_given_classes():
     inp = iter(inp)
     mlb = MultiLabelBinarizer(classes=[1, 3, 2])
     assert_array_equal(mlb.fit(inp).transform(inp), indicator_mat)
+
+    # ensure a ValueError is thrown if given duplicate classes
+    err_msg = "The classes argument contains duplicate classes. Remove " \
+              "these duplicates before passing them to MultiLabelBinarizer."
+    mlb = MultiLabelBinarizer(classes=[1, 3, 2, 3])
+    assert_raise_message(ValueError, err_msg, mlb.fit, inp)
 
 
 def test_multilabel_binarizer_same_length_sequence():
