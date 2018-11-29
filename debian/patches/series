@@ -1,5 +1,3 @@
-0001-BF-skip-test_backend_respected-if-joblib-is-forced-i.patch
-0002-BF-TST-skip-test_lr_liblinear_warning-in-joblib-seri.patch
 deb_no_tinyclues_external_image
 deb_no_online_jquery
 up_workaround_buggy_pil
@@ -9,7 +7,6 @@ deb_no_google_analytics
 deb_git_revision_cmd
 # deb_no_plot_gallery
 deb_nopaypal
-0001-BF-Define-message-since-exception-might-happen-in-in.patch
 no-download-intersphinx-mapping.patch
 disable-doctest.patch
 parallel-cythonize.patch

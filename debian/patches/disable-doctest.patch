@@ -1,12 +1,10 @@
-diff --git a/setup.cfg b/setup.cfg
-index 59c4804c1..34018ed23 100644
 --- a/setup.cfg
 +++ b/setup.cfg
-@@ -9,7 +9,6 @@ addopts =
-     --ignore benchmarks
-     --ignore doc
-     --ignore examples
--    --doctest-modules
-     --disable-pytest-warnings
-     -rs
+@@ -7,7 +7,6 @@ addopts =
+ 	--ignore benchmarks
+ 	--ignore doc
+ 	--ignore examples
+-	--doctest-modules
+ 	--disable-pytest-warnings
+ 	-rs
  

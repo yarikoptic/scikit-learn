@@ -1,8 +1,12 @@
-scikit-learn (0.20.0+dfsg-3) UNRELEASED; urgency=medium
+scikit-learn (0.20.1+dfsg-1) unstable; urgency=medium
 
+  * New upstream bugfix
+  * debian/patches
+    - dropping all 00* which were cherrypicked or upstream, and refreshing
+      the rest
   * cd to .pybuild to run show_versions()
 
- -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 08 Nov 2018 12:10:49 -0500
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 28 Nov 2018 20:43:09 -0500
 
 scikit-learn (0.20.0+dfsg-2) unstable; urgency=medium
 

@@ -4,12 +4,12 @@
  ~~~~~~~~~~~~~~~~~~~~~~~
  
  If you are interested in donating to the project or to one of our code-sprints, you can use
--the *Paypal* button below or the `NumFOCUS Donations Page <http://www.numfocus.org/support-numfocus.html>`_ (if you use the latter, please indicate that you are donating for the scikit-learn project).
-+the `*Paypal* button on upstream website <http://scikit-learn.org/stable/about.html#donating-to-the-project>`_
-+or the `NumFOCUS Donations Page <http://www.numfocus.org/support-numfocus.html>`_ (if you use the latter, please indicate that you are donating for the scikit-learn project).
+-the *Paypal* button below or the `NumFOCUS Donations Page <https://www.numfocus.org/support-numfocus.html>`_ (if you use the latter, please indicate that you are donating for the scikit-learn project).
++the `*Paypal* button on upstream website <https://scikit-learn.org/stable/about.html#donating-to-the-project>`_
++or the `NumFOCUS Donations Page <https://www.numfocus.org/support-numfocus.html>`_ (if you use the latter, please indicate that you are donating for the scikit-learn project).
  
  All donations will be handled by `NumFOCUS
- <http://www.numfocus.org>`_, a non-profit-organization which is
+ <https://numfocus.org/>`_, a non-profit-organization which is
 @@ -206,24 +207,6 @@ the project funded and available while i
  The received donations for the scikit-learn project mostly will go towards covering travel-expenses
  for code sprints, as well as towards the organization budget of the project [#f1]_.

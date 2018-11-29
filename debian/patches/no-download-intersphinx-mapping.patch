@@ -1,6 +1,6 @@
 --- a/doc/conf.py
 +++ b/doc/conf.py
-@@ -246,12 +246,10 @@ trim_doctests_flags = True
+@@ -232,12 +232,10 @@ trim_doctests_flags = True
  # intersphinx configuration
  intersphinx_mapping = {
      'python': ('https://docs.python.org/{.major}'.format(
